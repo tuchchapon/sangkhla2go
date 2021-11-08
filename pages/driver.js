@@ -45,16 +45,59 @@ export default function driver() {
     // const reviews ={reviewer_name:`reviewer name ${i}`,reviewer_email:`reviewer email ${i}`,review_text:`review text ${i}`,status:'pending'}
     const sendApprovedEmail =()=>{
       console.log('send Appproved Email');
+      fetch('/api/approvedEmail',{
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json, text/plain, */*',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(i)
+      }).then((res)=>{
+        console.log('response received');
+        if (res.status === 200){
+          console.log('response succeeded');
+        }
+      })
     }
     const sendDisApprovedEmail = ()=>{
       console.log('send disapproved email');
+      fetch('api/disApprovedEmail',{
+        method:'POST',
+        headers:{
+          'Accept': 'application/json, text/plain, */*',
+          'Content-Type': 'application/json'
+        },
+        body:''
+      }).then((res)=>{
+        console.log('response received');
+        if (res.status === 200){
+          console.log('response succeeded');
+        }
+      })
     }
     const sendremindPassword =()=>{
       console.log('remind password email');
+      fetch('api/remindPassword',{
+        method:'POST',
+        headers:{
+          'Accept': 'application/json, text/plain, */*',
+          'Content-Type': 'application/json'
+        },
+        body:''
+      }).then((res)=>{
+        console.log('response received');
+        if (res.status === 200){
+          console.log('response succeeded');
+        }
+      })
     }
+    const [admin, setAdmin] = useState({
+      email:'tuchchapon@gmail.com',
+      password: 'tuch253913.'
+    })
   const testPOST =()=>{
     console.log('test POST API');
-      axios.post('http://localhost:8080/createReview',reviews)
+      axios.post('http://localhost:8080/createAdmin',admin)
       .then((res) => {
         console.log(res);
         console.log(res.data);
@@ -93,7 +136,7 @@ export default function driver() {
       <input type="text" name="drivername" placeholder="drivername id" id="" />
       <span>contact</span>
       <input type="text" name="contact" placeholder="contact" id="" />
-      
+      <button onClick={testPOST}>test post</button>
   <button onClick={sendApprovedEmail}>Appproved email</button>
   <button onClick={sendDisApprovedEmail}>disapproved email</button>
   <button onClick={sendremindPassword}>remind password email</button>

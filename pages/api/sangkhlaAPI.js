@@ -1,4 +1,6 @@
 const express = require('express');
+const passport = require('passport')
+const router = express.Router();
 const mongoose = require('mongoose');
 const Drivers = require('../../model/driver')
 const BoatProvider = require('../../model/boatProvider')
@@ -8,7 +10,8 @@ const AccommodationType = require('../../model/accommodationType');
 const Accommodation = require('../../model/accommodation')
 const Restaurant = require('../../model/restaurant')
 const Reviews = require('../../model/review')
-const router = express.Router();
+const Admins = require('../../model/admin')
+
 require('dotenv').config()
 const mongoURL = process.env.DB_URL
 
@@ -165,6 +168,19 @@ router.route("/dbcheck").get((req, res) => {
     )
       .catch(res.status(500));
    })
+   // create admin
+   router.route("/createAdmin").post((req,res)=>{
+    const email = req.body.email
+    const password = req.body.password
+   Admins.create({
+     email,
+     password
+   }).then((e) =>
+   res.status(201).json({ status: true, message: "create data success" })
+ )
+   .catch(res.status(500));
+})
+
 /////////////////////// GET API ///////////////////////////////////////
       //get boat tour provider
   router.route("/getBoatProvider").get((req,res)=>{
