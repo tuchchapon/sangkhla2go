@@ -1,0 +1,133 @@
+import {React,useState,useEffect} from 'react'
+import axios from 'axios'
+import { useRouter } from 'next/router'
+export default function driver() {
+    const router = useRouter();
+    const [data, setData] = useState({})
+    const [driver, setDriver] = useState({location_id :null,
+    driver_name :null, contact:null,driver_image : []
+  })
+  // const [boatProvider, setBoatProvider] = useState({
+  //   provider_name:'provider name',
+  //   owner_name : 'owner name',
+  //   boat_quantity: 10,
+  //   max_passenger:20,
+  //   contact:'contact of boat tour provider',
+  //   boat_images:['1','1','1','1','1','1','3'],
+  //   provider_images: ['2','2','2','2','2','2','2','4']
+  // })
+  // const [driverLocation, setDriverLocation] = useState({
+  //   location_name:'location name 1',
+  //   location_detail :'location detail 1'
+  // })
+  // const [catagory, setcatagory] = useState({
+  //   catagory_name:'catagory name'
+  // })
+  // const [accommodation, setaccommodation] = useState({
+  //   accommodation_type: 'accommodation type'
+  // })
+  // const [accommodation, setaccommodation] = useState({
+  //   type_name: 'accommodation type name'
+  // })
+    // const [accomodation, setAccomodation] = useState({
+    //   type_id:'type id7',
+    //   name:'accommodation name7',
+    //   information :'accommodation information7',
+    //   price:1000,
+    //   services:[2,3,6,20,40,'34325'],
+    //   contact:'accommodation contact',
+    //   images:['1213','accommodation image','images']
+    // })
+    const [i, setI] = useState(0)
+    // const restaurant = {catagory_id:`${i}`,name:`name ${i}`,location:`location ${i}`,
+    // recommand_menu:`recommand_menu${i}`,opening_time:`openning timge${i}`,min_price:`min price ${i}`,
+    // max_price:`max price ${i}`,restaurant_images:['23131','141821','dasadj',],contact:`contact ${i}`,services:['12314','14143','daskdhashdj','chjas']}
+    // const reviews ={reviewer_name:`reviewer name ${i}`,reviewer_email:`reviewer email ${i}`,review_text:`review text ${i}`,status:'pending'}
+    const sendApprovedEmail =()=>{
+      console.log('send Appproved Email');
+    }
+    const sendDisApprovedEmail = ()=>{
+      console.log('send disapproved email');
+    }
+    const sendremindPassword =()=>{
+      console.log('remind password email');
+    }
+  const testPOST =()=>{
+    console.log('test POST API');
+      axios.post('http://localhost:8080/createReview',reviews)
+      .then((res) => {
+        console.log(res);
+        console.log(res.data);
+        //router.replace("/");
+      })
+
+      setI(i +1)
+  }
+    const checkDB=()=>{
+      console.log('check database connect');
+      axios.get('http://localhost:8080/dbcheck')
+      .then((response)=> console.log('response :',response))
+      .catch((err)=>
+      console.log(err))
+    }
+  
+  useEffect(() => {
+    const getDriver  = async()=>{
+      try {
+        let response = await axios.get('http://localhost:8080/getReviews')
+        console.log(response.data.payload);
+      } catch (err) {
+        console.log('err is ',err);
+      }
+    }
+    getDriver()
+    return () => {}
+  }, [])
+    return (
+        <div>
+          <div>
+      <div>connect server</div>
+      <span>ID</span>
+      <input type="text" name="locationID" placeholder="location id" id="" />
+      <span>name</span>
+      <input type="text" name="drivername" placeholder="drivername id" id="" />
+      <span>contact</span>
+      <input type="text" name="contact" placeholder="contact" id="" />
+      
+  <button onClick={sendApprovedEmail}>Appproved email</button>
+  <button onClick={sendDisApprovedEmail}>disapproved email</button>
+  <button onClick={sendremindPassword}>remind password email</button>
+    </div>
+        </div>
+    )
+}
+
+
+
+// export async function getServerSideProps(context){
+//   let response = await axios.get('http://localhost:1150/getDriver')
+//   let Drivers = []
+//   try{
+//     if (response.data.status === 200 ){
+//       Drivers = response.data ? Driver.data.driver:[]
+//     }
+//     return{
+//       props: {Drivers},
+//     }
+//   }catch(err){
+//     console.log(err);
+//   }
+//   return{
+//     notFound:true,
+//   }
+//   const getData=()=>{
+//     axios.get('http://localhost:1150/getDriver').then((response)=>{
+//       setDriver(response.data)
+//     }).then(console.log(driver))
+//     .catch((err)=>
+//     console.log(err))
+    
+//     console.log(data);
+//   }
+// }
+
