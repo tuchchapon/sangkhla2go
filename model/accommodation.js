@@ -5,7 +5,8 @@ const accommodationSchema = {
     name : String,
     information :String,
     price :Number,
-    contact :String,
+    fb_page:String,
+    tel:String,
     services : Array,
     images :Array
 

@@ -1,6 +1,7 @@
 import {React,useState,useEffect} from 'react'
 import axios from 'axios'
 import { useRouter } from 'next/router'
+
 export default function driver() {
     const router = useRouter();
     const [data, setData] = useState({})
@@ -16,10 +17,10 @@ export default function driver() {
   //   boat_images:['1','1','1','1','1','1','3'],
   //   provider_images: ['2','2','2','2','2','2','2','4']
   // })
-  // const [driverLocation, setDriverLocation] = useState({
-  //   location_name:'location name 1',
-  //   location_detail :'location detail 1'
-  // })
+  const [driverLocation, setDriverLocation] = useState({
+    location_name:'location name 1',
+    location_detail :'location detail 1'
+  })
   // const [catagory, setcatagory] = useState({
   //   catagory_name:'catagory name'
   // })
@@ -43,68 +44,37 @@ export default function driver() {
     // recommand_menu:`recommand_menu${i}`,opening_time:`openning timge${i}`,min_price:`min price ${i}`,
     // max_price:`max price ${i}`,restaurant_images:['23131','141821','dasadj',],contact:`contact ${i}`,services:['12314','14143','daskdhashdj','chjas']}
     // const reviews ={reviewer_name:`reviewer name ${i}`,reviewer_email:`reviewer email ${i}`,review_text:`review text ${i}`,status:'pending'}
-    const sendApprovedEmail =()=>{
-      console.log('send Appproved Email');
-      fetch('/api/approvedEmail',{
-        method: 'POST',
-        headers: {
-          'Accept': 'application/json, text/plain, */*',
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(i)
-      }).then((res)=>{
-        console.log('response received');
-        if (res.status === 200){
-          console.log('response succeeded');
-        }
-      })
-    }
-    const sendDisApprovedEmail = ()=>{
-      console.log('send disapproved email');
-      fetch('api/disApprovedEmail',{
-        method:'POST',
-        headers:{
-          'Accept': 'application/json, text/plain, */*',
-          'Content-Type': 'application/json'
-        },
-        body:''
-      }).then((res)=>{
-        console.log('response received');
-        if (res.status === 200){
-          console.log('response succeeded');
-        }
-      })
-    }
-    const sendremindPassword =()=>{
-      console.log('remind password email');
-      fetch('api/remindPassword',{
-        method:'POST',
-        headers:{
-          'Accept': 'application/json, text/plain, */*',
-          'Content-Type': 'application/json'
-        },
-        body:''
-      }).then((res)=>{
-        console.log('response received');
-        if (res.status === 200){
-          console.log('response succeeded');
-        }
-      })
-    }
+
+    // const sendResetPassword =()=>{
+    //   console.log('remind password email');
+    //   fetch('api/resetPassword',{
+    //     method:'POST',
+    //     headers:{
+    //       'Accept': 'application/json, text/plain, */*',
+    //       'Content-Type': 'application/json'
+    //     },
+    //     body:''
+    //   }).then((res)=>{
+    //     console.log('response received');
+    //     if (res.status === 200){
+    //       console.log('response succeeded');
+    //     }
+    //   })
+    // }
     const [admin, setAdmin] = useState({
       email:'tuchchapon@gmail.com',
       password: 'tuch253913.'
     })
   const testPOST =()=>{
-    console.log('test POST API');
-      axios.post('http://localhost:8080/createAdmin',admin)
-      .then((res) => {
-        console.log(res);
-        console.log(res.data);
-        //router.replace("/");
-      })
+    // console.log('test POST API');
+    //   axios.post('http://localhost:8080/create/driver-location',driverLocation)
+    //   .then((res) => {
+    //     console.log(res);
+    //     console.log(res.data);
+    //     //router.replace("/");
+    //   })
 
-      setI(i +1)
+    //   setI(i +1)
   }
     const checkDB=()=>{
       console.log('check database connect');
@@ -113,12 +83,30 @@ export default function driver() {
       .catch((err)=>
       console.log(err))
     }
+    const testUpdate=()=>{
+    console.log('test update');
+    axios.post('http://localhost:8080/edit/driverLocation',driver_location[0])
+    .then((res) => {
+      console.log(res);
+      console.log(res.data);
+      //router.replace("/");
+    })
+    }
+    const testDelete=()=>{
+      console.log('test delete');
+      axios.delete('http://localhost:8080/delete/driverLocation',{data:driver_location[0]})
+      .then((res)=>{
+        console.log('res is',res);
+      })
+    }
   
+    const [driver_location, setDriver_location] = useState([])
   useEffect(() => {
     const getDriver  = async()=>{
       try {
-        let response = await axios.get('http://localhost:8080/getReviews')
+        let response = await axios.get('http://localhost:8080/getDriverLocation')
         console.log(response.data.payload);
+        setDriver_location(response.data.payload)
       } catch (err) {
         console.log('err is ',err);
       }
@@ -130,16 +118,26 @@ export default function driver() {
         <div>
           <div>
       <div>connect server</div>
+      { driver_location.map((location)=>(
+        <div key={location.id} >
+        <p>{location.id}</p>
+        <p>{location.location_name}</p>
+        <p>{location.location_detail}</p>
+        </div>
+      ))}
+
       <span>ID</span>
-      <input type="text" name="locationID" placeholder="location id" id="" />
-      <span>name</span>
-      <input type="text" name="drivername" placeholder="drivername id" id="" />
-      <span>contact</span>
+      <input type="text" name="locationName" placeholder="location name" id="" />
+      <span>location name</span>
+      <input type="text" name="locationDetail" placeholder="location detail" id="" />
+      <span>location detail</span>
       <input type="text" name="contact" placeholder="contact" id="" />
       <button onClick={testPOST}>test post</button>
-  <button onClick={sendApprovedEmail}>Appproved email</button>
+      <button onClick={testUpdate} >test update</button>
+      <button onClick={testDelete} >test delete</button>
+  {/* <button onClick={sendApprovedEmail}>Appproved email</button>
   <button onClick={sendDisApprovedEmail}>disapproved email</button>
-  <button onClick={sendremindPassword}>remind password email</button>
+  <button onClick={sendResetPassword}>remind password email</button> */}
     </div>
         </div>
     )

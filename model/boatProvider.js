@@ -1,7 +1,7 @@
 const mongooose = require("mongoose");
 
 const boatProviderSchema = {
-    
+    boat_club : String,
     provider_name : String,
     owner_name : String,
     boat_quantity : Number,

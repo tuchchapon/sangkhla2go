@@ -5,7 +5,8 @@ const driverSchema = {
     location_id : String,
     driver_name : String,
     contact: String,
-    driver_images : Array
+    driver_images : Array,
+    services :Array
 }
 const Drivers = mongooose.model('drivers', driverSchema);
 module.exports = Drivers;

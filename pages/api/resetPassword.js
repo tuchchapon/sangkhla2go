@@ -11,14 +11,14 @@ export default async function (req,res){
         secure:true,
     });
 
-    const remindPasswordEmail = {
+    const resetPassword = {
         from:'sangkhla2go',
         subject:'แจ้งเตือนผลการรีวิว',
         to:'tuchchaponsuthamma@gmail.com',
         html: `<div>รหัสผ่านผู้ของคุณคือ</div>`
     }
     await new Promise((resolve,reject)=>{
-        transporter.sendMail(remindPasswordEmail,function(err,info){
+        transporter.sendMail(resetPassword,function(err,info){
             if(err){
                 console.log('err is',err);
                 reject(err)
