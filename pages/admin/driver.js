@@ -1,22 +1,29 @@
 import React from 'react'
-import { createTheme, ThemeProvider, Toolbar } from '@mui/material'
-import Box from '@mui/material/Box';
-import Grid from '@mui/material/Grid'
-import Container from '@mui/material/Container';
-import Header from './Header';
-export default function driver() {
-    mdTheme = createTheme()
-    return (
-        <ThemeProvider theme={mdTheme}>
-            <Box sx={{display:'flex'}}>
-                <Header/>
-                <Box component="main"  >
-                <Toolbar/>
-                <Container maxWidth="lg" >
+import axios from 'axios';
 
-                </Container>
-                </Box>
-            </Box>
-        </ThemeProvider >
+import Header from './Header';
+import  Button  from '@mui/material/Button';
+import Paper from '@mui/material/Paper'
+import styles from '../../styles/admin/admin.module.scss'
+export default function driver() {
+    
+    return (
+        <div >
+            <div className={styles['dis-f']}>
+                <Header/>
+                <div className={styles['box-component']}>
+                    <div className={styles['data-container']} >
+                        <div className="container">
+                            <div className="col-12">
+                                <div className={styles['add-button']}>
+                                    <p>วินมอเตอร์ไซต์</p>
+                                    <Button color="success" variant="contained"  >เพิ่มวินมอเตอร์ไซค์</Button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div >
     )
 }

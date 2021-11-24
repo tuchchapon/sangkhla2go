@@ -3,12 +3,7 @@ import axios from 'axios'
 import Swal from 'sweetalert2'
 import Header from './Header'
 import link from 'next/link'
-import { useRouter,withRouter } from 'next/router'
-import { createTheme,Icon,ThemeProvider } from '@mui/material'
-import Box from '@mui/material/Box';
-import Grid from '@mui/material/Grid'
-import Container from '@mui/material/Container';
-import Toolbar from '@mui/material/Toolbar';
+import { useRouter, } from 'next/router'
 import IconButton from '@mui/material/IconButton';
 import ModeEditIcon from '@mui/icons-material/ModeEdit';
 import Paper from '@mui/material/Paper';
@@ -17,7 +12,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import styles from '../../styles/admin/admin.module.scss'
 
 export default function driverlocation() {
-    const mdTheme = createTheme();
+
     const router = useRouter()
     // const [driverlocation, setDriverlocation] = useState({
     //     location_name:'',location_detail:''
@@ -83,7 +78,6 @@ export default function driverlocation() {
         })
     }
     const [open, setOpen] = useState(false)
-
     useEffect(() => {
         const getDriverlocation = async()=>{
             let response = await axios.get('http://localhost:8080/get/driverLocation')
@@ -93,53 +87,37 @@ export default function driverlocation() {
         getDriverlocation()
     }, [])
     return (
-        <ThemeProvider theme={mdTheme}>
-            <Box sx={{display:'flex'}} >
+        <div >
+            <div className={styles['dis-f']}>
             <Header/>
-            <Box
-          component="main"
-          sx={{
-            backgroundColor: (theme) =>
-              theme.palette.mode === 'light'
-                ? theme.palette.grey[100]
-                : theme.palette.grey[900],
-            flexGrow: 1,
-            height: '100vh',
-            overflow: 'auto',
-          }}
-        >
-         <Toolbar />
-            <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
-            <Grid container spacing={3}  >
-              <Grid item xs={12}>
-              <div className={styles['add-button']} >
-                  <p>สถานที่ตั้งวินมอเตอร์ไซต์</p>
-                  <Button  style={{justifyContent:'flex-end',marginBottom:'8px'}} onClick={(e)=>router.push('/admin/location/create')} color="success" variant="contained">เพิ่มสถานที่</Button></div>
-                <Paper  sx={{ p: 2, display: 'flex', flexDirection: 'column'  }}>
-                    {driverLocation.length === 0 ? '': driverLocation.map((location)=>(
-                        <div className={styles['box-item']} key={location.id}>
-                            <span onClick={()=>setPopupData(location)} >{location.location_name}</span>
-                            <div>
+            <div className={styles['box-component']}>
+                <div className={styles['data-container']} >
+                    <div className="container" >
+                        <div className="col-12"  >
+                            <div className={styles['add-button']} >
+                                <p>สถานที่ตั้งวินมอเตอร์ไซต์</p>
+                                <Button   onClick={(e)=>router.push('/admin/location/create')} color="success" variant="contained">เพิ่มสถานที่</Button>
+                            </div>
+                            <Paper  sx={{ p: 2, display: 'flex', flexDirection: 'column'  }}>
+                            {driverLocation.length === 0 ? '': driverLocation.map((location)=>(
+                                <div className={styles['box-item']} key={location.id}>
+                                    <span onClick={()=>setPopupData(location)} >{location.location_name}</span>
+                                <div>
                             <IconButton  onClick={((e)=>editWinLocation({location}))} >
                                 <ModeEditIcon/>
                             </IconButton>
                             <IconButton  onClick={((e)=>deleteWinLocation({location}))} >
                                 <DeleteIcon/>
                             </IconButton>
-                            </div>
+                                </div>
+                                </div>
+                            ))}
+                            </Paper>
                         </div>
-                    ))}
-                </Paper>
-                
-              </Grid>
-            </Grid>
-                   
-             </Container>
-            </Box>
-            </Box>
-                        {/* <LocationPopup open={open} location={selectedLocation}  /> */}
-            {/* <input type="text" onChange={((e)=>{setDriverlocation({...driverlocation,location_name:e.target.value})})} />
-            <button onClick={submitLocation} >submit</button> */}
-        </ThemeProvider>
+                    </div>
+                </div>
+            </div>
+            </div>
+    </div>
     )
 }
