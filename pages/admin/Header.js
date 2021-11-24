@@ -12,7 +12,7 @@ import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import MenuIcon from '@mui/icons-material/Menu';
-import {listMenu} from './list_menu'
+// import {listMenu} from './list_menu'
 
 
 const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' })(
@@ -114,7 +114,7 @@ export default function header() {
                       </IconButton>
                     </Toolbar>
                     <Divider />
-                    <List>{listMenu}</List>
+                    {/* <List>{listMenu}</List> */}
                   </Drawer>
                   </Box>
     )

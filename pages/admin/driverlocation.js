@@ -15,7 +15,6 @@ import Paper from '@mui/material/Paper';
 import Button from '@mui/material/Button';
 import DeleteIcon from '@mui/icons-material/Delete';
 import styles from '../../styles/admin/admin.module.scss'
-import {LocationPopup,win_location_create_popup,win_location_update_popup} from './win_popup'
 const mdTheme = createTheme();
 export default function driverlocation() {
     const router = useRouter()

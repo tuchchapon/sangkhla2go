@@ -70,7 +70,7 @@ router.route("/dbcheck").get((req, res) => {
          location_name,
          location_detail
        }).then((e)=>{
-         res.status(201).json({ status:200,message:'create data success' })
+         res.status(201).json({ status:201,message:'create data success'  })
        }).catch(res.status(500));
    })
 
