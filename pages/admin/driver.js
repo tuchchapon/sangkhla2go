@@ -1,25 +1,20 @@
-import {React,useState,useEffect} from 'react'
-import axios from 'axios'
+import { createTheme, ThemeProvider, Toolbar } from '@mui/material'
+import React from 'react'
+import { Box,Grid,Container } from '@mui/system';
+import Header from './Header';
 export default function driver() {
-
-    const [driverLocation, setDriverLocation] = useState([])
-
-    useEffect(() => {
-        const getLocation= async()=>{
-            let response = await axios.get('http://localhost:8080/get/driverLocation')
-            setDriverLocation(response.data.payload)
-        }
-        getLocation()
-    }, [])
+    mdTheme = createTheme()
     return (
-        <div>
-            <div>
-                <select name="" id="">
-                {driverLocation.map((location)=>(
-                    <option key={location.id} value="">{location.location_name}</option>
-                ))}
-                </select>
-            </div>
-        </div>
+        <ThemeProvider theme={mdTheme}>
+            <Box sx={{display:'flex'}}>
+                <Header/>
+                <Box component="main"  >
+                <Toolbar/>
+                <Container maxWidth="lg" >
+
+                </Container>
+                </Box>
+            </Box>
+        </ThemeProvider >
     )
 }

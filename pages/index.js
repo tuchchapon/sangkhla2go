@@ -4,7 +4,7 @@ export default function index() {
   const router = useRouter();
 
   const goNext =()=>{
-    router.replace("/publicTranspotation");
+    router.replace("/publicTransportation");
   }
   return (
     <div>

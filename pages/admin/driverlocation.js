@@ -15,8 +15,9 @@ import Paper from '@mui/material/Paper';
 import Button from '@mui/material/Button';
 import DeleteIcon from '@mui/icons-material/Delete';
 import styles from '../../styles/admin/admin.module.scss'
-const mdTheme = createTheme();
+
 export default function driverlocation() {
+    const mdTheme = createTheme();
     const router = useRouter()
     // const [driverlocation, setDriverlocation] = useState({
     //     location_name:'',location_detail:''
@@ -58,11 +59,15 @@ export default function driverlocation() {
                 try {
                     let response = await axios.delete('http://localhost:8080/delete/driver-location',{data:location})
                     if (response.data.status === 200) {
-                       Swal.fire(
-                           'ลบข้อมูลเรียบร้อยแล้ว',
-                           `ลบข้อมูล ${location.location_name}แล้ว`,
-                           'success'
-                       )
+                       Swal.fire({
+                       title: 'ลบข้อมูลเรียบร้อยแล้ว',
+                        text:`ลบข้อมูล ${location.location_name}แล้ว`,
+                        icon:'success'
+                       }).then((result)=>{
+                           if (result.isConfirmed) {
+                               router.reload()
+                           }
+                       })
                     }
                 } catch (error) {
                     if(error){

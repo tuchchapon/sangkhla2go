@@ -5,7 +5,7 @@ import Image from 'next/image'
 import styles from '../styles/PublicTranspotation.module.scss'
 import axios from 'axios'
 import Popup from 'reactjs-popup'
-export default function publicTranspotation() {
+export default function publicTransportation() {
     const [showWinPopup, setShowWinPopup] = useState(false)
     const [driverLocation, setDriverLocation] = useState([])
     const [activeWin, setActiveWin] = useState({})
