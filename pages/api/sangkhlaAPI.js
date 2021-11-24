@@ -70,7 +70,7 @@ router.route("/dbcheck").get((req, res) => {
          location_name,
          location_detail
        }).then((e)=>{
-         res.status(201).json({ status:true,message:'create data success'})
+         res.status(201).json({ status:200,message:'create data success' })
        }).catch(res.status(500));
    })
 
@@ -428,6 +428,35 @@ router.route("/dbcheck").get((req, res) => {
     })
   })
 
+  // get one driver location 
+  router.route('/get/location/:id').post((req,res)=>{
+    console.log(req.body)
+    const id = req.body.id
+    // let id = ObjectId(req.params.id.toString())
+    // console.log(id.length);
+    // id = id.slice(0,1)
+    // console.log('id is',id);
+    try {
+        DriverLocation.findOne({_id: id},function(err,data){
+          if (err) {
+            console.log(err);
+          } else {
+            return res.status(200).json({
+              status:200,
+              type:'success',
+              
+              payload:data
+            })
+          }
+        })
+
+    } catch (error) {
+      console.log('error is',error);
+
+      
+    }
+  })
+
   // get driver api
   router.route("/get/driver").get((req, res)=>{
     
@@ -627,12 +656,11 @@ router.route("/dbcheck").get((req, res) => {
 
     //edit driver location api
     router.route('/edit/driverLocation').post(async(req,res)=>{
-      
-      let newlocation  = await DriverLocation.findOne({_id:req.body.id})
+      let newlocation  = await DriverLocation.findOne({_id:req.body._id})
       // console.log('driver location is',req.body);
       newlocation.location_name = req.body.location_name
       newlocation.location_detail = req.body.location_detail
-      if (!req.body.location_name || !req.body.location_detail) {
+      if (!req.body.location_name) {
         return res
         .status(400)
         .json({ status: 400, type: 'failed', payload: 'กรุณากรอกข้อมูลให้ครบถ้วน' })
@@ -788,7 +816,8 @@ router.route("/dbcheck").get((req, res) => {
     //////////// delete API ////////////
 
     // delete driver location api
-    router.route('/delete/driverLocation').delete(async(req,res)=>{
+    router.route('/delete/driver-location').delete(async(req,res)=>{
+      console.log(req.body);
       if (!req.body.id) {
         return res.status(400).json({status:400,type:'failed',payload:'ไม่พบข้อมูลที่ส่งมา'})
       }

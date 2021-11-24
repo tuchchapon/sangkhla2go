@@ -1,0 +1,51 @@
+.edit-box{   
+    max-width: 70ch;
+  padding: 3em 1em;
+  margin: 40px auto;
+  line-height: 1.75;
+  font-size: 1.25em;
+  background-color: blanchedalmond;
+  border-radius: 16px;
+  border: 1px solid burlywood;
+  width: 100%;
+}
+.input-box{
+    display: flex;
+    width: 80%;
+    margin: auto;
+    flex-direction: column;
+
+}
+.first-input{
+    display: flex;
+    margin: 12px 0;
+}
+.first-input span{
+    word-break: break-all;
+    height: 100%;
+    margin-right: 12px;
+    max-width: 110px;
+    width: 20%;
+}
+.first-input input {
+    width: 80%;
+    padding: 0 8px;
+}
+.first-input textarea{
+    width: 80%;
+    padding: 0 8px;
+}
+.center-item {
+    width: 50%;
+    margin: auto;
+}
+.button-group{
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    width: 80%;
+}
+.button-size{
+    width: 30%;
+    margin: 10px 10px;
+}

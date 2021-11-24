@@ -7,7 +7,7 @@ const forgotPassword =()=> {
         console.log('forgot password')
         console.log(userEmail);
         try {
-            axios.post('http://localhost:8080/forgotPassword',userEmail).then((res)=>{
+            axios.post('http://localhost:8080/forgot-password',userEmail).then((res)=>{
                 console.log(res);
             })
         } catch (error) {
@@ -18,7 +18,7 @@ const forgotPassword =()=> {
     return (
         <div className="body">
             <h1>forgot password</h1>
-            <input type="text" placeholder='กรุณากรอกอีเมลที่ลิมรหัสผ่าน' onChange={(e)=>{setUserEmail({...userEmail,email:e.target.value})}} />
+            <input type="text" placeholder='กรุณากรอกอีเมลที่ลืมรหัสผ่าน' onChange={(e)=>{setUserEmail({...userEmail,email:e.target.value})}} />
             <button onClick={forgotPassword} >forgot password</button>
         </div>
     )

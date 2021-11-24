@@ -1,5 +1,6 @@
 import {React,useState,useEffect} from 'react'
 import Link from 'next/link'
+import Head from 'next/head';
 import Image from 'next/image'
 import styles from '../styles/PublicTranspotation.module.scss'
 import axios from 'axios'
@@ -17,7 +18,12 @@ export default function publicTranspotation() {
         if(e) e.preventDefault()
         setShowWinPopup(false)
     }
-
+    const scrollTop =()=>{
+        window.scrollTo({
+            top: 200,
+            behavior:'smooth'
+        })
+    }
     useEffect(() => {
         const getLocation = async()=>{
           let  response = await axios.get('http://localhost:8080/get/driverLocation')
@@ -29,7 +35,13 @@ export default function publicTranspotation() {
 
     }, [])
     return (
+
         <div className={styles['transpotation-page']}>
+            <Head>
+                <title>
+                    PublicTranspotation
+                </title>
+            </Head>
             <div className="container">
             <h1>publicTranspotation</h1>
             <h1>วินมอเตอร์ไซต์</h1>
@@ -44,7 +56,6 @@ export default function publicTranspotation() {
                        
                     </div>
                     </div>
-                    
             ))}
             </div>
             <h1>เรือนำเที่ยว</h1>
@@ -72,15 +83,22 @@ export default function publicTranspotation() {
                                 {[1,2,3,4,5,6,7,8].map((i)=>(
                                     <div className={styles['popup-win-item']} key={i}>
                                         <Image src="/img/publictranspotation/winCoverPlaceholder.png" width={136} height={136} />
-                                        <span>ชื่อ</span>
-                                        <span>เบอร์</span>
+                                        <span className={styles['popup-win-name']} >นาย ประชาญ</span>
+                                        <span className={styles['popup-win-tel']} >085-555-5555</span>
+
                                     </div>
                                 ))}
+
                             </div>
+                            <div className={styles['popup-service-text']}  >
+                            <div style={{marginRight:'24px'}} > <img style={{marginRight:'16px'}} src="/img/publictranspotation/circle.png" alt="" /> <span>วินมอเตอร์ไซต์พ่วงข้าง</span></div>
+                            <div> <img style={{marginRight:'16px'}} src="/img/publictranspotation/circle.png" alt="" /> <span>รถสามล้อเครื่อง</span></div>
+                                </div>
                            </div>
                         </div>
                     </div>
                 </Popup>
+                <button onClick={scrollTop} > </button>
         </div>
     )
 }
