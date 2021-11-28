@@ -6,9 +6,9 @@ import link from 'next/link'
 import { useRouter, } from 'next/router'
 import IconButton from '@mui/material/IconButton';
 import ModeEditIcon from '@mui/icons-material/ModeEdit';
+import DeleteIcon from '@mui/icons-material/Delete';
 import Paper from '@mui/material/Paper';
 import Button from '@mui/material/Button';
-import DeleteIcon from '@mui/icons-material/Delete';
 import styles from '../../styles/admin/admin.module.scss'
 
 export default function driverlocation() {
@@ -32,13 +32,13 @@ export default function driverlocation() {
         setSelectedLocation(location)
 
     }
-    const editWinLocation =({location})=>{
+    const editDriverLocation =({location})=>{
         
         console.log('location is',location.id);
         router.push(`/admin/location/${location.id}`)
 
     }
-    const deleteWinLocation =  ({location})=>{
+    const deleteDriverLocation =  ({location})=>{
         console.log('location id is',location.id);
         
         if(location)
@@ -99,16 +99,16 @@ export default function driverlocation() {
                                 <Button   onClick={(e)=>router.push('/admin/location/create')} color="success" variant="contained">เพิ่มสถานที่</Button>
                             </div>
                             <Paper  sx={{ p: 2, display: 'flex', flexDirection: 'column'  }}>
-                            {driverLocation.length === 0 ? '': driverLocation.map((location)=>(
+                                {driverLocation.length === 0 ? '': driverLocation.map((location)=>(
                                 <div className={styles['box-item']} key={location.id}>
                                     <span onClick={()=>setPopupData(location)} >{location.location_name}</span>
                                 <div>
-                            <IconButton  onClick={((e)=>editWinLocation({location}))} >
-                                <ModeEditIcon/>
-                            </IconButton>
-                            <IconButton  onClick={((e)=>deleteWinLocation({location}))} >
-                                <DeleteIcon/>
-                            </IconButton>
+                                <IconButton  onClick={((e)=>editDriverLocation({location}))} >
+                                    <ModeEditIcon/>
+                                </IconButton>
+                                <IconButton  onClick={((e)=>deleteDriverLocation({location}))} >
+                                    <DeleteIcon/>
+                                </IconButton>
                                 </div>
                                 </div>
                             ))}

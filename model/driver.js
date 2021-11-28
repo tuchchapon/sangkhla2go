@@ -1,8 +1,11 @@
 const mongooose = require("mongoose");
 
 const driverSchema = {
-    id : String,
-    location_id : String,
+
+    location_id:{
+        type: mongooose.Schema.Types.ObjectId,
+        required:true,
+    },
     driver_name : String,
     contact: String,
     driver_images : Array,

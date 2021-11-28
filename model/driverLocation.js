@@ -6,5 +6,5 @@ const driverLocationSchema = {
     location_detail: String
     
 }
-const DriverLocation = mongooose.model('driverlocation', driverLocationSchema);
-module.exports = DriverLocation;
+const DriverLocations = mongooose.model('driverlocation', driverLocationSchema);
+module.exports = DriverLocations;

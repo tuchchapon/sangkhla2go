@@ -3,6 +3,7 @@ const passport = require('passport')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const router = express.Router();
+const ObjectId = require('mongoose').Types.ObjectId
 const randomstring = require('randomstring')
 const mongoose = require('mongoose');
 const Drivers = require('../../model/driver')
@@ -76,10 +77,13 @@ router.route("/dbcheck").get((req, res) => {
 
    // create driver api
    router.route("/create/driver").post((req,res)=>{
-       const location_id = req.body.location_id;
+      console.log('req is',req.body);
+       const location_id = ObjectId(req.body.location_id);
        const driver_name = req.body.driver_name;
        const contact = req.body.contact;
        const driveImage =req.body.driverImage;
+      //  location_id = ObjectId(location_id)
+       console.log('location id is',location_id);
          Drivers.create({
             location_id,
             driver_name,
@@ -456,8 +460,27 @@ router.route("/dbcheck").get((req, res) => {
       
     }
   })
+  // populate
+  router.route('/get/onedriver').get((req,res)=>{
+  
+      Drivers.find({location_id: ObjectId("619717a0adfa6cba3f2d07b0")}).
+      populate('driverlocations').
+      exec(function(err,location){
+        if (err) return res.status(400)
+        if (res.status === 200)
+        return res.status(200).json({
+          status:200,
+            type:"success",
+            payload:location
+          })
+        console.log('location is',location);
+      })
+
+      // console.log('location is',location);
+  })
 
   // get driver api
+
   router.route("/get/driver").get((req, res)=>{
     
     let driver_array =[]

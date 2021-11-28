@@ -1,6 +1,7 @@
-import {React,useState} from 'react'
+import {React,useState,useEffect} from 'react'
 import Typography from '@mui/material/Typography';
 import { styled} from '@mui/material/styles';
+import { useRouter } from 'next/router';
 import Divider from '@mui/material/Divider';
 import List from '@mui/material/List';
 import MuiDrawer from '@mui/material/Drawer';
@@ -22,6 +23,7 @@ import DirectionsBoatFilledIcon from '@mui/icons-material/DirectionsBoatFilled';
 import ParkIcon from '@mui/icons-material/Park';
 import MenuBookIcon from '@mui/icons-material/MenuBook';
 import RateReviewIcon from '@mui/icons-material/RateReview';
+import PersonIcon from '@mui/icons-material/Person';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import MenuIcon from '@mui/icons-material/Menu';
@@ -73,13 +75,17 @@ const AppBar = styled(MuiAppBar, {
   }),
 }));
 const drawerWidth = 240;
-export default function header() {
 
+export default function header() {
+    const router = useRouter()
+    const id = router.query.id || []
     const [open, setOpen] = useState(true);
     const toggleDrawer = () => {
     setOpen(!open);
     };
-  
+    useEffect(() => {
+      console.log('header id is' ,id)
+    }, [id])
     return (
         <Box sx={{display:'flex'}}>
             <CssBaseline />
@@ -112,7 +118,7 @@ export default function header() {
             </Typography>
             <Button color="inherit" variant="outlined">ออกจากระบบ</Button>
           </Toolbar>
-        </AppBar>
+                </AppBar>
                     <Drawer variant="permanent" open={open}>
                     <Toolbar
                       sx={{
@@ -127,18 +133,22 @@ export default function header() {
                       </IconButton>
                     </Toolbar>
                     <Divider />
-                    <ListItem button >
+                      <Link href="/admin/manage_restaurants" >
+                      <ListItem button >
             <ListItemIcon>
                 <RestaurantIcon/>
             </ListItemIcon>
             <ListItemText primary="ร้านอาหาร" />
             </ListItem>
-            <ListItem button >
+                      </Link>
+                    <Link href="/admin/manage_accommodations">
+                    <ListItem button >
             <ListItemIcon>
                 <HotelIcon/>
             </ListItemIcon>
-            <ListItemText primary="โรงแรม" />
+            <ListItemText primary="โรงแรม/แพพัก" />
             </ListItem>
+                    </Link>
             <ListItem button >
             <ListItemIcon>
                 <HouseboatIcon/>
@@ -147,7 +157,7 @@ export default function header() {
             </ListItem>
             <Divider/>
          
-        <Link href="/admin/driverlocation">
+        <Link href="/admin/manage_locations">
         <ListItem button   >
             <ListItemIcon>
              <RoomIcon/>
@@ -155,7 +165,7 @@ export default function header() {
             <ListItemText primary="จุดตั้งวินมอเตอร์ไซต์" />
             </ListItem>
         </Link>
-          <Link href="/admin/driver">
+          <Link href="/admin/manage_drivers">
           <ListItem button >
             <ListItemIcon>
                 <TwoWheelerIcon/>
@@ -163,32 +173,50 @@ export default function header() {
             <ListItemText primary="วินมอเตอร์ไซต์" />
             </ListItem>
           </Link>
+            <Link href="/admin/manage_boats">
             <ListItem button >
             <ListItemIcon>
                 <DirectionsBoatFilledIcon/>
             </ListItemIcon>
             <ListItemText primary="เรือนำเที่ยว" />
             </ListItem>
+            </Link>
             <Divider/>
-            <ListItem button >
+                <Link href="/admin/manage_attractions">
+                <ListItem button >
             <ListItemIcon>
                 <ParkIcon/>
             </ListItemIcon>
             <ListItemText primary="สถานที่ท่องเที่ยว" />
             </ListItem>
-            <ListItem button >
+                </Link>
+                    <Link href="/admin/manage_products" >
+                    <ListItem button >
             <ListItemIcon>
                 <MenuBookIcon/>
             </ListItemIcon>
             <ListItemText primary="ผลิตภัณฑ์" />
             </ListItem>
-            <ListItem button >
+                    </Link>
+                      <Link href="/admin/manage_reviews">
+                      <ListItem button >
             <ListItemIcon>
                 <RateReviewIcon/>
             </ListItemIcon>
             <ListItemText primary="รีวิว" />
             </ListItem>
+                      </Link>
+                      <Divider/>
+                      <Link href="/admin/manage_officers">
+                      <ListItem button >
+            <ListItemIcon>
+                <PersonIcon/>
+            </ListItemIcon>
+            <ListItemText primary="คณะผู้จัดทำ" />
+            </ListItem>
+                      </Link>
                   </Drawer>
+                  
                   </Box>
     )
 }

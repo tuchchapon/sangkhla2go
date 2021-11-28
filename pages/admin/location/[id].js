@@ -86,38 +86,6 @@ function location() {
             </div>
         </div>
     )
-}
-// export async function getServerSideProps(context){
-//     if (!context.query.id) {
-//         console.log('no query id');
-//         return {
-//             redirect:{
-//                 destination:'/admin/driverlocation',
-//                 permanent:false,
-//             }
-//         }
-//     }
-//     try {
-//         let data = {test:'id'}
-//        let location = {}
-//         console.log('context is',context.query.id);
-//        let response = await axios.post(`http//:localhost:8080/get/location/:${id}`,{id:id}) 
-       
-//        if (response.data.status === 200) {
-//            let payload = response.data.payload
-//             location =  payload
-//             console.log(response.data);
-//             console.log('location is',location);
-//        }
-//        return{
-//         props:{ data },
-//     }
-//     } catch (error) {
-//         console.log('error is',error);
-//         return{
-//             notFound:true
-//         }
-//     }
-// }
+    }
 
 export default location
