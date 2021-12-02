@@ -13,6 +13,7 @@ export default function manage_accommodation() {
     const editAccommodation =(accommodation)=>{
         console.log('edit');
         console.log(accommodation.accommodation);
+        router.push(`/admin/accommodation/${accommodation.accommodation}`)
     }
     const deleteAcommodation = (accommodation)=>{
         console.log('delete');

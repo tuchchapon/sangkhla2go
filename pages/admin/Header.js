@@ -18,6 +18,7 @@ import RestaurantIcon from '@mui/icons-material/Restaurant';
 import HotelIcon from '@mui/icons-material/Hotel';
 import TwoWheelerIcon from '@mui/icons-material/TwoWheeler';
 import HouseboatIcon from '@mui/icons-material/Houseboat';
+import LocalActivityIcon from '@mui/icons-material/LocalActivity';
 import RoomIcon from '@mui/icons-material/Room';
 import DirectionsBoatFilledIcon from '@mui/icons-material/DirectionsBoatFilled';
 import ParkIcon from '@mui/icons-material/Park';
@@ -78,9 +79,9 @@ const drawerWidth = 240;
 
 export default function header() {
     const router = useRouter()
-    const id = router.query.id || []
+    const id = router.pathname || []
     const [open, setOpen] = useState(true);
-    const toggleDrawer = () => {
+    const toggleDrawer = ({}) => {
     setOpen(!open);
     };
     useEffect(() => {
@@ -149,12 +150,6 @@ export default function header() {
             <ListItemText primary="โรงแรม/แพพัก" />
             </ListItem>
                     </Link>
-            <ListItem button >
-            <ListItemIcon>
-                <HouseboatIcon/>
-            </ListItemIcon>
-            <ListItemText primary="แพพัก" />
-            </ListItem>
             <Divider/>
          
         <Link href="/admin/manage_locations">
@@ -196,6 +191,14 @@ export default function header() {
                 <MenuBookIcon/>
             </ListItemIcon>
             <ListItemText primary="ผลิตภัณฑ์" />
+            </ListItem>
+                    </Link>
+                    <Link href="/admin/manage_traditions" >
+            <ListItem button >
+            <ListItemIcon>
+                <LocalActivityIcon/>
+            </ListItemIcon>
+            <ListItemText primary="ประเพณี" />
             </ListItem>
                     </Link>
                       <Link href="/admin/manage_reviews">

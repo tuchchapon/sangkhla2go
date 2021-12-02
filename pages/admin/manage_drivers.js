@@ -12,11 +12,46 @@ import styles from '../../styles/admin/admin.module.scss'
 export default function manage_drivers() {
     const router = useRouter()
     const [drivers, setDrivers] = useState([])
-    const editDriver  =(driver)=>{
-        console.log('editDriver',driver );
+    const editDriver =(driver)=>{
+        console.log('one driver is',driver)
+        console.log(driver.id)
+        /router.push(`/admin/driver/${driver.id}`)
     }
     const deleteDriver =(driver)=>{
         console.log('deleteDriver',driver);
+        Swal.fire({
+            title:`ต้องการลบข้อมูลหรือไม่`,
+            icon:'warning',
+            html:`ต้องการลบข้อมูล${driver.driver_name} หรือไม่`,
+            showCancelButton:true,
+            confirmButtonColor:'#d33',
+        }).then(async(result)=>{
+            if(result.isConfirmed){
+                try {
+                    let response = await axios.delete('http://localhost:8080/delete/driver',{data:driver})
+                    if (response.data.status === 200) {
+                       Swal.fire({
+                       title: 'ลบข้อมูลเรียบร้อยแล้ว',
+                        text:`ลบข้อมูล ${driver.driver_name}แล้ว`,
+                        icon:'success'
+                       }).then((result)=>{
+                           if (result.isConfirmed) {
+                               router.reload()
+                           }
+                       })
+                    }
+                } catch (error) {
+                    if(error){
+                        Swal.fire(
+                            'เกิดข้อผิดพลาด',
+                            `${error}`,
+                            'error'
+                        )
+                    }
+                }
+
+            }
+        })
     }
     useEffect(() => {
         const getDrivers=async()=>{
@@ -27,7 +62,6 @@ export default function manage_drivers() {
         getDrivers()
     }, [])
     return (
-        <div >
             <div className={styles['dis-f']}>
                 <Header/>
                 <div className={styles['box-component']}>
@@ -44,10 +78,10 @@ export default function manage_drivers() {
                                         <span>{driver.driver_name}</span>
                                         <span>{driver.contact}</span>
                                     <div>
-                                    <IconButton  onClick={((e)=>editDriver({driver}))} >
+                                    <IconButton  onClick={((e)=>editDriver(driver))} >
                                         <ModeEditIcon/>
                                     </IconButton>
-                                    <IconButton  onClick={((e)=>deleteDriver({driver}))} >
+                                    <IconButton  onClick={((e)=>deleteDriver(driver))} >
                                         <DeleteIcon/>
                                     </IconButton>
                                     </div>
@@ -59,6 +93,5 @@ export default function manage_drivers() {
                     </div>
                 </div>
             </div>
-        </div >
     )
 }

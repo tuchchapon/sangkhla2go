@@ -1,8 +1,12 @@
 const express = require('express')
 const app = express();
+const multer  = require('multer')
 const cors = require('cors')
-const bodyParser = require('body-parser')
+const { dirname } = require('path');
+const appDir = dirname(require.main.filename);
 const bcrypt = require('bcryptjs')
+const upload = multer({ dest: `${appDir}/public/uploadImage` })
+console.log(appDir)
 require('dotenv').config()
 const mongoose = require('mongoose')
 app.use(cors())
@@ -16,5 +20,6 @@ mongoose.connect(mongoURL,{
 mongoose.connection.readyState==2?console.log('connected server...'):''
 app.use('/',require('./pages/api/sangkhlaAPI'))
 app.listen(8080,function(){
+    console.log(appDir)
     console.log("server running on port 8080...");
 })

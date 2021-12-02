@@ -25,13 +25,6 @@ export default function driverlocation() {
             console.log(res);
         })
     }
-    const setPopupData =(location)=>{
-        
-        setOpen(true)
-        console.log(location);
-        setSelectedLocation(location)
-
-    }
     const editDriverLocation =({location})=>{
         
         console.log('location is',location.id);
@@ -77,7 +70,6 @@ export default function driverlocation() {
             }
         })
     }
-    const [open, setOpen] = useState(false)
     useEffect(() => {
         const getDriverlocation = async()=>{
             let response = await axios.get('http://localhost:8080/get/driverLocation')
@@ -101,7 +93,7 @@ export default function driverlocation() {
                             <Paper  sx={{ p: 2, display: 'flex', flexDirection: 'column'  }}>
                                 {driverLocation.length === 0 ? '': driverLocation.map((location)=>(
                                 <div className={styles['box-item']} key={location.id}>
-                                    <span onClick={()=>setPopupData(location)} >{location.location_name}</span>
+                                    <span  >{location.location_name}</span>
                                 <div>
                                 <IconButton  onClick={((e)=>editDriverLocation({location}))} >
                                     <ModeEditIcon/>

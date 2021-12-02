@@ -4,7 +4,7 @@ import styles from '../../../styles/admin/create_edit.module.scss'
 import axios from 'axios'
 import Button from '@mui/material/Button';
 import Swal from 'sweetalert2';
-
+import Header from '../Header'
 
 function location() {
     const router = useRouter()
@@ -26,7 +26,7 @@ function location() {
                     icon :'success'
                 }).then((result=>{
                     if (result.isConfirmed) {
-                        router.replace('/admin/driverlocation')
+                        router.replace('/admin/manage_locations')
                     }
                 }))
             }
@@ -45,7 +45,7 @@ function location() {
                         icon:'success',
                     }).then((result)=>{
                         if (result.isConfirmed) {
-                            router.replace('/admin/driverlocation')
+                            router.replace('/admin/manage_locations')
                         }
                     })
                 }               
@@ -66,7 +66,10 @@ function location() {
        }
     }, [id,router.isReady])
     return (
-        <div className="container">
+        <div className={styles['dis-f']} >
+            <Header/>
+            <div className={styles['box-component']} >
+            <div className="container">
             <div className={styles['edit-box']}>
             <h4 className={styles['center-item']}  >{id === "create" ? 'เพิ่มข้อมูลสถานที่ตั้งวินมอเตอร์ไซค์' :'แก้ไขข้อมูลสถานที่ตั้งวินมอเตอร์ไซค์'}</h4>
             <div className={styles['input-box']} >
@@ -75,7 +78,7 @@ function location() {
                 <input type="text" value={location ?location.location_name :''} onChange={(e)=>setLocation({...location,location_name:e.target.value})}  />
             </div>
              <div className={styles['first-input']}>
-            <span>ตำแหน่งที่ตั้ง: </span>
+            <span>ที่อยู่: </span>
             <textarea name="" id="" cols="30" value={location ? location.location_detail:''} onChange={(e)=>setLocation({...location,location_detail:e.target.value})} rows="5"></textarea>
             </div>
             <div className={styles['button-group']}>
@@ -83,6 +86,8 @@ function location() {
             <Button onClick={router.back} className={styles['button-size']} color="warning" variant="contained"   >ย้อนกลับ</Button>
             </div>
             </div>
+            </div>
+        </div>
             </div>
         </div>
     )

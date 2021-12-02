@@ -1,10 +1,9 @@
 const mongooose = require("mongoose");
 
 const reviewsSchema = {
-    reviewer_name : String,
-    reviewer_email : String,
-    review_text :String,
-    status :String,
+    
+    review_name:String,
+    review_link:String,
 
 }
 const Reviews = mongooose.model('review', reviewsSchema);

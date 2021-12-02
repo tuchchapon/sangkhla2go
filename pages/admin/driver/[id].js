@@ -1,31 +1,90 @@
 import {React,useState,useEffect} from 'react'
 import { useRouter } from 'next/router'
-import styles from '../../../styles/admin/create_edit.module.scss'
 import axios from 'axios'
 import InputMask from 'react-input-mask'
 import Button from '@mui/material/Button';
+import styles from '../../../styles/admin/create_edit.module.scss'
+import Swal from 'sweetalert2'
+import Header from '../Header'
 
  function Driver() {
     const router = useRouter()
     const id = router.query.id || []
-    let serviceOption = ["รถพ่วงข้าง","รถสามล้อ"]
+    let service_option = ["รถพ่วงข้าง","รถสามล้อ"]
+    // let service_option = [{name:'รถพ่วงข้าง',checked :false},{name:'รถสามล้อ',checked:false}]
+    const [driver_image, setDriver_image] = useState('')
+    const [loading, setLoading] = useState(false)
     const [driver, setDriver] = useState({
+        id :'',
         location_id:'',
         driver_name:'',
         contact:'',
-        service:[]
+        services:[],
+        image:''
     })
     const [serviceArray, setserviceArray] = useState([])
     const [locations, setLocations] = useState([])
-    const create_driver = ()=>{
+    const createDriver = ()=>{
         console.log(driver);
-        // axios.post('http://localhost:8080/create/driver',driver)
-    }
-    const edit_driver = ()=>{
+        if (!driver.driver_name && !driver.contact  && !driver.location_id ) {
+            Swal.fire({
+                title:'เกิดข้อผิดพลาด',
+                text:'ข้อมูลจำเป็นไม่ครบถ้วน',
+                icon:'error'
+            })
+            return false
+        }
+        axios.post('http://localhost:8080/create/driver',driver)
+        Swal.fire({
+            title:'บันทึก',
+            text:'เพิ่มข้อมูลสำเร็จแล้ว',
+            icon :'success'
+        }).then((result=>{
+            if (result.isConfirmed) {
+                router.replace('/admin/manage_drivers')
+            }
+        }))
 
     }
-    const upload_image =(e)=>{
-        console.log(e);
+    const editDriver = ()=>{
+        console.log('edit')
+        if(driver.location_id === '')console.log('err')
+        console.log(driver)
+        axios.post('http://localhost:8080/edit/driver',driver)
+        Swal.fire({
+            title:'บันทึก',
+            text:'แก้ไขข้อมูลสำเร็จแล้ว',
+            icon :'success'
+        }).then((result=>{
+            if (result.isConfirmed) {
+                router.replace('/admin/manage_drivers')
+            }
+        }))
+    }
+    const uploadImage =async(e)=>{
+        e.preventDefault();
+        const files = e.target.files
+        console.log('files is',files[0])
+        let imageData = new FormData()
+        imageData.append('driver',files[0])
+        imageData.append('id',`driver${id}`)
+        console.log('data is',imageData)
+         await axios({
+            method:'post',
+            url:'http://localhost:8080/upload/driver-image',
+            headers:{ 'Content-Type': 'multipart/form-data' },
+            data:imageData
+        })
+          .then((res) => {
+              if (res.data.status === 200) {
+                setDriver({...driver,image:res.data.image_name})
+              }
+            console.log(res);
+            console.log(res.data);
+          }).catch((err)=>{
+              console.log(err)
+          })
+
     }
     const setService =(e)=>{
         console.log(e.target.value);
@@ -39,8 +98,9 @@ import Button from '@mui/material/Button';
                 serviceArray.splice(removeService,1)
             }
         }
-        setDriver({...driver,service:serviceArray})
+        setDriver({...driver,services:serviceArray})
     }
+
     useEffect(() => {
         console.log('page is',router.query);
         const getLocation =async()=>{
@@ -48,19 +108,36 @@ import Button from '@mui/material/Button';
             console.log('response is',response);
             setLocations(response.data.payload)
         }
-        getLocation()
-       console.log(driver.service);
-
+        const getDriver = async()=>{
+            console.log('get one driver')
+            const response = await axios.post(`http://localhost:8080/get/driver/:${id}`,{id:id})
+            console.log('response driver is',response.data)
+            if (response.status === 200){
+                setDriver(response.data.payload)
+                if(response.data.sidetow === true){
+                    let checkbox_service1 = document.getElementById("รถพ่วงข้าง")
+                    checkbox_service1.checked = true
+                }
+                if (response.data.triCycle === true){
+                    let checkbox_service2 = document.getElementById("รถสามล้อ")
+                    checkbox_service2.checked = true
+                }
+            }
+        }
+            getLocation()
+        if(id !== 'create' && router.isReady)getDriver()
     }, [id,router.isReady])
     return (
-        <div className="container">
+        <div className={styles['dis-f']} >
+            <Header/>
+            <div className={styles['box-component']}>
+            <div className="container">
             <div className={styles['edit-box']}>
             <h4 className={styles['center-item']}  >{id === "create" ? 'เพิ่มข้อมูลวินมอเตอร์ไซค์' :'แก้ไขข้อมูลวินมอเตอร์ไซค์'}</h4>
             <div className={styles['input-box']} >
             <div className={styles['first-input']}>
-                <span>ที่ตั้ง: </span>
-                
-                <select name="location" onChange={(e)=>setDriver({...driver,location_id:e.target.value})} value={locations.id} >
+                <span>ที่ตั้ง<span style={{color:'red'}}>*</span>: </span>
+                <select name="location" onChange={(e)=>setDriver({...driver,location_id:e.target.value})} value={driver ? driver.location_id :location.id} >
                     <option  value=""></option>
                     {locations ? locations.map((location)=>(
                         <option key={location.id} value={location.id}>{location.location_name}</option>
@@ -68,36 +145,38 @@ import Button from '@mui/material/Button';
                 </select>
             </div>
             <div className={styles['first-input']}>
-                <span>ชื่อวิน: </span>
+                <span>ชื่อคนขับ<span style={{color:'red'}}>*</span>: </span>
                 <input type="text" value={driver ? driver.driver_name :'' } onChange={(e)=>setDriver({...driver,driver_name:e.target.value})}  />
             </div>
             <div className={styles['first-input']}>
-                <span>เบอร์ติดต่อ: </span>
-                <InputMask mask="999 999 9999" maskChar={null}  value={driver ? driver.contact:''}  onChange={(e)=>setDriver({...driver,contact:e.target.value})} />
+                <span>เบอร์ติดต่อ<span style={{color:'red'}}>*</span>: </span>
+                <InputMask mask="999-999-9999" maskChar={null}  value={driver.contact}  onChange={(e)=>setDriver({...driver,contact:e.target.value})} />
             </div>
             <div className={styles['first-input']}>
                 <span>บริการ: </span>
                 <div className={styles['select-box']}>
-                {serviceOption.map((value)=>(
-                    <label key={value} className={styles['add-checkbox']} >
-                        <input type="checkbox" name="" value={value} onChange={(e)=> setService(e)}  />
-                        <span>{value}</span>
+                {service_option.map((service)=>(
+                    <label key={service} className={styles['add-checkbox']} >
+                        <input type="checkbox"  name="" id={service}   value={service} onChange={(e)=> setService(e)}  />
+                        <span>{service}</span>
                     </label>
                 ))}
                 </div>
             </div>
             <div className={styles['first-input']} >
                 <span>รูปภาพ</span>
-                <input type="file" name="" onChange={(e)=>upload_image(e.target.files)}  id="" />
+                <input type="file"  name="" accept="image/png, image/jpeg, image/jpg" onChange={(e)=> uploadImage(e)} id="" />
             </div>
 
             <div className={styles['button-group']}>
-            <Button onClick={id === 'create' ? create_driver : edit_driver } className={styles['button-size']} color="info" variant="contained"   >บันทึกข้อมูล</Button>
+            <Button onClick={id === 'create' ? createDriver : editDriver } className={styles['button-size']} color="info" variant="contained"   >บันทึกข้อมูล</Button>
             <Button onClick={router.back} className={styles['button-size']} color="warning" variant="contained"   >ย้อนกลับ</Button>
             </div>
             </div>
             </div>
         </div>
+            </div>
+        </div>
     )
 }
-export default driver
+export default Driver

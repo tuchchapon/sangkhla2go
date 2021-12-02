@@ -8,7 +8,7 @@ const driverSchema = {
     },
     driver_name : String,
     contact: String,
-    driver_images : Array,
+    image : String,
     services :Array
 }
 const Drivers = mongooose.model('drivers', driverSchema);

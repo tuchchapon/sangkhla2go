@@ -3,37 +3,129 @@ import { useRouter } from 'next/router'
 import styles from '../../../styles/admin/create_edit.module.scss'
 import axios from 'axios'
 import Swal from 'sweetalert2'
+import Header from '../Header'
 import Button from '@mui/material/Button';
 
 export default function officer() {
     const router = useRouter()
     const id = router.query.id || []
-    const createOfficer =(officer)=>{
+    let position_options = ["","หัวหน้าโครงการ","ที่ปรึกษา","ผู้ประสานงาน","บัณฑิตจบใหม่","ประชาชน","นักศึกษาฝึกงาน",]
+    const [officer, setOfficer] = useState({
+        id:'',
+        name:'',
+        position:'',
+        detail:'',
+        image:''
+    })
+    const createOfficer =()=>{
         console.log('create');
+        console.log(officer)
+        try {
+            axios.post('http://localhost:8080/create/officer',officer)
+            .then((res)=>{
+                console.log(res)
+                if (res.status === 201) {
+                    Swal.fire({
+                        title:'บันทึก',
+                        text:'เพิ่มข้อมูลสำเร็จแล้ว',
+                        icon :'success'
+                    }).then((result=>{
+                        if (result.isConfirmed) {
+                            router.replace('/admin/manage_officers')
+                        }
+                    }))
+                }
+            })
+        } catch (error) {
+            console.log(error)
+        }
+
     }
-    const editOfficer =(officer)=>{
+    const editOfficer =()=>{
         console.log('edit');
+        console.log(officer)
+        try {
+            axios.post('http://localhost:8080/edit/officer',officer)
+            .then((res)=>{
+                if (res.status === 200) {
+                    Swal.fire({
+                        title:'บันทึก',
+                        text:'แก้ไขข้อมูลสำเร็จแล้ว',
+                        icon :'success'
+                    }).then((result=>{
+                        if (result.isConfirmed) {
+                            router.replace('/admin/manage_officers')
+                        }
+                    }))
+                }
+            })
+        } catch (error) {
+            console.log('edit ',error)
+        }
+    }
+    const uploadImage =async(e)=>{
+        e.preventDefault();
+        const files = e.target.files
+        console.log('files is',files[0])
+        let imageData = new FormData()
+        imageData.append('officer',files[0])
+        imageData.append('id',`officer${id}`)
+        console.log('data is',imageData)
+         await axios({
+            method:'post',
+            url:'http://localhost:8080/upload/officer-image',
+            headers:{ 'Content-Type': 'multipart/form-data' },
+            data:imageData
+        })
+          .then((res) => {
+              if (res.data.status === 200) {
+                setOfficer({...officer,image:res.data.image_name})
+              }
+            console.log(res);
+            console.log(res.data);
+          }).catch((err)=>{
+              console.log(err)
+          })
+
     }
     useEffect(() => {
+        const getOfficer =async()=>{
+            const response = await axios.post(`http://localhost:8080/get/officer/:${id}`,{id:id})
+            console.log(response.data.payload)
+            setOfficer(response.data.payload)
 
+        }
+        if (id !== "create" && router.isReady) {
+            getOfficer()
+        }
     }, [id,router.isReady])
     return (
-        <div>
+        <div className={styles['dis-f']} >
+            <Header/>
+            <div className={styles['box-component']} >
             <div className="container">
                 <div className={styles['edit-box']} >
-                    <h4 className={styles['center-item']}>{id === "create" ? 'เพิ่มข้อมูลรีวิว' :'แก้ไขข้อมูลรีวิว'}</h4>  
+                    <h4 className={styles['center-item']}>{id === "create" ? 'เพิ่มข้อมูลผู้จัดทำ' :'แก้ไขข้อมูลผู้จัดทำ'}</h4>  
                     <div className={styles['input-box']} >
                         <div className={styles['first-input']} >
                             <span>ชื่อเจ้าหน้าที่</span>
-                            <input type="text"  />
+                            <input type="text" value={officer ? officer.name :''} onChange={(e)=>setOfficer({...officer,name:e.target.value})} />
+                        </div>
+                        <div className={styles['first-input']}>
+                            <span>ตำแหน่ง</span>
+                            <select value={officer ? officer.position:''} onChange={(e)=>setOfficer({...officer,position:e.target.value})} >
+                                {position_options.map((position)=>(
+                                    <option key={position} >{position}</option>
+                                ))}
+                            </select>
                         </div>
                         <div className={styles['first-input']} >
                             <span>รูปถ่าย</span>
-                            <input type="file" name="" id="" />
+                            <input type="file"  name="" accept="image/png, image/jpeg, image/jpg" onChange={(e)=> uploadImage(e)} id="" />
                         </div>
                         <div className={styles['first-input']} >
                             <span>คำอธิบาย</span>
-                            <textarea name="" id="" cols="30" rows="10"></textarea>
+                            <textarea name="" id="" cols="30" rows="10"  value={officer ? officer.detail :''} onChange={(e)=>setOfficer({...officer,detail:e.target.value})} ></textarea>
                         </div>
                         <div className={styles['button-group']} >
                         <Button onClick={id === 'create' ? createOfficer : editOfficer } className={styles['button-size']} color="info" variant="contained">บันทึกข้อมูล</Button>
@@ -42,6 +134,7 @@ export default function officer() {
                     </div>  
                 </div>
             </div>   
+            </div>
         </div>
     )
 }

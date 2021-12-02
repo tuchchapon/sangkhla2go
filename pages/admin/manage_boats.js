@@ -19,12 +19,11 @@ export default function boats_manage() {
         console.log(boat.boat)
     }
     return (
-        <div>
             <div className={styles['dis-f']}>
                 <Header />
                 <div className={styles['box-component']} >
                     <div className={styles['data-container']} >
-                        <div className="containers">
+                        <div className="container">
                             <div className="col-12">
                                 <div className={styles['add-button']}>
                                     <p>เรือนำเที่ยว</p>
@@ -50,6 +49,5 @@ export default function boats_manage() {
                     </div>
                 </div>
             </div>
-        </div>
     )
 }
