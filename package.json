@@ -13,6 +13,7 @@
     "@emotion/styled": "^11.6.0",
     "@mui/icons-material": "^5.1.1",
     "@mui/material": "^5.1.1",
+    "animate.css": "^4.1.1",
     "axios": "^0.24.0",
     "babel-plugin-import": "^1.13.3",
     "bcryptjs": "^2.4.3",
@@ -38,8 +39,10 @@
     "react-dom": "^17.0.2",
     "react-input-mask": "^2.0.4",
     "react-redux": "^7.2.6",
+    "react-slick": "^0.28.1",
     "reactjs-popup": "^2.0.5",
     "sass": "^1.43.4",
+    "slick-carousel": "^1.8.1",
     "sweetalert2": "^11.2.0",
     "url": "^0.11.0"
   }

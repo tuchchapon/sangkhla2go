@@ -10,6 +10,37 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
+@font-face {
+  font-family: "fc_fridaybold";
+  src: url("/fonts/FCFridayBold.woff2") format("woff2"),
+    url("/fonts/FCFridayBold.woff") format("woff");
+  font-weight: bold;
+  font-style: bold;
+}
+@font-face {
+  font-family: "fc_fridayregular";
+  src: url("/fonts/FCFridayRegular.woff2") format("woff2"),
+    url("/fonts/FCFridayRegular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "sukhumbit_set_bold";
+  src: url("/fonts/sukhumvitset-bold-webfont.woff2") format("woff2"),
+    url("/fonts/sukhumvitset-bold-webfont.woff") format("woff");
+    font-weight: bold;
+    font-style: bold;
+}
+@font-face {
+  font-family: "sukhumvit_set_medium";
+  src: url("/fonts/sukhumvitset-medium-webfont.woff2") format("woff2"),
+    url("/fonts/sukhumvitset-medium-webfont.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+
 
 a {
   color: inherit;

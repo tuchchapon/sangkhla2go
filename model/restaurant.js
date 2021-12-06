@@ -2,18 +2,20 @@ const mongooose = require("mongoose");
 
 const restaurantSchema = {
     
-    catagory_id : String,
     name: String,
+    type:Array,
     location : String,
-    food_type:String,
-    recommand_menu: String,
-    opening_time: String,
-    food_price : String,
-    drink_price:String,
-    restaurant_images: Array,
+    recommend_menu: String,
+    food_min_price : String,
+    food_max_price : String,
+    drink_min_price:String,
+    drink_max_price :String,
+    open_time: String,
+    close_time :String,
+    services : Array,
+    images: Array,
     tel:String,
     fb_page:String,
-    services : Array
 }
 const Restaurant = mongooose.model('restaurant', restaurantSchema);
 module.exports = Restaurant;

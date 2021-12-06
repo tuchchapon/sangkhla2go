@@ -87,3 +87,38 @@
     width: 30%;
     margin: 10px 10px;
 }
+.photo-box{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: flex-start;
+    .photo-item{
+        flex: 0 0 calc((100% - 120px)/4);
+        margin: 0 12px 12px; 
+        cursor: pointer;
+        position: relative;
+        &:nth-child(3n) {
+            margin-right: 8px;
+          }
+        &:nth-child(4n) {
+            margin-right: 0;
+          }
+    }
+    .img-button-box{
+        position: relative;
+        text-align: center;
+        width: 100%;
+        height: 100%;
+    }
+    .delete-button{
+        color: red;
+        position: absolute;
+        font-size: 16px;
+        font-weight: bold;
+        right: 0%;
+        top: 0%;
+        width: 50px;
+    }
+    
+}

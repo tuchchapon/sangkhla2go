@@ -5,7 +5,9 @@ import InputMask from 'react-input-mask'
 import Button from '@mui/material/Button';
 import styles from '../../../styles/admin/create_edit.module.scss'
 import Swal from 'sweetalert2'
+import Image from 'next/image'
 import Header from '../Header'
+import 'animate.css';
 
  function Driver() {
     const router = useRouter()
@@ -100,7 +102,30 @@ import Header from '../Header'
         }
         setDriver({...driver,services:serviceArray})
     }
-
+    const deleteImg=(image)=>{
+        Swal.fire({
+        title:"ต้องการลบภาพคนขับหรือไม่",
+        imageUrl:`/uploadImage/driver/${driver.image}`,
+        imageHeight: 500,
+        imageWidth: 400,
+        showCancelButton:true,
+        confirmButtonText:'ยืนยัน',
+        cancelButtonText:'ยกเลิก',
+        width: 500,
+        showClass: {
+            popup: 'animate__animated animate__fadeInDown'
+          },
+          hideClass: {
+            popup: 'animate__animated animate__fadeOutUp'
+          },
+        icon:'question'
+        }).then((res)=>{
+            if (res.isConfirmed) {
+                setDriver({...driver,image:''})
+                Swal.fire('ลบภาพคนขับแล้ว','กรุณากดบันทึกข้อมูลเพื่อยืนยันการลบ','success')
+            }
+        })
+    }
     useEffect(() => {
         console.log('page is',router.query);
         const getLocation =async()=>{
@@ -117,10 +142,12 @@ import Header from '../Header'
                 if(response.data.sidetow === true){
                     let checkbox_service1 = document.getElementById("รถพ่วงข้าง")
                     checkbox_service1.checked = true
+                    serviceArray.push("รถพ่วงข้าง")
                 }
                 if (response.data.triCycle === true){
                     let checkbox_service2 = document.getElementById("รถสามล้อ")
                     checkbox_service2.checked = true
+                    serviceArray.push("รถสามล้อ")
                 }
             }
         }
@@ -163,6 +190,14 @@ import Header from '../Header'
                 ))}
                 </div>
             </div>
+            {driver.image && driver.image ?(
+                <div className={styles['photo-box']}>
+                    <div className={styles['photo-item']}>
+                    <Image  src={`/uploadImage/driver/${driver.image}`} alt="" width={200} height={250} />
+                    <button className={styles['delete-button']} onClick={()=>deleteImg(driver.image)}>ลบ</button>
+                    </div>
+                </div>
+            ):''}
             <div className={styles['first-input']} >
                 <span>รูปภาพ</span>
                 <input type="file"  name="" accept="image/png, image/jpeg, image/jpg" onChange={(e)=> uploadImage(e)} id="" />

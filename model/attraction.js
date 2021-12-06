@@ -2,7 +2,7 @@ const mongooose = require("mongoose");
 
 const attractionSchema = {
     
-        type_id : String,
+        type : String,
         name : String,
         detail: String,
         images : Array

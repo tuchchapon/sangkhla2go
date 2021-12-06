@@ -2,9 +2,9 @@ const mongooose = require("mongoose");
 
 const traditionSchema = {
         name : String,
+        local_name:String,
         type: String,
-        num: Number,
-        tradition_type:String,
+        month: String,
         detail : String,
         images : Array
 

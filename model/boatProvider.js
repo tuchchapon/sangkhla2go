@@ -1,14 +1,16 @@
 const mongooose = require("mongoose");
 
 const boatProviderSchema = {
-    boat_club : String,
+
+    club_name : String,
     provider_name : String,
     owner_name : String,
-    boat_quantity : Number,
-    max_passenger: Number,
+    driver_name : String,
+    boat_quantity : String,
+    max_passenger: String,
     contact: String,
     boat_images : Array,
-    provider_images : Array
+    provider_image : String
 }
 const BoatProvider = mongooose.model('BoatProviders', boatProviderSchema);
 module.exports = BoatProvider;

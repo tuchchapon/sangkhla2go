@@ -33,7 +33,6 @@ export default function driverlocation() {
     }
     const deleteDriverLocation =  ({location})=>{
         console.log('location id is',location.id);
-        
         if(location)
          Swal.fire({
             title:`ต้องการลบข้อมูลหรือไม่`,

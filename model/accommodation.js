@@ -1,10 +1,11 @@
 const mongooose = require("mongoose");
 
 const accommodationSchema = {
-    type_id : String,
+    type : String,
     name : String,
     information :String,
-    price :Number,
+    min_price:String,
+    max_price:String,
     fb_page:String,
     tel:String,
     services : Array,

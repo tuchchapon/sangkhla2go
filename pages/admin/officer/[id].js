@@ -4,6 +4,8 @@ import styles from '../../../styles/admin/create_edit.module.scss'
 import axios from 'axios'
 import Swal from 'sweetalert2'
 import Header from '../Header'
+import Image from 'next/image'
+import 'animate.css';
 import Button from '@mui/material/Button';
 
 export default function officer() {
@@ -88,6 +90,30 @@ export default function officer() {
           })
 
     }
+    const deleteImg=(image)=>{
+        Swal.fire({
+        title:"ต้องการลบภาพคณะผู้จัดทำหรือไม่",
+        imageUrl:`/uploadImage/officer/${officer.image}`,
+        imageHeight: 500,
+        imageWidth: 400,
+        showCancelButton:true,
+        confirmButtonText:'ยืนยัน',
+        cancelButtonText:'ยกเลิก',
+        width: 500,
+        showClass: {
+            popup: 'animate__animated animate__fadeInDown'
+          },
+          hideClass: {
+            popup: 'animate__animated animate__fadeOutUp'
+          },
+        icon:'question'
+        }).then((res)=>{
+            if (res.isConfirmed) {
+                setOfficer({...officer,image:''})
+                Swal.fire('ลบภาพคณะผู้จัดทำแล้ว','กรุณากดบันทึกข้อมูลเพื่อยืนยันการลบ','success')
+            }
+        })
+    }
     useEffect(() => {
         const getOfficer =async()=>{
             const response = await axios.post(`http://localhost:8080/get/officer/:${id}`,{id:id})
@@ -119,6 +145,14 @@ export default function officer() {
                                 ))}
                             </select>
                         </div>
+                        {officer.image && officer.image ?(
+                             <div className={styles['photo-box']}>
+                            <div className={styles['photo-item']}>
+                            <Image  src={`/uploadImage/officer/${officer.image}`} alt="" width={200} height={250} />
+                            <button className={styles['delete-button']} onClick={()=>deleteImg(officer.image)}>ลบ</button>
+                            </div>
+                        </div>
+                        ):''}
                         <div className={styles['first-input']} >
                             <span>รูปถ่าย</span>
                             <input type="file"  name="" accept="image/png, image/jpeg, image/jpg" onChange={(e)=> uploadImage(e)} id="" />
