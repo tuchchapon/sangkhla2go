@@ -145,6 +145,8 @@ export default function boat() {
             console.log('response boat is',response.data)
             if (response.status === 200) {
                 setBoatProvider(response.data.payload)
+                let imageResponse  = response.data.payload.boat_images
+                setGalleryImages(imageResponse)
             }
         }
         if (id !== "create" && router.isReady) {

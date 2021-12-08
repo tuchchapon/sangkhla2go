@@ -1,0 +1,324 @@
+.tradition-page {
+    font-family: Sukhumvit Set;
+    background-color: #FBF6E9;
+    overflow: hidden;
+    height: 100%;
+}
+.header-background{
+   position: absolute;
+   z-index: 1;
+}
+.tradition-title-box{
+    position: relative;
+    z-index: 2;
+    top: 112px;
+    width: 470px;
+    right: -63px;
+
+}
+.tradition-title-name{
+    position: absolute;
+    left: 1px;
+    bottom: 20%;
+    width: 470px;
+    font-size: 40px;
+    font-weight: bold;
+    line-height: 48px;
+    text-align: center;
+    color:#383838
+}
+.header-title-box {
+    position: relative;
+    z-index: 3;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 700px;
+    bottom: -46px;
+    right: 27px;
+    padding-bottom: 8px;
+    border-bottom:  4px solid #383838;
+    margin-bottom: 56px;
+    .title-page{
+        position: relative;
+        left: 226px;
+        max-width: 470px;
+        max-height: 144px;
+    }
+    .title-page-name{
+        position: absolute;
+        font-size: 80px;
+        line-height: 88px;
+        left: 100px;
+        top: 10px;
+        font-weight: bold;
+        text-align: center;
+        width: 370px;
+        color: #383838;
+    }
+}
+
+    .tradition-box{
+        display: flex;
+        flex-wrap: wrap;
+        flex: 0 0 calc((100% - 90px)/4);
+        margin: 56px auto 104px;
+        max-width: 1172px;
+
+    }
+    
+    .tradition-item{
+        cursor: pointer;
+        align-items: center;
+        justify-content: flex-start;
+        display: flex;
+        margin-right: 30px;
+        width: 270px;
+        flex-direction: column;
+        margin-bottom: 104px;
+        // border: 1px solid blue;
+        &:nth-child(4n) {
+            margin-right: 0;
+            }
+    }
+.tradition-name{
+    margin-top: 16px;
+    font-size: 24px;
+    width: 270px;
+    font-weight: bold;
+    line-height: 32px;
+    color: #383838;
+    text-align: center;
+}
+.tradition-local-name{
+    font-size: 24px;
+    line-height: 32px;
+    text-align: center;
+    width: 100%;
+    max-width: 270px;
+}
+.tradition-image-box{
+    position: relative;
+    background-size: contain;
+    width: 160px;
+    height: 160px;
+    
+    
+    z-index: 1;
+    // overflow: hidden;
+}
+.image-box-size{
+    height: 183px;
+    // display: flex;
+
+}
+.tradition-image{
+    // z-index: 2;
+    position: absolute;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 81px 81px 80px 83px;
+    // object-fit: cover;
+    width: 156px;
+    height: 156px;
+    top: 2px;
+    left: 1px;
+    
+
+}
+.tradition-item:hover .month-name-box{
+    background-image: url("/img/tradition/month-name-box-hover.png");
+}
+.tradition-item:hover .tradition-image-box .tradition-image{
+    // z-index: 2;
+    position: absolute;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 82px 82px 80px 83px;
+    width: 160px;
+    height: 160px;
+    top: 1px;
+    background-color: rgba(56, 56, 56, 0.5);
+    background-blend-mode: hard-light;
+    content: '';
+}
+.tradition-item:hover .tradition-name{
+    color: #757575;
+}
+.tradition-item:hover .tradition-local-name{
+    color: #757575;
+}
+
+.month-name-box{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    line-height: 32px;
+    font-weight: bold;
+    width: 270px;
+    height: 80px;
+    background-image: url("/img/tradition/month-name-box.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+.tradition-grid-box{
+    width: 1172px;
+    margin: auto;
+    display: flex;
+}
+.black-line {
+    margin-top: -6px;
+    margin-right: -2px;
+    border-bottom:  4px solid #383838;
+    height: 96px;
+    width: 100%;
+    max-width: 700px;
+    
+}
+.mon-tradition-title {
+    position: relative;
+    background-image: url('/img/tradition/tradition-title-box.png');
+    width: 470px;
+    height: 96px;
+}
+.mon-tradition-title span{
+    position: absolute;
+    left: 1px;
+    bottom: 20%;
+    width: 470px;
+    font-size: 40px;
+    font-weight: bold;
+    line-height: 48px;
+    text-align: center;
+    color:#383838
+}
+.month-name-box:hover{
+
+    // background-image: url("/img/tradition/month-name-box-hover.png");
+}
+.backdrop{
+    background-color: rgba(0, 0, 0, 0.7);
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+.tradition-popup{
+    font-family: Sukhumvit Set;
+    z-index: 2;
+    padding: 40px 80px 80px 80px;
+    width: 970px;
+    height: 980px;
+    display: flex;
+    // max-height: 2000px;
+    flex-direction: column;
+    position: relative;
+    background-color: #FBF6E9;
+    border: 4px solid #383838;
+    border-radius: 16px;
+    overflow-y: auto;
+    justify-content: flex-start;
+    .popup-close-icon{
+        position: absolute;
+        top: 20px;
+        right: 24px;
+        width: 32px;
+        height: 32px;
+    }
+    .tradition-flexbox{
+        display: flex;
+        height: 162px;
+    }
+    .popup-name-box{
+        display: flex;
+        height: 144px;
+        color: #383838;
+        flex-direction: column;
+        justify-content: flex-start;
+        text-align: center;
+        font-size: 32px;
+        font-weight: bold;
+        line-height: 40px;
+        width: 604px;
+        margin: 0 auto 40px auto;
+    }
+    .popup-local-name{
+        margin-top: 8px;
+        font-size: 24px;
+        line-height: 32px;
+        width: 100%;
+        // height: 80px;
+        max-height: 80px;
+        font-weight: normal;
+    }
+    .popup-slider-box{
+        // width: 810px;
+        // display: flex;
+        // margin: auto;
+    }
+    .slider {
+        position: relative;
+        max-width: 692px;
+        margin: auto;
+    }
+    .slider-box{
+        position: relative;
+    }
+    .slider-image{
+        display: flex;
+        position: relative;
+        background-position: center;
+        background-size: cover;
+        // background-size: contain;
+        background-repeat: no-repeat;
+        max-width: 698px;
+        
+        // max-height: 562px;
+        margin: auto;
+        text-align: center;
+        color: white;
+        width: 698px;
+        border-radius: 16px;
+        // border-radius: 90%;
+        height: 562px;
+        content: '';
+    }
+    .mon-slider-image{
+        display: flex;
+        position: relative;
+        background-position: center;
+        // background-size: cover;
+        background-size: contain;
+        background-repeat: no-repeat;
+        max-width: 698px;
+        
+        // max-height: 562px;
+        margin: auto;
+        text-align: center;
+        color: white;
+        width: 698px;
+        border-radius: 16px;
+        // border-radius: 90%;
+        height: 562px;
+        content: '';
+    }
+    .popup-detail-box{
+        margin: 40px 0 24px 0;
+        font-size: 24px;
+        line-height: 32px;
+        padding: 0 52px;
+    }
+    .popup-credit-box{
+        padding: 0 52px;
+        font-size: 24px;
+        line-height: 32px;
+        color: #757575;
+    }
+}
