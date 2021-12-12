@@ -60,7 +60,7 @@ export default function manages_officers() {
         const getOfficer = async()=>{
             let response = await axios.get('http://localhost:8080/get/officers')
             console.log(response.data.payload)
-            setOfficers(response.data.payload)
+            setOfficers(response.data.payload.officer)
         }
         getOfficer()
     }, [])

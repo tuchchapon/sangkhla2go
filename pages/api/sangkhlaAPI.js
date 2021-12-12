@@ -1033,6 +1033,12 @@ router.route("/dbcheck").get((req, res) => {
     //get officer api
     router.route("/get/officers").get((req,res)=>{
       let officer_array = []
+      let leader ={}
+      let consultant = []
+      let coordinator =[]
+      let intern =[]
+      let new_graduate = []
+      let citizen = []
       Officer.find({},function(err,data){
         console.log(data)
         if(err){
@@ -1046,12 +1052,26 @@ router.route("/dbcheck").get((req, res) => {
           officer.name = data[i].name
           officer.detail = data[i].detail
           officer.image = data[i].image
+          if(data[i].position === "หัวหน้าโครงการ")leader = officer
+          if(data[i].position === "ที่ปรึกษา")consultant.push(officer)
+          if(data[i].position === "ผู้ประสานงาน")coordinator.push(officer)
+          if(data[i].position === "บัณฑิตจบใหม่") new_graduate.push(officer)
+          if(data[i].position === "ประชาชน")citizen.push(officer)
+          if(data[i].position === "นักศึกษาฝึกงาน")intern.push(officer)
           officer_array.push(officer)
         }
         return res.status(200).json({
           status:200,
           type:'success',
-          payload:officer_array
+          payload:{
+            leader:leader,
+            consultant:consultant,
+            coordinator:coordinator,
+            new_graduate:new_graduate,
+            citizen:citizen,
+            intern:intern,
+            officer:officer_array
+          }
         })
       })
     })
