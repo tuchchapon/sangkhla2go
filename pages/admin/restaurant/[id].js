@@ -142,7 +142,12 @@ export default function Restaurant() {
             })
             setRestaurant({...restaurant,open_time:restaurant.close_time})
             return false
-        }
+          
+        } 
+        let uniq = [...new Set(restaurant.services)]
+        let uniq2 = [...new Set(restaurant.type)]
+        console.log('1 is', uniq);
+        console.log('2 is',uniq2);
         axios.post('http://localhost:8080/edit/restaurant',restaurant)
         .then((res)=>{
             if (res.status === 200) {
@@ -331,7 +336,7 @@ export default function Restaurant() {
                             :''}
                             <div className={styles['first-input']} >
                                 <span>รูปภาพ</span>
-                                <input type="file" multiple={true} accept="image/png, image/jpeg, image/jpg" onChange={(e)=>uploadImage(e)} name="" id="" />
+                                <input type="file" multiple={true} accept="image/png, image/jpeg, image/jpg ,image/webp" onChange={(e)=>uploadImage(e)} name="" id="" />
                             </div>
                             <div className={styles['button-group']} >
                         <Button onClick={id === 'create' ? createRestaurant : editRestaurant } className={styles['button-size']} color="info" variant="contained">บันทึกข้อมูล</Button>

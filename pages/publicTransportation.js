@@ -153,7 +153,7 @@ export default function publicTransportation() {
                            <div className={styles['win-popup']} >
                            <img className={styles['popup-close-icon']} onClick={(e)=> closeWinPopup(e)} src='/Quit.png' alt="" />
                             <span className={styles['location-name']}>{activeWin ? activeWin.location_name :''}</span>
-                            {activeWin && activeWin.location_detail ? <label className={styles['location-detail']} ><img style={{marginRight:'16px'}} src="/img/publictranspotation/glass.png" alt="" />{activeWin ? activeWin.location_detail:''}</label>:''}
+                            {activeWin && activeWin.location_detail ? <label className={styles['location-detail']} ><img style={{marginRight:'16px'}} src="/glass.png" alt="" />{activeWin ? activeWin.location_detail:''}</label>:''}
                             <div className={styles['popup-win-box']}>
                                 {drivers ? drivers.map((driver)=>(
                                     <div key={driver.id}>
@@ -222,6 +222,7 @@ export default function publicTransportation() {
                                     </div>
                                     
                             </div>
+                                <div className="col">
                                 {activeBoat.boat_images.length > 0 ?(
                                         <div className={styles['boat-image-box']} >
                                         <div className={styles['slider']}>
@@ -233,6 +234,7 @@ export default function publicTransportation() {
                                     </div>
                                 </div>
                                 ):''}
+                                </div>
                             </div>
                         </div>
                     </div>

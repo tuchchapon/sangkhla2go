@@ -13,6 +13,10 @@ import axios from 'axios';
 export default function manage_attraction() {
     const router = useRouter()
     const [attractions, setAttractions] = useState([])
+    
+    const [natureAttraction, setNatureAttraction] = useState([])
+    const [traditionAttraction, seTtraditionAttraction] = useState([])
+    const [agriAttraction, setAgriAttraction] = useState([])
 
     const editAttraction =(attraction)=>{
         console.log('edit');
@@ -61,7 +65,10 @@ export default function manage_attraction() {
             let response = await axios.get('http://localhost:8080/get/attractions')
             console.log(response.data)
             if (response.status === 200) {
-                setAttractions(response.data.payload)
+                setNatureAttraction(response.data.payload.nature_attraction)
+                seTtraditionAttraction(response.data.payload.tradition_attraction)
+                setAgriAttraction(response.data.payload.agri_attraction)
+                // setAttractions(response.data.payload)
             }
         }
         getAttractions()
@@ -79,14 +86,15 @@ export default function manage_attraction() {
                                     <Button color="success" variant="contained" onClick={(e)=>router.push('/admin/attraction/create')} >เพิ่มสถานที่ท่องเที่ยว</Button>
                                 </div>
                                 <Paper sx={{p:2,display:'flex',flexDirection:'column'}} >
-                                    { attractions.length > 0 ? attractions.map((attraction)=>(
-                                       <div key={attraction.id} className={styles['box-item']} >
-                                           <span>{attraction.name}</span>
+                                    <p>สถานที่ท่องเที่ยวธรรมชาติ</p>
+                                    { natureAttraction.length > 0 ? natureAttraction.map((nature)=>(
+                                       <div key={nature.id} className={styles['box-item']} >
+                                           <span>{nature.name}</span>
                                            <div>
-                                        <IconButton  onClick={((e)=>editAttraction(attraction))} >
+                                        <IconButton  onClick={((e)=>editAttraction(nature))} >
                                             <ModeEditIcon/>
                                         </IconButton>
-                                        <IconButton  onClick={((e)=>deleteAttraction(attraction))} >
+                                        <IconButton  onClick={((e)=>deleteAttraction(nature))} >
                                             <DeleteIcon/>
                                         </IconButton>
                                         </div>
@@ -94,6 +102,44 @@ export default function manage_attraction() {
 
                                     )):''}
                                 </Paper>
+                                {traditionAttraction.length > 0 ? 
+                             <Paper sx={{p:2,display:'flex',flexDirection:'column',marginTop:'20px'}} >
+                                 <p>สถานที่ท่องเที่ยววัฒนธรรม</p>
+                                {traditionAttraction.length > 0 ?  traditionAttraction.map((tradition)=>(
+                                    <div className={styles['box-item']} key={tradition.id} >
+                                        <span>{tradition.name}</span>
+                                        
+                                        <div>
+                                    <IconButton  onClick={((e)=>editAttraction(tradition))} >
+                                        <ModeEditIcon/>
+                                    </IconButton>
+                                    <IconButton  onClick={((e)=>deleteAttraction(tradition))} >
+                                        <DeleteIcon/>
+                                    </IconButton>
+                                    </div> 
+                                    </div>
+
+                                )):''}
+                            </Paper>:''}
+                            {agriAttraction.length > 0 ? 
+                             <Paper sx={{p:2,display:'flex',flexDirection:'column',marginTop:'20px'}} >
+                                 <p>สถานที่ท่องเที่ยวเกษตรกรรมและชุมชน</p>
+                                {agriAttraction.length > 0 ?  agriAttraction.map((agri)=>(
+                                    <div className={styles['box-item']} key={agri.id} >
+                                        <span>{agri.name}</span>
+                                        
+                                        <div>
+                                    <IconButton  onClick={((e)=>editAttraction(agri))} >
+                                        <ModeEditIcon/>
+                                    </IconButton>
+                                    <IconButton  onClick={((e)=>deleteAttraction(agri))} >
+                                        <DeleteIcon/>
+                                    </IconButton>
+                                    </div> 
+                                    </div>
+
+                                )):''}
+                            </Paper>:''}
                             </div>
                         </div>
                     </div>

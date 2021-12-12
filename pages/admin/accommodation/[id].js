@@ -12,8 +12,8 @@ export default function officer() {
     const id = router.query.id || []
     const [galleryImages, setGalleryImages] = useState([])
     const accommodation_options = ["โรงแรม","โฮมสเตย์","รีสอร์ท","เกสต์เฮ้าส์","เรือนรับรอง","โฮสเทล","แพพัก"]
-    const accommodation_service_options =["อาหารเช้า","ลานจอดรถ","สระว่ายน้ำ","WI-FI","ห้องน้ำส่วนตัว","ร้านอาหาร","ห้องประชุม","เช่ารายเดือน","ลานกลางเต็นท์"]
-    const boat_house_option = ["อาหารเช้า","WI-FI","บริการลากแพ","คาราโอเกะ"]
+    const accommodation_service_options =["อาหารเช้า","ลานจอดรถ","สระว่ายน้ำ","Wi-Fi","ห้องน้ำส่วนตัว","ร้านอาหาร","ห้องประชุม","เช่ารายเดือน","ลานกางเต็นท์"]
+    const boat_house_option = ["อาหารเช้า","Wi-Fi","บริการลากแพ","คาราโอเกะ"]
     const [serviceArray, setServiceArray] = useState([])
     const [accommodation, setAccommodation] = useState({
         id:'',
@@ -47,7 +47,7 @@ export default function officer() {
         
         setAccommodation({...accommodation,type:e.target.value})
         let breakfast = document.getElementById("อาหารเช้า")
-        let wifi = document.getElementById("WI-FI")
+        let wifi = document.getElementById("Wi-Fi")
         if (accommodation.type === "แพพัก" && e.target.value !== "แพพัก") {
             for (let i = 0; i < 10; i++) {
                
@@ -92,7 +92,7 @@ export default function officer() {
     const editAccommodation = ()=>{
         console.log('edit');
         console.log(accommodation)
-        // let uniq = [...new Set(accommodation.services)]
+        let uniq = [...new Set(accommodation.services)]
         // console.log('unq service is',uniq);
         
         axios.post('http://localhost:8080/edit/accommodation',accommodation)
@@ -240,7 +240,7 @@ export default function officer() {
                             :''}
                        <div className={styles['first-input']} >
                             <span>รูปภาพที่พัก</span>
-                            <input type="file" name="" multiple={true} accept="image/png, image/jpeg, image/jpg" onChange={(e)=>uploadImage(e)} id="" />
+                            <input type="file" name="" multiple={true} accept="image/png, image/jpeg, image/jpg ,image/webp" onChange={(e)=>uploadImage(e)} id="" />
                        </div>
                         <div className={styles['button-group']} >
                         <Button onClick={id === 'create' ? createAccommodation : editAccommodation } className={styles['button-size']} color="info" variant="contained">บันทึกข้อมูล</Button>

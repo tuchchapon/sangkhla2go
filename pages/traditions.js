@@ -41,12 +41,6 @@ export default function traditions() {
         prevArrow: <LeftArrow/>
         
     }
-    
-    const sortByMonth =(arr)=>{
-        arr.sort((a,b)=>{return months.indexOf(a.month)
-        - months.indexOf(b.month)})
-        console.log('after',arr)
-      }
     const showPopup =(tradition,type)=>{
         console.log('tradition is',tradition);
         console.log('type is',type);

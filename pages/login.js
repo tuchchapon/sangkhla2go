@@ -20,6 +20,7 @@ export default function login() {
         console.log('login');
         axios.post('http://localhost:8080/login',admin).then((res)=>{
             console.log(res.data.token);
+            console.log('data is',res.data);
             if (res.data.token) {
                 router.push('/admin')
             }

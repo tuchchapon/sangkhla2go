@@ -34,7 +34,7 @@ const driver_storage = multer.diskStorage({
     filename:function(req,file,cb){
       let _fileType = file.originalname.substring(file.originalname.indexOf("."));
       let _fileName
-      if (_fileType === '.jpg' || _fileType === '.png' || _fileType === '.jpeg') {
+      if (_fileType === '.jpg' || _fileType === '.png' || _fileType === '.jpeg' || _fileType === '.webp') {
        
         _fileName  = file.fieldname+Date.now()+_fileType;
       }
@@ -54,7 +54,7 @@ const officer_storage = multer.diskStorage({
   filename:function(req,file,cb){
     let _fileType = file.originalname.substring(file.originalname.indexOf("."));
     let _fileName
-    if (_fileType === '.jpg' || _fileType === '.png' || _fileType === '.jpeg') {
+    if (_fileType === '.jpg' || _fileType === '.png' || _fileType === '.jpeg' || _fileType === '.webp') {
      
       _fileName  = file.fieldname+Date.now()+_fileType;
     }
@@ -74,7 +74,7 @@ const tradition_storage = multer.diskStorage({
   filename:function(req,file,cb){
     let _fileType = file.originalname.substring(file.originalname.indexOf("."));
     let _fileName
-    if (_fileType === '.jpg' || _fileType === '.png' || _fileType === '.jpeg') {
+    if (_fileType === '.jpg' || _fileType === '.png' || _fileType === '.jpeg' || _fileType === '.webp') {
      
       _fileName  = file.fieldname+Date.now()+_fileType;
     }
@@ -95,7 +95,7 @@ const product_storage = multer.diskStorage({
   filename:function(req,file,cb){
     let _fileType = file.originalname.substring(file.originalname.indexOf("."));
     let _fileName
-    if (_fileType === '.jpg' || _fileType === '.png' || _fileType === '.jpeg') {
+    if (_fileType === '.jpg' || _fileType === '.png' || _fileType === '.jpeg' || _fileType === '.webp') {
      
       _fileName  = file.fieldname+Date.now()+_fileType;
     }
@@ -115,7 +115,7 @@ const attraction_storage = multer.diskStorage({
   filename:function(req,file,cb){
     let _fileType = file.originalname.substring(file.originalname.indexOf("."));
     let _fileName
-    if (_fileType === '.jpg' || _fileType === '.png' || _fileType === '.jpeg') {
+    if (_fileType === '.jpg' || _fileType === '.png' || _fileType === '.jpeg' || _fileType === '.webp') {
      
       _fileName  = file.fieldname+Date.now()+_fileType;
     }
@@ -135,7 +135,7 @@ const boat_provider_storage = multer.diskStorage({
   filename:function(req,file,cb){
     let _fileType = file.originalname.substring(file.originalname.indexOf("."));
     let _fileName
-    if (_fileType === '.jpg' || _fileType === '.png' || _fileType === '.jpeg') {
+    if (_fileType === '.jpg' || _fileType === '.png' || _fileType === '.jpeg' || _fileType === '.webp') {
      
       _fileName  = file.fieldname+Date.now()+_fileType;
     }
@@ -155,7 +155,7 @@ const restaurant_storage = multer.diskStorage({
   filename:function(req,file,cb){
     let _fileType = file.originalname.substring(file.originalname.indexOf("."));
     let _fileName
-    if (_fileType === '.jpg' || _fileType === '.png' || _fileType === '.jpeg') {
+    if (_fileType === '.jpg' || _fileType === '.png' || _fileType === '.jpeg' || _fileType === '.webp') {
      
       _fileName  = file.fieldname+Date.now()+_fileType;
     }
@@ -167,7 +167,7 @@ const restaurant_storage = multer.diskStorage({
 })
 const  upload_restaurant_images = multer({ storage:restaurant_storage })
 
-const accommodataion = multer.diskStorage({
+const accommodation_storage = multer.diskStorage({
 
   destination:function(req,file,cb){
     cb(null,`${appDir}/public/uploadImage/accommodation`)
@@ -175,7 +175,7 @@ const accommodataion = multer.diskStorage({
   filename:function(req,file,cb){
     let _fileType = file.originalname.substring(file.originalname.indexOf("."));
     let _fileName
-    if (_fileType === '.jpg' || _fileType === '.png' || _fileType === '.jpeg') {
+    if (_fileType === '.jpg' || _fileType === '.png' || _fileType === '.jpeg' || _fileType === '.webp') {
      
       _fileName  = file.fieldname+Date.now()+_fileType;
     }
@@ -185,7 +185,7 @@ const accommodataion = multer.diskStorage({
     cb(null,_fileName);
   },
 })
-const  upload_accommodation_images = multer({ storage:accommodataion })
+const  upload_accommodation_images = multer({ storage:accommodation_storage })
 
 
 const mongoURL = process.env.DB_URL
@@ -330,6 +330,13 @@ router.route("/dbcheck").get((req, res) => {
        const tel = req.body.tel
        const services = req.body.services
        const images = req.body.images
+      //  services.sort()
+       const sortService =(arr)=>{
+        let service =["ลานจอดรถ","สระว่ายน้ำ","Wi-Fi","ห้องน้้ำส่วนตัว","ร้านอาหาร","ห้องประชุม","เช่ารายเดือน","ลานกางเต็นท์","อาหารเช้า","บริการลากแพ","คาราโอเกะ"]
+        arr.sort((a,b)=>{return service.indexOf(a.service)
+        - service.indexOf(b.service)})
+      }
+      sortService(services)
        Accommodation.create({
         name,
         type,
@@ -860,6 +867,7 @@ router.route("/dbcheck").get((req, res) => {
   router.route('/get/attraction/:id').post((req,res)=>{
     const id = req.body.id
     console.log(req.body)
+
     if (!id) {
       return res.status(400).json({status:400,type:'error',payload:'ข้อมูลไม่ถูกต้อง'})
     }
@@ -1073,11 +1081,18 @@ router.route("/dbcheck").get((req, res) => {
     // get acommodation api
     router.route("/get/accommodation").get((req,res)=>{
       let data_array = []
+      const sortService =(arr)=>{
+        let service =["ลานจอดรถ","สระว่ายน้ำ","Wi-Fi","ห้องน้ำส่วนตัว","ร้านอาหาร","ห้องประชุม","เช่ารายเดือน","ลานกางเต็นท์","อาหารเช้า","บริการลากแพ","คาราโอเกะ"]
+        arr.sort((a,b)=>{
+          return service.indexOf(a)
+        - service.indexOf(b)})
+      }
       Accommodation.find({},function (err,data){
         if (err) {
           res.send(err)
         }
         for (let i = 0; i < data.length; i++) {
+          let ser_arr = []
           let accommodation = {id:'',type:'',name:'',information:'',
           min_price:'',max_price:'',tel:'',fb_page:'',services:[],images:[]}
           accommodation.id = data[i]._id,
@@ -1089,13 +1104,14 @@ router.route("/dbcheck").get((req, res) => {
           accommodation.fb_page = data[i].fb_page
           accommodation.tel = data[i].tel
           for (let j = 0; j < data[i].services.length; j++) {
-             accommodation.services.push(data[i].services[j])
+             ser_arr.push(data[i].services[j])
           }
           for (let k = 0; k < data[i].images.length; k++) {
             accommodation.images.push(data[i].images[k])
           }
+          sortService(ser_arr)
+          accommodation.services = ser_arr
           data_array.push(accommodation)
-        
         }
       return res.status(200).json({payload:data_array,status:200})
       
@@ -1148,7 +1164,10 @@ router.route("/dbcheck").get((req, res) => {
 
     // get attraction api 
     router.route('/get/attractions').get((req,res)=>{
-      let data_array = []
+      // let data_array = []
+      let nature_attraction = []
+      let tradition_attraction = []
+      let agri_attraction = []
       Attraction.find({},function(err,data){
         console.log('data is',data)
         for (let i = 0; i < data.length; i++) {
@@ -1160,9 +1179,11 @@ router.route("/dbcheck").get((req, res) => {
           for (let j = 0; j < data[i].images.length; j++) {
             attraction.images.push(data[i].images[j]) 
           }
-          data_array.push(attraction)
+          attraction.type === "ธรรมชาติ" ? nature_attraction.push(attraction)
+          :attraction.type === "วัฒนธรรม" ? tradition_attraction.push(attraction)
+          :agri_attraction.push(attraction)
         }
-        return res.status(200).json({payload:data_array,status:200})
+        return res.status(200).json({payload:{nature_attraction,tradition_attraction,agri_attraction},status:200})
       })
     
     })
