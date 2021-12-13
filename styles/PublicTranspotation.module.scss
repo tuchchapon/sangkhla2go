@@ -248,13 +248,13 @@
     border-radius: 16px;
     z-index: 2;
     width: 970px;
-    max-height: 980px;
+    max-height: 1000px;
     height: 100%;
     align-items: center;
     flex-direction: column;
     // max-height: 528px;
     background-color: #FBF6E9;
-    overflow: auto;
+    overflow-x: auto;
     margin-bottom: 100px;
     .popup-club-name {
         white-space: pre-wrap;
@@ -369,42 +369,47 @@
 
     .boat-image-box{
         width: 810px;
+        height: 560px;
+        display: block;
+        // margin: auto;
+        // display: flex;
+        // flex-direction: column
+        // overflow: hidden;
     }
 
     .slider {
         position: relative;
         max-width: 692px;
-        margin: auto;
-        // display: flex;
-        // width: 100%;
-        // max-height: 562px;
-        // height: 262px;
-        // z-index: 3;
+        max-height: 560px;
+        margin: 0 auto;
         // display: flex;
         // background-color: blue;
+        .slider-box {
+            position: relative;
+            max-width: 690px;
+    
+        }
+        .slider-image{
+            display: block;
+            position: relative;
+            background-position: center;
+            background-size: cover;
+            // background-size: contain;
+            background-repeat: no-repeat;
+            // margin: auto;
+            text-align: center;
+            color: white;
+            // max-width: 698px;
+            width: 698px;
+            height: 560px;
+            border-radius: 24px;
+            // content: '';
+        
+        }
     }
-    .slider-box {
-        position: relative;
 
-    }
 
 }
-.slider-image{
-    display: flex;
-    position: relative;
-    background-position: center;
-    background-size: cover;
-    // background-size: contain;
-    background-repeat: no-repeat;
-    margin: auto;
-    text-align: center;
-    color: white;
-    // max-width: 698px;
-    width: 698px;
-    height: 562px;
-    border-radius: 24px;
-    // content: '';
 
-}
 
 

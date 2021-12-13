@@ -1,0 +1,339 @@
+.accommodation-page{
+    background-color: #FBF6E9;
+    font-family: Sukhumvit Set;
+    padding-top: 80px;
+    color: #383838;
+
+    .header-line{
+        position: absolute;
+        width: 100%;
+        height: 10px;
+        background: linear-gradient(180deg, rgba(225, 211, 182, 0.5) 0%, rgba(225, 211, 182, 0) 100%);
+    }
+    .page-title-box{
+        width: 100%;
+        height: 508px;
+        display: flex;
+        margin-bottom: 16px;
+        position: relative;
+        text-align: center;
+        font-size: 80px;
+        font-weight: bold;
+        line-height: 88px;
+        justify-content: center;
+        .bg-title{
+        position: absolute;
+        top: 0;
+        left: -72px;
+        }
+        .title-textbox{
+            background-image: url('/img/accommodation/title-textbox.png');
+            position: absolute;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 470px;
+            height: 216px;
+            top: 38px;
+            right: 0px;
+        }
+    }
+    .accommodation-column{
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        
+        top: -200px;
+        .accommodation-list{
+            margin: auto;
+            width: 1170px;
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .accommodation-item{
+            width: 370px;
+            height: 472px;
+            background: #FFFDF8;
+            border: 4px solid #383838;
+            margin: 0 30px 42px 0;
+            display: flex;
+            position: relative;
+            flex-direction: column;
+            padding: 22px;
+            flex: 0 0 calc(( 100% - 60px)/3);
+            .accommodation-name{
+                margin-top: 22px;
+                font-size: 32px;
+                line-height: 48px;
+                color: #383838;
+                font-weight: bold;
+            }
+            .price-box{
+                display: flex;
+                align-items: center;
+                // width: 200px;
+                height: 32px;
+                span{
+                        margin-left: 8px;
+                        font-size: 24px;
+                        line-height: 32px;
+                        color: #757575;
+                }
+            }
+            &:nth-child(3n){
+                margin-right: 0;
+            }
+            img{
+                width: 322px;
+                height: 322px;
+                object-fit: cover;
+                border-radius: 16px;
+               
+            }
+            .icon-b{
+                width: 24px;
+                height: 24px;
+            }
+            .boat-house-tag{
+                position: absolute;
+                width: 104px;
+                height: 64px;
+                text-align: center;
+                background: #FFFDF8;
+                border-bottom: 4px solid #383838;
+                border-left: 4px solid #383838;
+                right:  0;
+                top: 0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 24px;
+                font-weight: bold;
+            }
+        }
+        .accommodation-item:hover{
+            background-color: #E1D3B6;
+        }
+    }
+    .load-content-text{
+        font-size: 32px;
+        font-weight: bold;
+        align-self: center;
+        line-height: 40px;
+        text-align: center;
+        text-decoration: underline;
+        width: 122px;
+        height: 40px;
+    }
+}
+.backdrop{
+    background-color: rgba(0, 0, 0, 0.7);
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+.accommodation-popup{
+    display: flex;
+    width: 1170px;
+    height: 792px;
+    z-index: 3;
+    padding: 40px 80px;
+    background-color: #FBF6E9;
+    border: 4px solid #383838;
+    box-sizing: border-box;
+    border-radius: 16px;
+    position: relative;
+    justify-content: center;
+    font-family: Sukhumvit Set;
+    .popup-close-icon{
+    position: absolute;
+    top: 20px;
+    right: 24px;
+    width: 32px;
+    height: 32px;
+    }
+    .accommodation-flexbox{
+        display: flex;
+        flex-direction: column;
+        margin: auto;
+    }
+    .popup-name-box{
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        margin: 0 auto;
+        span {
+            &:nth-child(1){
+                font-size: 48px;
+                font-weight: bold;
+                line-height: 56px;
+                text-align: center;
+                color: #383838;
+                margin-bottom: 8px;
+            }
+            &:nth-child(2){
+                color: #757575;
+                font-size: 20px;
+                line-height: 32px;
+                margin-bottom: 8px;
+            }
+        }
+    }
+    .row-box{
+        display: flex;
+        margin-top: 40px;
+        .image-box{
+            width: 485px;
+            height: 504px;
+            margin-right: 40px;
+            position: relative;
+            .big-image{
+                object-fit: contain;
+                width: 485px;
+                height: 406px;
+                border-radius: 16px;
+                margin-bottom: 8px;
+                
+            }
+            .no-image{
+                object-fit: contain;
+                border-radius: 16px;
+                width: 485px;
+                height: 509px;
+            }
+            .image-list{
+                display: flex;
+                overflow-y: auto;
+                width: 406;
+                img{
+                    display: flex;
+                    object-fit: cover;
+                    margin-right: 8px;
+                    width: 90px;
+                    height: 90px;
+                }
+            }
+            .prev,
+            .next {
+              cursor: pointer;
+              position: absolute;
+              top: 40%;
+              width: auto;
+              padding: 16px;
+              margin-top: -50px;
+              color: black;
+              font-weight: bold;
+              font-size: 20px;
+              border-radius: 0 3px 3px 0;
+              user-select: none;
+              -webkit-user-select: none;
+              text-decoration: none;
+
+            }
+            .next{
+                right: 0;
+                border-radius: 3px 0 0 3px;
+            }
+            .prev:hover{
+                background-color: rgba(0, 0, 0, 0.8);
+                color: wheat;
+            }
+            .next:hover{
+                    background-color: rgba(0, 0, 0, 0.8);
+                    color: wheat;
+            }
+        }
+        .information-box{
+            height: 128px;
+            font-size: 24px;
+            line-height: 32px;
+            margin-bottom: 24px;
+        }
+        .popup-price-box{
+            // width: 170px;
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+            margin-bottom: 24px;
+            img{
+                width: 32px;
+                height: 32px;
+            }
+            span{
+                margin-left: 8px;
+                font-weight: 600;
+            }
+        }
+        .breakfast-box{
+            display: flex;
+            font-size: 24px;
+            font-weight: 600;
+            line-height: 32px;
+            color: #383838;
+            margin-bottom: 24px;
+            span{
+                margin-left: 8px;
+            }
+        }
+        .service-box{
+            display: flex;
+            flex-wrap: wrap;
+            width: 485px;
+            height: 240px;
+            padding: 32px 37px;
+            background-color: rgba(225,211,182,0.5);
+            border-radius: 16px;
+            .icon-box{
+                display: flex;
+                flex: 0 0 calc(( 100% )/4);
+                max-height: 48px;
+                text-align: center;
+                align-items: center;
+                // flex-wrap: wrap;
+                width: 121px;
+                flex-direction: column;
+                img{
+                    margin-bottom: 8px;
+                    width: 48px;
+                    height: 48px;
+                }
+                span {
+                    color: #383838;
+                    font-size: 16px;
+                    line-height: 24px;
+                }
+            }
+        }
+
+    }
+    .contact-box{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 40px 0 auto;
+        // margin-top: 40px;
+        .contact-item{
+            align-items: center;
+            display: flex;
+            justify-content: center;
+            color: #383838;
+            img{
+                width: 24px;
+                height: 24px;
+                vertical-align: middle;
+            }
+            display: flex;
+            justify-content: center;
+            margin: 0 24px;
+            span{
+                margin-left: 8px;
+                font-size: 24px;
+                line-height: 32px;
+            }
+
+        }
+    }
+}

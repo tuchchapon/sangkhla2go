@@ -129,7 +129,7 @@
 .tradition-item:hover .month-name-box{
     background-image: url("/img/tradition/month-name-box-hover.png");
 }
-.tradition-item:hover .tradition-image-box .tradition-image{
+.tradition-item:hover  .tradition-image{
     // z-index: 2;
     position: absolute;
     background-size: cover;
@@ -279,8 +279,7 @@
         // background-size: contain;
         background-repeat: no-repeat;
         max-width: 698px;
-        
-        // max-height: 562px;
+        height: 698px;
         margin: auto;
         text-align: center;
         color: white;

@@ -1,0 +1,392 @@
+.officer-page{
+    display: flex;
+    flex-direction: column;
+    background: #FBF6E9;
+    font-family: Tahoma;
+    .logo-box{
+        display: flex;
+        justify-content: center;
+        padding:78px 0 40px 0;
+    }
+    .detail-pa1{
+        color: #1F6397;
+        width: 1170px;
+        margin: 0 auto;
+        font-size: 26px;
+        line-height: 40px;
+
+    }
+    .detail-pa2{
+        width: 1170px;
+        font-size: 26px;
+        line-height: 40px;
+        margin: 40px auto ;
+        color: #757575;
+        a{
+            color: #7A2328;
+            cursor: pointer;
+        }
+    }
+    .logo-group{
+        padding: 40px 0;
+        background: rgba(225, 211, 182, 0.5);
+        height: 232px;
+        // display: flex;
+        justify-content: center;
+        .wrap-logo{
+            display: flex;
+            justify-content: center;
+            .logo-left-box{
+                margin-right: 80px;
+                display: flex;
+                flex-direction: column;
+                text-align: center;
+                width: 392px;
+                span{
+                    font-weight: bold;
+                    font-size: 24px;
+                    line-height: 32px;
+                    color: #757575;
+                    margin-top: 16px;
+                    font-family: Sukhumvit Set;
+                }
+                .logo-rowbox-left{
+                    width: 392px;
+                    display: flex;
+                    img{
+                        margin-right: 40px;
+                        &:nth-child(3){
+                            margin: 0;
+                        }
+                    }
+                }
+            }
+            .logo-right-box{
+                text-align: center;
+                display: flex;
+                flex-direction: column;
+                width: 536px;
+                justify-content: space-between;
+                span{
+                    font-weight: bold;
+                    font-size: 24px;
+                    line-height: 32px;
+                    color: #757575;
+                    font-family: Sukhumvit Set;
+                    margin-top: 16px;
+                }
+                .logo-rowbox-right{
+                    display: flex;
+                    width: 536px;
+                    
+                    // width: fit-content;
+                    img{
+                        margin-right: 40px;
+                        margin-right: 40px;
+                        &:nth-child(4){
+                            margin: 0;
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+    .officer-box{
+        display: flex;
+        flex-direction: column;
+        margin: 0 auto;
+        justify-content: center;
+        font-family: Sukhumvit Set;
+        width: 100%;
+        .banner-box{
+          position: relative;
+          display: flex;
+          width: 570px;  
+          height: 176px;
+          background-size: cover;
+          background-repeat: no-repeat;
+          background-position: center;
+          justify-content: center;
+          align-items: center;
+          align-self: center;
+          margin-top: 96px;
+          span{
+              font-family: Sukhumvit Set;
+              text-align: center;
+              font-size: 48px;
+              padding-bottom: 4px;
+              line-height: 88px;
+              color: #383838;
+              font-weight: bold;
+          }
+
+          
+        }
+        .officer-row-box{
+            display: flex;
+            justify-content: center;
+            text-align: center;
+            width: 1170px;
+            margin: 0 auto;
+            .position-box{
+                display: flex;
+                // width: 370px;
+                flex-direction: column;
+                .vertical-line{
+                    align-self: center;
+                    width: 0px;
+                    height: 224px;
+                    border: 2px solid #383838;
+                }
+                .vertical-short-line{
+                    align-self: center;
+                    width: 0px;
+                    height: 96px;
+                    border: 2px solid #383838;
+                }
+                .worker-white-box{
+                    align-self: center;
+                    background: #FFFDF8;
+                    border-radius: 15px;
+                    font-size: 32px;
+                    line-height: 40px;
+                    width: 270px;
+                    font-weight: bold;
+                    display: flex;
+                    justify-content: center;
+                    padding: 8px 0;
+                    border: 4px solid black;
+                }
+                .position-name-box{
+
+                    border-radius: 15px;
+                    background: #FFFDF8;
+                    font-size: 32px;
+                    line-height: 40px;
+                    width: 370px;
+                    font-weight: bold;
+                    
+                    display: flex;
+                    justify-content: center;
+                    margin: 32px 0 40px 0;
+                    padding: 8px 0;
+                    border: 4px solid #383838;
+
+                }
+                .position-leader-box{
+
+                    background: #FFFDF8;
+                    border-radius: 15px;
+                    font-size: 32px;
+                    line-height: 40px;
+                    width: 370px;
+                    font-weight: bold;
+                    display: flex;
+                    justify-content: center;
+                    padding: 8px 0;
+                    border: 4px solid black;
+                    margin: 32px 30px 40px 30px;
+
+                }
+                .leader-name{
+                    cursor: pointer;
+                    text-align: center;
+                    align-self: center;
+                    justify-self: center;
+                    margin-bottom: 16px;
+                    display: flex;
+                    span{
+                        width: 322px;
+                        height: 32px;
+                        font-size: 24px;
+                        line-height: 32px;
+                        font-weight: bold;
+                    }
+                }
+                .officer-name-box{
+                    // text-align: start;
+                    padding-left: 22px;
+                    cursor: pointer;
+                    margin-bottom: 16px;
+                    width: 322px;
+                    height: 32px;
+                    font-size: 24px;
+                    line-height: 32px;
+                    font-weight: bold;
+                    display: flex;
+                    &:last-child{
+                        margin: 0;
+                    }
+                }
+            }
+        }
+    }
+
+}
+
+
+.officer-popup{
+    font-family: Sukhumvit Set;
+    z-index: 2;
+    position: relative;
+    width: 770px;
+    height: 784px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    .officer-flexbox{
+        margin-top: 104px;
+        padding: 16px  35px 20px;
+        overflow-x: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+        width: 632px;
+        height: 520px;
+    }
+
+
+}
+.officer-backdrop{
+    background-color: rgba(0, 0, 0, 0.7);
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+.popup-image-box{
+    z-index: 3;
+    width: 204px;
+    height: 204px;
+    position: relative;
+    display: flex;
+    border-radius: 49%;
+    // background-color: red;
+    border: 4px solid black;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    // object-fit: cover;
+
+
+}
+.popup-officer-name{
+    font-size: 24px;
+    line-height: 32px;
+    margin-top: 32px;
+    color: #383838;
+    font-weight: bold;
+}
+.officer-detail{
+    display: flex;
+    flex-direction: column;
+    span{
+        
+        margin-top: 32px;
+        font-size: 24px;
+        line-height: 32px;
+        color: #383838;
+        font-weight: bold;
+        &:nth-child(2){
+            // text-indent: 50px;
+            font-weight: normal;
+            margin-top: 16px;
+            color: #757575;
+        }
+    }
+}
+.leader-backdrop{
+    background-color: rgba(0, 0, 0, 0.7);
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+.leader-popup{
+    font-family: Sukhumvit Set;
+    // display: none;
+    z-index: 3;
+    padding: 40px 80px 100px 80px;
+    width: 1170px;
+    height: 900px;
+    display: flex;
+    // max-height: 2000px;
+    flex-direction: column;
+    position: relative;
+    background-color: #FBF6E9;
+    border: 4px solid #383838;
+    border-radius: 16px;
+    overflow-y: auto;
+    justify-content: flex-start;
+    .leader-flexbox{
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+.popup-close-icon{
+    position: absolute;
+    top: 24px;
+    right: 23px;
+    width: 32px;
+    height: 32px;
+}
+.leader-popup-image{
+    z-index: 3;
+    width: 204px;
+    height: 204px;
+    position: relative;
+    display: flex;
+    border-radius: 49%;
+    align-self: center;
+    border: 4px solid black;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+.officer-image{
+    z-index: 2;
+    left: 0;
+    top: -2px;
+    position: relative;
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+}
+.leader-pa1{
+    display: flex;
+    flex-direction: column;
+    font-size: 24px;
+    line-height: 32px;
+    text-align: center;
+    padding-top: 40px;
+    span{
+        &:nth-child(1){
+            font-weight: bold;
+            color: #383838;
+            margin-bottom: 8px;
+        }
+        &:nth-child(2){
+            font-weight: 500;
+        }
+    }
+}
+.leader-pa2{
+    padding-top: 24px;
+    font-size: 24px;
+    line-height: 32px;
+    color: #757575;
+}
