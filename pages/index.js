@@ -8,6 +8,8 @@ import axios from 'axios';
 import Popup from 'reactjs-popup'
 import Footer from '../layouts/footer';
 import ReactPlayer from 'react-player'
+// require('dotenv').config()
+// import dotenv from 'dotenv'
 function RightArrow(props) {
   const { className, style, onClick } = props;
   return (
@@ -23,6 +25,7 @@ function LeftArrow(props){
 
 
 export default function index() {
+  // const API_LINK = process.env.API_URL
   const router = useRouter();
   const [hotels, setHotels] = useState([])
   const [boatHouses, setBoatHouses] = useState([])
@@ -111,7 +114,7 @@ export default function index() {
       console.log('boat house is ',boatHouses);
   }
   const getAccommodation =async()=>{
-    let accommodation_data = await axios.get('http://localhost:8080/get/accommodation')
+    let accommodation_data = await axios.get('https://sangkhla-server.vercel.app/get/accommodation')
     let fetch_accommodation = accommodation_data.data.payload
     for (let i = 0; i < fetch_accommodation.length; i++) {
       fetch_accommodation[i].type === "แพพัก" ? boatHouses.push(fetch_accommodation[i]) 
@@ -120,23 +123,23 @@ export default function index() {
     console.log(accommodation_data.data.payload);
   }
   const getBoatProvider = async()=>{
-    let boat_data = await axios.get('http://localhost:8080/get/boat-provider')
+    let boat_data = await axios.get('https://sangkhla-server.vercel.app/get/boat-provider')
     console.log('boat provider is',boat_data.data.payload);
     setBoatProviders(boat_data.data.payload)
   }
   const getTradition =async()=>{
-    let tradition_data = await axios.get('http://localhost:8080/get/traditions')
+    let tradition_data = await axios.get('https://sangkhla-server.vercel.app/get/traditions')
     console.log('tradition data is',tradition_data.data.payload);
     setKarenTraditions(tradition_data.data.payload.karen_tradition)
     setMonTraditions(tradition_data.data.payload.mon_tradition)
   }
   const getProduct=async()=>{
-    let product_data = await axios.get('http://localhost:8080/get/products')
+    let product_data = await axios.get('https://sangkhla-server.vercel.app/get/products')
     console.log('product is',product_data.data.payload);
     setProducts(product_data.data.payload)
   }
   const getRestaurant=async()=>{
-    let restaurant_data = await axios.get('http://localhost:8080/get/restaurant')
+    let restaurant_data = await axios.get('https://sangkhla-server.vercel.app/get/restaurant')
     console.log(restaurant_data.data.payload);
     let restaurant_payload = restaurant_data.data.payload
     if (restaurant_data.status === 200) {
@@ -155,7 +158,7 @@ export default function index() {
     }
   }
   const getReview=async()=>{
-    let review_data = await axios.get('http://localhost:8080/get/reviews')
+    let review_data = await axios.get('https://sangkhla-server.vercel.app/get/reviews')
     if(review_data.status === 200){
       let reviews = review_data.data.payload
       let set_review = []
@@ -280,16 +283,17 @@ export default function index() {
 
       </div>
       <div id='attraction-section' className={styles['attraction-section']}>
-          <h1>attraction section</h1>
           <div className="container">
             <div className="col">
               <div className={styles['attraction-flexbox']}>
                 <div className={styles['attraction-title-box']}>
                     <span>สถานที่ท่องเที่ยว</span>
                     <span>
-                    สัมผัสบรรยากาศธรรมชาติ วัฒนธรรม
+                      
+                    สัมผัสบรรยากาศธรรมชาติ วัฒนธรรม<br/>
                     เกษตรกรรมและชุมชน แบบสังขละ 
                     </span>
+                    </div>
                     <div className={styles['attraction-map']}>
                         <div className={styles['right-pin-box']}>
                           <div className={styles['attraction-name-box']}>
@@ -308,7 +312,7 @@ export default function index() {
                         </div>
 
                     </div>
-                </div>
+
               </div>
             </div>
           </div>
@@ -461,10 +465,10 @@ export default function index() {
                             width={577}
                             height={320}
                              url='https://youtu.be/7myqazGs5_Y' /> */}
-                               <iframe width="577" height="315" src="https://www.youtube.com/embed/36iD3HmGt8g" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                               {/* <iframe width="577" height="315" src="https://www.youtube.com/embed/36iD3HmGt8g" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe> */}
                         </div>
                         <div className={styles['video-item']}>
-                            <ReactPlayer width={577}height={320} url='https://youtu.be/MKJZ3Jdsucg' />
+                            {/* <ReactPlayer width={577}height={320} url='https://youtu.be/MKJZ3Jdsucg' /> */}
                         </div>
                         <div className={styles['video-item']}>
                         {/* <iframe width="577" height="315" src="https://www.youtube.com/embed/36iD3HmGt8g" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe> */}

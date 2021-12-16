@@ -367,6 +367,44 @@
   }
 }
 
+////////////////// attraction section //////////////////
+.attraction-section{
+  font-family: Sukhumvit Set;
+  background-color: #fbf6e9;
+  .attraction-flexbox{
+    display: flex;
+    flex-direction: column;
+    width: 1170px;
+    margin: 0 auto;
+    position: relative;
+    .attraction-title-box{
+      display: flex;
+      flex-direction: column;
+      span{
+        &:nth-child(1){
+          font-weight: bold;
+          font-size: 72px;
+          line-height: 80px;
+           margin-bottom: 24px;
+        }
+        &:nth-child(2){
+          font-weight: 500;
+          font-size: 32px;
+          line-height: 40px;
+        }
+      }
+
+    }
+    .attraction-map{
+      width: 1170px;
+      height: 1392px;
+      background-image: url('/img/home/attraction-map.png');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+  }
+}
 
 ////////////////// restaurant section //////////////////
 .restaurant-section{
@@ -1153,6 +1191,7 @@
      justify-content: space-between;
      display: flex;
      max-width: 1440px;
+     margin: 0 auto;
      .footer-left-box{
       width: 560px;
       display: flex;
