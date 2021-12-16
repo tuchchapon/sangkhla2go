@@ -77,15 +77,33 @@ const AppBar = styled(MuiAppBar, {
 }));
 const drawerWidth = 240;
 
+
+
+
 export default function header() {
+
+
     const router = useRouter()
     const id = router.pathname || []
     const [open, setOpen] = useState(true);
     const toggleDrawer = ({}) => {
     setOpen(!open);
     };
+
+    const logout=()=>{
+      localStorage.clear()
+      router.push('/login')
+    }
+    
     useEffect(() => {
       console.log('header id is' ,id)
+
+
+
+      if (!localStorage.getItem("token")) {
+        router.push('/login')
+      }
+      // console.log(router.route);
     }, [id])
     return (
         <Box sx={{display:'flex'}}>
@@ -117,7 +135,7 @@ export default function header() {
             >
               จัดการข้อมูล
             </Typography>
-            <Button color="inherit" variant="outlined">ออกจากระบบ</Button>
+            <Button color="inherit" variant="outlined" onClick={()=>logout()} >ออกจากระบบ</Button>
           </Toolbar>
                 </AppBar>
                     <Drawer variant="permanent" open={open}>

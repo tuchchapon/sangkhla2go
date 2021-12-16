@@ -11,6 +11,8 @@ export default function attraction() {
     const router = useRouter()
     const id = router.query.id || []
     const [galleryImages, setGalleryImages] = useState([])
+    const [imgURL, setImgURL] = useState([])
+    const [baseFile, setBaseFile] = useState([])
     let attraction_type = ['ธรรมชาติ','วัฒนธรรม','เกษตรกรรมและชุมชน']
     const [attraction, setAttraction] = useState({
         id:'',
@@ -19,9 +21,31 @@ export default function attraction() {
         detail:'',
         images:[]
     })
-    const createAttraction=()=>{
+    const createAttraction=async()=>{
+
         console.log('create');
         console.log(attraction)
+
+        for (let i = 0; i < baseFile.length; i++) {
+            let imageData = new FormData()
+            imageData.append('attraction',baseFile[i])
+            imageData.append('id',`attraction${id}`)
+            await axios({
+                method:'post',
+                url:'http://localhost:8080/upload/attraction-images',
+                headers:{ 'Content-Type': 'multipart/form-data' },
+                data:imageData
+            })
+              .then((res) => {
+                  if (res.data.status === 200) {
+                    imgURL.push(res.data.image_name)
+                  }
+              }).catch((err)=>{
+                  console.log(err)
+              })
+            
+        }
+        attraction.images = imgURL
         axios.post('http://localhost:8080/create/attraction',attraction)
         .then((res)=>{
             if (res.status === 201){
@@ -63,32 +87,37 @@ export default function attraction() {
         console.log('files is',files)
         if (files.length > 0) {
             for (let i = 0; i < files.length; i++) {
+                galleryImages.push(window.URL.createObjectURL(files[i]))
+                baseFile.push(files[i])
                 console.log(files[i])
                 let imageData = new FormData()
                 imageData.append('attraction',files[i])
                 imageData.append('id',`attraction${id}`)
-                await axios({
-                    method:'post',
-                    url:'http://localhost:8080/upload/attraction-images',
-                    headers:{ 'Content-Type': 'multipart/form-data' },
-                    data:imageData
-                })
-                  .then((res) => {
-                      if (res.data.status === 200) {
-                        galleryImages.push(res.data.image_name)
-                      }
-                  }).catch((err)=>{
-                      console.log(err)
-                  })
+
+                // await axios({
+                //     method:'post',
+                //     url:'http://localhost:8080/upload/attraction-images',
+                //     headers:{ 'Content-Type': 'multipart/form-data' },
+                //     data:imageData
+                // })
+                //   .then((res) => {
+                //       if (res.data.status === 200) {
+                //         galleryImages.push(res.data.image_name)
+                //       }
+                //   }).catch((err)=>{
+                //       console.log(err)
+                //   })
 
             }
+            console.log('gal image is',galleryImages);
             setAttraction({...attraction,images:galleryImages})
             
         }
     }
     const deleteImg =(index)=>{
         let new_image = attraction.images
-        new_image.splice(index,1)      
+        new_image.splice(index,1)  
+        baseFile.splice(index,1)    
         setAttraction({...attraction,images:new_image})
 
     }
@@ -138,7 +167,7 @@ export default function attraction() {
                                     {attraction.images.map((image,index)=>(                 
                                            <div key={index} className={styles['photo-item']} >
                                             <div className={styles['img-button-box']} >
-                                             <Image  src={`/uploadImage/attraction/${image}`} alt="" width={200} height={250} />
+                                             <img  src={`${image}`} alt="" width={200} height={250} />
                                             <button className={styles['delete-button']} onClick={()=>deleteImg(index)}>ลบ</button>
                                             </div>
                                            </div>

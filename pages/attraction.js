@@ -4,7 +4,8 @@ import styles from '../styles/attraction.module.scss'
 import Head from 'next/head'
 import Popup from 'reactjs-popup'
 import Slider from 'react-slick';
-
+import AttractionPopup from '../components/attractionPopup'
+import SagePopup from '../components/sagePopup'
 function RightArrow(props) {
     const { className, style, onClick } = props;
     return (
@@ -127,7 +128,7 @@ export default function attraction() {
                             {activeTab === "nature" ? (
                                nature_attraction.map((nature)=>(
                                    <div onClick={(e)=>ShowPopup(e,nature)} key={nature.id} className={styles['attraction-item']} >
-                                       <img src={nature.images.length > 0 ? `/uploadImage/attraction/${nature.images[0]}`:'/no-imge.png'} alt="" />
+                                       <img src={nature.images.length > 0 ? `${nature.images[0]}`:'/no-imge.png'} alt="" />
                                        <div className={styles['attraction-namebox']}>
                                         <div className={styles['glass']}></div>
                                        <span>{nature.name}</span>
@@ -137,7 +138,7 @@ export default function attraction() {
                             ):activeTab === "tradition" ?(
                                 tradition_attraction.map((tradition)=>(
                                     <div onClick={(e)=>ShowPopup(e,tradition)} className={styles['attraction-item']} key={tradition.id}>
-                                        <img src={tradition.images.length > 0 ? `/uploadImage/attraction/${tradition.images[0]}` :'/no-imge.png'}  alt="" />
+                                        <img src={tradition.images.length > 0 ? `${tradition.images[0]}` :'/no-imge.png'}  alt="" />
                                         <div className={styles['attraction-namebox']}>
                                         <div className={styles['glass']}></div>
                                         <span>{tradition.name}</span>
@@ -147,7 +148,7 @@ export default function attraction() {
                             ):activeTab === "agri" ?(
                                 agri_attraction.map((agri)=>(
                                     <div onClick={(e)=>ShowPopup(e,agri)} key={agri.id} className={styles['attraction-item']}>
-                                    <img src={agri.images.length > 0 ? `/uploadImage/attraction/${agri.images[0]}`:'/no-imge.png'} alt="" />
+                                    <img src={agri.images.length > 0 ? `${agri.images[0]}`:'/no-imge.png'} alt="" />
                                     <div className={styles['attraction-namebox']}>
                                     <div className={styles['glass']}></div>    
                                     <span>{agri.name}</span>
@@ -186,35 +187,7 @@ export default function attraction() {
                     </div>
                 </div>
             </div>
-            <Popup
-                open={showAttraction}
-                closeOnEscape={false}
-                closeOnDocumentClick={false}
-                lockScroll
-                >
-                    <div className={styles['backdrop']} ></div>
-                    <div className="col-12">
-                        <div className={styles['attraction-popup']}>
-                        <img className={styles['popup-close-icon']} src='/Quit.png' onClick={(e)=>closePopup(e)}  alt="" />
-                        <div className={styles['attraction-popup-namebox']} >
-                        <img src="/glass.png" alt="" />
-                        <span>{activeAttraction.name}</span>
-                        </div>
-                                        <div className={styles['slider']}>
-                                        <Slider {...settings} >
-                                                {activeAttraction.images.length >0 ? activeAttraction.images.map((image)=>(
-                                                <div key={image} className={styles['slider-box']}  ><div className={styles['slider-image']} style={{backgroundImage:`url(${image ? `/uploadImage/attraction/${image}`:'' })`}}></div></div>
-                                                )):(
-                                                    <div className={styles['slider-box']}  ><div className={styles['slider-image']} style={{backgroundImage:`url('/no-image-big.png')`}}></div></div>
-                                                )}        
-                                        </Slider>
-                                    </div>
-                        <div className={styles['popup-detail-box']} >
-                          <span><b>คำบรรยาย : </b> {activeAttraction.detail ? activeAttraction.detail :''}</span>
-                        </div>
-                        </div>
-                    </div>
-                </Popup>
+                <AttractionPopup open={showAttraction} onClose={()=>setShowAttraction(false)} activeAttraction={activeAttraction} />
                 <Popup
                 open={showSage}
                 closeOnEscape={false}
@@ -263,57 +236,7 @@ export default function attraction() {
 
                     </div>
                 </Popup>
-                <Popup
-                open={showLeader}
-                closeOnEscape={false}
-                closeOnDocumentClick={false}
-                lockScroll
-                >
-                    <div className={styles['leader-backdrop']} ></div>
-                    <div className="col-12">
-                        <div className={styles['leader-popup']}>
-                        <img className={styles['leader-popup-close-icon']} src='/Quit.png' onClick={(e)=>closePopup(e)}  alt="" />
-                        <div className={styles['leader-flexbox']}>
-                            <div className={styles['leader-pa1']}>
-                                    <img src="/img/attraction/srisuwan1.jpg" alt="" />
-                                    <span>พระศรีสุวรรณ เจ้าเมืองสังขละบุรีคนแรก </span>
-                                    <span> บันทึกประวัติศาสตร์เมืองหน้าด่านทางชายแดนตะวันตกของไทย 
-                                        ตั้งอยู่ในบริเวณช่องเขาของเทือกเขาตะนาวศรี ดินแดนที่มีพื้นที่ป่าทุ่งใหญ่ฯเป็นอาณาบริเวณกว้างไกลไพศาล 
-                                        เป็นชัยภูมิแห่งการเดินทัพของพม่า และไทยมาตั้งแต่สมัยกรุงศรีอยุธยา 
-                                        ธนบุรี และตอนต้นกรุงรัตนโกสินทร์</span>
-                            </div>
-                            <div className={styles['leader-pa2']}>
-                                    <span>
-                                    ในตอนปลายกรุงศรีอยุธยามีสาเหตุอันเนื่องมาจากพม่าได้ทำสงครามกับมอญทำให้ชาวกะเหรี่ยงได้ถูกกวาดต้อนเข้าสู่สมรภูมิรบไปด้วย 
-                                    ชนชาวกะเหรี่ยงกลุ่มหนึ่งได้เดินทางเข้ามาที่เมืองสังขละบุรี และได้ส่งตัวแทนไปเจรจาขอพึ่งพระโพธิ์สมภารกษัตริย์กรุงศรีอยุธยา 
-                                    กับเจ้าเมืองกาญจนบุรี และได้อาสาตั้งกองกำลังสอดแนมขึ้นช่วยฝ่ายกรุงศรีอยุธยาในการรบกับพม่า ซึ่งในช่วงสมัยกรุงศรีอยุธยา 
-                                    กรุงธนบุรี และต้นรัตนโกสินทร์ ด่านเจดีย์สามองค์ เมืองสังขละบุรี ได้กลายเป็นสมรภูมิรบที่สำคัญต่อเนื่องมาอย่างยาวนานและหนักหน่วง 
-                                    จนล่วงสู่ยุคสมัยกรุงรัตนโกสินทร์ตอนต้น ราวพ.ศ. 2369 ในแผ่นดินของพระบาทสมเด็จพระนั่งเกล้าเจ้าอยู่หัว (รัชกาลที่ 3) ได้ยกฐานะเมืองสังขละบุรีขึ้นเป็นเมืองตามระเบียบการปกครองใหม่ 
-                                    และแต่งตั้ง ภูวะโพ่ เจ้านายกะเหรี่ยงที่เคยเป็นหัวหน้ากองกำลังสอดแนมป้องกันการรุกรานจากพม่าขึ้นเป็นเจ้าเมือง พระราชทานนามว่า “พระศรีสุวรรณคีรี” ทำการปกครองเมืองสังขละบุรีสืบมาและมีทายาทสืบทอดตำแหน่งต่อมาอีก 
-                                    4 คน คือ <br/><b>1.พระศรีสุวรรณคีรี (ขุนสุวรรณ) ภูวะโพ่</b> <br/><b>2.พระศรีสุวรรณคีรี (กรมเมจะ) ลูกของ ภูวะโพ่</b>
-                                     <br/><b>3.พระศรีสุวรรณคีรี (ยังมะตุ) ลูกของ ภูวะโพ่</b> <b>4.พระศรีสุวรรณคีรี ( ปวยดองภู) ลูกของ กรมเมจะ</b> 
-                                     <br/> <b>5.พระศรีสุวรรณคีรี (ทะเจียงโปรย เสตะพันธ์) ลูกของกรมเมจะ </b>
-                                     <br/> เลื่อนขึ้นมาจาก หลวงวิเศษสงคราม เป็นเจ้าเมืองคนสุดท้าย อันเป็นต้นตระกูลเสตะพันธุ์จนถึงปัจจุบัน และเป็นนายอำเภอคนแรกแห่งสังขละบุรี เมื่อ ปีพ.ศ. 2445-2467
-
-                                    </span>
-                            </div>
-                            <div className={styles['leader-pa3']}>
-                                <div className={styles['leader-image-box']}>
-                                    <img src="/img/attraction/srisuwan-coin-front.jpg" alt="" />
-                                    <img src="/img/attraction/srisuwan-coin-back.jpg" alt="" />
-                                </div>
-                                <span>
-                                อธิบายภาพ
-ด้านหน้าเหรียญพระพุทธรัตนสังขละบุรีศรีสุวรรณ ร.3  (พระแก้วขาว)
-ด้านหลังพระศรีสุวรรณคีรี 
-วัดสะเนพ่อง อำเภอสังขละบุรี จังหวัดกาญจนบุรี สร้างปี 2551 
-                                </span>
-                            </div>
-                        </div>
-                        </div>
-
-                    </div>
-                </Popup>
+               <SagePopup open={showSage} onClose={()=>setShowSage(false)} />
         </div>
     )
 }

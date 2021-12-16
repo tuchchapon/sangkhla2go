@@ -8,8 +8,6 @@ import axios from 'axios';
 import Popup from 'reactjs-popup'
 import Footer from '../layouts/footer';
 import ReactPlayer from 'react-player'
-// require('dotenv').config()
-// import dotenv from 'dotenv'
 function RightArrow(props) {
   const { className, style, onClick } = props;
   return (
@@ -25,7 +23,6 @@ function LeftArrow(props){
 
 
 export default function index() {
-  // const API_LINK = process.env.API_URL
   const router = useRouter();
   const [hotels, setHotels] = useState([])
   const [boatHouses, setBoatHouses] = useState([])
@@ -38,6 +35,17 @@ export default function index() {
   const [products, setProducts] = useState([])
   const [showReview, setShowReview] = useState([])
   const [res_reviews, setRes_reviews] = useState([])
+
+  const [openHotelPopup, setOpenHotelPopup] = useState(false)
+  const [openBoatHousePopup, setOpenBoatHousePopup] = useState(false)
+  const [openSagePopup, setOpenSagePopup] = useState(false)
+  const [openLeaderPopup, setOpenLeaderPopup] = useState(false)
+  const [openRestaurantPopup, setOpenRestaurantPopup] = useState(false)
+  const [openLocationPopup, setOpenLocationPopup] = useState(false)
+  const [openBoatPopup, setOpenBoatPopup] = useState(false)
+  const [openTraditionPopup, setOpenTraditionPopup] = useState(false)
+  const [openProductPopup, setOpenProductPopup] = useState(false)
+
 
   let location_data = [
     {
@@ -73,6 +81,7 @@ export default function index() {
       class:'locationbox8'
     }
   ]
+
   const settings = {
     infinite: true,
     speed: 1000,
@@ -114,7 +123,7 @@ export default function index() {
       console.log('boat house is ',boatHouses);
   }
   const getAccommodation =async()=>{
-    let accommodation_data = await axios.get('https://sangkhla-server.vercel.app/get/accommodation')
+    let accommodation_data = await axios.get('http://localhost:8080/get/accommodation')
     let fetch_accommodation = accommodation_data.data.payload
     for (let i = 0; i < fetch_accommodation.length; i++) {
       fetch_accommodation[i].type === "แพพัก" ? boatHouses.push(fetch_accommodation[i]) 
@@ -123,23 +132,23 @@ export default function index() {
     console.log(accommodation_data.data.payload);
   }
   const getBoatProvider = async()=>{
-    let boat_data = await axios.get('https://sangkhla-server.vercel.app/get/boat-provider')
+    let boat_data = await axios.get('http://localhost:8080/get/boat-provider')
     console.log('boat provider is',boat_data.data.payload);
     setBoatProviders(boat_data.data.payload)
   }
   const getTradition =async()=>{
-    let tradition_data = await axios.get('https://sangkhla-server.vercel.app/get/traditions')
+    let tradition_data = await axios.get('http://localhost:8080/get/traditions')
     console.log('tradition data is',tradition_data.data.payload);
     setKarenTraditions(tradition_data.data.payload.karen_tradition)
     setMonTraditions(tradition_data.data.payload.mon_tradition)
   }
   const getProduct=async()=>{
-    let product_data = await axios.get('https://sangkhla-server.vercel.app/get/products')
+    let product_data = await axios.get('http://localhost:8080/get/products')
     console.log('product is',product_data.data.payload);
     setProducts(product_data.data.payload)
   }
   const getRestaurant=async()=>{
-    let restaurant_data = await axios.get('https://sangkhla-server.vercel.app/get/restaurant')
+    let restaurant_data = await axios.get('http://localhost:8080/get/restaurant')
     console.log(restaurant_data.data.payload);
     let restaurant_payload = restaurant_data.data.payload
     if (restaurant_data.status === 200) {
@@ -158,7 +167,7 @@ export default function index() {
     }
   }
   const getReview=async()=>{
-    let review_data = await axios.get('https://sangkhla-server.vercel.app/get/reviews')
+    let review_data = await axios.get('http://localhost:8080/get/reviews')
     if(review_data.status === 200){
       let reviews = review_data.data.payload
       let set_review = []
@@ -289,25 +298,65 @@ export default function index() {
                 <div className={styles['attraction-title-box']}>
                     <span>สถานที่ท่องเที่ยว</span>
                     <span>
-                      
                     สัมผัสบรรยากาศธรรมชาติ วัฒนธรรม<br/>
                     เกษตรกรรมและชุมชน แบบสังขละ 
                     </span>
                     </div>
                     <div className={styles['attraction-map']}>
-                        <div className={styles['right-pin-box']}>
+                        <div className={`${styles['right-pin']} ${styles['right-pin-position1']}`}>
                           <div className={styles['attraction-name-box']}>
-                              <span>ชื่อ</span>  
+                              <div className={styles['sm-box']}>
+                                <span>จุดล่องแพ</span>
+                              </div>
                           </div>
                         </div>
-                        <div className={styles['left-pin-box']}>
+                        <div className={`${styles['left-pin']} ${styles['left-pin-position1']}`}>
                               <div className={styles['attraction-name-box']}>
-                                <span>ชื่อ</span>
+                                <div className={styles['sm-box']}>
+                                  <span>ร.ร.ห้วยกบ</span>
+                                </div>
+                              </div>
+                        </div>
+                        {/* <div className={`${styles['left-pin']} ${styles['left-pin-position2']}`}>
+                              <div className={styles['attraction-name-box']}>
+                                <div className={styles['sm-box']}>บ้านห้วยกบ</div>
+                              </div>
+                        </div> */}
+                        <div className={`${styles['left-pin']} ${styles['left-pin-position2']}`}>
+                              <div className={styles['attraction-name-box']}>
+                                <div className={styles['sm-box']}>
+                                  <span>แม่น้ำบัคลี่</span>
+                                </div>
+                              </div>
+                        </div>
+                        
+                        <div className={`${styles['left-pin']} ${styles['left-pin-position3']}`}>
+                              <div className={styles['attraction-name-box']}>
+                                <div className={styles['lg-box']}>
+                                  <span>เขตรักษาพันธุ์สัตว์ป่า<br/>
+                                <b>ทุ่งใหญ่นเรศวร</b></span>
+                                </div>
+                              </div>
+                        </div>
+                        <div className={`${styles['left-pin']} ${styles['left-pin-position4']}`}>
+                              <div className={styles['attraction-name-box']}>
+                                <div className={styles['sm-box']}>
+                                  <span>สะพานมอญ</span>
+                                </div>
+                              </div>
+                        </div>
+                        <div className={`${styles['right-pin']} ${styles['right-pin-position2']} `}>
+                              <div className={styles['attraction-name-box']}>
+                                <div className={styles['lg-box']}>
+                                  <span>วัดเจดีสามองค์</span>
+                                </div>
                               </div>
                         </div>
                         <div className={styles['temple-box']}>
                               <div className={styles['attraction-name-box']}>
-                                <span>ชื่อ</span>
+                                <div className={styles['lg-box']}>
+                                  <span>วัดจมน้ำ</span>
+                                </div>
                               </div>
                         </div>
 
