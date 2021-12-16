@@ -1,9 +1,10 @@
 import {React,useState,useEffect} from 'react'
-import Popup from 'reactjs-popup'
 import axios from 'axios'
 import Slider from 'react-slick'
 import styles from '../styles/product.module.scss'
 import Head from 'next/head'
+import ProductPopup from '../components/productPopup'
+
 function RightArrow(props) {
     const { className, style, onClick } = props;
     return (
@@ -260,55 +261,7 @@ export default function product() {
                     </div>
                 </div>
             </div>
-            <Popup 
-            open={showProduct}
-            closeOnEscape={false}
-            closeOnDocumentClick={false}
-            lockScroll
-            >
-                <div className={styles['backdrop']}></div>
-                    <div className="col-12">
-                        <div className={styles['product-popup']}>
-                                <img onClick={(e)=>closePopup(e)} className={styles['close-popup-icon']} src="/Quit.png" alt="" />
-                                <div className={styles['product-flexbox']}>
-                                    <div className={styles['popup-name-box']}>
-                                        <span>{activeProduct.name}</span>
-                                    </div>
-                                    <div className={styles['slider']}>
-                                    <Slider {...settings} >
-                                                {activeProduct.images.length >0 ? activeProduct.images.map((image)=>(
-                                                <div key={image} className={styles['slider-box']}  ><div className={styles['slider-image']} style={{backgroundImage:`url(${image ? `/uploadImage/product/${image}`:'' })`}}></div></div>
-                                                )):(
-                                                    <div className={styles['slider-box']}  ><div className={styles['slider-image']} style={{backgroundImage:`url('/no-image-big.png')`}}></div></div>
-                                                )}        
-                                        </Slider>
-                                    </div>
-                                    <div className={styles['popup-detail-box']}>
-                                        <span>{activeProduct.detail}</span>
-                                    </div>
-                                    <div className={styles['icon-row-box']}>
-                                    {activeProduct.fb_page ? (
-                                    <div className={styles['fb-box']}>
-                                    <img src="/fb-icon.png" alt="" />
-                                    <span>{activeProduct.fb_page}</span>
-                                    </div>
-                                    ):''}
-                                    {activeProduct.tel ? (
-                                    <div className={styles['tel-box']}>
-                                    <img src="/tel-icon.png" alt="" />
-                                     <span>{activeProduct.tel}</span>
-                                     </div>
-                                    ):''}
-                                    {activeProduct.link ?(
-                                     <div className={activeProduct.fb_page || activeProduct.tel ? styles['link-box']:styles['link-box-no-border']}> 
-                                     <span><a  target="_blank" href={`${activeProduct.link}`}>ข้อมูลเพิ่มเติม</a></span>
-                                    </div>
-                                    ):''}
-                                   </div>
-                                </div>
-                        </div>
-                    </div>
-            </Popup>
+            <ProductPopup open={showProduct} onClose={()=>setShowProduct(false)} activeProduct={activeProduct} />
         </div>
     )
 }

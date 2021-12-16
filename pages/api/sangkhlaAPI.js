@@ -24,8 +24,10 @@ const Officer = require('../../model/officer')
 const Product = require('../../model/product')
 
 const JWT_SECRET ='sadkajsdj1k3sastichasasclsadnfjasltuSFKHSJKDAPI@$@QKFSJKSJDK'
-require('dotenv').config()
+// require('dotenv').config()
 const appDir = dirname(require.main.filename);
+
+
 
 const driver_storage = multer.diskStorage({
     destination:function(req,file,cb){
