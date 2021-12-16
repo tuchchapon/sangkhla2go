@@ -18,7 +18,7 @@ export default function login() {
     const theme = createTheme();
     const signIn = ()=>{
         console.log('login');
-        axios.post('http://localhost:8080/login',admin).then((res)=>{
+        axios.post(`${process.env.SERVER_API}/login`,admin).then((res)=>{
             console.log(res.data.token);
             console.log('data is',res.data);
             localStorage.setItem("token", `${res.data.token}`);
@@ -30,13 +30,13 @@ export default function login() {
     }
     const register = ()=>{
         console.log('register');
-        axios.post('http://localhost:8080/createAdmin',admin).then((res)=>{
+        axios.post(`${process.env.SERVER_API}/createAdmin`,admin).then((res)=>{
             console.log(res);
         })
     }
     const changePassword =()=>{
         console.log('change password');
-        axios.post('http://localhost:8080/change-password',newPassword)
+        axios.post(`${process.env.SERVER_API}/change-password`,newPassword)
     }
 
     const [admin, setAdmin] = useState({
