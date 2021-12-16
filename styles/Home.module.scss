@@ -1015,10 +1015,42 @@
   background-color: #FBF6E9;
   color: #383838;
   font-family: Sukhumvit Set;
-  padding-bottom: 106px;
+  padding: 80px 0;
+  .review-slider-box{
+    margin: auto;
+    width: 673px;
+    height: 416px;
+    position: relative;
+    background-image: url('/img/home/video-frame.png');
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-bottom:88px;
+    .video-item{
+      width: 577px;
+      height: 382px;
+      position: relative;
+      // margin: 0 50px 0 0;
+      left: 40px;
+      top: 60px;
+    }
+  }
   .review-title-box{
     display: flex;
     flex-direction: column;
+    span{
+      &:nth-child(1){
+        font-weight: bold;
+        font-size: 72px;
+        line-height: 80px;
+      }
+      &:nth-child(2){
+        margin-top: 24px;
+        font-weight: 500;
+        font-size: 24px;
+        line-height: 32px;
+      }
+    }
   }
   .review-list-box{
     width: 1170px;

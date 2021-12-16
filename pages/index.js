@@ -7,6 +7,7 @@ import Link from "next/link";
 import axios from 'axios';
 import Popup from 'reactjs-popup'
 import Footer from '../layouts/footer';
+import ReactPlayer from 'react-player'
 function RightArrow(props) {
   const { className, style, onClick } = props;
   return (
@@ -77,6 +78,18 @@ export default function index() {
     slidesToShow: 3,
     slidesToScroll: 3,
     autoplay: true,
+    nextArrow:<RightArrow/>,
+    prevArrow: <LeftArrow/>
+    
+}
+  const videoSettings = {
+    infinite: true,
+    // speed: 1000,
+    // fade:true,
+    dot:true,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    // autoplay: true,
     nextArrow:<RightArrow/>,
     prevArrow: <LeftArrow/>
     
@@ -441,11 +454,30 @@ export default function index() {
               <div className="container">
                 <div className="row">
                   <div className="col-md-8">
-                  <div className={styles['video-review-box']}>
                   <div className={styles['review-slider-box']}>
-
+                        <Slider {...videoSettings}>
+                        <div className={styles['video-item']}>
+                            {/* <ReactPlayer
+                            width={577}
+                            height={320}
+                             url='https://youtu.be/7myqazGs5_Y' /> */}
+                               <iframe width="577" height="315" src="https://www.youtube.com/embed/36iD3HmGt8g" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                        </div>
+                        <div className={styles['video-item']}>
+                            <ReactPlayer width={577}height={320} url='https://youtu.be/MKJZ3Jdsucg' />
+                        </div>
+                        <div className={styles['video-item']}>
+                        {/* <iframe width="577" height="315" src="https://www.youtube.com/embed/36iD3HmGt8g" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe> */}
+                            {/* <ReactPlayer width={577}height={320}  url='https://www.youtube.com/watch?v=7sDY4m8KNLc' /> */}
+                        </div>
+                        {/* <div className={styles['video-item']}>
+                            <ReactPlayer width={577}height={320}  url='https://www.youtube.com/embed/&v=36iD3HmGt8g' />
+                        </div>
+                        <div className={styles['video-item']}>
+                            <ReactPlayer width={577}height={320} play url='https://www.youtube.com/embed/&v=36iD3HmGt8g' />
+                        </div> */}
+                        </Slider>
                   </div>
-                </div>
                   </div>
                   <div className="col-md-4">
                   <div className={styles['review-title-box']}>
