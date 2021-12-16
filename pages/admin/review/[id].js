@@ -73,7 +73,7 @@ import Button from '@mui/material/Button';
              console.log('response is ', response.data.payload)
              setReview(response.data.payload)
          }
-         getReview()
+        if(id !== 'create' && router.isReady) getReview()
      }, [id,router.isReady])
     return (
         <div className={styles['dis-f']} >

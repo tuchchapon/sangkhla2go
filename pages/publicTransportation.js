@@ -70,7 +70,6 @@ export default function publicTransportation() {
     const closeBoatPopup =(e)=>{
         if(e)e.preventDefault()
         setShowBoatPopup(false)
-        
     }
     const scrollTop =()=>{
         document.getElementById("วิน").scrollIntoView({behavior:'smooth'})
@@ -125,7 +124,7 @@ export default function publicTransportation() {
             </div>
             </div>
                 <div className="col-12">
-                <p className={styles['boat-title']} >เรือนำเที่ยว</p>
+                <p  className={styles['boat-title']} >เรือนำเที่ยว</p>
             <div className={styles['boat-box']} >
                 {boats.length > 0 ? boats.map((boat)=>(
                     <div  key={boat.id} className={styles['boat-items']} onClick={(e)=>openBoatPopup(e,boat)} >
@@ -145,7 +144,7 @@ export default function publicTransportation() {
                 closeOnEscape={false}
                 closeOnDocumentClick={false}
                 lockScroll
-                
+                activeWin
                 >
                     <div >
                         <div className={styles['backdrop']} ></div>

@@ -1,14 +1,481 @@
-import React from 'react'
+import {React,useState,useEffect} from 'react'
 import { useRouter } from 'next/router'
+import Head from 'next/head'
+import Slider from 'react-slick';
+import styles from '../styles/Home.module.scss'
+import Link from "next/link";
+import axios from 'axios';
+import Popup from 'reactjs-popup'
+import Footer from '../layouts/footer';
+function RightArrow(props) {
+  const { className, style, onClick } = props;
+  return (
+      <img src="/right-arrow.png" style={{...style,width:'32px',height:'64px',right:'-57px',top:'50%'}} className={className} onClick={onClick} alt="" />
+  );
+}
+function LeftArrow(props){
+  const {className , style , onClick} = props;
+  return(
+      <img src="/left-arrow.png" alt=""  style={{...style,width:'32px',height:'64px',left:'-57px',top:'50%'}} className={className}  onClick={onClick} />
+  )
+}
+
+
 export default function index() {
   const router = useRouter();
+  const [hotels, setHotels] = useState([])
+  const [boatHouses, setBoatHouses] = useState([])
+  const [attractions, setAttractions] = useState([])
+  const [restaurants, setrestaurants] = useState([])
 
-  const goNext =()=>{
-    router.replace("/publicTransportation");
+  const [boatProviders, setBoatProviders] = useState([])
+  const [karenTraditions, setKarenTraditions] = useState([])
+  const [monTraditions, setMonTraditions] = useState([])
+  const [products, setProducts] = useState([])
+  const [showReview, setShowReview] = useState([])
+  const [res_reviews, setRes_reviews] = useState([])
+
+  let location_data = [
+    {
+      name:'วินท่ารถตู้หน้าโรงพยาบาล',
+      class:'locationbox1'
+    },
+    {
+      name:'วินหน้า ธ.กรุงไทย',
+      class:'locationbox2'
+    },
+    {
+      name:'วินตรงข้าม ธ.กรุงไทย',
+      class:'locationbox3'
+    },
+    {
+      name:'วินสะพานไม้ฝั่งมอญ',
+      class:'locationbox4'
+    },
+    {
+      name:'วินตลาดฝั่งมอญ',
+      class:'locationbox5'
+    },
+    {
+      name:'วินดงสัก',
+      class:'locationbox6'
+    },
+    {
+      name:'วินกองทุนแม่',
+      class:'locationbox7'
+    },
+    {
+      name:'วินสหกรณ์สังขละบุรี',
+      class:'locationbox8'
+    }
+  ]
+  const settings = {
+    infinite: true,
+    speed: 1000,
+    // fade:true,
+    dot:true,
+    slidesToShow: 3,
+    slidesToScroll: 3,
+    autoplay: true,
+    nextArrow:<RightArrow/>,
+    prevArrow: <LeftArrow/>
+    
+}
+
+  const showAllReview=()=>{
+      let new_show_review = []
+      let new_res_review = []
+      if (res_reviews.length !== 0) {
+        for (let i = 0; i < res_reviews.length; i++) {
+          if(res_reviews[i])new_show_review.push(res_reviews[i])
+        }
+        setShowReview([...showReview,...new_show_review])
+        new_res_review = res_reviews.splice(0,res_reviews.length)
+      }
   }
+  const showAccommodationPopup =(e,accommodation)=>{
+      if(e) e.preventDefault()
+      console.log('boat house is ',boatHouses);
+  }
+  const getAccommodation =async()=>{
+    let accommodation_data = await axios.get('http://localhost:8080/get/accommodation')
+    let fetch_accommodation = accommodation_data.data.payload
+    for (let i = 0; i < fetch_accommodation.length; i++) {
+      fetch_accommodation[i].type === "แพพัก" ? boatHouses.push(fetch_accommodation[i]) 
+      :hotels.push(fetch_accommodation[i])
+    }
+    console.log(accommodation_data.data.payload);
+  }
+  const getBoatProvider = async()=>{
+    let boat_data = await axios.get('http://localhost:8080/get/boat-provider')
+    console.log('boat provider is',boat_data.data.payload);
+    setBoatProviders(boat_data.data.payload)
+  }
+  const getTradition =async()=>{
+    let tradition_data = await axios.get('http://localhost:8080/get/traditions')
+    console.log('tradition data is',tradition_data.data.payload);
+    setKarenTraditions(tradition_data.data.payload.karen_tradition)
+    setMonTraditions(tradition_data.data.payload.mon_tradition)
+  }
+  const getProduct=async()=>{
+    let product_data = await axios.get('http://localhost:8080/get/products')
+    console.log('product is',product_data.data.payload);
+    setProducts(product_data.data.payload)
+  }
+  const getRestaurant=async()=>{
+    let restaurant_data = await axios.get('http://localhost:8080/get/restaurant')
+    console.log(restaurant_data.data.payload);
+    let restaurant_payload = restaurant_data.data.payload
+    if (restaurant_data.status === 200) {
+      for (let i = 0; i < restaurant_payload.length; i++) {
+        let new_type =[]
+        restaurant_payload[i].type.forEach(type => {
+            new_type.push(`${type} / `)
+        });
+        let arrToString = new_type.join(' ')
+        arrToString = arrToString.substring(0,arrToString.length -3)
+        restaurant_payload[i].type = arrToString
+    
+        
+      }
+      setrestaurants(restaurant_payload)
+    }
+  }
+  const getReview=async()=>{
+    let review_data = await axios.get('http://localhost:8080/get/reviews')
+    if(review_data.status === 200){
+      let reviews = review_data.data.payload
+      let set_review = []
+      for (let i = 0; i < 9; i++) {
+        if (reviews[i] === 0 || reviews[i]) set_review.push(reviews[i])
+      }
+      reviews.splice(0,9)
+      setRes_reviews(reviews)
+      setShowReview(set_review)
+    }
+  }
+  useEffect(() => {
+    hotels.length === 0 ? getAccommodation():''
+    boatProviders.length === 0 ? getBoatProvider():''
+    restaurants.length === 0 ? getRestaurant():''
+    karenTraditions.length === 0 || monTraditions.length === 0 ?getTradition():''
+    products.length === 0 ? getProduct():''
+    showReview.length === 0 ? getReview():''
+
+  }, [])
   return (
-    <div>
-      <button onClick={goNext} >next page</button>
-    </div>
+    <>
+      <div className={styles['intro-section']}>
+          
+              <div className="container">
+                <div className="row">
+                <div className="col-md-5">
+                  <div className={styles['logo-box']}>
+                      <img src="/LOGO.png" alt="" />
+                  </div>
+                </div>
+                <div className="col-md-7">
+                  <div className={styles['intro-textbox']}>
+                    <span>
+                    <b>สังขละบุรี </b>เป็นอำเภอชายแดนตะวันตก รอยต่อด่านเจดีย์สามองค์ติดกับเมืองพญาตองซูของประเทศเมียนมา <br/> มีตำบลหนองลูเป็นจุดศูนย์กลางการท่องเที่ยว โดยประกอบ<br/>ไปด้วยเส้นทางประวัติศาสตร์และแหล่งอารยธรรม 
+จนปัจจุบัน<br/>ถือเป็นสถานที่ท่องเที่ยวสำคัญแห่งหนึ่งของจังหวัดกาญจนบุรี ด้วยความงดงามของธรรมชาติและความหลากหลายทางวัฒนธรรมของชนชาติพันธุ์ ทั้งไทย มอญ กะเหรี่ยง ลาว และพม่า<br/> 
+หนึ่งในสถานที่สำคัญอันเปรียบเสมือนสัญลักษณ์แห่งเมืองนทีสามประสบที่ดึงดูดนักท่องเที่ยวให้มาเยือนสังขละบุรี<br/> คือสะพานอุตตมานุสรณ์ หรือเรียกสั้นๆ ว่า สะพานมอญ ซึ่งเป็นสะพานไม้ที่ยาวที่สุดในประเทศไทย และยาวเป็นอันดับสองของโลก
+                    </span>
+                  </div>
+                </div>
+                </div>
+                <div>
+                  
+                </div>
+              </div>
+              <div className={styles['page-banner']} style={{backgroundImage:`url('/img/home/banner.png')`}}></div>
+              <div className={styles['menu-bg-box']}>
+                      <div className={styles['menu-wrap']}>
+                  <div onClick={(e)=> document.getElementById("accommodation-section").scrollIntoView({behavior:'smooth'})} className={styles['menu-box']}>
+                    <img src="/img/home/house-icon.png" alt="" />
+                    <span>ที่พัก</span>
+                  </div>
+                  <div onClick={(e)=> document.getElementById("attraction-section").scrollIntoView({behavior:'smooth'})} className={styles['menu-box']}>
+                    <img src="/img/home/attraction-icon.png" alt="" />
+                    <span>ที่เที่ยว</span>
+                  </div>
+                  <div onClick={(e)=> document.getElementById("restaurant-section").scrollIntoView({behavior:'smooth'})} className={styles['menu-box']}>
+                    <img src="/img/home/restaurant-icon.png" alt="" />
+                    <span>ร้านอาหาร/กาแฟ</span>
+                  </div>
+                  <div onClick={(e)=> document.getElementById("transportation-section").scrollIntoView({behavior:'smooth'})} className={styles['menu-box']}>
+                    <img src="/img/home/tradition-icon.png" alt="" />
+                    <span>ขนส่งสาธารณะ</span>
+                  </div>
+
+                <div onClick={(e)=> document.getElementById("tradition-section").scrollIntoView({behavior:'smooth'})} className={styles['menu-box']}>
+                    <img src="/img/home/tradition-icon.png" alt="" />
+                    <span>วัฒนธรรม</span>
+                  </div>
+                  <div onClick={(e)=> document.getElementById("product-section").scrollIntoView({behavior:'smooth'})} className={styles['menu-box']}>
+                    <img src="/img/home/product-icon.png" alt="" />
+                    <span>ผลิตภัณฑ์ชุมชน</span>
+                  </div>
+                  <div onClick={(e)=> document.getElementById("review-section").scrollIntoView({behavior:'smooth'})} className={styles['menu-box']}>
+                    <img src="/img/home/review-icon.png" alt="" />
+                    <span>รีวิว</span>
+                  </div>
+                      </div>
+                  </div>
+      </div>
+      <div id='accommodation-section' className={styles['accommodation-section']}>
+          <div className="container">
+            <div className="col-12">
+                <div className={styles['accommodation-flexbox']}>
+                <div className={styles['accommodation-title']}>
+              <span>ที่พัก</span>
+              <span>โรงแรม / โฮมสเตย์ / รีสอร์ท / แพพัก / เรือนรับรอง / โฮสเทล</span>
+              </div>
+              <div className={styles['accommodation-list']}> 
+              {hotels.length >0 ? hotels.map((hotel)=>(
+              <div onClick={(e)=>showAccommodationPopup(e,hotel)} key={hotel.id} className={styles['accommodation-item']} >
+               <img src={hotel.images.length >0 ? `/uploadImage/accommodation/${hotel.images[0]}`:'/no-imge.png'} alt="" />
+              <span className={styles['accommodation-name']} >{hotel.name}<br/></span>
+              <div className={styles['price-box']} >
+              <img className={styles['icon-b']} src="/img/accommodation/icon-B.png" alt="" />
+              <span>{`${hotel.min_price} - ${hotel.max_price} บาท`}</span>
+              </div>
+              </div>
+              )):''}
+              </div>
+              <div className={styles['boat-house-list']}>
+                {boatHouses.length > 0 ? boatHouses.map((boatHouse)=>(
+              <div key={boatHouse.id} className={styles['boat-house-item']}>
+                <div className={styles['boat-image-box']} style={{backgroundImage:`url('/img/home/boat-house-box.png')`}} >
+              <img src={boatHouse.images.length > 0 ? `/uploadImage/accommodation/${boatHouse.images[0]}` :'/no-image-big.png'} alt="" />
+                </div>
+                  <div className={styles['boat-house-name-box']}>
+                  <span className={styles['accommodation-name']} >{boatHouse.name}<br/></span>
+                  <div className={styles['price-box']} >
+                  <img className={styles['icon-b']} src="/img/accommodation/icon-B.png" alt="" />
+                  <span>{`${boatHouse.min_price} - ${boatHouse.max_price} บาท`}</span>
+              </div>
+                  </div>
+                </div>
+                )):''}
+                
+              </div>
+              <Link href={'/accommodation'}><span className={styles['see-all-button']}>ดูทั้งหมด</span></Link>
+                </div>
+            </div>
+          </div>
+
+      </div>
+      <div id='attraction-section' className={styles['attraction-section']}>
+          <h1>attraction section</h1>
+          <div className="container">
+            <div className="col">
+              <div className={styles['attraction-flexbox']}>
+                <div className={styles['attraction-title-box']}>
+                    <span>สถานที่ท่องเที่ยว</span>
+                    <span>
+                    สัมผัสบรรยากาศธรรมชาติ วัฒนธรรม
+                    เกษตรกรรมและชุมชน แบบสังขละ 
+                    </span>
+                    <div className={styles['attraction-map']}>
+                        <div className={styles['right-pin-box']}>
+                          <div className={styles['attraction-name-box']}>
+                              <span>ชื่อ</span>  
+                          </div>
+                        </div>
+                        <div className={styles['left-pin-box']}>
+                              <div className={styles['attraction-name-box']}>
+                                <span>ชื่อ</span>
+                              </div>
+                        </div>
+                        <div className={styles['temple-box']}>
+                              <div className={styles['attraction-name-box']}>
+                                <span>ชื่อ</span>
+                              </div>
+                        </div>
+
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+      <div id='restaurant-section' className={styles['restaurant-section']}>
+          <div className={styles['restaurant-flexbox']}>
+            <div className={styles['restaurant-title']}>
+              <span>ร้านอาหาร/กาแฟ</span>
+            </div>
+            <div className={styles['slider']}>
+              <Slider {...settings}>
+              {restaurants.length > 0  ? restaurants.map((restaurant)=>(
+               <div key={restaurant.id} className={styles['slider-box']}>
+                 <div className={styles['restaurant-item']}>
+                 <img className={styles['restaurant-image']} src={restaurant.images.length > 0 ?`/uploadImage/restaurant/${restaurant.images[0]}`:'/no-imge.png'} alt="" />
+               <span>{restaurant.name}</span>
+              <span>{restaurant.type}</span>
+               <span><b style={{color:'#383838'}}>เมนูแนะนำ : </b>{restaurant.recommend_menu}</span>
+                 </div>
+              </div>
+                )) :''}
+              </Slider>
+            </div>
+            <div onClick={(e)=>router.push('/restaurant')} className={styles['see-all-box']}> <span  className={styles['see-all-button']}>ดูทั้งหมด</span></div>
+            <div className={styles['restaurant-bg-image-box']}>
+              <img src="/img/restaurant/title-bottom-left.png" alt="" />
+              <img src="/img/restaurant/title-bottom-right.png" alt="" />
+            </div>
+          </div>
+      </div>
+      <div id='transportation-section'  className={styles['public-transportation-section']}>
+          <div className="container">
+          <div className={styles['transportation-flexbox']}>
+            <span className={styles['transportation-title']}>ขนส่งสาธารณะ</span>
+          <div className={styles['location-map-box']}>
+                <span className={styles['win-title']}>วินมอเตอร์ไซค์</span>
+                {location_data.map((location)=>(
+                    <div key={location.name} className={`${styles['location-box-name']} ${styles[location.class]}`}>
+                      <span>{location.name}</span>
+                    </div>
+                ))}
+          </div>
+                <span onClick={(e)=>router.push('/publicTransportation#วิน')}  className={styles['see-all-button']}>ดูทั้งหมด</span>
+                <div className={styles['boat-tour-box']}>
+                  <span className={styles['boat-title']}>เรือนำเที่ยว</span>
+                  <div className={styles['slider']}>
+                    <Slider {...settings}>
+                      {boatProviders.length > 0 ? boatProviders.map((boatProvider)=>(
+                          <div key={boatProvider.id} className={styles['boat-slider-box']}>
+                            <div className={styles['boat-provider-item']}>
+                                  <img className={styles['boat-provider-image']} src={boatProvider.boat_images.length > 0 ? `/uploadImage/boatProvider/${boatProvider.boat_images[0]}`:'/no-imge.png'} alt="" />
+                                  <div className={styles['boat-textbox']} >
+                                  <p className={styles['boat-club-name']} >{boatProvider.club_name}</p>
+                                  <p className={styles['boat-provider-name']}>{boatProvider.provider_name} </p>
+                        </div>
+                            </div>
+                          </div>
+                      )):''}
+                    </Slider>
+                  </div>
+                  <span onClick={(e)=>router.push('/publicTransportation#boat')} className={styles['see-all-button']}>ดูทั้งหมด</span>
+                </div>
+         </div>
+          </div>
+      </div>
+      <div id='tradition-section' className={styles['tradition-section']}>
+        <div className="container">
+          <div className="col">
+            <div className={styles['tradition-flexbox']}>
+                <div className={styles['tradition-title-box']}>
+                  <span>ประเพณี </span>
+                <div className={styles['tradition-title']}>
+                    ประเพณีชาวกระเหรี่ยง
+                </div>
+                <div className={styles['black-line']}></div>
+                </div>
+                <div className={styles['tradition-list-box']}>
+                {karenTraditions.length > 0 ? karenTraditions.map((karen)=>(
+                <div key={karen.id} className={styles['tradition-item']}>
+                  <div className={styles['image-box-size']}>
+
+                      <div className={styles['tradition-image-box']} style={{backgroundImage:`url('/img/tradition/tradition-frame.png')}`}}>
+                      <div  style={{backgroundImage:`url(${karen.images.length >0 ? `/uploadImage/tradition/${karen.images[0]}`:'/img/tradition/traditionPlaceholder.png'})`}} className={styles['tradition-image']}></div>
+                      
+                    </div>
+                  </div>
+                    <div className={styles['month-name-box']}>{karen.month}</div>
+                </div>
+                )):''}
+                </div>
+                <div className={styles['tradition-title-box']}>
+                  <div className={styles['black-line']}></div>
+                    <div className={styles['tradition-title']}>
+                        ประเพณีชาวมอญ
+                    </div>
+                </div>
+                <div className={styles['tradition-list-box']}>
+                    {monTraditions.length > 0 ? monTraditions.map((mon)=>(
+                <div key={mon.id} className={styles['tradition-item']}>
+                <div className={styles['image-box-size']}>
+
+                    <div className={styles['tradition-image-box']} >
+                    <div  style={{backgroundImage:`url(${mon.images.length >0 ? `/uploadImage/tradition/${mon.images[0]}`:'/img/tradition/traditionPlaceholder.png'})`}} className={styles['tradition-image']}></div>
+                    
+                  </div>
+                </div>
+                  <div className={styles['month-name-box']}>{mon.month}</div>
+              </div>
+                    )):''}
+                </div>
+                <span onClick={(e)=>router.push('/traditions')} className={styles['see-all-button']}>ดูทั้งหมด</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id='product-section' className={styles['product-section']}>
+        <div className="container">
+            <div className="col">
+            <div className={styles['product-flexbox']}>
+            <span className={styles['product-title']}>ผลิตภัณฑ์ชุมชน</span>
+              <div className={styles['product-list']}>
+                      {products.length >0 ? products.map((product)=>(
+                      <div onClick={(e)=>openPopup(e,product)} key={product.id} className={styles['product-item']}>
+                      <div className={styles['product-image-box']}>
+                      <div style={{backgroundImage:`url(${product.images.length > 0 ? `/uploadImage/product/${product.images[0]}`:'/no-imge.png'})`}}></div>
+                      </div>
+                      <div className={styles['product-name-box']}>
+                      <span>{product.name}</span>
+                      </div>
+                      </div>
+                      )):''}
+              </div>
+              <span onClick={(e)=>router.push('/product')} className={styles['see-all-button']}>ดูทั้งหมด</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id='review-section' className={styles['review-section']}>
+          <div className="container">
+            <div className="col">
+              <div className={styles['review-flexbox']}>
+
+              <div className="container">
+                <div className="row">
+                  <div className="col-md-8">
+                  <div className={styles['video-review-box']}>
+                  <div className={styles['review-slider-box']}>
+
+                  </div>
+                </div>
+                  </div>
+                  <div className="col-md-4">
+                  <div className={styles['review-title-box']}>
+                    <span>สังขละรีวิว</span>
+                    <span>นอกจากสะพานมอญ ที่เป็นไฮไลท์
+                          ของสังขละบุรีแล้ว มีที่ไหนน่าไปอีกบ้าง
+                          ตามดูในรีวิวกันได้เลย
+                    </span>
+                </div>
+                  </div>
+                </div>
+              </div>
+              </div>
+              <div className={styles['review-list-box']}>
+                  <span>ลิงค์รีวิวสังขละเพิ่มเติม</span>
+                  <div className={styles['review-list']}>
+                  {showReview.length > 0 ? showReview.map((review)=>(
+                     <div key={review.review_name} className={styles['review-item']}>
+                     <div className={styles['link-icon']}></div>
+                     <span><a target="_blank" href={review.review_link}>{review.review_name}</a></span>
+                     </div>
+                  )) :''}
+                  </div>
+                 {res_reviews.length > 0 ?( <span onClick={(e)=>showAllReview(e)} className={styles['see-all-button']}>แสดงทั้งหมด</span>):''}
+              </div>
+             
+            </div>
+          </div>
+      </div>
+      <Footer/>
+    </>
   )
 }

@@ -648,7 +648,6 @@ router.route("/dbcheck").get((req, res) => {
   router.route("/get/boat-provider").get((req,res)=>{
     let data_array = []
     BoatProvider.find({},function (err,data) {
-      console.log('data is',data)
       if(err){
         res.send(err)
       }
@@ -1184,7 +1183,7 @@ router.route("/dbcheck").get((req, res) => {
 
     // get attraction api 
     router.route('/get/attractions').get((req,res)=>{
-      // let data_array = []
+      let data_array = []
       let nature_attraction = []
       let tradition_attraction = []
       let agri_attraction = []
@@ -1199,11 +1198,12 @@ router.route("/dbcheck").get((req, res) => {
           for (let j = 0; j < data[i].images.length; j++) {
             attraction.images.push(data[i].images[j]) 
           }
+          data_array.push(attraction)
           attraction.type === "ธรรมชาติ" ? nature_attraction.push(attraction)
           :attraction.type === "วัฒนธรรม" ? tradition_attraction.push(attraction)
           :agri_attraction.push(attraction)
         }
-        return res.status(200).json({payload:{nature_attraction,tradition_attraction,agri_attraction},status:200})
+        return res.status(200).json({payload:{attraction:data_array,nature_attraction,tradition_attraction,agri_attraction},status:200})
       })
     
     })
@@ -1212,7 +1212,6 @@ router.route("/dbcheck").get((req, res) => {
     router.route('/get/products').get((req,res)=>{
       let data_array = []
       Product.find({},function(err,data){
-        console.log('data is',data)
         for (let i = 0; i < data.length; i++) {
           let product = {id:'',name:'',detail:'',fb_page:'',tel:'',link:'',images:[]}
           product.id = data[i]._id
@@ -1235,8 +1234,6 @@ router.route("/dbcheck").get((req, res) => {
     router.route('/get/traditions').get((req,res)=>{
       let mon_array = []
       let karen_array =[]
-      
-      console.log('get/tradition')
       Tradition.find({},function(err,data){
         if (data.length >0) {
           for (let i = 0; i < data.length; i++) {

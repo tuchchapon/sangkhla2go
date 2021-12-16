@@ -1,0 +1,1155 @@
+
+////////////////// intro section //////////////////
+.intro-section{
+  // background: rgba(225, 211, 182, 0.8);
+  background-color: #E1D3B6;
+  position: relative;
+  padding-top: 56px;
+  font-family: Sukhumvit Set;
+  padding-bottom: 376px;
+  z-index: 2;
+  // height: 1400px;
+  &::after{
+    content: '';
+    position: absolute;
+    width: 100%;
+    top: 0;
+    z-index: 1;
+    height: 736px;
+    background-color: #E1D3B6;
+  }
+  color: #383838;
+  .page-banner{
+    // display: none;
+    position: relative;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 608px;
+    width: 100%; 
+    z-index: 2;
+    // max-width: 1440px;
+    // top: -184px;
+  }
+  .logo-box{
+    position: relative;
+    margin: auto;
+    margin-top: 64px;
+    width: 470px;
+    height: 200px;
+    z-index: 3;
+  }
+  .intro-textbox{
+    position: relative;
+    z-index: 6;
+    width: 668px;
+    // height: 544px;
+    margin: 0 auto;
+    // left: 635px;
+    padding: 33px 38px;
+    // top: 136px;
+    background: rgba(255, 253, 248, 0.8);
+    border-radius: 32px;
+    span{
+      white-space: pre-line;
+      word-break: keep-all;
+      font-size: 24px;
+      line-height: 32px;
+    }
+  }
+  .menu-bg-box{
+    position: absolute;
+    display: flex;
+    // height: 440px;
+    width: 100%;
+    height: 440px;
+    padding: 24px 0 0 0;
+    background: rgba(225, 211, 182, 0.8);
+    // top:  -64px ;
+    bottom: 0;
+    z-index: 5;
+    .menu-wrap{
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      // align-content: center;
+      margin: 0 auto;
+      width: 1170px;
+      .menu-box{
+        display: flex;
+        cursor: pointer;
+        margin-right: 30px;
+        margin-bottom: 24px;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        align-content: flex-start;
+        width: 270px;
+        height: 160px;
+        background-image: url('/img/home/intro-menu-box.png');
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+        &:nth-child(4){
+          margin-right: 0;
+        }
+        img{
+          margin-top: -56px;
+          margin-bottom: 16px;
+          width: 90px;
+          height: 72px;
+        }
+        span{
+          font-size: 32px;
+          line-height: 48px;
+          font-weight: bold;
+          text-align: center;
+        }
+      }
+      .menu-box:hover{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 270px;
+        height: 160px;
+        background-image: url('/img/home/intro-menu-box-hover.png');
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+      }
+    }
+
+  }
+}
+
+////////////////// accommodation section //////////////////
+.accommodation-section{
+  background-color: #fbf6e9;
+  color: #383838;
+  font-family: Sukhumvit Set;
+  position: relative;
+  padding: 80px 0 40px 0;
+  &::before{
+    width: 100%;
+    height: 240px;
+    content: '';
+    z-index: 1;
+    background-color: #eee4d0;
+    
+    position: absolute;
+    bottom: 0;
+
+  }
+      &::after{
+      background-image: url('/img/home/wave.png');
+      content: '';
+      width: 100%;
+      // max-width: 1440px;
+      height: 24px;
+      bottom: 240px;
+      // left: 135px;
+      z-index: 1;
+      position: absolute;
+      object-fit: fill;
+      // -o-object-position: center;
+    }
+
+  position: relative;
+  .wave-box{
+    width: 100%;
+    height: 240px;
+    // top: -160px;
+    position: absolute;
+    z-index: 1;
+    background-color: #eee4d0;
+    .wave-image{
+      width: 1440;
+      height: 24px;
+      // left: -20px;
+      position: absolute;
+      // object-fit: cover;
+      top: -18px;
+    }
+  }
+
+  .accommodation-flexbox{
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    .accommodation-title{
+      display: flex;
+      flex-direction: column;
+      span{
+        &:nth-child(1){
+          font-size: 64px;
+          font-weight: bold;
+          text-align: center;
+          margin-bottom: 32px;
+        }
+        &:nth-child(2){
+          font-size: 24px;
+          line-height: 32px;
+          color: #757575;
+        }
+
+      }
+    }
+
+  }
+
+  .accommodation-list{
+    margin: auto;
+    width: 1170px;
+    display: flex;
+    // flex-wrap: wrap;
+    overflow: hidden;
+    margin-bottom: 16px;
+}
+.boat-house-list{
+  width: 1170px;
+  display: flex;
+  overflow: hidden;
+  margin: 48px auto 16px ;
+  position: relative;
+  .boat-house-item{
+    cursor: pointer;
+    position: relative;
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    // width: 270px;
+    // height: 296px;
+    margin-right: 30px;
+    flex: 0 0 calc((100% - 90px) /4);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    // top: 12px;
+    .boat-image-box{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 270px;
+      height: 296px;
+      background-image: url('/img/home/boat-house-box.png');
+      object-fit: cover;
+      position: relative;
+
+      img{
+        object-fit: cover;
+        position: relative;
+        top: 12px;
+        width: 190px;
+        height: 136px;
+      }
+    }
+    .boat-house-name-box{
+      z-index: 2;
+      margin-top: 8px;
+      background: url('/img/home/boat-house-name-box.png');
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 8px 22px;
+      width: 266px;
+      height: 98px;
+      .accommodation-name{
+        white-space: pre;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        width: 200px;
+        // margin-top: 22px;
+        font-size: 32px;
+        line-height: 48px;
+        color: #383838;
+        font-weight: bold;
+        text-align: start;
+    }
+    .price-box{
+        display: flex;
+        align-items: center;
+        // width: 200px;
+        height: 32px;
+        span{
+        margin-left: 8px;
+        font-size: 24px;
+        line-height: 32px;
+        color: #757575;
+        }
+    }
+    &:nth-child(3n){
+        margin-right: 0;
+    }
+    img{
+        width: 322px;
+        height: 322px;
+        object-fit: cover;
+        border-radius: 16px;
+       
+    }
+    .icon-b{
+        width: 24px;
+        height: 24px;
+    }
+    }
+
+  }
+  .boat-house-item:hover .boat-house-name-box{
+    background: url('/img/home/boat-house-name-box-hover.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+}
+.accommodation-item{
+    width: 370px;
+    cursor: pointer;
+    height: 472px;
+    background: #FFFDF8;
+    border: 4px solid #383838;
+    margin: 0 30px 42px 0;
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    padding: 22px;
+    flex: 0 0 calc(( 100% - 60px)/3);
+    .accommodation-name{
+      white-space: pre;
+      overflow: hidden;
+      text-overflow: ellipsis;
+        margin-top: 12px;
+        font-size: 32px;
+        line-height: 48px;
+        color: #383838;
+        font-weight: bold;
+        text-align: start;
+    }
+    .price-box{
+        display: flex;
+        align-items: center;
+        // width: 200px;
+        height: 32px;
+        span{
+                margin-left: 8px;
+                font-size: 24px;
+                line-height: 32px;
+                color: #757575;
+        }
+    }
+    &:nth-child(3n){
+        margin-right: 0;
+    }
+    img{
+        width: 322px;
+        height: 322px;
+        object-fit: cover;
+        border-radius: 16px;
+       
+    }
+    .icon-b{
+        width: 24px;
+        height: 24px;
+    }
+}
+.accommodation-item:hover{
+    background-color: #E1D3B6;
+}
+  .see-all-button{
+    margin-top: 40px;
+    z-index: 4;
+  }
+}
+
+
+////////////////// restaurant section //////////////////
+.restaurant-section{
+  font-family: Sukhumvit Set;
+  // background: rgba(225, 211, 182, 0.5);
+  background-color: #eee4d0;
+  position: relative;
+  padding-top: 48px;
+  padding-bottom: 186px;
+  // height: 1000px;
+  display: flex;
+  flex-direction: column;
+  .restaurant-flexbox{
+    // display: flex;
+    //slider can't use with display flex !!
+    flex-direction: column;
+    align-items: center;
+    // height: 1400px;
+  }
+  .see-all-box{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    // margin-bottom: 186px;
+  }
+  .slider{
+    position: relative;
+    max-width: 1170px;
+    margin: auto;
+    .restaurant-item{
+      display: flex;
+      flex-direction: column;
+      background: #FFFDF8;
+      border: 4px solid #383838;
+      margin: 30px auto 40px ;
+      padding: 22px 7px 24px 22px;
+      width: 366px;
+      height: 548px;
+      max-width: 366px;
+      cursor: pointer;
+      position: relative;
+      // justify-content: center;
+      // align-items: center;
+      text-align: start;
+
+      span{
+        text-align: start;
+        white-space: pre-wrap;
+        line-break: loose;
+        word-break: break-all;
+        width: 322px;
+        line-height: 40px;
+        font-size: 24px;
+        &:nth-child(2){
+          margin-top: 22px;
+            width: 330px;
+            height: 48px;
+            line-height: 48px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: pre;
+            font-weight: bold;
+            font-size: 32px;
+            // color: red;
+        }
+        &:nth-child(3){
+            line-height: 32px;
+            height: 32px;
+            width: 330px;
+            color: #757575;
+            overflow: hidden;
+            white-space: pre;
+            text-overflow: ellipsis;
+        }
+        &:nth-child(4){
+            height: 80px;
+            width: 330px;
+            white-space: pre-wrap;
+            color: #757575;
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
+    }
+      .restaurant-image{
+        width: 322px;
+        height: 322px;
+        max-width: 322px;
+        max-height: 322px;
+        object-fit: cover;
+      }
+    }
+    .slider-box{
+      position: relative;
+     
+      // margin: 0 auto;
+
+      max-width: 1170px;
+      display: flex;
+      // max-height: 400px;
+  
+  
+    }
+    .restaurant-item:hover{
+      background-color: #E1d3B6;
+  }
+  }
+
+  .restaurant-title{
+    background-image: url('/img/home/restaurant-title-box.png');
+    width: 835px;
+    height: 296px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 90px 134px 118px 134px;
+    margin: 0 auto 30px;
+    span{
+      
+      font-size: 80px;
+      line-height: 88px;
+      font-weight: bold;
+      color: #383838;
+    }
+  }
+  .restaurant-bg-image-box{
+    position: relative;
+    width: 100%;
+    // height: 300px;
+    img{
+      &:nth-child(1){
+        // display: none;
+        position:absolute;
+        left: 0;
+        bottom: -250px;
+      }
+      &:nth-child(2){
+        // display: none;
+        position:absolute;
+        right: 0;
+        bottom: -250px;
+      }
+    }
+  }
+}
+
+////////////////// public transportation //////////////////
+.public-transportation-section{
+  background-color:  #FBF6E9;
+  padding-top: 72px;
+  font-family: Sukhumvit Set;
+  color: #383838;
+
+  .transportation-flexbox{
+    display: flex;
+    flex-direction: column;
+    width: 1170px;
+    margin: 0 auto;
+    text-align: center;
+    .transportation-title{
+      text-align: center;
+      font-weight: bold;
+      font-size: 72px;
+  }
+    .win-title{
+      position: relative;
+      top: 250px;
+      left: 10px;
+      text-align: center;
+      font-weight: bold;
+      font-size: 72px;
+  }
+    .location-map-box{
+      background-image: url('/img/home/location-bg.png');
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+      // display: flex;
+      position: relative;
+      width: 1170px;
+      height: 1213px;
+      .location-box-name{
+        background-image: url('/img/home/location-box.png');
+        background-position: center;
+        display: flex;
+        background-repeat: no-repeat;
+        background-size: cover;
+        position: absolute;
+        font-weight: bold;
+        font-size: 24px;
+        line-height: 32px;
+        // display: flex;
+        // align-items: center;
+        // justify-content: center;
+        color: #383838;
+        width: 170px;
+        height: 200px;
+        span{
+          position: absolute;
+          width: 160px;
+          left: 3px;
+          top: 50px;
+          // margin-top:  -4px;
+        }
+      }
+      .location-box-name:hover{
+        background-image: url('/img/home/location-box-hover.png');
+        background-position: center;
+        display: flex;
+        background-repeat: no-repeat;
+        background-size: cover;
+        position: absolute;
+        font-weight: bold;
+        font-size: 24px;
+        line-height: 32px;
+        color: #383838;
+        width: 170px;
+        height: 200px;
+        span{
+          position: absolute;
+          width: 160px;
+          // top: 30px;
+          margin-top:  -4px;
+        }
+      }
+      .locationbox1{
+        left: 320px;
+        top: -10px;
+      }
+      .locationbox2{
+        left: 800px;
+        top: -50px;
+      }
+      .locationbox3{
+        right: 0;
+        top: 30px;
+      }
+      .locationbox4{
+        right: 100px;
+        top: 288px;
+      }
+      .locationbox5{
+        left: 320px;
+        top: 360px;
+      }
+      .locationbox6{
+        left: 100px;
+        bottom: 160px;
+      }
+      .locationbox7{
+        left: 400px;
+        bottom: 180px;
+      }
+      .locationbox8{
+        right: 280px;
+        bottom: 260px;
+      }
+    }
+    .boat-tour-box{
+      width: 1170px;
+      margin: 72px auto 0;
+      .boat-title{
+        text-align: center;
+        font-weight: bold;
+        font-size: 72px;
+    }
+    }
+    .slider{
+      position: relative;
+      max-width: 1170px;
+      // margin-top: 40px;
+      margin: 40px 0 48px 0;
+    }
+    .boat-slider-box{
+      position: relative;
+      .boat-provider-item{
+        width: 370px;
+        height: 384px;
+        cursor: pointer;
+        position: relative;
+        background-image: url("/img/publictranspotation/boat_frame.png");
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        .boat-textbox{
+          position: absolute;
+          top: 294px;
+          left: 22px;
+          max-width: 250px;
+  
+      }
+      .boat-club-name{
+        font-weight: bold;
+        font-size: 24px;
+        line-height: 32px;
+        margin: 0;
+        max-width: 250px;
+        white-space: pre;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        text-align: start;
+    }
+    .boat-provider-name{
+        font-size: 24px;
+        font-weight: 500;
+        color: #757575;
+        margin: 0;
+        max-width: 250px;
+        white-space: pre;
+        text-align: start;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+      .boat-provider-image{
+        position: absolute;
+        left: 22px;
+        top: 22px;
+        width: 322px;
+        height: 256px;
+        
+    }
+      }
+      .boat-provider-item:hover{
+        background-image: url("/img/publictranspotation/boat_frame_hover.png");
+      }
+    }
+  }
+}
+////////////////// tradition section //////////////////
+.tradition-section{
+   position: relative;
+   display: flex;
+   flex-direction: column;
+   background-color: #FBF6E9;
+   font-family: suKhumvit Set;
+   padding-bottom: 48px;
+  //  align-items: center;
+  //  justify-content: center;
+   color: #383838;
+
+   .tradition-flexbox{
+     display: flex;
+     flex-direction: column;
+     .tradition-title-box{
+       position: relative;
+       padding-top: 46px;
+       display: flex;
+       width: 1170px;
+      //  height: 1110px;
+       margin: 0 auto;
+       span{
+
+         position: absolute;
+         right: 0;
+         top: 0;
+         font-weight: bold;
+        font-size: 80px;
+        line-height: 88px;
+       }
+      .tradition-title{
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        // margin: 0 auto;
+        width: 470px;
+        height: 96px;
+        font-size: 40px;
+        line-height: 48px;
+        font-weight: bold;
+        background-image: url('/img/tradition/tradition-title-box.png');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+      }
+     }
+
+  .tradition-image{
+      // z-index: 2;
+      position: absolute;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      border-radius: 81px 81px 80px 83px;
+      // object-fit: cover;
+      width: 156px;
+      height: 156px;
+      top: 2px;
+      left: 1px;
+  }
+     .black-line{
+       position: relative;
+      margin-top: -6px;
+      margin-right: -2px;
+      border-bottom:  4px solid #383838;
+      height: 96px;
+      width: 100%;
+      max-width: 700px;
+     }
+     .tradition-list-box{
+      display: flex;
+      flex-wrap: nowrap;
+      overflow: hidden;
+      flex: 0 0 calc((100% )/4);
+      margin: 56px auto 0;
+      max-width: 1170px;
+      .tradition-item{
+        cursor: pointer;
+        align-items: center;
+        position: relative;
+        justify-content: flex-start;
+        display: flex;
+        margin-right: 30px;
+        width: 270px;
+        height: 264px;
+        flex-direction: column;
+        margin-bottom: 48px;
+        // border: 1px solid blue;
+        &:nth-child(4n) {
+            margin-right: 0;
+            }
+            .tradition-image-box{
+              position: relative;
+              background-size: cover;
+              background-repeat: no-repeat;
+              background-position: center;
+              background-image: url('/img/tradition/tradition-frame.png');
+              width: 160px;
+              height: 160px;
+          }
+          .image-box-size{
+              // height: 183px;
+              align-items: center;
+              justify-content: center;
+              width: 270px;
+              display: flex;
+          
+            }
+            .month-name-box{
+              position: relative;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              font-size: 24px;
+              margin-top: 24px;
+              line-height: 32px;
+              font-weight: bold;
+              width: 270px;
+              height: 80px;
+              background-image: url("/img/tradition/month-name-box.png");
+              background-position: center;
+              background-repeat: no-repeat;
+              background-size: cover;
+              
+            }
+          }
+          .tradition-item:hover .month-name-box{
+            background-image: url("/img/tradition/month-name-box-hover.png");
+        }
+        .tradition-item:hover  .tradition-image{
+            // z-index: 2;
+            position: absolute;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            border-radius: 82px 82px 80px 83px;
+            width: 160px;
+            height: 160px;
+            top: 1px;
+            background-color: rgba(56, 56, 56, 0.5);
+            background-blend-mode: hard-light;
+            content: '';
+        }
+        }
+      }
+    }
+      
+      
+//////////////////  product section ////////////////// 
+.product-section {
+  position: relative;
+  background-color: #eee4d0 ;
+  // opacity: 0.5;
+  // bgttr
+  font-family: Sukhumvit Set;
+  padding: 48px 0;
+  display: flex;
+  color: #383838;
+  flex-direction: column;
+  .product-title{
+    font-size: 80px;
+    line-height: 88px;
+    font-weight: bold;margin-bottom: 40px;
+    text-align: center;
+  }
+  .product-flexbox{
+    width: 1170px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+
+    .product-list{
+      display: flex;
+      // flex-wrap: wrap;
+      overflow: hidden;
+      justify-content:flex-start;
+      align-items: center;
+      width: 100%;
+      margin: auto;
+      max-width: 1170px;
+    .product-item{
+      flex: 0 0 calc((100% - 90px)/4);
+      display: flex;
+      width: 100%;
+      margin-bottom: 40px;
+      height: 374px;
+      margin-right: 30px;
+      flex-direction: column;
+      &:nth-child(4n){
+          margin-right: 0;
+      }
+      .product-image-box{
+          cursor: pointer;
+          position: relative;
+          align-items: center;
+          justify-content: center;
+          display: flex;
+          
+          height: 270px;
+          width: 270px;
+          background-size: cover;
+          z-index: 2;
+          background-position: center;
+          background-repeat: no-repeat;
+          background-image: url('/img/product/product-frame.png');
+          // background-color: #fff;
+          // opacity: 0.8;
+          margin-bottom: 24px;
+          &::before{
+              opacity: 0;
+              // display: none;
+              // background-color: #fff;
+              width: 270px;
+              height: 270px;
+              content: '';
+              position: absolute;
+              border-radius: 16px;
+
+          }
+      }
+      div{
+          z-index: 1;
+          // display: none;
+          // position: absolute;
+          background-size: cover;
+          background-position: center;
+          background-repeat: no-repeat;
+          object-fit: cover;
+          width: 254px;
+          height: 254px;
+          border-radius: 16px;
+
+      }
+      .product-name-box{
+          background-image: url('/img/product/product-name-box.png');
+          background-position: center;
+          background-size: cover;
+          background-repeat: no-repeat;
+          width: 270px;
+          height: 80px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 24px;
+          line-height: 32px;
+          font-weight: bold;
+          font-family: Sukhumvit Set;
+          padding: 24px 8px;
+          text-align: center;
+          span{
+              width: 220px;
+              overflow: hidden;
+              white-space: pre;
+              text-overflow: ellipsis;
+              // width: 171px;
+            }
+          }
+          
+        }
+        .product-item:hover .product-name-box{
+          background-image: url('/img/product/product-name-box-hover.png');
+          background-position: center;
+          background-size: cover;
+          background-repeat: no-repeat;
+      }
+      .product-item:hover .product-image-box{
+          background-blend-mode: hard-light;
+          // background: rgba(56, 56, 56, 0.5);
+          // border-radius: 42px 20px 40px 48px ;
+          // background-color: blue;
+          align-items: center;
+          justify-content: center;
+          display: flex;
+  
+          background-size: cover;
+          background-position: center;
+          background-repeat: no-repeat;
+          &::before{
+              // background-color: #fff;
+              width: 254px;
+              height: 254px;
+              content: '';
+              opacity: 1;
+              position: absolute;
+              // border-radius: 18px;
+              background-blend-mode: hard-light;
+              background: rgba(56, 56, 56, 0.5);
+          }
+          div{
+          opacity: 0.7;
+          width: 254px;
+          height: 254px;
+          background-size: cover;
+          background-position: center;
+          background-repeat: no-repeat;
+          background-color: rgba(56, 56, 56, 0.5);
+      }
+      }
+  }
+}
+  
+}
+// .product-section::after{
+//   background-color: #E1D3B6;
+//   mix-blend-mode: darken;
+//   opacity: 0.5;
+//   content: '';
+//   position: absolute;
+//   width: 1440px;
+//   height: 608px;
+// }
+
+//////////////////  review section ////////////////// 
+.review-section{
+  display: flex;
+  flex-direction: column;
+  background-color: #FBF6E9;
+  color: #383838;
+  font-family: Sukhumvit Set;
+  padding-bottom: 106px;
+  .review-title-box{
+    display: flex;
+    flex-direction: column;
+  }
+  .review-list-box{
+    width: 1170px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    span{
+      &:nth-child(1){
+        font-weight: bold;
+        font-size: 40px;
+        line-height: 48px;
+        margin-bottom: 24px;
+      }
+    }
+    .review-list{
+      display: flex;
+      flex-wrap: wrap;
+      .review-item{
+        display: flex;
+        flex: 0 0 calc((100% - 102px)/3);
+        align-items: center;
+        width: 370px;
+        height: 32px;
+        margin-bottom: 24px;
+        margin-right: 51px;
+        &:nth-child(3n){
+          margin-right: 0;
+        }
+        .link-icon{
+          margin-right: 16px;
+
+          background-image: url('/img/home/link-icon.png');
+          background-position: center;
+          background-size: cover;
+          background-repeat: no-repeat;
+          width: 32px;
+          height: 32px;
+        }
+        span{
+          font-weight: 500;
+          font-size: 24px;
+          line-height: 32px;
+          text-decoration: underline;
+          white-space: pre;
+          text-overflow: ellipsis;
+          overflow: hidden;
+          width: 301px;
+          a{
+            color: #383838;
+          }
+        }
+      }
+      .review-item:hover .link-icon{
+        background-image: url('/img/home/link-icon-hover.png');
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        width: 32px;
+        height: 32px;
+      }
+      .review-item:hover {
+        span{
+          a{
+            color: #757575;
+          }
+        }
+      }
+    }
+  }
+}
+
+////////////////// see all button //////////////////
+.see-all-button{
+  font-family: Sukhumvit Set;
+  font-size: 32px;
+  line-height: 40px;
+  font-weight: bold;
+  color: #383838;
+  cursor: pointer;
+  text-align: center;
+  margin: 0 auto;
+  text-decoration: underline;
+  // border-bottom: 1px solid #383838;
+}
+.see-all-button:hover{
+  // font-weight: bold;
+    color: #757575;
+ } 
+ 
+ ////////////////// footer //////////////////
+ .footer-box{
+   width: 100%;
+   height: 72px;
+   padding:0 8px 0 8px;
+   background-color: #383838;
+   color: #FBF6E9;
+   font: Sukhumvit Set 16px ;
+   .footer-row-box{
+     justify-content: space-between;
+     display: flex;
+     max-width: 1440px;
+     .footer-left-box{
+      width: 560px;
+      display: flex;
+      align-items: center;
+     }
+     .footer-right-box{
+       width: 560px;
+       height: 72px;
+       display: flex;
+       flex-direction: column;
+       align-items: flex-end;
+       justify-content: center;
+       .contact-box{
+         align-items: center;
+         display: flex;
+         flex-direction: row;
+         width: 296px;
+         justify-content: flex-end;
+         text-align: end;
+         margin-bottom: 8px;
+         img{
+           width: 24px;
+           height: 24px;
+           
+         }
+         span{
+           margin: 0 8px 0  8px;
+         }
+       }
+     }
+   }
+ }

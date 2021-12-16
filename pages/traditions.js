@@ -226,7 +226,6 @@ export default function traditions() {
                              <span>{activeMonTradition.name}<br/></span>
                              <span className={styles['popup-local-name']} >{activeMonTradition.local_name ? `(${activeMonTradition.local_name})`:''}</span>
                             </div>
-                            
                         </div>
                         {activeMonTradition.images.length > 0 ?(
                                         <div className={styles['popup-slider-box']} >
