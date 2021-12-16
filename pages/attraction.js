@@ -77,7 +77,7 @@ export default function attraction() {
     useEffect(() => {
         
         const getAttraction = async()=>{
-            const response = await axios.get('http://localhost:8080/get/attractions')
+            const response = await axios.get(`${process.env.SERVER_API}/get/attractions`)
             if (response.status === 200) {
                 let data = response.data.payload
                 console.log(response.data.payload);
@@ -129,7 +129,7 @@ export default function attraction() {
                             {activeTab === "nature" ? (
                                nature_attraction.map((nature)=>(
                                    <div onClick={(e)=>ShowPopup(e,nature)} key={nature.id} className={styles['attraction-item']} >
-                                       <img src={nature.images.length > 0 ? `http://localhost:8080/uploads/uploadimage/attraction/${nature.images[0]}`:'/no-imge.png'} alt="" />
+                                       <img src={nature.images.length > 0 ? `${process.env.SERVER_IMAGE_PATH}/attraction/${nature.images[0]}`:'/no-imge.png'} alt="" />
                                        <div className={styles['attraction-namebox']}>
                                         <div className={styles['glass']}></div>
                                        <span>{nature.name}</span>
@@ -139,7 +139,7 @@ export default function attraction() {
                             ):activeTab === "tradition" ?(
                                 tradition_attraction.map((tradition)=>(
                                     <div onClick={(e)=>ShowPopup(e,tradition)} className={styles['attraction-item']} key={tradition.id}>
-                                        <img src={tradition.images.length > 0 ? `http://localhost:8080/uploads/uploadimage/attraction/${tradition.images[0]}` :'/no-imge.png'}  alt="" />
+                                        <img src={tradition.images.length > 0 ? `${process.env.SERVER_IMAGE_PATH}/attraction/${tradition.images[0]}` :'/no-imge.png'}  alt="" />
                                         <div className={styles['attraction-namebox']}>
                                         <div className={styles['glass']}></div>
                                         <span>{tradition.name}</span>
@@ -149,7 +149,7 @@ export default function attraction() {
                             ):activeTab === "agri" ?(
                                 agri_attraction.map((agri)=>(
                                     <div onClick={(e)=>ShowPopup(e,agri)} key={agri.id} className={styles['attraction-item']}>
-                                    <img src={agri.images.length > 0 ? `http://localhost:8080/uploads/uploadimage/attraction/${agri.images[0]}`:'/no-imge.png'} alt="" />
+                                    <img src={agri.images.length > 0 ? `${process.env.SERVER_IMAGE_PATH}/attraction/${agri.images[0]}`:'/no-imge.png'} alt="" />
                                     <div className={styles['attraction-namebox']}>
                                     <div className={styles['glass']}></div>    
                                     <span>{agri.name}</span>

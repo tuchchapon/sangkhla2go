@@ -22,7 +22,7 @@ export default function attraction() {
     const createAttraction=()=>{
         console.log('create');
         console.log(attraction)
-        axios.post('http://localhost:8080/create/attraction',attraction)
+        axios.post(`${process.env.SERVER_API}/create/attraction',attraction`)
         .then((res)=>{
             if (res.status === 201){
                 Swal.fire({
@@ -41,7 +41,7 @@ export default function attraction() {
     const editAttraction =()=>{
         console.log('edit');
         console.log(attraction)
-        axios.post('http://localhost:8080/edit/attraction',attraction)
+        axios.post(`${process.env.SERVER_API}/edit/attraction',attraction`)
         .then((res)=>{
             console.log(res)
             if (res.data.status === 200) {
@@ -69,7 +69,7 @@ export default function attraction() {
                 imageData.append('id',`attraction${id}`)
                 await axios({
                     method:'post',
-                    url:'http://localhost:8080/upload/attraction-images',
+                    url:`${process.env.SERVER_API}/upload/attraction-images`,
                     headers:{ 'Content-Type': 'multipart/form-data' },
                     data:imageData
                 })
@@ -95,7 +95,7 @@ export default function attraction() {
     useEffect(() => {
         const getAttraction = async()=>{
             console.log('get one attraction')
-            const response = await axios.post(`http://localhost:8080/get/attraction/:${id}`,{id:id})
+            const response = await axios.post(`${process.env.SERVER_API}/get/attraction/:${id}`,{id:id})
             console.log('attraction is ',response.data.payload)
             if (response.status === 200) {
                 let imageResponse = response.data.payload.images
@@ -138,7 +138,7 @@ export default function attraction() {
                                     {attraction.images.map((image,index)=>(                 
                                            <div key={index} className={styles['photo-item']} >
                                             <div className={styles['img-button-box']} >
-                                             <img  src={`http://localhost:8080/uploads/uploadimage/attraction/${image}`} alt="" width={200} height={250} />
+                                             <img  src={`${process.env.SERVER_IMAGE_PATH}/attraction/${image}`} alt="" width={200} height={250} />
                                             <button className={styles['delete-button']} onClick={()=>deleteImg(index)}>ลบ</button>
                                             </div>
                                            </div>
