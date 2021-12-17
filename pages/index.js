@@ -181,13 +181,13 @@ export default function index() {
     }
   }
   useEffect(() => {
-    hotels.length === 0 ? getAccommodation():null
-    boatProviders.length === 0 ? getBoatProvider():null
-    restaurants.length === 0 ? getRestaurant():null
-    karenTraditions.length === 0 || monTraditions.length === 0 ?getTradition():null
-    products.length === 0 ? getProduct():null
-    showReview.length === 0 ? getReview():null
-    console.log('api router is',APIrouter);
+    // hotels.length === 0 ? getAccommodation():null
+    // boatProviders.length === 0 ? getBoatProvider():null
+    // restaurants.length === 0 ? getRestaurant():null
+    // karenTraditions.length === 0 || monTraditions.length === 0 ?getTradition():null
+    // products.length === 0 ? getProduct():null
+    // showReview.length === 0 ? getReview():null
+    console.log('api router',APIrouter);
   }, [])
   return (
     <>
