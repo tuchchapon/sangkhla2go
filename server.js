@@ -5,7 +5,7 @@ const cors = require('cors')
 const { dirname } = require('path');
 const appDir = dirname(require.main.filename);
 const bcrypt = require('bcryptjs')
-const upload = multer({ dest: `${appDir}/public/uploadImage` })
+// const upload = multer({ dest: `${appDir}/public/uploadImage` })
 app.use('/uploads', express.static('./uploads'));
 console.log(appDir)
 require('dotenv').config()
