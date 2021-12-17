@@ -10,7 +10,6 @@ app.use('/uploads', express.static('./uploads'));
 console.log(appDir)
 require('dotenv').config()
 const mongoose = require('mongoose');
-const { Api } = require('./hello');
 app.use(cors())
 app.use(express.json());
 const mongoURL = process.env.DB_URL
@@ -21,9 +20,9 @@ mongoose.connect(mongoURL,{
 })
 mongoose.connection.readyState==2?console.log('connected server...'):''
 app.use('/',require('./pages/api/sangkhlaAPI'))
-app.get('/api/hello',Api.ha)
-app.get('/api/hi',Api.hi)
-// app.listen(8080,function(){
-//     console.log(appDir)
-//     console.log("server running on port 8080...");
-// })
+// app.get('/api/hello',Api.ha)
+// app.get('/api/hi',Api.hi)
+app.listen(8080,function(){
+    console.log(appDir)
+    console.log("server running on port 8080...");
+})
