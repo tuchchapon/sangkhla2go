@@ -69,7 +69,7 @@ export default function attraction() {
                 imageData.append('id',`attraction${id}`)
                 await axios({
                     method:'post',
-                    url:`${process.env.LOCAL_API}/upload/attraction-images`,
+                    url:`http://localhost:8080/upload/attraction-images`,
                     headers:{ 'Content-Type': 'multipart/form-data' },
                     data:imageData
                 })
@@ -138,7 +138,7 @@ export default function attraction() {
                                     {attraction.images.map((image,index)=>(                 
                                            <div key={index} className={styles['photo-item']} >
                                             <div className={styles['img-button-box']} >
-                                             <img  src={`${process.env.SERVER_IMAGE_PATH}/attraction/${image}`} alt="" width={200} height={250} />
+                                             <img  src={`/uploadImage/attraction/${image}`} alt="" width={200} height={250} />
                                             <button className={styles['delete-button']} onClick={()=>deleteImg(index)}>ลบ</button>
                                             </div>
                                            </div>
