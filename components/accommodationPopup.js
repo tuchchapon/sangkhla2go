@@ -4,7 +4,7 @@ import Popup from 'reactjs-popup';
 
 
 export default function accommodationPopup({open,onClose,activeAcommodation}) {
-    let first_image = activeAcommodation.images[0]
+    
     const [bigPhoto, setBigPhoto] = useState('')
 
 
@@ -35,11 +35,14 @@ export default function accommodationPopup({open,onClose,activeAcommodation}) {
 
     }
     const changeImage=(image)=>{
+       
         setBigPhoto(image)
     }
     useEffect(() => {
-       setBigPhoto(`${activeAcommodation.images[0]}`)
-
+        let first_image =''
+        activeAcommodation.images.length >1 ?  first_image = activeAcommodation.images[0]:''
+       if(first_image)setBigPhoto(first_image)
+        console.log('accom is ',activeAcommodation);
     }, [activeAcommodation])
     return (
         <>
@@ -55,17 +58,17 @@ export default function accommodationPopup({open,onClose,activeAcommodation}) {
                           <img draggable={false} className={styles['popup-close-icon']} onClick={()=>onClose()} src="/Quit.png" alt="" />
                           <div className={styles['accommodation-flexbox']} >
                             <div className={styles['popup-name-box']} >
-                                <span>{activeAcommodation.name}</span>
-                                <span>{activeAcommodation.type}</span>
+                                <span>{activeAcommodation &&  activeAcommodation.name}</span>
+                                <span>{activeAcommodation &&  activeAcommodation.type}</span>
                             </div>
                             <div className={styles['row-box']} >
                                 <div className={styles['image-box']} >
-                                {activeAcommodation.images.length > 1 ? (<a  className={styles['prev']} onClick={(e)=>prev(bigPhoto,activeAcommodation.images)} >❮ </a>):''}
-                                {activeAcommodation.images.length > 1 ?(<a className={styles['next']} onClick={(e)=>next(bigPhoto,activeAcommodation.images)} >❯ </a>):''}
-                                    {activeAcommodation.images.length > 0 ?<img className={styles['big-image']} src={activeAcommodation.images.length > 0 ? `/uploadImage/accommodation/${bigPhoto}` :'/no-image-big.png'} alt="" />
+                                {activeAcommodation.images &&  activeAcommodation.images.length > 1 ? (<a  className={styles['prev']} onClick={(e)=>prev(bigPhoto,activeAcommodation &&  activeAcommodation.images)} >❮ </a>):''}
+                                {activeAcommodation.images &&  activeAcommodation.images.length > 1 ?(<a className={styles['next']} onClick={(e)=>next(bigPhoto,activeAcommodation &&  activeAcommodation.images)} >❯ </a>):''}
+                                    {activeAcommodation &&  activeAcommodation.images.length > 0 ?<img className={styles['big-image']} src={activeAcommodation &&  activeAcommodation.images.length > 0 ? `/uploadImage/accommodation/${bigPhoto}` :'/no-image-big.png'} alt="" />
                                     :<img className={styles['no-image']} src={ '/no-image-big.png'} alt="" />}
                                     <div className={styles['image-list']} >
-                                        {activeAcommodation.images.length > 0 ? activeAcommodation.images.map((image)=>(
+                                        {activeAcommodation &&  activeAcommodation.images.length > 0 ? activeAcommodation &&  activeAcommodation.images.map((image)=>(
                                             <img onClick={()=>changeImage(image)} key={image} src={`/uploadImage/accommodation/${image}`} alt="" />
                                         )):''}
                                     </div>
@@ -73,17 +76,17 @@ export default function accommodationPopup({open,onClose,activeAcommodation}) {
                                 <div className={styles['detail-box']} >
                                     <div className={styles['information-box']} >
                                             <span>
-                                                {activeAcommodation.information}
+                                                {activeAcommodation &&  activeAcommodation.information}
                                             </span>
                                     </div>
-                                {activeAcommodation.min_price && activeAcommodation.max_price ? (
+                                {activeAcommodation &&  activeAcommodation.min_price && activeAcommodation &&  activeAcommodation.max_price ? (
                                 <div className={styles['popup-price-box']}>
                                             <img src="/img/accommodation/icon-b-big.png" alt="" />
-                                            <span>{`${activeAcommodation.min_price} - ${activeAcommodation.max_price} บาท`}</span>
+                                            <span>{`${activeAcommodation &&  activeAcommodation.min_price} - ${activeAcommodation &&  activeAcommodation.max_price} บาท`}</span>
                                 </div>
                                 ) :''}
                                 <div className={styles['breakfast-box']}>
-                                            {activeAcommodation.services.includes("อาหารเช้า") ? (
+                                            {activeAcommodation &&  activeAcommodation.services.includes("อาหารเช้า") ? (
                                                 <div className={styles['breakfast']} >
                                                 <img src="/img/accommodation/with-breakfast.png" alt="" />
                                                 <span style={{color:'#383838',marginLeft:'8px'}}>อาหารเช้า</span>
@@ -97,7 +100,7 @@ export default function accommodationPopup({open,onClose,activeAcommodation}) {
                                            
                                 </div>
                                 <div className={styles['service-box']}>
-                                    {activeAcommodation.services.map((service)=>(
+                                    {activeAcommodation &&  activeAcommodation.services.map((service)=>(
                                          service === "ลานจอดรถ" ? (
                                             <div key={service} className={styles['icon-box']}>
                                                 <img src="/img/accommodation/parking-icon.png" alt="" />
@@ -156,11 +159,11 @@ export default function accommodationPopup({open,onClose,activeAcommodation}) {
                             <div className={styles['contact-box']}>
                                 <div className={styles['contact-item']}>
                                     <img src="/img/restaurant/fb-icon.png" alt="" />
-                                    <span>{activeAcommodation.fb_page}</span>
+                                    <span>{activeAcommodation &&  activeAcommodation.fb_page}</span>
                                 </div>
                                 <div className={styles['contact-item']}>
                                     <img src="/img/restaurant/tel-icon.png" alt="" />
-                                    <span>{activeAcommodation.tel} </span>
+                                    <span>{activeAcommodation &&  activeAcommodation.tel} </span>
                                 </div>
                             </div>
                       </div>

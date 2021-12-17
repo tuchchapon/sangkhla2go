@@ -371,6 +371,7 @@
 .attraction-section{
   font-family: Sukhumvit Set;
   background-color: #fbf6e9;
+  padding-top: 104px;
   .attraction-flexbox{
     display: flex;
     flex-direction: column;
@@ -396,6 +397,8 @@
 
     }
     .attraction-map{
+      top: -104px;
+      position: relative;
       width: 1170px;
       height: 1392px;
       background-image: url('/img/home/attraction-map.png');

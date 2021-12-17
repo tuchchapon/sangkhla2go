@@ -1,4 +1,4 @@
-import React from 'react'
+import {React,useState,useEffect} from 'react'
 import Popup from 'reactjs-popup';
 import Slider from 'react-slick';
 import styles from '../styles/Tradition.module.scss'
@@ -32,6 +32,9 @@ export default function traditionPopup({open,onClose,activeKarenTradition}) {
         prevArrow: <LeftArrow/>
         
     }
+    useEffect(() => {
+        
+    }, [activeKarenTradition])
     
     return (
         <>

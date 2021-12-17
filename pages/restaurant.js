@@ -9,7 +9,7 @@ export default function restaurant() {
     ])
     const [res_arr, setRes_arr] = useState([])
     const [showRestaurant, setShowRestaurant] = useState(false)
-    const [activeRestaurant, setActiveRestaurant] = useState(        {
+    const [activeRestaurant, setActiveRestaurant] = useState({
         id:'',name:'',location:'',recommend_menu:'',open_time:'',
         close_time:'',food_min_price:'',food_max_price:'',
         drink_min_price:'',drink_max_price:'',type:'',tel:'',fb_page:'',

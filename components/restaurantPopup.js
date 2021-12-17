@@ -33,9 +33,10 @@ export default function restaurantPopup({open,onClose,activeRestaurant}) {
 
     }
     useEffect(() => {
-        
-        setBigPhoto(`${activeRestaurant.images[0]}`)
-
+        let first_image =''
+        activeRestaurant.images.length ?  first_image =`${activeRestaurant.images[0]}`:''
+        setBigPhoto(first_image)
+        activeRestaurant.images.length > 0 ? first_image = (``):''
     }, [activeRestaurant])
     
     return (

@@ -80,7 +80,7 @@ export default function boatPopup({open,onClose,activeBoat}) {
                                     
                             </div>
                                 <div className="col">
-                                {activeBoat.boat_images.length > 0 ?(
+                                { activeBoat.boat_images  && activeBoat.boat_images.length > 0 ?(
                                         <div className={styles['boat-image-box']} >
                                         <div className={styles['slider']}>
                                         <Slider {...settings} >
