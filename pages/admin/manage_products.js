@@ -29,7 +29,7 @@ export default function manage_product() {
         }).then(async(result)=>{
             if(result.isConfirmed){
                 try {
-                    let response = await axios.delete('http://localhost:8080/delete/product',{data:product})
+                    let response = await axios.delete(`${process.env.SERVER_API}/delete/product`,{data:product})
                     if (response.data.status === 200) {
                        Swal.fire({
                        title: 'ลบข้อมูลเรียบร้อยแล้ว',
@@ -57,7 +57,7 @@ export default function manage_product() {
     }
     useEffect(() => {
         const getProducts = async()=>{
-            let response = await axios.get('http://localhost:8080/get/products')
+            let response = await axios.get(`${process.env.SERVER_API}/get/products`)
             console.log(response.data)
             setProducts(response.data.payload)
         }

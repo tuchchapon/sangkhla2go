@@ -36,7 +36,7 @@ export default function accommodation() {
     }
     useEffect(() => {
         const getAccommodation =async()=>{
-          const response = await axios.get('http://localhost:8080/get/accommodation')
+          const response = await axios.get(`${process.env.SERVER_API}/get/accommodation`)
           if (response.status === 200) {
             console.log(response.data.payload);
             let data = response.data.payload 

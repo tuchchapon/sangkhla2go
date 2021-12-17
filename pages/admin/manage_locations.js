@@ -21,7 +21,7 @@ export default function driverlocation() {
     const [driverLocation, setDriverLocation] = useState([])
     const submitLocation = async ()=>{
         console.log(driverlocation);
-       await axios.post('http://localhost:8080/create/driverLocation',driverlocation).then((res)=>{
+       await axios.post(`${process.env.SERVER_API}/create/driverLocation`,driverlocation).then((res)=>{
             console.log(res);
         })
     }
@@ -44,7 +44,7 @@ export default function driverlocation() {
         }).then(async(result)=>{
             if(result.isConfirmed){
                 try {
-                    let response = await axios.delete('http://localhost:8080/delete/driver-location',{data:location})
+                    let response = await axios.delete(`${process.env.SERVER_API}/delete/driver-location`,{data:location})
                     if (response.data.status === 200) {
                        Swal.fire({
                        title: 'ลบข้อมูลเรียบร้อยแล้ว',
@@ -71,7 +71,7 @@ export default function driverlocation() {
     }
     useEffect(() => {
         const getDriverlocation = async()=>{
-            let response = await axios.get('http://localhost:8080/get/driverLocation')
+            let response = await axios.get(`${process.env.SERVER_API}/get/driverLocation`)
             console.log(response);
             setDriverLocation(response.data.payload)
         }

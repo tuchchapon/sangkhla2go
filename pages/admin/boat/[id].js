@@ -102,6 +102,7 @@ export default function boat() {
         e.preventDefault();
         const files = e.target.files
         console.log('files is',files)
+        
         if (files.length > 0) {
             for (let i = 0; i < files.length; i++) {
                 console.log('axios')
@@ -109,6 +110,7 @@ export default function boat() {
                 let formData = new FormData()
                 formData.append('boat',files[i])
                 formData.append('id',`boat${id}`)
+                // let xhr = new XMLHttpRequest()
                 await axios({
                     method:'post',
                     url:`${process.env.SERVER_API}/upload/boat-images`,

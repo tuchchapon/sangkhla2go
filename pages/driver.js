@@ -67,7 +67,7 @@ export default function driver() {
     })
   const testPOST =()=>{
     // console.log('test POST API');
-    //   axios.post('http://localhost:8080/create/driver-location',driverLocation)
+    //   axios.post(`${process.env.SERVER_API}/create/driver-location`,driverLocation)
     //   .then((res) => {
     //     console.log(res);
     //     console.log(res.data);
@@ -78,14 +78,14 @@ export default function driver() {
   }
     const checkDB=()=>{
       console.log('check database connect');
-      axios.get('http://localhost:8080/dbcheck')
+      axios.get(`${process.env.SERVER_API}/dbcheck`)
       .then((response)=> console.log('response :',response))
       .catch((err)=>
       console.log(err))
     }
     const testUpdate=()=>{
     console.log('test update');
-    axios.post('http://localhost:8080/edit/driverLocation',driver_location[0])
+    axios.post('${process.env.SERVER_API}/edit/driverLocation',driver_location[0])
     .then((res) => {
       console.log(res);
       console.log(res.data);
@@ -94,7 +94,7 @@ export default function driver() {
     }
     const testDelete=()=>{
       console.log('test delete');
-      axios.delete('http://localhost:8080/delete/driverLocation',{data:driver_location[0]})
+      axios.delete(`${process.env.SERVER_API}/delete/driverLocation`,{data:driver_location[0]})
       .then((res)=>{
         console.log('res is',res);
       })
@@ -104,7 +104,7 @@ export default function driver() {
   useEffect(() => {
     const getDriver  = async()=>{
       try {
-        let response = await axios.get('http://localhost:8080/getDriverLocation')
+        let response = await axios.get(`${process.env.SERVER_API}/getDriverLocation`)
         console.log(response.data.payload);
         setDriver_location(response.data.payload)
       } catch (err) {

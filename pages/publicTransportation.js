@@ -46,12 +46,12 @@ export default function publicTransportation() {
 
     useEffect(() => {
         const getLocation = async()=>{
-          let  driverResponse = await axios.get('http://localhost:8080/get/driverLocation')
+          let  driverResponse = await axios.get(`${process.env.SERVER_API}/get/driverLocation`)
             console.log(driverResponse);
             setDriverLocation(driverResponse.data.payload)
         }
         const getBoatProvider = async()=>{
-            let boatResponse = await axios.get('http://localhost:8080/get/boat-provider')
+            let boatResponse = await axios.get(`${process.env.SERVER_API}/get/boat-provider`)
             console.log(boatResponse.data.payload);
             setBoats(boatResponse.data.payload)
         }

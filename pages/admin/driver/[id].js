@@ -36,7 +36,7 @@ import 'animate.css';
             })
             return false
         }
-        axios.post('http://localhost:8080/create/driver',driver)
+        axios.post(`${process.env.SERVER_API}/create/driver`,driver)
         Swal.fire({
             title:'บันทึก',
             text:'เพิ่มข้อมูลสำเร็จแล้ว',
@@ -52,7 +52,7 @@ import 'animate.css';
         console.log('edit')
         if(driver.location_id === '')console.log('err')
         console.log(driver)
-        axios.post('http://localhost:8080/edit/driver',driver)
+        axios.post(`${process.env.SERVER_API}/edit/driver`,driver)
         Swal.fire({
             title:'บันทึก',
             text:'แก้ไขข้อมูลสำเร็จแล้ว',
@@ -73,7 +73,7 @@ import 'animate.css';
         console.log('data is',imageData)
          await axios({
             method:'post',
-            url:'http://localhost:8080/upload/driver-image',
+            url:`${process.env.SERVER_API}/upload/driver-image`,
             headers:{ 'Content-Type': 'multipart/form-data' },
             data:imageData
         })
@@ -129,13 +129,13 @@ import 'animate.css';
     useEffect(() => {
         console.log('page is',router.query);
         const getLocation =async()=>{
-            const response = await axios.get(`http://localhost:8080/get/driverLocation`)
+            const response = await axios.get(`${process.env.SERVER_API}/get/driverLocation`)
             console.log('response is',response);
             setLocations(response.data.payload)
         }
         const getDriver = async()=>{
             console.log('get one driver')
-            const response = await axios.post(`http://localhost:8080/get/driver/:${id}`,{id:id})
+            const response = await axios.post(`${process.env.SERVER_API}/get/driver/:${id}`,{id:id})
             console.log('response driver is',response.data)
             if (response.status === 200){
                 setDriver(response.data.payload)

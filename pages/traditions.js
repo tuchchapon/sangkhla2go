@@ -40,7 +40,7 @@ export default function traditions() {
     useEffect(() => {
         let componentMounted = true;
         const getTraditions =async()=>{
-            let response = await axios.get('http://localhost:8080/get/traditions')
+            let response = await axios.get(`${process.env.SERVER_API}/get/traditions`)
             console.log(response.data.payload);
             if(componentMounted) {
                 setKarenTraditions(response.data.payload.karen_tradition)

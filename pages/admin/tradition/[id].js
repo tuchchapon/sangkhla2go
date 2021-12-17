@@ -25,7 +25,7 @@ export default function tradition() {
     const createTradition=()=>{
         console.log('create')
         console.log(tradition)
-        axios.post('http://localhost:8080/create/tradition',tradition)
+        axios.post(`${process.env.SERVER_API}/create/tradition`,tradition)
         .then((res)=>{
             if (res.status === 201) {
             Swal.fire({
@@ -43,7 +43,7 @@ export default function tradition() {
     const editTradition=()=>{
         console.log('edit')
         console.log(tradition)
-        axios.post('http://localhost:8080/edit/tradition',tradition)
+        axios.post(`${process.env.SERVER_API}/edit/tradition`,tradition)
         .then((res)=>{
             console.log(res)
             if (res.data.status === 200) {
@@ -79,7 +79,7 @@ export default function tradition() {
                 imageData.append('id',`tradition${id}`)
                 await axios({
                     method:'post',
-                    url:'http://localhost:8080/upload/tradition-images',
+                    url:`${process.env.SERVER_API}/upload/tradition-images`,
                     headers:{ 'Content-Type': 'multipart/form-data' },
                     data:imageData
                 })
@@ -100,7 +100,7 @@ export default function tradition() {
     useEffect(() => {
         const getTradition =async()=>{
             console.log('get one tradition')
-            const response = await axios.post(`http://localhost:8080/get/tradition/:${id}`,{id:id})
+            const response = await axios.post(`${process.env.SERVER_API}/get/tradition/:${id}`,{id:id})
             console.log('response driver is ',response.data)
             if (response.status === 200) {
                 setTradition(response.data.payload)

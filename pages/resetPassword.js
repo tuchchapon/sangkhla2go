@@ -20,7 +20,7 @@ import axios from 'axios';
         console.log('new password is',new_password);
         console.log('new token is ',token);
        try {
-        axios.post('http://localhost:8080/reset-password',new_password).then((res)=>{
+        axios.post(`${process.env.SERVER_API}/reset-password`,new_password).then((res)=>{
             console.log(res);
         })
        } catch (error) {

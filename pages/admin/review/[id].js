@@ -17,7 +17,7 @@ import Button from '@mui/material/Button';
         console.log('create review');
         console.log(review)
         try {
-            axios.post('http://localhost:8080/create/review',review)
+            axios.post(`${process.env.SERVER_API}/create/review`,review)
             .then((res)=>{
                 console.log(res)
                 if (res.status === 201) {
@@ -47,7 +47,7 @@ import Button from '@mui/material/Button';
         console.log(id)
         console.log(review)
         try {
-            axios.post('http://localhost:8080/edit/review',review)
+            axios.post(`${process.env.SERVER_API}/edit/review`,review)
             .then((res)=>{
                 if (res.data.status === 200) {
                     Swal.fire({
@@ -69,7 +69,7 @@ import Button from '@mui/material/Button';
 
      useEffect(() => {
          const getReview =async()=>{
-             const response = await axios.post(`http://localhost:8080/get/review/:${id}`,{id:id})
+             const response = await axios.post(`${process.env.SERVER_API}/get/review/:${id}`,{id:id})
              console.log('response is ', response.data.payload)
              setReview(response.data.payload)
          }

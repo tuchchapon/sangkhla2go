@@ -30,7 +30,7 @@ export default function manages_officers() {
         }).then(async(result)=>{
             if(result.isConfirmed){
                 try {
-                    let response = await axios.delete('http://localhost:8080/delete/officer',{data:officer})
+                    let response = await axios.delete(`${process.env.SERVER_API}/delete/officer`,{data:officer})
                     if (response.data.status === 200) {
                        Swal.fire({
                        title: 'ลบข้อมูลเรียบร้อยแล้ว',
@@ -58,7 +58,7 @@ export default function manages_officers() {
 
     useEffect(() => {
         const getOfficer = async()=>{
-            let response = await axios.get('http://localhost:8080/get/officers')
+            let response = await axios.get(`${process.env.SERVER_API}/get/officers`)
             console.log(response.data.payload)
             setOfficers(response.data.payload.officer)
         }

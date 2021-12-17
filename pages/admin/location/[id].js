@@ -16,7 +16,7 @@ function location() {
     })
     const createLocation =()=>{
         console.log('create location');
-        axios.post('http://localhost:8080/create/driverLocation' ,location)
+        axios.post(`${process.env.SERVER_API}create/driverLocation` ,location)
         .then((res)=>{
             console.log(res);
             if (res.status === 201) {
@@ -35,7 +35,7 @@ function location() {
     const editLocation =()=>{
         console.log('save location');
         try {
-            axios.post('http://localhost:8080/edit/driverLocation',location)
+            axios.post(`${process.env.SERVER_API}edit/driverLocation`,location)
             .then((res) => {
                 console.log(res);
                 if (res.data.status === 200) {
@@ -57,7 +57,7 @@ function location() {
     useEffect(() => {
         console.log('page is ',router.query);
         const getLocation =async()=>{
-            const response = await axios.post(`http://localhost:8080/get/location/:${id}`,{id:id})
+            const response = await axios.post(`${process.env.SERVER_API}get/location/:${id}`,{id:id})
             console.log('response is',response);
             setLocation(response.data.payload)
         }

@@ -30,7 +30,7 @@ export default function manage_reviews() {
         }).then(async(result)=>{
             if (result.isConfirmed) {
                 try {
-                    let response  =await axios.delete('http://localhost:8080/delete/review',{data:review})
+                    let response  =await axios.delete(`${process.env.SERVER_API}/delete/review`,{data:review})
                     if (response.data.status === 200) {
                         Swal.fire({
                             title:'ลบข้อมูลเรียบร้อยแล้ว',
@@ -51,7 +51,7 @@ export default function manage_reviews() {
     }
     useEffect(() => {
         const getReview = async()=>{
-            let response = await axios.get('http://localhost:8080/get/reviews')
+            let response = await axios.get(`${process.env.SERVER_API}/get/reviews`)
             console.log(response)
             setReviews(response.data.payload)
         }

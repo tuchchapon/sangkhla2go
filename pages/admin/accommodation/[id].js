@@ -69,7 +69,7 @@ export default function officer() {
         console.log('create');
         console.log(accommodation)
             console.log('service is',accommodation.services);
-        axios.post('http://localhost:8080/create/accommodation',accommodation)
+        axios.post(`${process.env.SERVER_API}/create/accommodation`,accommodation)
         .then((res)=>{
             if (res.status === 201) {
                 Swal.fire({
@@ -95,7 +95,7 @@ export default function officer() {
         let uniq = [...new Set(accommodation.services)]
         // console.log('unq service is',uniq);
         
-        axios.post('http://localhost:8080/edit/accommodation',accommodation)
+        axios.post(`${process.env.SERVER_API}/edit/accommodation`,accommodation)
         .then((res)=>{
             if (res.status === 200) {
                 Swal.fire({
@@ -125,7 +125,7 @@ export default function officer() {
                 imageData.append('id',`accommodation${id}`)
                 await axios({
                     method:'post',
-                    url:'http://localhost:8080/upload/accommodation-images',
+                    url:`${process.env.SERVER_API}/upload/accommodation-images`,
                     headers:{ 'Content-Type': 'multipart/form-data' },
                     data:imageData
                 })

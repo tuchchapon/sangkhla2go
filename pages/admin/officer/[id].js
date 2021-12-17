@@ -23,7 +23,7 @@ export default function officer() {
         console.log('create');
         console.log(officer)
         try {
-            axios.post('http://localhost:8080/create/officer',officer)
+            axios.post(`${process.env.SERVER_API}/create/officer`,officer)
             .then((res)=>{
                 console.log(res)
                 if (res.status === 201) {
@@ -47,7 +47,7 @@ export default function officer() {
         console.log('edit');
         console.log(officer)
         try {
-            axios.post('http://localhost:8080/edit/officer',officer)
+            axios.post(`${process.env.SERVER_API}/edit/officer`,officer)
             .then((res)=>{
                 if (res.status === 200) {
                     Swal.fire({
@@ -75,7 +75,7 @@ export default function officer() {
         console.log('data is',imageData)
          await axios({
             method:'post',
-            url:'http://localhost:8080/upload/officer-image',
+            url:`${process.env.SERVER_API}/upload/officer-image`,
             headers:{ 'Content-Type': 'multipart/form-data' },
             data:imageData
         })
@@ -116,7 +116,7 @@ export default function officer() {
     }
     useEffect(() => {
         const getOfficer =async()=>{
-            const response = await axios.post(`http://localhost:8080/get/officer/:${id}`,{id:id})
+            const response = await axios.post(`${process.env.SERVER_API}/get/officer/:${id}`,{id:id})
             console.log(response.data.payload)
             setOfficer(response.data.payload)
 

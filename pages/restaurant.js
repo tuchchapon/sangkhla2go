@@ -39,7 +39,7 @@ export default function restaurant() {
 
     useEffect(() => {
         const getRestaurant =async()=>{
-            let response = await axios.get('http://localhost:8080/get/restaurant')
+            let response = await axios.get(`${process.env.SERVER_API}/get/restaurant`)
             if (response.status === 200) {
                 console.log(response.data.payload);
                 let data = response.data.payload 

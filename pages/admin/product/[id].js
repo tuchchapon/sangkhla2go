@@ -25,7 +25,7 @@ export default function product() {
         console.log('create');
         console.log(product)
         try {
-            axios.post('http://localhost:8080/create/product',product)
+            axios.post(`${process.env.SERVER_API}/create/product`,product)
             .then((res)=>{
                 if (res.status === 201) {
             Swal.fire({
@@ -46,7 +46,7 @@ export default function product() {
     const editProduct=()=>{
         console.log('edit');
         console.log(product)
-        axios.post('http://localhost:8080/edit/product',product)
+        axios.post(`${process.env.SERVER_API}/edit/product`,product)
         .then((res)=>{
             console.log(res)
             if (res.data.status === 200) {
@@ -77,7 +77,7 @@ export default function product() {
                 imageData.append('id',`product${id}`)
                 await axios({
                     method:'post',
-                    url:'http://localhost:8080/upload/product-images',
+                    url:`${process.env.SERVER_API}/upload/product-images`,
                     headers:{ 'Content-Type': 'multipart/form-data' },
                     data:imageData
                 })
@@ -104,7 +104,7 @@ export default function product() {
         console.log(id);
         const getProduct = async()=>{
             console.log('get one product')
-            const response = await axios.post(`http://localhost:8080/get/product/:${id}`,{id:id})
+            const response = await axios.post(`${process.env.SERVER_API}/get/product/:${id}`,{id:id})
             console.log(response.data.payload)
             if (response.status === 200) {
                 setProduct(response.data.payload)

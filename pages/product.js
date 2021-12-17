@@ -63,7 +63,7 @@ export default function product() {
         const getProduct=async()=>{
             let data =  []
             let karen_fabric ={ id:'',name:'',fb_page:'',tel:'',link:'',images:[],detail:''}
-            const response = await axios.get('http://localhost:8080/get/products')
+            const response = await axios.get(`${process.env.SERVER_API}/get/products`)
             if (response.status === 200) {
                 // console.log(response.data.payload);
                 data = response.data.payload

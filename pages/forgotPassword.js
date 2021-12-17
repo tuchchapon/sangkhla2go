@@ -7,7 +7,7 @@ const forgotPassword =()=> {
         console.log('forgot password')
         console.log(userEmail);
         try {
-            axios.post('http://localhost:8080/forgot-password',userEmail).then((res)=>{
+            axios.post(`${process.env.SERVER_API}/forgot-password`,userEmail).then((res)=>{
                 console.log(res);
             })
         } catch (error) {
