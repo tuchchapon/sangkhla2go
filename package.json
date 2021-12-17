@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "server": "node server.js"
   },
   "dependencies": {
     "@emotion/react": "^11.6.0",
