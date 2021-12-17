@@ -28,4 +28,4 @@ app.listen(8080,function(){
     console.log(appDir)
     console.log("server running on port 8080...");
 })
-module.exports = app;
+// module.exports = app;
