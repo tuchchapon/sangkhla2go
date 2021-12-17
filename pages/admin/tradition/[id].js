@@ -155,7 +155,7 @@ export default function tradition() {
                                     {tradition.images.map((image,index)=>(                 
                                            <div key={index} className={styles['photo-item']} >
                                             <div className={styles['img-button-box']} >
-                                             <Image  src={`/uploadImage/tradition/${image}`} alt="" width={200} height={250} />
+                                             <img  src={`${process.env.LOCAL_IMAGE_PATH}/uploadImage/tradition/${image}`} alt="" width={200} height={250} />
                                             <button className={styles['delete-button']} onClick={()=>deleteImg(index)}>ลบ</button>
                                             </div>
                                            </div>
