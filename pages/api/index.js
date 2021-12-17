@@ -19,7 +19,7 @@ mongoose.connect(mongoURL,{
 	useCreateIndex: true
 })
 mongoose.connection.readyState==2?console.log('connected server...'):''
-app.use('/',require('./pages/api/sangkhlaAPI'))
+app.use('/',require('./sangkhlaAPI'))
 app.listen(8080,function(){
     console.log(appDir)
     console.log("server running on port 8080...");
