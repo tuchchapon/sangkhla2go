@@ -35,7 +35,7 @@ export default function manage_attraction() {
         }).then(async(result)=>{
             if(result.isConfirmed){
                 try {
-                    let response = await axios.delete(`${process.env.SERVER_API}/delete/attraction`,{data:attraction})
+                    let response = await axios.delete(`${process.env.LOCAL_API}/delete/attraction`,{data:attraction})
                     if (response.data.status === 200) {
                        Swal.fire({
                        title: 'ลบข้อมูลเรียบร้อยแล้ว',
@@ -62,7 +62,7 @@ export default function manage_attraction() {
     }
     useEffect(() => {
         const getAttractions =async()=>{
-            let response = await axios.get(`${process.env.SERVER_API}/get/attractions`)
+            let response = await axios.get(`${process.env.LOCAL_API}/get/attractions`)
             console.log(response.data)
             if (response.status === 200) {
                 setNatureAttraction(response.data.payload.nature_attraction)
