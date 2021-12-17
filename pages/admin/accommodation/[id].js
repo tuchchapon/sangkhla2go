@@ -148,7 +148,7 @@ export default function officer() {
     useEffect(() => {
         const getAccommodation =async()=>{
             console.log('get one accommodation');
-            const response = await axios.post(`http://localhost:8080/get/accommodation/:${id}`,{id:id})
+            const response = await axios.post(`${process.env.SERVER_API}/get/accommodation/:${id}`,{id:id})
             if (response.status === 200) {
                 console.log('payload is',response.data.payload);
                 let imageResponse = response.data.payload.images

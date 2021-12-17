@@ -31,7 +31,7 @@ export default function boat() {
     const createBoat =()=>{
         console.log('create boat');
         console.log(boatProvider)
-        axios.post('http://localhost:8080/create/boat-provider',boatProvider)
+        axios.post(`${process.env.SERVER_API}/create/boat-provider`,boatProvider)
         .then((res)=>{
             console.log(res)
             if (res.status === 201) {
@@ -50,7 +50,7 @@ export default function boat() {
     const editBoat =()=>{
         console.log('edit boat');
         console.log(boatProvider)
-        axios.post('http://localhost:8080/edit/boat-provider',boatProvider)
+        axios.post(`${process.env.SERVER_API}/edit/boat-provider`,boatProvider)
         .then((res)=>{
             console.log(res)
             if (res.status === 200) {
@@ -83,7 +83,7 @@ export default function boat() {
         console.log('data is',imageData)
          await axios({
             method:'post',
-            url:'http://localhost:8080/upload/boatprovider-image',
+            url:`${process.env.SERVER_API}/upload/boatprovider-image`,
             headers:{ 'Content-Type': 'multipart/form-data' },
             data:imageData
         })
@@ -111,7 +111,7 @@ export default function boat() {
                 formData.append('id',`boat${id}`)
                 await axios({
                     method:'post',
-                    url:'http://localhost:8080/upload/boat-images',
+                    url:`${process.env.SERVER_API}/upload/boat-images`,
                     headers:{ 'Content-Type': 'multipart/form-data' },
                     data:formData
                 })
@@ -141,7 +141,7 @@ export default function boat() {
     }
     useEffect(() => {
         const getBoat = async()=>{
-            const response = await axios.post(`http://localhost:8080/get/boat/:${id}`,{id:id})
+            const response = await axios.post(`${process.env.SERVER_API}/get/boat/:${id}`,{id:id})
             console.log('response boat is',response.data)
             if (response.status === 200) {
                 setBoatProvider(response.data.payload)

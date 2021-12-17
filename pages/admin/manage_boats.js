@@ -29,7 +29,7 @@ export default function boats_manage() {
         }).then(async(result)=>{
             if(result.isConfirmed){
                 try {
-                    let response = await axios.delete('http://localhost:8080/delete/boat-provider',{data:boat})
+                    let response = await axios.delete(`${process.env.SERVER_API}/delete/boat-provider`,{data:boat})
                     if (response.data.status === 200) {
                        Swal.fire({
                        title: 'ลบข้อมูลเรียบร้อยแล้ว',
@@ -57,7 +57,7 @@ export default function boats_manage() {
     
     useEffect(() => {
         const getBoatProvider= async()=>{
-            const response = await axios.get('http://localhost:8080/get/boat-provider')
+            const response = await axios.get(`${process.env.SERVER_API}/get/boat-provider`)
             console.log(response.data)
             setBoats(response.data.payload)
             

@@ -11,7 +11,7 @@ export default function winPopup({open,onClose,activeWin}) {
     const getDriverFromLocation  = async(location)=>{
         console.log('get driver from location');
         console.log('location in function is',location);
-        const response = await axios.post('http://localhost:8080/get/driverfromlocation',location)
+        const response = await axios.post(`${process.env.SERVER_API}/get/driverfromlocation`,location)
         console.log('res data is',response.data);
         setDrivers(response.data.payload)
         response.data.sidetow ? setSideTow(true):false

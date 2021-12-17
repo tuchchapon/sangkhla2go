@@ -22,7 +22,7 @@ export default function attraction() {
     const createAttraction=()=>{
         console.log('create');
         console.log(attraction)
-        axios.post(`${process.env.LOCAL_API}/create/attraction',attraction`)
+        axios.post(`${process.env.SERVER_API}/create/attraction',attraction`)
         .then((res)=>{
             if (res.status === 201){
                 Swal.fire({
@@ -41,7 +41,7 @@ export default function attraction() {
     const editAttraction =()=>{
         console.log('edit');
         console.log(attraction)
-        axios.post(`${process.env.LOCAL_API}/edit/attraction',attraction`)
+        axios.post(`${process.env.SERVER_API}/edit/attraction',attraction`)
         .then((res)=>{
             console.log(res)
             if (res.data.status === 200) {
@@ -69,7 +69,7 @@ export default function attraction() {
                 imageData.append('id',`attraction${id}`)
                 await axios({
                     method:'post',
-                    url:`http://localhost:8080/upload/attraction-images`,
+                    url:`${process.env.SERVER_API}/upload/attraction-images`,
                     headers:{ 'Content-Type': 'multipart/form-data' },
                     data:imageData
                 })
@@ -95,7 +95,7 @@ export default function attraction() {
     useEffect(() => {
         const getAttraction = async()=>{
             console.log('get one attraction')
-            const response = await axios.post(`${process.env.LOCAL_API}/get/attraction/:${id}`,{id:id})
+            const response = await axios.post(`${process.env.SERVER_API}/get/attraction/:${id}`,{id:id})
             console.log('attraction is ',response.data.payload)
             if (response.status === 200) {
                 let imageResponse = response.data.payload.images
