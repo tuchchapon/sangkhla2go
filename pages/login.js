@@ -37,7 +37,7 @@ export default function login() {
     }
     const changePassword =()=>{
         console.log('change password');
-        axios.post(`${process.env.LOCAL_API}/change-password`,newPassword)
+        axios.post(`${process.env.LOCAL_API}/change-password`,newPassword) 
     }
 
     const [admin, setAdmin] = useState({
