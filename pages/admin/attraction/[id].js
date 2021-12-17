@@ -22,7 +22,7 @@ export default function attraction() {
     const createAttraction=()=>{
         console.log('create');
         console.log(attraction)
-        axios.post(`${process.env.SERVER_API}/create/attraction',attraction`)
+        axios.post(`${process.env.SERVER_API}/create/attraction`,attraction)
         .then((res)=>{
             if (res.status === 201){
                 Swal.fire({
