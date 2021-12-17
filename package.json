@@ -2,11 +2,12 @@
   "name": "sangkhla2go",
   "version": "0.1.0",
   "private": true,
+  "main": "server.js",
   "proxy": "http://localhost:8080",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "nodemon server.js"
   },
   "dependencies": {
     "@emotion/react": "^11.6.0",
