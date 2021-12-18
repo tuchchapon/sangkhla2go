@@ -7,12 +7,11 @@ import Image from 'next/image'
 import Button from '@mui/material/Button';
 import Header from '../Header'
 
-const toBase64 = file => new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = () => resolve(reader.result);
-    reader.onerror = error => reject(error);
-});
+function getBase64(img, callback) {
+    const reader = new FileReader()
+    reader.addEventListener('load', () => callback(reader.result))
+    reader.readAsDataURL(img)
+}
 
 export default function attraction() {
 
@@ -74,28 +73,25 @@ export default function attraction() {
         if (files.length > 0) {
             for (let i = 0; i < files.length; i++) {
                 console.log(files[i])
-                // let imageData = new FormData()
-                // console.log(files[i].name);
-                // imageData.append('attraction',files[i])
-                // imageData.append('id',`attraction${id}`)
-                const test = await toBase64(files[i])
-                galleryImages.push(test)
-                // await axios({
-                //     method:'post',
-                //     url:`${process.env.LOCAL_API}/upload/ attraction-images`,
-                //     headers:{ 'Content-Type': 'multipart/form-data' },
-                //     data:imageData
-                // })
-                //   .then((res) => {
-                //       if (res.data.status === 200) {
-                //         galleryImages.push(res.data.image_name)
-                //       }
-                //   }).catch((err)=>{
-                //       console.log(err)
-                //   })
+                let imageData = new FormData()
+                console.log(files[i].name);
+                imageData.append('attraction',files[i])
+                imageData.append('id',`attraction${id}`)
+                await axios({
+                    method:'post',
+                    url:`${process.env.SERVER_API}/upload/attraction-images`,
+                    headers:{ 'Content-Type': 'multipart/form-data' },
+                    data:imageData
+                })
+                  .then((res) => {
+                      if (res.data.status === 200) {
+                        galleryImages.push(res.data.image_name)
+                      }
+                  }).catch((err)=>{
+                      console.log(err)
+                  })
 
             }
-            console.log('gal img is',galleryImages);
             setAttraction({...attraction,images:galleryImages})
             
         }
@@ -152,7 +148,7 @@ export default function attraction() {
                                     {attraction.images.map((image,index)=>(                 
                                            <div key={index} className={styles['photo-item']} >
                                             <div className={styles['img-button-box']} >
-                                             <img  src={`${image}`} alt="" width={200} height={250} />
+                                             <img  src={`${process.env.LOCAL_IMAGE_PATH}/attraction/${image}`} alt="" width={200} height={250} />
                                             <button className={styles['delete-button']} onClick={()=>deleteImg(index)}>ลบ</button>
                                             </div>
                                            </div>

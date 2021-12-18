@@ -95,7 +95,7 @@ export default function Restaurant() {
             return false
         }
         console.log('restaurant is',restaurant)
-        axios.post('http://localhost:8080/create/restaurant',restaurant)
+        axios.post(`${process.env.SERVER_API}/create/restaurant`,restaurant)
         .then((res)=>{
             if (res.status === 201) {
                 Swal.fire({
@@ -148,7 +148,7 @@ export default function Restaurant() {
         let uniq2 = [...new Set(restaurant.type)]
         console.log('1 is', uniq);
         console.log('2 is',uniq2);
-        axios.post('http://localhost:8080/edit/restaurant',restaurant)
+        axios.post(`${process.env.SERVER_API}/edit/restaurant`,restaurant)
         .then((res)=>{
             if (res.status === 200) {
                 Swal.fire({
@@ -204,7 +204,7 @@ export default function Restaurant() {
                 imageData.append('id',`restaurant${id}`)
                 await axios({
                     method:'post',
-                    url:'http://localhost:8080/upload/restaurant-images',
+                    url:`${process.env.SERVER_API}/upload/restaurant-images`,
                     headers:{ 'Content-Type': 'multipart/form-data' },
                     data:imageData
                 })
@@ -228,7 +228,7 @@ export default function Restaurant() {
     useEffect(() => {
         const getRestaurant =async()=>{
             console.log('get one restaurant');
-            const response = await axios.post(`http://localhost:8080/get/restaurant/:${id}`,{id:id})
+            const response = await axios.post(`${process.env.SERVER_API}/get/restaurant/:${id}`,{id:id})
             console.log('response restaurant is',response.data.payload);
             if (response.status === 200) {
                 let imageResponse = response.data.payload.images
@@ -326,7 +326,7 @@ export default function Restaurant() {
                                     {restaurant.images.map((image,index)=>(                 
                                            <div key={index} className={styles['photo-item']} >
                                             <div className={styles['img-button-box']} >
-                                             <Image  src={`/uploadImage/restaurant/${image}`} alt="" width={200} height={250} />
+                                             <img  src={`${process.env.LOCAL_IMAGE_PATH}/restaurant/${image}`} alt="" width={200} height={250} />
                                             <button className={styles['delete-button']} onClick={()=>deleteImg(index)}>ลบ</button>
                                             </div>
                                            </div>
