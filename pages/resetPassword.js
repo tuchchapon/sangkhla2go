@@ -39,7 +39,6 @@ import Container from '@mui/material/Container';
                 Swal.fire({
                     title:'เปลี่ยนรหัสผ่านเรียบร้อยแล้ว',
                     icon:'success',
-                    showConfirmButton
                 }).then((res)=>{
                     if(res.isConfirmed){
                         router.replace('./login')
