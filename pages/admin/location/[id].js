@@ -57,7 +57,7 @@ function location() {
     useEffect(() => {
         console.log('page is ',router.query);
         const getLocation =async()=>{
-            const response = await axios.post(`${process.env.SERVER_API}get/location/:${id}`,{id:id})
+            const response = await axios.post(`${process.env.SERVER_API}/get/location/:${id}`,{id:id})
             console.log('response is',response);
             setLocation(response.data.payload)
         }
