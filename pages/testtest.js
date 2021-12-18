@@ -116,29 +116,7 @@ export default function testtest() {
   }, [])
     return (
         <div>
-          <div>
-      <div>connect server</div>
-      { driver_location.map((location)=>(
-        <div key={location.id} >
-        <p>{location.id}</p>
-        <p>{location.location_name}</p>
-        <p>{location.location_detail}</p>
-        </div>
-      ))}
 
-      <span>ID</span>
-      <input type="text" name="locationName" placeholder="location name" id="" />
-      <span>location name</span>
-      <input type="text" name="locationDetail" placeholder="location detail" id="" />
-      <span>location detail</span>
-      <input type="text" name="contact" placeholder="contact" id="" />
-      <button onClick={testPOST}>test post</button>
-      <button onClick={testUpdate} >test update</button>
-      <button onClick={testDelete} >test delete</button>
-  {/* <button onClick={sendApprovedEmail}>Appproved email</button>
-  <button onClick={sendDisApprovedEmail}>disapproved email</button>
-  <button onClick={sendResetPassword}>remind password email</button> */}
-    </div>
         </div>
     )
 }
