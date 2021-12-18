@@ -22,6 +22,11 @@ const forgotPassword =()=> {
         try {
             axios.post(`${process.env.SERVER_API}/forgot-password`,userEmail).then((res)=>{
                 console.log(res);
+                Swal.fire({
+                    title:`${response.data.payload}`,
+                    text:'กรุณาตรวจสอบอีเมลของท่าน',
+                    icon:'success'
+                })
             })
         } catch (error) {
             console.log(error);

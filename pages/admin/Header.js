@@ -28,6 +28,7 @@ import PersonIcon from '@mui/icons-material/Person';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import MenuIcon from '@mui/icons-material/Menu';
+import Swal from 'sweetalert2'
 // import {listMenu} from './list_menu'
 
 
@@ -92,6 +93,7 @@ export default function header() {
 
     const logout=()=>{
       localStorage.clear()
+      Swal.fire('ออกจากระบบ','ออกจากระบบแล้ว','success')
       router.push('/login')
     }
     
