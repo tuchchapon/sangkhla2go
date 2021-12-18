@@ -1,4 +1,5 @@
-import {react,useState}  from 'react';
+import {react,useState,useEffect}  from 'react';
+import { useRouter } from 'next/router';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -9,11 +10,16 @@ import Header from './Header'
 const mdTheme = createTheme();
 
 export default  function Index() {
-
-
+  const router = useRouter()
+  useEffect(() => {
+    settoken(localStorage.getItem("token")) 
+    const [token, setToken] = useState('')
+    
+  }, [router.isReady,token])
 
   return (
-    <ThemeProvider theme={mdTheme}>
+    {token ? (
+      <ThemeProvider theme={mdTheme}>
       <Box sx={{ display: 'flex' }}>
         <Header  />
         <Box
@@ -44,6 +50,9 @@ export default  function Index() {
         </Box>
       </Box>
     </ThemeProvider>
+    ): (
+      <div></div>
+    )}
   );
 }
 

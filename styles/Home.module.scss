@@ -1,3 +1,85 @@
+/////////////////// header ///////////////////
+.header-box{
+  border-bottom:  4px solid #383838;;
+  background-color: #fbf6e9;
+  color: #383838;
+  display: flex;
+  font-size: 24px;
+  font-weight: 500;
+  font-family: Sukhumvit Set;
+  .row-box{
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin: 0 auto;
+    margin-top: 24px;
+    line-height: 32px;
+    // margin-bottom: 14px;
+    width: 100%;
+    max-width: 1440px;
+    // padding: 0 20px;
+    .head-leftbox{
+      height: 55px;
+      display: flex;
+      align-self: end;
+      // align-content: flex-end;
+      // justify-content: flex-end;
+      // align-items: flex-end;
+      .head-textbox{
+        display: flex;
+      }
+      span{
+
+        // height: 100%;
+        height: 32px;
+        align-self: flex-start;
+        padding:0 16px ;
+        margin-bottom: 24px;
+        border-right: 2px solid #383838;
+        &:nth-child(7){
+          border-right: none;
+        }
+      }
+      .head-textbox:hover span{
+        // margin-bottom: 24px;
+        font-weight: bold;        
+      }
+      .head-textbox:hover{
+        border-bottom: 4px solid #383838;
+      }
+    }
+    .head-rightbox{
+      height: 55px;
+      display: flex;
+      align-self: end;
+      // align-content: flex-end;
+      // justify-content: flex-end;
+      // align-items: flex-end;
+      .head-textbox{
+        display: flex;
+      }
+      span{
+
+        // height: 100%;
+        height: 32px;
+        align-self: flex-start;
+        padding:0 16px ;
+        margin-bottom: 24px;
+        // border-right: 2px solid #383838;
+        &:nth-child(7){
+          border-right: none;
+        }
+      }
+      .head-textbox:hover span{
+        // margin-bottom: 24px;
+        font-weight: bold;        
+      }
+      .head-textbox:hover{
+        border-bottom: 4px solid #383838;
+      }
+    }
+  }
+}
 
 ////////////////// intro section //////////////////
 .intro-section{
@@ -443,8 +525,9 @@
         background-image: url('/img/home/sm-box.png');
         span{
           position: absolute;
-          left: 50px;
-          top: 20px;
+          left: 40px;
+          top: 24px;
+          font-size: 24px;
           font-weight: 500;
           color: #383838;
         }
@@ -471,14 +554,15 @@
       }
       .right-pin-position1{
         position: absolute;
-        right:  300px;
-        top: 930px;
+        right:  310px;
+        top: 730px;
 
       }
       .right-pin-position2{
         position: absolute;
         left: 420px;
-        top: 680px;
+        top: 500px;
+        
       }
       .left-pin-position1{
         left: 120px;
@@ -491,7 +575,7 @@
       }
       .left-pin-position3{
         right: 310px;
-        top:  560px;
+        top:  400px;
       }
       .left-pin-position4{
         left: 410px;
@@ -518,6 +602,7 @@
       background-image: url('/img/home/sm-box.png');
       position: absolute;
       left: 50px;
+      
       top: 20px;
     }
     .left-pin:hover .lg-box{
@@ -531,6 +616,7 @@
       
     }
     .right-pin:hover .lg-box{
+
       display: block;
       width: 270px;
       height: 104px;
@@ -541,6 +627,103 @@
       top: 20px;
     }
   }
+  .leader-box{
+    .leader-row-box{
+        display: flex;
+        justify-content: center;
+        padding-top: 80px;
+    }
+    .leader-left-box{
+        width: 585px;
+        height: 440px;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+    .leader-tag{
+        font-size: 32px;
+        line-height: 40px;
+        font-weight: bold;
+        background: #FFFDF8;
+        padding: 10px 15px;
+        border: 4px solid #383838;
+        border-radius: 16px;
+    }
+    .leader-right-box{
+        align-items: center;
+        flex-direction: column;
+        display: flex;
+        width: 585px;
+        height: 300px;
+    }
+    .leader-item{
+        width: 170px;
+        height: 200px;
+        display: flex;
+        flex-direction: column;
+        padding-top: 24px;
+        cursor: pointer;
+        // justify-content: center;
+        align-items: center;
+        .leader-image-box{
+            position: relative;
+            background-size: contain;
+            width: 118px;
+            height: 118px;
+            // background-size: cover;
+            // background-repeat: no-repeat;
+            // background-position: center;
+            border-radius: 50%;
+            // background-color: blue;
+            border: 4px solid #383838;
+            .leader-img{
+                // opacity: 0.8;
+                position: absolute;
+                border-radius: 100%;
+                left: -1px;
+                top: -1px;
+                width: 112px;
+                height: 112px;
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-position: center;
+            }
+        }
+
+        span{
+            margin-top: 16px;
+            font-weight: bold;
+            font-size: 24px;
+            line-height: 32px;
+            text-align: center;
+        }
+    }.leader-item:hover .leader-image-box{
+        
+        border-radius: 100%;
+
+        width: 118px;
+        height: 118px;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        background: black;
+        background-blend-mode: hard-light;
+    }
+    .leader-item:hover .leader-img{
+        opacity: 0.8;
+        position: absolute;
+        border-radius: 100%;
+        left: -1px;
+        top: -1px;
+        width: 112px;
+        height: 112px;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+
+    }
+
+}
 }
 
 ////////////////// restaurant section //////////////////

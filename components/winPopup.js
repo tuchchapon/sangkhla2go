@@ -7,16 +7,19 @@ export default function winPopup({open,onClose,activeWin}) {
     const [drivers, setDrivers] = useState([])
     const [sideTow, setSideTow] = useState(false)
     const [triCycle, setTriCycle] = useState(false)
-
+    const [load, setLoad] = useState(true)
     const getDriverFromLocation  = async(location)=>{
         console.log('get driver from location');
         console.log('location in function is',location);
         const response = await axios.post(`${process.env.SERVER_API}/get/driverfromlocation`,location)
         console.log('res data is',response.data);
+       if (response.status === 200) {
         setDrivers(response.data.payload)
         response.data.sidetow ? setSideTow(true):false
         response.data.triCycle ? setTriCycle(true):false
         console.log('sidetow is',response.data.sidetow);
+        setLoad(false)
+       }
         // setShowWinPopup(true)
     }
     const closeWinPopup=()=>{
@@ -27,9 +30,10 @@ export default function winPopup({open,onClose,activeWin}) {
     useEffect(() => {
         getDriverFromLocation(activeWin)
 
-    }, [activeWin])
+    }, [activeWin,drivers])
     return (
         <>
+            {!load ? (
                 <Popup 
                 open={open}
                 closeOnEscape={false}
@@ -68,6 +72,7 @@ export default function winPopup({open,onClose,activeWin}) {
                         </div>
                     </div>
                 </Popup>
+            ):''}
         </>
     )
 }

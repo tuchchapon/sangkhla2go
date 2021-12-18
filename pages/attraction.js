@@ -77,7 +77,7 @@ export default function attraction() {
     useEffect(() => {
         
         const getAttraction = async()=>{
-            const response = await axios.get(`${process.env.LOCAL_API}/get/attractions`)
+            const response = await axios.get(`${process.env.SERVER_API}/get/attractions`)
             if (response.status === 200) {
                 let data = response.data.payload
                 console.log(response.data.payload);

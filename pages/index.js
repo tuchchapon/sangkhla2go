@@ -18,6 +18,7 @@ import BoatProviderPopup from '../components/boatPopup'
 import KarenPopup from '../components/karenTraditionPopup';
 import MonPopup from '../components/monTraditionPopup';
 import ProductPopup from '../components/productPopup';
+import Header from '../layouts/header';
 function RightArrow(props) {
   const { className, style, onClick } = props;
   return (
@@ -278,6 +279,7 @@ export default function index() {
       </div>
     ):(
       <div>
+        <Header/>
             <div className={styles['intro-section']}>
           
           <div className="container">
@@ -450,7 +452,33 @@ export default function index() {
                     </div>
 
                 </div>
-
+                  <span onClick={(e)=>router.push('/attraction')} className={styles['see-all-button']}>ดูทั้งหมด</span>
+                <div className={styles['leader-box']}>
+                <div className="container">
+                    <div className="col-12">
+                        <div className={styles['leader-row-box']}>
+                        <div className={styles['leader-left-box']}>
+                            <div className={styles['leader-tag']}>ปราชญ์ชุมชนและผู้มีความโดดเด่น</div>
+                            <div onClick={(e)=>openLeaderPopup(e,'หลวงพ่ออุตมะ')} className={styles['leader-item']}>
+                                <div className={styles['leader-image-box']} style={{backgroundImage:'/frame.png'}}>
+                                <div className={styles['leader-img']} style={{backgroundImage:`url('/Uttamarambho.png')`}} ></div>
+                                </div>
+                                <span>หลวงพ่ออุตมะ</span>
+                            </div>
+                        </div>
+                        <div className={styles['leader-right-box']}>
+                            <div className={styles['leader-tag']}>ผู้นำชุมชน</div>
+                            <div onClick={(e)=>openLeaderPopup(e,'เจ้าศรีสุวรรณคีรี')} className={styles['leader-item']}>
+                                <div className={styles['leader-image-box']}>
+                                <div className={styles['leader-img']} style={{backgroundImage:`url('/srisuwankeeree.jpeg')`}}></div>
+                                </div>
+                                <span>เจ้าศรีสุวรรณคีรี</span>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
           </div>
         </div>
@@ -604,20 +632,20 @@ export default function index() {
                         width={577}
                         height={320}
                          url='https://youtu.be/7myqazGs5_Y' /> */}
-                           {/* <iframe width="577" height="315" src="https://www.youtube.com/embed/36iD3HmGt8g" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe> */}
+                           <iframe width="577" height="315" src="https://www.youtube.com/embed/36iD3HmGt8g" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                     </div>
                     <div className={styles['video-item']}>
                         {/* <ReactPlayer width={577}height={320} url='https://youtu.be/MKJZ3Jdsucg' /> */}
                     </div>
                     <div className={styles['video-item']}>
-                    {/* <iframe width="577" height="315" src="https://www.youtube.com/embed/36iD3HmGt8g" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe> */}
+                    <iframe width="577" height="315" src="https://www.youtube.com/embed/36iD3HmGt8g" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                         {/* <ReactPlayer width={577}height={320}  url='https://www.youtube.com/watch?v=7sDY4m8KNLc' /> */}
                     </div>
                     {/* <div className={styles['video-item']}>
                         <ReactPlayer width={577}height={320}  url='https://www.youtube.com/embed/&v=36iD3HmGt8g' />
                     </div>
                     <div className={styles['video-item']}>
-                        <ReactPlayer width={577}height={320} play url='https://www.youtube.com/embed/&v=36iD3HmGt8g' />
+                        <ReactPlayer width={577}height={320}  url='https://www.youtube.com/embed/&v=36iD3HmGt8g' />
                     </div> */}
                     </Slider>
               </div>
