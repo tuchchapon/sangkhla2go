@@ -28,7 +28,6 @@ export default function login() {
                 Swal.fire({
                     title:'เข้าสู่ระบบสำเร็จ',
                     icon:'success',
-                    showConfirmButton
                 }).then((res)=>{
                     if (res.isConfirmed) {
                         router.push('/admin')
