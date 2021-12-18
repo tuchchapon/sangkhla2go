@@ -158,6 +158,10 @@
                     background-image: url('/glass.png');
                 }
                 span{
+                    width: 263px;
+                    white-space: pre;
+                    text-overflow: ellipsis;
+                    overflow: hidden;
                     margin-left: 16px;
                     font-weight: 500;
                     font-size: 32px;
