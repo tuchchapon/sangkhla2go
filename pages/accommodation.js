@@ -25,12 +25,12 @@ export default function accommodation() {
     const showMore=()=>{
         let new_show_arr =[]
         let new_res_arr = []
-        if (res_arr.length !== 0) {
+        if (resAccommodation.length !== 0) {
             for (let i = 0; i < 9; i++) {
-           if(res_arr[i])new_show_arr.push(res_arr[i])     
+           if(resAccommodation[i])new_show_arr.push(resAccommodation[i])     
         }
     }
-        new_res_arr = res_arr.splice(0,9)
+        new_res_arr = resAccommodation.splice(0,9)
         console.log('new show arr is',new_show_arr);
         setNewAccommodation(new_show_arr)
     }

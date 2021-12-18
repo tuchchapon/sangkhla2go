@@ -66,6 +66,10 @@
                 font-size: 32px;
                 line-height: 48px;
                 color: #383838;
+                width: 318px;
+                white-space: pre;
+                overflow: hidden;
+                text-overflow: ellipsis;
                 font-weight: bold;
             }
             .price-box{
@@ -207,7 +211,7 @@
             .image-list{
                 display: flex;
                 overflow-y: auto;
-                width: 406;
+                width: 485px;
                 img{
                     display: flex;
                     object-fit: cover;
