@@ -4,7 +4,7 @@
         SERVER_API : "https://sangkhla2go-7uklpz68l-tuchy.vercel.app",
         SERVER_IMAGE_PATH:'https://sangkhla-server.vercel.app/uploads/uploadimage',
         LOCAL_API : "http://localhost:8080" ,
-        LOCAL_IMAGE_PATH : "http://localhost:8080/uploads",
+        LOCAL_IMAGE_PATH : "http://localhost:8080/uploads/uploadImage",
         FRONT_IMAGE_PATH : "http://localhost:8080/uploads"
     },
   }
