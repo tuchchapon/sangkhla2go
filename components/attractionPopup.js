@@ -47,7 +47,7 @@ export default function attractionPopup({activeAttraction,open,onClose}) {
                                         <div className={styles['slider']}>
                                         <Slider {...settings} >
                                                 {activeAttraction.images.length >0 ? activeAttraction.images.map((image)=>(
-                                                <div key={image} className={styles['slider-box']}  ><div className={styles['slider-image']} style={{backgroundImage:`url(${image ? `${process.env.IMAGE_PATH}/attraction/${image}`:'' })`}}></div></div>
+                                                <div key={image} className={styles['slider-box']}  ><div className={styles['slider-image']} style={{backgroundImage:`url(${image ? `/uploadImage/attraction/${image}`:'' })`}}></div></div>
                                                 )):(
                                                     <div className={styles['slider-box']}  ><div className={styles['slider-image']} style={{backgroundImage:`url('/no-image-big.png')`}}></div></div>
                                                 )}        
