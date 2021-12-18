@@ -77,8 +77,10 @@ export default function accommodation() {
                                         ) :''}
                                         <span className={styles['accommodation-name']} >{accommodation.name}<br/></span>
                                         <div className={styles['price-box']} >
-                                            <img className={styles['icon-b']} src="/img/accommodation/icon-B.png" alt="" />
-                                            <span>{`${accommodation.min_price} - ${accommodation.max_price} บาท`}</span>
+                                           {accommodation.min_price !=='' && accommodation.max_price !== '' ?  <img className={styles['icon-b']} src="/img/accommodation/icon-B.png" alt="" />:''}
+                                           {accommodation.min_price === "" && accommodation.max_price ===''  ?'':  accommodation.min_price && accommodation.max_price ? <span>{`${accommodation.min_price} - ${accommodation.max_price} บาท`}</span>:
+                                            accommodation.min_price >= accommodation.max_price === '' && accommodation.min_price === '' ? ( <span>{`${accommodation.min_price} บาท`}</span>):
+                                            accommodation.min_price === accommodation.max_price ?  <span>{`${accommodation.min_price}  บาท`}</span>:''}
                                         </div>
                                     </div>
                                 )):''}

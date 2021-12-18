@@ -459,7 +459,7 @@ export default function index() {
                         <div className={styles['leader-row-box']}>
                         <div className={styles['leader-left-box']}>
                             <div className={styles['leader-tag']}>ปราชญ์ชุมชนและผู้มีความโดดเด่น</div>
-                            <div onClick={(e)=>openLeaderPopup(e,'หลวงพ่ออุตมะ')} className={styles['leader-item']}>
+                            <div onClick={(e)=>setOpenSagePopup(true)} className={styles['leader-item']}>
                                 <div className={styles['leader-image-box']} style={{backgroundImage:'/frame.png'}}>
                                 <div className={styles['leader-img']} style={{backgroundImage:`url('/Uttamarambho.png')`}} ></div>
                                 </div>
@@ -468,7 +468,7 @@ export default function index() {
                         </div>
                         <div className={styles['leader-right-box']}>
                             <div className={styles['leader-tag']}>ผู้นำชุมชน</div>
-                            <div onClick={(e)=>openLeaderPopup(e,'เจ้าศรีสุวรรณคีรี')} className={styles['leader-item']}>
+                            <div onClick={(e)=>setOpenLeaderPopup(true)} className={styles['leader-item']}>
                                 <div className={styles['leader-image-box']}>
                                 <div className={styles['leader-img']} style={{backgroundImage:`url('/srisuwankeeree.jpeg')`}}></div>
                                 </div>
@@ -628,14 +628,10 @@ export default function index() {
               <div className={styles['review-slider-box']}>
                     <Slider {...videoSettings}>
                     <div className={styles['video-item']}>
-                        {/* <ReactPlayer
-                        width={577}
-                        height={320}
-                         url='https://youtu.be/7myqazGs5_Y' /> */}
                            <iframe width="577" height="315" src="https://www.youtube.com/embed/36iD3HmGt8g" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                     </div>
                     <div className={styles['video-item']}>
-                        {/* <ReactPlayer width={577}height={320} url='https://youtu.be/MKJZ3Jdsucg' /> */}
+
                     </div>
                     <div className={styles['video-item']}>
                     <iframe width="577" height="315" src="https://www.youtube.com/embed/36iD3HmGt8g" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>

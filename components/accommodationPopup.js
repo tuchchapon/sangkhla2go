@@ -158,11 +158,11 @@ export default function accommodationPopup({open,onClose,activeAcommodation}) {
                             </div>
                             <div className={styles['contact-box']}>
                                 <div className={styles['contact-item']}>
-                                    <img src="/img/restaurant/fb-icon.png" alt="" />
+                                   {activeAcommodation.fb_page ? <img src="/img/restaurant/fb-icon.png" alt="" />:''}
                                     <span>{activeAcommodation.fb_page}</span>
                                 </div>
                                 <div className={styles['contact-item']}>
-                                    <img src="/img/restaurant/tel-icon.png" alt="" />
+                                    {activeAcommodation.tel ?<img src="/img/restaurant/tel-icon.png" alt="" />:''}
                                     <span>{activeAcommodation.tel} </span>
                                 </div>
                             </div>

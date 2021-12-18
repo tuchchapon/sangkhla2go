@@ -124,11 +124,11 @@ export default function restaurantPopup({open,onClose,activeRestaurant}) {
                                         </div>
                                         <div className={styles['contact-box']}>
                                             <div className={styles['contact-item']} >
-                                            <img src="/img/restaurant/fb-icon.png" alt="" />
+                                            {activeRestaurant.fb_page ? <img src="/img/restaurant/fb-icon.png" alt="" />:''}
                                             <span>{activeRestaurant.fb_page}</span>
                                             </div>
                                             <div className={styles['contact-item']} >
-                                            <img src="/img/restaurant/tel-icon.png" alt="" />
+                                           {activeRestaurant.tel ?  <img src="/img/restaurant/tel-icon.png" alt="" />:''}
                                             <span>{activeRestaurant.tel}</span>
                                             </div>
                                         </div>

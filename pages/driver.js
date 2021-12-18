@@ -2,7 +2,7 @@ import {React,useState,useEffect} from 'react'
 import axios from 'axios'
 import { useRouter } from 'next/router'
 
-export default function driver() {
+function driver() {
     const router = useRouter();
     const [data, setData] = useState({})
     const [driver, setDriver] = useState({location_id :null,
