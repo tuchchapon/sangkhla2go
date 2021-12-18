@@ -11,6 +11,7 @@ import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
+import Swal from 'sweetalert2';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 export default function login() {
@@ -24,7 +25,23 @@ export default function login() {
             console.log('data is',res.data);
             localStorage.setItem("token", `${res.data.token}`);
             if (res.data.token) {
-                router.push('/admin')
+                Swal.fire({
+                    title:'เข้าสู่ระบบสำเร็จ',
+                    icon:'success',
+                    showConfirmButton
+                }).then((res)=>{
+                    if (res.isConfirmed) {
+                        router.push('/admin')
+                    }
+                })
+
+            }
+            else{
+                Swal.fire({title:'ผิดพลาด',
+                text:'อีเมลล์และรหัสผ่านไม่ถูกต้อง',
+                icon:'error'
+            })
+                // router.push('/admin')
             }
         })
         // console.log('admin is',admin);

@@ -11,16 +11,16 @@ const mdTheme = createTheme();
 
 export default  function Index() {
   const router = useRouter()
+  const [token, setToken] = useState('')
   useEffect(() => {
-    settoken(localStorage.getItem("token")) 
-    const [token, setToken] = useState('')
-    
+    let local =localStorage.getItem("token")
+    setToken(local) 
   }, [router.isReady,token])
 
   return (
-    {token ? (
-      <ThemeProvider theme={mdTheme}>
-      <Box sx={{ display: 'flex' }}>
+   <ThemeProvider theme={mdTheme}>
+
+        <Box sx={{ display: 'flex' }}>
         <Header  />
         <Box
           component="main"
@@ -49,10 +49,7 @@ export default  function Index() {
           </Container>
         </Box>
       </Box>
-    </ThemeProvider>
-    ): (
-      <div></div>
-    )}
-  );
+    </ThemeProvider> 
+  )
 }
 

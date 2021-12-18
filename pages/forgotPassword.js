@@ -1,9 +1,22 @@
-import {React,useState} from 'react'
-import { useRouter } from 'next/router'
 import axios from 'axios'
+import {React,useState,useEffect} from 'react';
+import { useRouter } from "next/router";
+import Avatar from '@mui/material/Avatar';
+import Button from '@mui/material/Button';
+import CssBaseline from '@mui/material/CssBaseline';
+import TextField from '@mui/material/TextField';
+import Link from '@mui/material/Link';
+// import Link from 'next/link';
+import Grid from '@mui/material/Grid';
+import Box from '@mui/material/Box';
+import Swal from 'sweetalert2';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import Typography from '@mui/material/Typography';
+import Container from '@mui/material/Container';
 const forgotPassword =()=> {
-
+    const theme = createTheme();
     const forgotPassword =()=>{
+        
         console.log('forgot password')
         console.log(userEmail);
         try {
@@ -17,9 +30,39 @@ const forgotPassword =()=> {
     const [userEmail, setUserEmail] = useState({email:'',token:''})
     return (
         <div className="body">
-            <h1>forgot password</h1>
-            <input type="text" placeholder='กรุณากรอกอีเมลที่ลืมรหัสผ่าน' onChange={(e)=>{setUserEmail({...userEmail,email:e.target.value})}} />
-            <button onClick={forgotPassword} >forgot password</button>
+            <ThemeProvider theme={theme} >
+                    <Container component="main" maxWidth="xs">
+                        <CssBaseline/>
+                            <Box  sx={{ marginTop: 8,display: 'flex',flexDirection: 'column',alignItems: 'center',}}>
+                                <Avatar>
+                                    S2
+                                </Avatar>
+                                <Typography component="form" variant="h5">
+                                    forgot password
+                                </Typography>
+                                <Box component="form" >
+                                    <TextField 
+                                    margin="normal"
+                                    fullWidth
+                                    id="email"
+                                    label="Email Address"
+                                    name="email"
+                                    autoComplete="email"
+                                    autoFocus
+                                   onChange={(e)=>{setUserEmail({...userEmail,email:e.target.value})} }/>
+                                   <Button
+                                   fullWidth
+                                   variant="contained"
+                                   sx={{mt:3,mb:2}}
+                                   onClick={forgotPassword}
+                                   >
+                                      เปลี่ยนรหัสผ่าน
+                                    </Button> 
+
+                                </Box>
+                            </Box>
+                    </Container>
+                </ThemeProvider>
         </div>
     )
 }
