@@ -8,6 +8,8 @@ export default function winPopup({open,onClose,activeWin}) {
     const [sideTow, setSideTow] = useState(false)
     const [triCycle, setTriCycle] = useState(false)
     const [load, setLoad] = useState(true)
+    const [check_data, setcheck_data] = useState(false)
+
     const getDriverFromLocation  = async(location)=>{
         console.log('get driver from location');
         console.log('location in function is',location);
@@ -18,6 +20,7 @@ export default function winPopup({open,onClose,activeWin}) {
         response.data.sidetow ? setSideTow(true):false
         response.data.triCycle ? setTriCycle(true):false
         console.log('sidetow is',response.data.sidetow);
+        setcheck_data(true)
         setLoad(false)
        }
         // setShowWinPopup(true)
@@ -28,7 +31,7 @@ export default function winPopup({open,onClose,activeWin}) {
         onClose()
     }
     useEffect(() => {
-        getDriverFromLocation(activeWin)
+        activeWin ?  getDriverFromLocation(activeWin)   :''
 
     }, [activeWin,drivers])
     return (
