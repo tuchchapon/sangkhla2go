@@ -70,7 +70,7 @@ export default function attraction() {
                 imageData.append('id',`attraction${id}`)
                 await axios({
                     method:'post',
-                    url:`${process.env.LOCAL_API}/upload/attraction-images`,
+                    url:`${process.env.SERVER_API}/upload/attraction-images`,
                     headers:{ 'Content-Type': 'multipart/form-data' },
                     data:imageData
                 })
