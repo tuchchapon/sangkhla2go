@@ -3,6 +3,7 @@ import axios from 'axios'
 import Head from 'next/head'
 import styles from '../styles/restaurant.module.scss'
 import RestaurantPopup from '../components/restaurantPopup'
+import SubHeader from '../layouts/subHeader'
 export default function restaurant() {
     const [restaurants, setrestaurants] = useState([])
     const [show_arr, setShow_arr] = useState([
@@ -74,6 +75,7 @@ export default function restaurant() {
             <Head>
                 <title>ร้านอาหาร</title>
             </Head>
+            <SubHeader first={'ร้านอาหาร/กาแฟ'} />
             <div >
             <div className={styles['page-title-box']}>
                 <div className={styles['header-line']}></div>

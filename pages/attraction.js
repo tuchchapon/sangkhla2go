@@ -7,6 +7,8 @@ import Slider from 'react-slick';
 import AttractionPopup from '../components/attractionPopup'
 import SagePopup from '../components/sagePopup'
 import LeaderPopup from '../components/leaderPopup'
+import SubHeader from '../layouts/subHeader'
+
 function RightArrow(props) {
     const { className, style, onClick } = props;
     return (
@@ -94,6 +96,7 @@ export default function attraction() {
             <Head>
                 <title>สถานที่ท่องเที่ยว</title>
             </Head>
+            <SubHeader first={'สถานที่ท่องเที่ยว'}/>
             <div className={styles['header-box']}>
                         <div className={styles['header-line']}></div>
                         <span>สถานที่ท่องเที่ยว</span>

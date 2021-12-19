@@ -26,7 +26,7 @@ export default function header() {
                         <span>ผลิตภัณฑ์ชุมชน</span> 
                         </div>
                         <div  onClick={(e)=> document.getElementById("review-section").scrollIntoView({behavior:'smooth'})} className={styles['head-textbox']}>
-                        <span>รีวิว</span> 
+                        <span className={styles['last-span']}>รีวิว</span> 
                         </div>
                         </div>
 

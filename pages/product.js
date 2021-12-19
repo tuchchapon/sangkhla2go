@@ -4,7 +4,7 @@ import Slider from 'react-slick'
 import styles from '../styles/product.module.scss'
 import Head from 'next/head'
 import ProductPopup from '../components/productPopup'
-
+import SubHeader from '../layouts/subHeader'
 function RightArrow(props) {
     const { className, style, onClick } = props;
     return (
@@ -92,6 +92,11 @@ export default function product() {
                 ผลิตภัณฑ์ชุมชน
                 </title>
             </Head>
+            <SubHeader first={'ผลิตภัณฑ์ชุมชน'} second={`${
+                activeTab=== "karen" ? ('ผ้าทอมือกะเหรี่ยง'):activeTab==="product"?
+                ('ผลิตภัณฑ์ชุมชน'):activeTab === 'uttama' ? ('หนังสือประวัติหลวงพ่ออุตมะ') 
+                :activeTab ==="photo-book" ?('หนังสือภาพถ่ายสังขละ') :''
+            }`} />
             <div className={styles['header-box']}>
                 <span>
                 ผลิตภัณฑ์ชุมชน
@@ -132,9 +137,15 @@ export default function product() {
                                                 )}        
                                         </Slider>
                                     </div>
+                                    <div className={styles['icon-row-box']}>
+                                        <div className={styles['video-box']}>
+                                        <iframe width="698" height="562" src="https://www.youtube.com/embed/pJ9JTcFuLKk" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                                        </div>
+                                    </div>
                                     <span className={styles['contact-text']}>
                                     ติดต่อ ป้ามะติ่งเยง (บ้านโมรข่า)
                                     </span>
+
                                    <div className={styles['icon-row-box']}>
                                    <div className={styles['tel-box']}>
                                         <img src="/tel-icon.png" alt="" />

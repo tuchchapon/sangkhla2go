@@ -195,7 +195,7 @@ export default function index() {
   }
   // const showAccommodationPopup =(e,accommodation)=>{
   //     if(e) e.preventDefault()
-  //     console.log('boat house is ',boatHouses);
+  
   // }
   const getAccommodation =async()=>{
     let accommodation_data = await axios.get(`${process.env.SERVER_API}/get/accommodation`)
@@ -205,27 +205,27 @@ export default function index() {
       fetch_accommodation[i].type === "แพพัก" ? boatHouses.push(fetch_accommodation[i]) 
       :hotels.push(fetch_accommodation[i])
     }
-    console.log(accommodation_data.data.payload);
+    
   }
   const getBoatProvider = async()=>{
     let boat_data = await axios.get(`${process.env.SERVER_API}/get/boat-provider`)
-    console.log('boat provider is',boat_data.data.payload);
+    
     setBoatProviders(boat_data.data.payload)
   }
   const getTradition =async()=>{
     let tradition_data = await axios.get(`${process.env.SERVER_API}/get/traditions`)
-    console.log('tradition data is',tradition_data.data.payload);
+    
     setKarenTraditions(tradition_data.data.payload.karen_tradition)
     setMonTraditions(tradition_data.data.payload.mon_tradition)
   }
   const getProduct=async()=>{
     let product_data = await axios.get(`${process.env.SERVER_API}/get/products`)
-    console.log('product is',product_data.data.payload);
+    
     setProducts(product_data.data.payload)
   }
   const getRestaurant=async()=>{
     let restaurant_data = await axios.get(`${process.env.SERVER_API}/get/restaurant`)
-    console.log(restaurant_data.data.payload);
+    
     let restaurant_payload = restaurant_data.data.payload
     if (restaurant_data.status === 200) {
       for (let i = 0; i < restaurant_payload.length; i++) {
@@ -254,8 +254,8 @@ export default function index() {
     }
   }
   useEffect(() => {
-    console.log('open ac popup is',openAccommodationPopup);
-    console.log('active accom is',activeAcommodation);
+    
+    
       if (loading) {
         const getData=async()=>{
           hotels.length === 0 ?await getAccommodation():null
@@ -631,25 +631,25 @@ export default function index() {
                            <iframe width="577" height="315" src="https://www.youtube.com/embed/36iD3HmGt8g" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                     </div>
                     <div className={styles['video-item']}>
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/7myqazGs5_Y" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/7myqazGs5_Y" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                     </div>
                     <div className={styles['video-item']}>
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/MKJZ3Jdsucg" title="YouTube video player" frameBorder={0}  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/MKJZ3Jdsucg" title="YouTube video player" frameBorder={0}  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                     </div>
                     <div className={styles['video-item']}>
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/jD7vUEytFdw" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/jD7vUEytFdw" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                     </div>
                      <div className={styles['video-item']}>
-                     <iframe width="560" height="315" src="https://www.youtube.com/embed/Wr1PBrBZkQw" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                     <iframe width="560" height="315" src="https://www.youtube.com/embed/Wr1PBrBZkQw" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                     </div>
                     <div className={styles['video-item']}>
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/BHFVD2hJ7KA" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/BHFVD2hJ7KA" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                     </div>
                     <div className={styles['video-item']}>
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/B7ync4odCJk" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/B7ync4odCJk" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                     </div>
                     <div className={styles['video-item']}>
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/v_ulqJa2Jpw" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/v_ulqJa2Jpw" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                     </div>
                     
                     </Slider>

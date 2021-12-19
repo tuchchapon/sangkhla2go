@@ -4,7 +4,7 @@ import axios from 'axios'
 import styles from '../styles/Tradition.module.scss'
 import KarenTraditionPopup from '../components/karenTraditionPopup'
 import MonTraditionPopup from '../components/monTraditionPopup'
-
+import SubHeader from '../layouts/subHeader'
 export default function traditions() { 
     const [karenTraditions, setKarenTraditions] = useState([])
     const [monTraditions, setMonTraditions] = useState([])
@@ -59,6 +59,7 @@ export default function traditions() {
                     ประเพณี
                 </title>
             </Head>
+            <SubHeader first={'ประเพณี'}/>
             <img className={styles['header-background']} src="/img/tradition/tradition-background.png" alt="" />
             <div className="container">
                 <div className="row">

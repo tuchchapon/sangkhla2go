@@ -7,7 +7,7 @@ import styles from '../styles/PublicTranspotation.module.scss'
 import axios from 'axios'
 import WinPopup from '../components/winPopup';
 import BoatPopup from '../components/boatPopup';
-
+import SubHeader from '../layouts/subHeader'
 
 export default function publicTransportation() {
     const [showWinPopup, setShowWinPopup] = useState(false)
@@ -68,6 +68,7 @@ export default function publicTransportation() {
                 ขนส่งสาธารณะ
                 </title>
             </Head>
+            <SubHeader first={'ขนส่งสาธารณะ'} />
             <div className="container">
             {/* <h1>publicTranspotation</h1> */}
             <div className="col-12" >

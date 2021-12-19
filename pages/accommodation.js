@@ -3,6 +3,7 @@ import Head from 'next/head'
 import styles from "../styles/accommodation.module.scss";
 import axios from 'axios';
 import AccommodationPopup from '../components/accommodationPopup';
+import SubHeader from '../layouts/subHeader';
 export default function accommodation() {
     const [showAccommodation, setShowAccommodation] = useState([])
     const [resAccommodation, setResAccommodation] = useState([])
@@ -58,6 +59,7 @@ export default function accommodation() {
             <Head>
                 <title>โรงแรม/แพพัก</title>
             </Head>
+            <SubHeader first={'ที่พัก'} />
             <div className={styles['header-line']} ></div>
                 <div className="container">
                     <div className="col-12">
