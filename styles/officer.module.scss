@@ -206,7 +206,7 @@
                     }
                 }
                 .leader-name:hover{
-                    color: #383838;
+                    color: #7A2328;
                     cursor: pointer;
                     text-align: center;
                     align-self: center;
@@ -219,7 +219,9 @@
                         font-size: 24px;
                         line-height: 32px;
                         font-weight: bold;
-                        color: #757575;
+                        // text-decoration: darkseagreen;
+                        text-decoration: underline;
+                        // color: #757575;
                     }
                 }
                 .officer-name-box{
@@ -241,7 +243,9 @@
 
                 }
                 .officer-name-box:hover{
-                    color: #757575;
+                    text-decoration: underline;
+                    font-weight: bolder;
+                    color: #7A2328;
                     }
             }
         }

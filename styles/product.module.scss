@@ -407,7 +407,15 @@
             text-decoration: none;
             
         }
+
     }
+}
+.link-box:hover{
+
+    span{
+        text-decoration: underline;
+    }
+ 
 }
 .link-box-no-border{
     display: flex;
