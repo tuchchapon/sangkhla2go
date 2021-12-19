@@ -17,7 +17,10 @@ export default function officer() {
         name:'',
         position:'',
         detail:'',
-        image:''
+        image:'',
+        fb:'',
+        ig:'',
+        youtube:'',
     })
     const createOfficer =()=>{
         console.log('create');
