@@ -27,6 +27,7 @@
       // align-items: flex-end;
       .head-textbox{
         display: flex;
+        cursor: pointer;
       }
       span{
 
@@ -103,12 +104,15 @@
     // display: flex;
     // align-self: flex-start;
     width: 1170px;
+    margin: 0 auto;
     // margin-left: auto;
     // margin:auto;
     // padding-top: 24px;
-    padding-left: 135px;
+    // padding-left: 135px;
+    cursor: pointer;
   }
   .arrow{
+    
     position: relative;
     margin-left: 8px;
     margin-right: 8px;

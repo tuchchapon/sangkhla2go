@@ -2,7 +2,7 @@ import {React,useState,useEffect} from 'react'
 import axios from 'axios'
 import Popup from 'reactjs-popup';
 import styles from '../styles/officer.module.scss'
-
+import SubHeader from '../layouts/subHeader';
 export default function officer() {
     const [check_data, setCheck_data] = useState(false)
     const [leader, setLeader] = useState({})
@@ -53,6 +53,7 @@ export default function officer() {
     }, [])
     return (
         <div className={styles['officer-page']}>
+            <SubHeader first={'ผู้จัดทำ'} />
             <div className="container">
                 <div className="col-12">
                     <div className={styles['logo-box']}>
@@ -60,8 +61,8 @@ export default function officer() {
                     </div>
                     <div className={styles['detail-pa1']}>
                         <span>การจัดทำ Web Application ของตำบลหนองลู อำเภอสังขละบุรี จังหวัดกาญจนบุรี นี้ เป็นส่วนหนึ่งของ<br/> 
-                        
-                         (U2T)” บริหารจัดการโดย <b>ผศ.ดร. อรองค์ ชาคร</b> ซึ่งเป็น Tambon System Integrator (TSI)<br/>
+                        <b style={{color:'#7A2328' ,fontWeight:'200'}}>“โครงการยกระดับเศรษฐกิจและสังคมรายตำบลแบบบูรณาการ มหาวิทยาลัยสู่ตำบล สร้างรากแก้วให้ประเทศ (U2T)” </b>
+                          บริหารจัดการโดย <b style={{color:'#7A2328'}}>ผศ.ดร. อรองค์ ชาคร</b> ซึ่งเป็น Tambon System Integrator (TSI)<br/>
                           สังกัด<b>สถาบันบัณฑิตพัฒนบริหารศาสตร์ (นิด้า)</b> ภายใต้การกำกับดูแลของกระทรวงการอุดมศึกษา <br/>
                           วิทยาศาสตร์ วิจัยและนวัตกรรม</span>
                         
