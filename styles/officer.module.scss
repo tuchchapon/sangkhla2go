@@ -175,7 +175,7 @@
 
                 }
                 .position-leader-box{
-
+                    color: #383838;
                     background: #FFFDF8;
                     border-radius: 15px;
                     font-size: 32px;
@@ -190,6 +190,7 @@
 
                 }
                 .leader-name{
+                    color: #383838;
                     cursor: pointer;
                     text-align: center;
                     align-self: center;
@@ -204,7 +205,26 @@
                         font-weight: bold;
                     }
                 }
+                .leader-name:hover{
+                    color: #383838;
+                    cursor: pointer;
+                    text-align: center;
+                    align-self: center;
+                    justify-self: center;
+                    margin-bottom: 16px;
+                    display: flex;
+                    span{
+                        width: 322px;
+                        height: 32px;
+                        font-size: 24px;
+                        line-height: 32px;
+                        font-weight: bold;
+                        color: #757575;
+                    }
+                }
                 .officer-name-box{
+                    color: #383838;
+                    cursor: pointer;
                     // text-align: start;
                     padding-left: 22px;
                     cursor: pointer;
@@ -218,7 +238,11 @@
                     &:last-child{
                         margin: 0;
                     }
+
                 }
+                .officer-name-box:hover{
+                    color: #757575;
+                    }
             }
         }
     }

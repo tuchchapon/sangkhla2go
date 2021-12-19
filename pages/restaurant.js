@@ -103,7 +103,7 @@ export default function restaurant() {
                                         <img src={restaurant.images.length >0  ? `/uploadImage/restaurant/${restaurant.images[0]}` :'/no-imge.png'} className={styles['restaurant-image']} alt="" />
                                         <span>{restaurant.name}<br/></span>
                                         <span>{restaurant.type}<br/></span>
-                                        <span><b style={{color:'#383838'}}>เมนูแนะนำ : </b>{restaurant.recommend_menu}</span>
+                                        {restaurant.recommend_menu ?   <span><b style={{color:'#383838'}}>เมนูแนะนำ : </b>{restaurant.recommend_menu}</span> :'' }
                                  </div>
                              ))}   
                             </div>
