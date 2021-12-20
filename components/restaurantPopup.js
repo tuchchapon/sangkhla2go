@@ -4,8 +4,6 @@ import styles from '../styles/restaurant.module.scss'
 export default function restaurantPopup({open,onClose,activeRestaurant}) {
     const [bigPhoto, setBigPhoto] = useState('')
 
-
-
     const changeImage=(image)=>{
         setBigPhoto(image)
     }
@@ -32,25 +30,8 @@ export default function restaurantPopup({open,onClose,activeRestaurant}) {
             setBigPhoto(images[index])
             console.log('2 index',index);
         }
-    }
-    const timeChange_image =()=>{
-        if (activeRestaurant.images.length > 1) {
 
-            let index = images.indexOf(photo)
-            if (index <= images.length) {
-                index = index +1 
-                setBigPhoto(images[index])
-                console.log('1 index',index);
-            }
-            if (index === images.length) {
-                setBigPhoto(images[0])
-            }
-        }
     }
-    useEffect(() => {
-        
-
-    }, [])
     useEffect(() => {
         let first_image =''
         activeRestaurant.images.length ?  first_image =`${activeRestaurant.images[0]}`:''
@@ -96,23 +77,15 @@ export default function restaurantPopup({open,onClose,activeRestaurant}) {
                                             <div className={styles['detail-box']}>
                                                 <div className={styles['restaurant-detail']}>
                                                    <div className={styles['recommend-box']}>
-                                                   <span><b style={{color:'#383838'}}>{activeRestaurant.recommend_menu ? 'เมนูแนะนำ :' :''}</b> {activeRestaurant.recommend_menu} </span>
+                                                   <span><b style={{color:'#383838'}}>{activeRestaurant.recommend_menu ? 'เมนูแนะนำ' :''}</b> :{activeRestaurant.recommend_menu} </span>
                                                    </div>
                                                     <div className={styles['food-price-box']}>
                                                         <span>ราคาอาหาร</span>
-                                                        {activeRestaurant.food_min_price && activeRestaurant.food_max_price ? (
-                                                            <span><b>{parseInt(activeRestaurant.food_min_price) >= parseInt(activeRestaurant.food_max_price) ? `${activeRestaurant.food_min_price} บาท`:
-                                                            `${activeRestaurant.food_min_price}-${activeRestaurant.food_max_price} บาท`}</b></span>
-                                                       ):activeRestaurant.food_min_price ? <span><b>{`${activeRestaurant.food_max_price} บาท`}</b></span> 
-                                                       :activeRestaurant.food_max_price ? <span><b>{`${activeRestaurant.food_max_price} บาท`}</b></span> :'-'}
+                                                        <span><b>{`${activeRestaurant.food_min_price}-${activeRestaurant.food_max_price} บาท`}</b> </span>
                                                     </div>
                                                     <div className={styles['drink-price-box']} >
                                                         <span>ราคาเครื่องดื่ม</span>
-                                                       {activeRestaurant.drink_min_price && activeRestaurant.drink_max_price ? (
-                                                            <span><b>{parseInt(activeRestaurant.drink_min_price) >= parseInt(activeRestaurant.drink_max_price) ? `${activeRestaurant.drink_min_price} บาท`:
-                                                            `${activeRestaurant.drink_min_price}-${activeRestaurant.drink_max_price} บาท`}</b></span>
-                                                       ):activeRestaurant.drink_min_price ? <span><b>{`${activeRestaurant.drink_max_price} บาท`}</b></span> 
-                                                       :activeRestaurant.drink_max_price ? <span><b>{`${activeRestaurant.drink_max_price} บาท`}</b></span> :'-'}
+                                                        <span><b>{`${activeRestaurant.drink_min_price}-${activeRestaurant.drink_max_price} บาท`}</b></span>
                                                     </div>
                                                     <div className={styles['time-box']}>
                                                         <img src="/img/restaurant/clock-icon.png" alt="" />
