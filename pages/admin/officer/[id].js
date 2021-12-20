@@ -164,6 +164,18 @@ export default function officer() {
                             <span>คำอธิบาย</span>
                             <textarea name="" id="" cols="30" rows="10"  value={officer ? officer.detail :''} onChange={(e)=>setOfficer({...officer,detail:e.target.value})} ></textarea>
                         </div>
+                        <div className={styles['first-input']} >
+                            <span>เฟสบุ๊ค</span>
+                            <input type="text" value={officer ? officer.fb :''} onChange={(e)=>setOfficer({...officer,fb:e.target.value})} />
+                        </div>
+                        <div className={styles['first-input']} >
+                            <span>instagram</span>
+                            <input type="text" value={officer ? officer.ig :''} onChange={(e)=>setOfficer({...officer,ig:e.target.value})} />
+                        </div>
+                        <div className={styles['first-input']} >
+                            <span>ลิ๊ง youtube</span>
+                            <input type="text" value={officer ? officer.youtube :''} onChange={(e)=>setOfficer({...officer,youtube:e.target.value})} />
+                        </div>
                         <div className={styles['button-group']} >
                         <Button onClick={id === 'create' ? createOfficer : editOfficer } className={styles['button-size']} color="info" variant="contained">บันทึกข้อมูล</Button>
                         <Button onClick={router.back} className={styles['button-size']} color="warning" variant="contained"   >ย้อนกลับ</Button>

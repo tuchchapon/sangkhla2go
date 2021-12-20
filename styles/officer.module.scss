@@ -268,14 +268,14 @@
     justify-content: center;
     .officer-flexbox{
         margin-top: 104px;
-        padding: 16px  35px 20px;
+        padding: 16px  0 20px;
         overflow-x: auto;
         display: flex;
         flex-direction: column;
         align-items: center;
         position: relative;
         width: 632px;
-        height: 520px;
+        height: 530px;
     }
 
 
@@ -316,7 +316,7 @@
     display: flex;
     flex-direction: column;
     span{
-        
+        width: 578px;
         margin-top: 32px;
         font-size: 24px;
         line-height: 32px;
@@ -417,4 +417,107 @@
     font-size: 24px;
     line-height: 32px;
     color: #757575;
+}
+.contact-box{
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    justify-content: center;
+    align-items: center;
+    .youtube{
+        margin-right: 40px;
+        cursor: pointer;
+        background-image: url('/yt-button.png');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        width: 130px;
+        height: 80px;
+    }
+    .youtube:hover{
+        background-image: url('/yt-button-hover.png');
+    }
+    .row-box{
+        display: flex;
+    }
+    
+    .social-col-box{
+        display: flex;
+        flex-direction: column;
+
+    .fb-box{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 32px;
+        
+        // margin-right: 24px;
+        img{
+            width: 32px;
+            height: 32px;
+            // object-fit: contain;
+            
+        }
+        span{
+            margin-left: 8px;
+            font-family: Sukhumvit Set;
+            font-size: 24px;
+            padding-top: 4px;
+        }
+    }
+    .ig-box{
+        margin-top: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 32px;
+        
+        // margin-right: 24px;
+        img{
+            width: 32px;
+            height: 32px;
+            object-fit: cover;
+
+        }
+        span{
+            margin-left: 8px;
+            font-family: Sukhumvit Set;
+            font-size: 24px;
+            padding-top: 4px;
+        }
+    }
+
+    }
+    .link-box{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 32px;
+        margin: 20px auto;
+        // padding-left: 24px;
+        // margin-left: 24px;
+        
+        span{
+            cursor: pointer;
+            margin-left: 8px;
+            font-family: Sukhumvit Set;
+            font-size: 24px;
+            padding-top: 4px;
+            
+            a{
+                text-decoration: none;
+                
+            }
+    
+        }
+    }
+    .link-box:hover{
+    
+        span{
+            font-weight: bolder;
+            text-decoration: underline;
+        }
+     
+    }
 }

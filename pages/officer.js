@@ -206,6 +206,27 @@ export default function officer() {
                                         :"สะท้อนความรู้สึกจากการปฏิบัติโครงการ"}</span>
                                         <span>{activOfficer.detail}</span>
                                     </div>
+                                    <div className={styles['contact-box']}>
+                                <div className={styles['row-box']}>
+                                    {activOfficer.youtube ? (
+                                        <a href={`${activOfficer.youtube}`} className={styles['youtube']} target='_blank'></a>
+                                        ):null}
+                                    <div className={styles['social-col-box']}>
+                                            <div className={styles['fb-box']}>
+                                                <img src={activOfficer.fb ? "/fb-icon-32.png":'/no-fb-32.png'} alt="" />
+                                                <span style={{color:`${activOfficer.ig ? '#383838':'#E1D3B6'}`}}>
+                                                    {activOfficer.fb ? activOfficer.fb:'-'}
+                                                </span>
+                                            </div>
+                                            <div className={styles['ig-box']}>
+                                                    <img src={activOfficer.ig ? "/ig-icon.png":'/no-ig.png'} alt="" />
+                                                    <span style={{color:`${activOfficer.ig ? '#383838':'#E1D3B6'}`}}>
+                                                    {activOfficer.ig ? activOfficer.ig :'-'}
+                                                    </span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -230,6 +251,35 @@ export default function officer() {
                             </div>
                             <div className={styles['leader-pa2']}>
                                     <span>{leader.detail}</span>
+                            </div>
+                            <div className={styles['contact-box']}>
+                                <div className={styles['row-box']}>
+                                    {leader.youtube ? (
+                                        <a href={`${leader.youtube}`} className={styles['youtube']} target='_blank'></a>
+                                        ):null}
+                                    <div className={styles['social-col-box']}>
+                                            <div className={styles['fb-box']}>
+                                                <img src={leader.fb ? "/fb-icon-32.png":'/no-fb-32.png'} alt="" />
+                                                <span>
+                                                    {leader.fb ? leader.fb:'-'}
+                                                </span>
+                                            </div>
+                                            <div className={styles['ig-box']}>
+                                                    <img src={leader.ig ? "/ig-icon.png":'/no-ig.png'} alt="" />
+                                                    <span>
+                                                    {leader.ig ? leader.ig :'-'}
+                                                    </span>
+                                            </div>
+                                    </div>
+                                </div>
+                                <div className={styles['link-box']}>
+                                <span>
+                                <a target='_blank' href="https://www.arts.chula.ac.th/AlumWeb/100years/DetailArts.php?id=232&group=58">
+                                ประวัติเพิ่มเติม
+                                </a>
+                                
+                                </span>
+                                </div>
                             </div>
                         </div>
                         </div>

@@ -9,8 +9,6 @@ const officerSchema = {
         fb: String,
         ig:String,
         youtube:String,
-        
-        
 
 }
 const Officer = mongooose.model('officers', officerSchema);

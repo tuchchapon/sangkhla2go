@@ -79,10 +79,12 @@ export default function accommodationPopup({open,onClose,activeAcommodation}) {
                                                 {activeAcommodation.information}
                                             </span>
                                     </div>
-                                {activeAcommodation.min_price && activeAcommodation.max_price ? (
+                                {activeAcommodation.min_price || activeAcommodation.max_price ? (
                                 <div className={styles['popup-price-box']}>
                                             <img src="/img/accommodation/icon-b-big.png" alt="" />
-                                            <span>{`${activeAcommodation.min_price} - ${activeAcommodation.max_price} บาท`}</span>
+                                            <span>{activeAcommodation.min_price >= activeAcommodation.max_price ? (
+                                             `${activeAcommodation.min_price} บาท`   
+                                            ):`${activeAcommodation.min_price} - ${activeAcommodation.max_price} บาท`}</span>
                                 </div>
                                 ) :''}
                                 <div className={styles['breakfast-box']}>

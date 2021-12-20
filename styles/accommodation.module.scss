@@ -196,7 +196,7 @@
             margin-right: 40px;
             position: relative;
             .big-image{
-                object-fit: contain;
+                object-fit: fill;
                 width: 485px;
                 height: 406px;
                 border-radius: 16px;
@@ -251,6 +251,12 @@
                     color: wheat;
             }
         }
+        .detail-box{
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            height: 504px;
+        }
         .information-box{
             height: 128px;
             font-size: 24px;
@@ -287,6 +293,8 @@
             display: flex;
             flex-wrap: wrap;
             width: 485px;
+            position: relative;
+            bottom: 0;
             height: 240px;
             padding: 32px 37px;
             background-color: rgba(225,211,182,0.5);

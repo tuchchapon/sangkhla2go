@@ -1,7 +1,6 @@
 const express = require('express');
 const multer  = require('multer')
 const { dirname } = require('path');
-const passport = require('passport')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const router = express.Router();
@@ -21,8 +20,10 @@ const accommodation = require('../../model/accommodation');
 const Attraction = require('../../model/attraction')
 const Tradition = require('../../model/traditions')
 const Officer = require('../../model/officer')
-const Product = require('../../model/product')
-
+const Product = require('../../model/product');
+// const handle = express.getRequestHandler()
+// const formidable = require("formidable");
+// const form  =formidable.IncomingForm()
 const JWT_SECRET ='sadkajsdj1k3sastichasasclsadnfjasltuSFKHSJKDAPI@$@QKFSJKSJDK'
 require('dotenv').config()
 const appDir = dirname(require.main.filename);
@@ -108,10 +109,11 @@ const product_storage = multer.diskStorage({
 const upload_product_images = multer({ storage:product_storage })
 
 const attraction_storage = multer.diskStorage({
-
+  
   destination:function(req,file,cb){
     cb(null,`${appDir}/public/uploadImage/attraction`)
   },
+  
   filename:function(req,file,cb){
     let _fileType = file.originalname.substring(file.originalname.indexOf("."));
     let _fileName
@@ -138,6 +140,7 @@ const boat_provider_storage = multer.diskStorage({
     if (_fileType === '.jpg' || _fileType === '.png' || _fileType === '.jpeg' || _fileType === '.webp') {
      
       _fileName  = file.fieldname+Date.now()+_fileType;
+
     }
     else{
       _fileName = 'wrong_file_type'+Date.now()
@@ -200,14 +203,14 @@ router.route("/dbcheck").get((req, res) => {
       }
       return res
         .status(200)
-        .json({ status: 200, type: "success", payload: "success" });
+        .json({ status: 200, type: "success", payload: "success",path:__dirname  });
     });
   });
   //////////// create api ////////////
 
    // create boat tour provider api
    router.route("/create/boat-provider").post((req,res)=>{
-     console.log( 'res body is',req.body)
+     
     const club_name = req.body.club_name
     const provider_name = req.body.provider_name;
     const owner_name = req.body.owner_name;
@@ -217,7 +220,7 @@ router.route("/dbcheck").get((req, res) => {
     const contact = req.body.contact;
     const boat_images = req.body.boat_images;
     const provider_image = req.body.provider_image;
-    console.log('boat quantity is',boat_quantity)
+    
     BoatProvider.create({
       club_name,
       provider_name,
@@ -427,7 +430,15 @@ router.route("/dbcheck").get((req, res) => {
         res.json({status:'error',error:'password wrong'})
       }
     })
-
+    // router.route('/upload/attraction-images').post(async(req,res,next)=>{
+    //   const form = formidable({multiples:true})
+    //   form.parse(req,(err,fields,files)=>{
+    //     if (err) {
+    //       next(err)
+    //       return
+    //     }
+    //   })
+    // })
     // change password  api
     router.route('/reset-password').post(async(req, res)=>{
       const {password,token} = req.body
@@ -480,22 +491,40 @@ router.route("/dbcheck").get((req, res) => {
       let image_name = req.file.filename
       res.status(200).json({status:200,type:'success',image_name})
     })
-    
+
     //upload product images
     router.route('/upload/product-images').post(upload_product_images.single('product'),(req,res,cb)=>{
       let image_name = req.file.filename
       res.status(200).json({status:200,type:'success',image_name})
     })
 
-    //upload attraction images
+    // upload attraction images
     router.route('/upload/attraction-images').post(upload_attraction_images.single('attraction'),(req,res,cb)=>{
-      let image_name = req.file.filename
-      res.status(200).json({status:200,type:'success',image_name})
+      
+      // console.log('cb is',cb);
+      // console.log('res is',res);
+      console.log('app dir is',appDir);
+      console.log('file name is',req.file.filename);
+      // console.log('file is',res.allowHalfOpen);
+      // res.sendFile(`${req.file.filename}`, {root: "/uploadimage"});
+      // let image_name =`${process.cwd()}/uploadimage/attraction/${req.file.filename}`
+      // let image_name =`${req.file.filename.toString}`
+ 
+        let image_name = req.file.filename
+        res.status(200).json({status:200,type:'success',image_name})
+   
+        console.log(error);
+        res.status(500).json({err,error,filename:image_name});
+  
+      // return handle(req, res)
+      // res.status(200).json({status:200,type:'success',image_name})
+
     })
+
 
     //upload boat provider image 
     router.route('/upload/boatprovider-image').post(upload_boat_provider_image.single('provider'),(req,res,cb)=>{
-      let image_name = req.file.filename
+      let image_name = req.file.filename.toString.trim()
       res.status(200).json({status:200,type:'success',image_name})
     })
 
@@ -547,8 +576,8 @@ router.route("/dbcheck").get((req, res) => {
                 console.log('update admin is',admin);
                 console.log('token is ',new_token);
             console.log(admin.email);
-            let url =`http://localhost:3000/resetPassword?token=${new_token}`
-            // console.log('update admin is',updateAdmin);
+            let url =`${appDir}/resetPassword?token=${new_token}`
+            console.log('update admin is',updateAdmin);
              smtpTransport.verify()
             smtpTransport.sendMail({
               to:admin.email,
@@ -604,15 +633,22 @@ router.route("/dbcheck").get((req, res) => {
 
     })
     router.route('/create/officer').post((req,res)=>{
+      console.log(req.body.youtube);
       const name = req.body.name
       const position = req.body.position
       const detail = req.body.detail
       const image = req.body.image
+      const fb = req.body.fb
+      const ig = req.body.ig
+      const youtube = req.body.youtube
       Officer.create({
         name,
         position,
         detail,
-        image
+        image,
+        fb,
+        ig,
+        youtube
       }).then((e) =>
       res.status(201).json({ status: true, message: "create data success" })
       ).catch(res.status(500));
@@ -691,7 +727,7 @@ router.route("/dbcheck").get((req, res) => {
         location.location_detail = data[i].location_detail
         location_array.push(location) 
       }
-      // console.log(data);
+      
       return res.status(200).json({
         status:200,
         type:'success',
@@ -702,12 +738,12 @@ router.route("/dbcheck").get((req, res) => {
 
   // get one boat provider
   router.route('/get/boat/:id').post((req,res)=>{
-    console.log(req.body)
+    
     const id = req.body.id
     try {
       BoatProvider.findOne({_id:id},function(err,data){
         if (err) {
-          console.log(err)
+          
         }
         else{
           return res.status(200).json({
@@ -716,22 +752,22 @@ router.route("/dbcheck").get((req, res) => {
         }
       })
     } catch (error) {
-      console.log(error)
+      
     }
   })
 
   // get one driver location 
   router.route('/get/location/:id').post((req,res)=>{
-    console.log(req.body)
+    
     const id = req.body.id
     // let id = ObjectId(req.params.id.toString())
-    // console.log(id.length);
+    
     // id = id.slice(0,1)
-    // console.log('id is',id);
+    
     try {
         DriverLocation.findOne({_id: id},function(err,data){
           if (err) {
-            console.log(err);
+            
           } else {
             return res.status(200).json({
               status:200,
@@ -743,7 +779,7 @@ router.route("/dbcheck").get((req, res) => {
         })
 
     } catch (error) {
-      console.log('error is',error);
+      
 
       
     }
@@ -799,7 +835,7 @@ router.route("/dbcheck").get((req, res) => {
           if (err) {
             res.send(err)
           }
-          console.log(data)
+          
           let tradition = {id:'',type:'',month:'',name:'',local_name:'',detail:'',images:[]}
           tradition.id = new ObjectId(data._id)
           tradition.type = data.type
@@ -811,14 +847,14 @@ router.route("/dbcheck").get((req, res) => {
           return res.status(200).json({status:200,type:'success',payload:tradition})
         })
       } catch (error) {
-        console.log(error)
+        
       }
     })
 
     // get one officer
     router.route('/get/officer/:id').post((req,res)=>{
       const id = req.body.id;
-      console.log('ID is',id)
+      
       if (!id) {
         return res.status(400).json({status:400,type:'error',payload:'ข้อมูลไม่ถูกต้อง'})
       }
@@ -828,16 +864,19 @@ router.route("/dbcheck").get((req, res) => {
           if (err) {
             res.send(err)
           }
-          let officer = {id:'',name:'',position:'',detail:'',image:''}
+          let officer = {id:'',name:'',position:'',detail:'',image:'',fb:'',youtube:'',ig:''}
           officer.id =  data._id
           officer.name = data.name
           officer.position = data.position
           officer.detail = data.detail
           officer.image = data.image
+          officer.fb = data.fb
+          officer.ig = data.ig
+          officer.youtube = data.youtube
           return res.status(200).json({status:200,type:'success',payload:officer})  
         })
       } catch (error) {
-        console.log(error)
+        
       }
     })
     // get one product
@@ -865,7 +904,7 @@ router.route("/dbcheck").get((req, res) => {
   //get one attraction api
   router.route('/get/attraction/:id').post((req,res)=>{
     const id = req.body.id
-    console.log(req.body)
+    
 
     if (!id) {
       return res.status(400).json({status:400,type:'error',payload:'ข้อมูลไม่ถูกต้อง'})
@@ -891,8 +930,8 @@ router.route("/dbcheck").get((req, res) => {
     if (!req.body.id ) {
       return res.status(400).json({status:400,type:'error',payload:'ข้อมูลไม่ถูกต้อง'})
     }
-    console.log('id is',id)
-    // console.log(id.typeOf())
+    
+    
     try {
       Drivers.findOne({_id:new ObjectId(id)},function(err,data){
         dataService = data.services
@@ -903,9 +942,9 @@ router.route("/dbcheck").get((req, res) => {
          dataService.includes("รถสามล้อ") ? triCycle = true :''
           
         }
-        console.log('data is' ,data)
+        
         if (err) {
-          console.log('err is',err)
+          
         }
         return res.status(200).json({
           status:200,
@@ -916,7 +955,7 @@ router.route("/dbcheck").get((req, res) => {
         })
       })
     } catch (error) {
-      console.log(error)
+      
     }
   })
   // get one restaurant api
@@ -926,7 +965,7 @@ router.route("/dbcheck").get((req, res) => {
       return res.status(400).json({status:400,type:'error',payload:'ข้อมูลไม่ถูกต้อง'})
     }
     try {
-      console.log('find restaurant');
+      
       Restaurant.findOne({_id:new ObjectId(id)},function(err,data){
         if (err) {
           res.send(err)
@@ -945,7 +984,7 @@ router.route("/dbcheck").get((req, res) => {
   // get one accommodation api
   router.route('/get/accommodation/:id').post((req,res)=>{
     let id = req.body.id
-    console.log(id);
+    
     if (!req.body.id) {
       return res.status(400).json({status:400,type:'error',payload:'ข้อมูลไม่ถูกต้อง'})
     }
@@ -969,7 +1008,7 @@ router.route("/dbcheck").get((req, res) => {
       let sidetow = false
       let triCycle = false
       let data_array =[]
-      console.log('id is', id);
+      
       Drivers.find({location_id:new ObjectId(id)}).
       populate('driverlocations').
       exec(function(err,data){
@@ -986,10 +1025,10 @@ router.route("/dbcheck").get((req, res) => {
           data[i].services.includes("รถพ่วงข้าง")? sidetow = true :''
           data[i].services.includes("รถสามล้อ")? triCycle = true :''
           data_array.push(driver) 
-          console.log('i is',i);
+          
         }
-        console.log('driver is',data);
-        console.log('len is',data.length);
+        
+        
 
         return res.status(200).json({
           status:200,
@@ -1039,18 +1078,21 @@ router.route("/dbcheck").get((req, res) => {
       let new_graduate = []
       let citizen = []
       Officer.find({},function(err,data){
-        console.log(data)
+        
         if(err){
           res.send(err)
         }
         for (let i = 0; i < data.length; i++) {
-          let officer ={id:'',position:'',name:'',detail:'',image:''}
+          let officer ={id:'',position:'',name:'',detail:'',image:'',fb:'',ig:'',youtube:''}
           // const element = data[i];
           officer.id = data[i]._id
           officer.position = data[i].position
           officer.name = data[i].name
           officer.detail = data[i].detail
           officer.image = data[i].image
+          officer.fb = data[i].fb
+          officer.ig = data[i].ig
+          officer.youtube = data[i].youtube
           if(data[i].position === "หัวหน้าโครงการ")leader = officer
           if(data[i].position === "ที่ปรึกษา")consultant.push(officer)
           if(data[i].position === "ผู้ประสานงาน")coordinator.push(officer)
@@ -1170,7 +1212,7 @@ router.route("/dbcheck").get((req, res) => {
           }
 
 
-          // console.log(restaurant)
+          
           data_array.push(restaurant)
         }
         return res.status(200).json({payload:data_array,status:200})
@@ -1188,7 +1230,7 @@ router.route("/dbcheck").get((req, res) => {
       let tradition_attraction = []
       let agri_attraction = []
       Attraction.find({},function(err,data){
-        console.log('data is',data)
+        
         for (let i = 0; i < data.length; i++) {
           let attraction ={id:'',type:'',name:'',detail:'',images:[]}
           attraction.id = data[i]._id
@@ -1280,7 +1322,7 @@ router.route("/dbcheck").get((req, res) => {
     //edit driver location api
     router.route('/edit/driverLocation').post(async(req,res)=>{
       let newlocation  = await DriverLocation.findOne({_id:req.body._id})
-      // console.log('driver location is',req.body);
+      
       newlocation.location_name = req.body.location_name
       newlocation.location_detail = req.body.location_detail
       if (!req.body.location_name) {
@@ -1294,7 +1336,7 @@ router.route("/dbcheck").get((req, res) => {
     // edit review api
     router.route('/edit/review').post(async(req,res)=>{
       let id = req.body.id
-      console.log('id is', id)
+      
       let edit_review = await Reviews.findOne({_id:new ObjectId(id)})
       if (!edit_review) {
         return res
@@ -1303,7 +1345,7 @@ router.route("/dbcheck").get((req, res) => {
       }
       edit_review.review_name = req.body.review_name
       edit_review.review_link = req.body.review_link
-      console.log('edit review is',edit_review)
+      
       edit_review.save()
       return res.status(200).json({status:200,type:'success',payload:'แก้ไขข้อมูลเรียบร้อยแล้ว'})
     })
@@ -1311,9 +1353,9 @@ router.route("/dbcheck").get((req, res) => {
     // edit driver api 
     router.route('/edit/driver').post(async(req,res)=>{
       let id = req.body._id
-      // console.log(req.body.location_id)
+      
       let new_driver = await Drivers.findOne({_id:new ObjectId(id)})
-      console.log(new_driver)
+      
       if (!new_driver ) {
         return res
         .status(400)
@@ -1355,7 +1397,7 @@ router.route("/dbcheck").get((req, res) => {
     router.route('/edit/accommodation').post(async(req,res)=>{
       let id = req.body._id
       let update_accommodation = await accommodation.findOne({_id:new ObjectId(id)})
-      console.log('update accommodation is',update_accommodation);
+      
       if (!req.body.type || !req.body.name   ) {
         return res.status(400).json({status:400,type:'failed',payload:'กรุณากรอกข้อมูลให้ครบถ้วน'})
       }
@@ -1418,7 +1460,7 @@ router.route("/dbcheck").get((req, res) => {
         return res.status(400).json({status:400,type:'failed',payload:'กรุณากรอกข้อมูลให้ครบถ้วน'})
       }
       
-      console.log('updata tradition is',update_tradition)
+      
 
       update_tradition.type = req.body.type
       update_tradition.month = req.body.month
@@ -1454,9 +1496,9 @@ router.route("/dbcheck").get((req, res) => {
     // edit officer api
     router.route('/edit/officer').post(async(req,res)=>{
       let id = req.body.id
-      console.log('req is',req.body)
+      console.log(req.body.youtube);
       let new_officer =  await Officer.findOne({_id:new ObjectId(id)})
-      console.log('update officer is',new_officer)
+      
       if (!new_officer ) {
         return res.status(400).json({status:400,type:'failed',payload:'กรุณากรอกข้อมูลให้ครบถ้วน'})
       }
@@ -1464,6 +1506,9 @@ router.route("/dbcheck").get((req, res) => {
       new_officer.position = req.body.position
       new_officer.detail = req.body.detail
       new_officer.image = req.body.image
+      new_officer.fb = req.body.fb
+      new_officer.ig = req.body.ig
+      new_officer.youtube = req.body.youtube
       await new_officer.save()
       return res.status(200).json({status:200,type:'success',payload:'แก้ไขข้อมูลเรียบร้อยแล้ว'})
     })
@@ -1493,7 +1538,7 @@ router.route("/dbcheck").get((req, res) => {
 
     // delete driver location api
     router.route('/delete/driver-location').delete(async(req,res)=>{
-      console.log(req.body);
+      
       if (!req.body.id) {
         return res.status(400).json({status:400,type:'failed',payload:'ไม่พบข้อมูลที่ส่งมา'})
       }
@@ -1590,5 +1635,11 @@ router.route("/dbcheck").get((req, res) => {
       await Product.deleteOne({_id:req.body.id})
       return res.status(200).json({status:200,type:'success',payload:'ลบข้อมูลสำเร็จแล้ว'})
     })
-
+    router.route('/get/path').get(async(req,res)=>{
+      
+      return res.json({path:appDir})
+    })
+    // router.route('*', (req, res) => {
+    //   return handle(req, res)
+    // })
   module.exports = router;
