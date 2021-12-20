@@ -223,7 +223,7 @@
             margin-right: 40px;
             position: relative;
             .big-image{
-                object-fit: contain;
+                object-fit: cover;
                 width: 485px;
                 height: 406px;
                 border-radius: 16px;
@@ -231,7 +231,7 @@
             }
             .no-image{
                 top: 2px;
-                object-fit: contain;
+                object-fit: cover;
                 border-radius: 16px;
                 width: 485px;
                 height: 504px;

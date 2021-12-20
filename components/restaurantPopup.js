@@ -77,7 +77,7 @@ export default function restaurantPopup({open,onClose,activeRestaurant}) {
                                             <div className={styles['detail-box']}>
                                                 <div className={styles['restaurant-detail']}>
                                                    <div className={styles['recommend-box']}>
-                                                   <span><b style={{color:'#383838'}}>เมนูแนะนำ</b> :{activeRestaurant.recommend_menu} </span>
+                                                   <span><b style={{color:'#383838'}}>{activeRestaurant.recommend_menu ? 'เมนูแนะนำ' :''}</b> :{activeRestaurant.recommend_menu} </span>
                                                    </div>
                                                     <div className={styles['food-price-box']}>
                                                         <span>ราคาอาหาร</span>

@@ -133,17 +133,17 @@ export default function Restaurant() {
             })
             return false
         }
-        if (parseInt(restaurant.open_time) > parseInt(restaurant.close_time)) {
-            Swal.fire({
-                title:'เวลาเปิด-ปิดร้านไม่ถูกต้อง',
-                html:`${restaurant.open_time}-${restaurant.close_time}<br/>
-                ในกรณีที่เวลาเปิด-ปิดมีข้อมูลเดียว ให้ใส่ทั้งสองช่องเท่ากัน`,
-                icon:'error'
-            })
-            setRestaurant({...restaurant,open_time:restaurant.close_time})
-            return false
+        // if (parseInt(restaurant.open_time) > parseInt(restaurant.close_time)) {
+        //     Swal.fire({
+        //         title:'เวลาเปิด-ปิดร้านไม่ถูกต้อง',
+        //         html:`${restaurant.open_time}-${restaurant.close_time}<br/>
+        //         ในกรณีที่เวลาเปิด-ปิดมีข้อมูลเดียว ให้ใส่ทั้งสองช่องเท่ากัน`,
+        //         icon:'error'
+        //     })
+        //     setRestaurant({...restaurant,open_time:restaurant.close_time})
+        //     return false
           
-        } 
+        // } 
         let uniq = [...new Set(restaurant.services)]
         let uniq2 = [...new Set(restaurant.type)]
         console.log('1 is', uniq);
