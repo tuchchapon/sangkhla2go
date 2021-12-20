@@ -27,6 +27,7 @@ export default function officer() {
         }
         else{
             setShowBigPopup(true)
+            // document.getElementById('leader-popup').scrollIntoView
         }
     }
     const closePopup =(e)=>{
@@ -237,9 +238,9 @@ export default function officer() {
                 closeOnDocumentClick={false}
                 lockScroll
                 >
-                    <div className={styles['leader-backdrop']} ></div>
+                    <div  className={styles['leader-backdrop']} ></div>
                     <div className="col-12">
-                        <div className={styles['leader-popup']}>
+                        <div id='leader-popup' className={styles['leader-popup']}>
                         <img className={styles['popup-close-icon']} src='/Quit.png' onClick={(e)=>closePopup(e)}  alt="" />
                         <div className={styles['leader-flexbox']}>
                             <div className={styles['leader-popup-image']}>
@@ -272,14 +273,13 @@ export default function officer() {
                                             </div>
                                     </div>
                                 </div>
-                                <div className={styles['link-box']}>
+                                {/* <div className={styles['link-box']}>
                                 <span>
                                 <a target='_blank' href="https://www.arts.chula.ac.th/AlumWeb/100years/DetailArts.php?id=232&group=58">
                                 ประวัติเพิ่มเติม
                                 </a>
-                                
                                 </span>
-                                </div>
+                                </div> */}
                             </div>
                         </div>
                         </div>
