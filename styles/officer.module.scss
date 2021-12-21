@@ -266,9 +266,16 @@
     display: flex;
     align-items: flex-start;
     justify-content: center;
+    .officer-close-icon{
+        position: absolute;
+        top: 120px;
+        right: 96px;
+        width: 32px;
+        height: 32px;
+    }
     .officer-flexbox{
-        margin-top: 104px;
-        padding: 16px  0 20px;
+        margin-top: 140px;
+        // padding: 16px  0 20px;
         overflow-x: auto;
         display: flex;
         flex-direction: column;
@@ -504,12 +511,7 @@
             font-family: Sukhumvit Set;
             font-size: 24px;
             padding-top: 4px;
-            
-            a{
-                text-decoration: none;
-                
-            }
-    
+            color: #757575;    
         }
     }
     .link-box:hover{

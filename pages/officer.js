@@ -17,6 +17,11 @@ export default function officer() {
     const [activOfficer, setActivOfficer] = useState({})
     const [activeLeader, setActiveLeader] = useState({})
 
+    const toLink = (e,link)=>{
+        if(e) e.preventDefault()
+        window.open("https://www.arts.chula.ac.th/AlumWeb/100years/DetailArts.php?id=232&group=58",'_blank')
+        
+    }
     const openPopup =(e,position,officer)=>{
         if(e) e.preventDefault()
         console.log('position is',position);
@@ -184,7 +189,7 @@ export default function officer() {
                 </div>
             </div>
             <Popup
-            open={showSmallPopup}
+            open={(e)=>e.preventDefault(),showSmallPopup}
             closeOnEscape={false}
             closeOnDocumentClick={false}
             lockScroll
@@ -192,9 +197,8 @@ export default function officer() {
                 <div className={styles['officer-backdrop']}></div>
                 <div className="col-12">
                     <div style={{backgroundImage:`url('/img/officer/small-popup-frame.png')`}} className={styles['officer-popup']}>
-                       
+                    <img className={styles['officer-close-icon']} src='/Quit.png' onClick={(e)=>closePopup(e)}  alt="" />
                         <div className={styles['officer-flexbox']}>
-                        <img className={styles['popup-close-icon']} src="/Quit.png" alt="" onClick={(e)=>closePopup(e)} />
                                     <div  className={styles['popup-image-box']} >
                                         <div className={styles['officer-image']} style={{backgroundImage:`url('${activOfficer.image ? `/uploadImage/officer/${activOfficer.image}`:'/img/officer/officer-placeholder.png'}')`}} ></div>
                                     </div>
@@ -233,7 +237,7 @@ export default function officer() {
                 </div>
             </Popup>
             <Popup
-                open={showBigPopup}
+                open={(e)=>e.preventDefault(),showBigPopup}
                 closeOnEscape={false}
                 closeOnDocumentClick={false}
                 lockScroll
@@ -274,10 +278,8 @@ export default function officer() {
                                     </div>
                                 </div>
                                 <div className={styles['link-box']}>
-                                <span>
-                                <a target='_blank' href="https://www.arts.chula.ac.th/AlumWeb/100years/DetailArts.php?id=232&group=58">
+                                <span  onClick={(e)=>toLink(e,)}>
                                 ประวัติเพิ่มเติม
-                                </a>
                                 </span>
                                 </div>
                             </div>
