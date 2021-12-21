@@ -273,13 +273,13 @@ export default function officer() {
                                             </div>
                                     </div>
                                 </div>
-                                {/* <div className={styles['link-box']}>
+                                <div className={styles['link-box']}>
                                 <span>
                                 <a target='_blank' href="https://www.arts.chula.ac.th/AlumWeb/100years/DetailArts.php?id=232&group=58">
                                 ประวัติเพิ่มเติม
                                 </a>
                                 </span>
-                                </div> */}
+                                </div>
                             </div>
                         </div>
                         </div>
