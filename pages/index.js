@@ -386,14 +386,15 @@ export default function index() {
       <div className="container">
         <div className="col">
           <div className={styles['attraction-flexbox']}>
-            <div className={styles['attraction-title-box']}>
+
+                <div className={styles['attraction-map']}>
+                <div className={styles['attraction-title-box']}>
                 <span>สถานที่ท่องเที่ยว</span>
                 <span>
                 สัมผัสบรรยากาศธรรมชาติ วัฒนธรรม<br/>
                 เกษตรกรรมและชุมชน แบบสังขละ 
                 </span>
                 </div>
-                <div className={styles['attraction-map']}>
                     <div className={`${styles['right-pin']} ${styles['right-pin-position1']}`}>
                       <div className={styles['attraction-name-box']}>
                           <div className={styles['sm-box']}>
@@ -603,12 +604,10 @@ export default function index() {
           <div className={styles['product-list']}>
                   {products.length >0 ? products.map((product)=>(
                   <div onClick={()=>showProductPopup(product)} key={product.id} className={styles['product-item']}>
-                  <div className={styles['product-image-box']}>
+                   <div className={styles['product-image-box']}>
                   <div style={{backgroundImage:`url(${product.images.length > 0 ? `/uploadImage/product/${product.images[0]}`:'/no-imge.png'})`}}></div>
                   </div>
-                  <div className={styles['product-name-box']}>
                   <span>{product.name}</span>
-                  </div>
                   </div>
                   )):''}
           </div>
@@ -628,7 +627,7 @@ export default function index() {
               <div className={styles['review-slider-box']}>
                     <Slider {...videoSettings}>
                     <div className={styles['video-item']}>
-                           <iframe width="577" height="315" src="https://www.youtube.com/embed/36iD3HmGt8g" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                    <iframe width="577" height="315" src="https://www.youtube.com/embed/36iD3HmGt8g" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                     </div>
                     <div className={styles['video-item']}>
                     <iframe width="560" height="315" src="https://www.youtube.com/embed/7myqazGs5_Y" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
