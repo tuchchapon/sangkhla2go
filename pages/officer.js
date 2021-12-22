@@ -17,21 +17,28 @@ export default function officer() {
     const [activOfficer, setActivOfficer] = useState({})
     const [activeLeader, setActiveLeader] = useState({})
 
-    const toLink = (e,link)=>{
+    const toLink = (e,officer)=>{
         if(e) e.preventDefault()
+        console.log(officer);
+       if (officer.position !== 'หัวหน้าโครงการ') {
+        window.open(`${officer.youtube}`)
+       }
+       else{
         window.open("https://www.arts.chula.ac.th/AlumWeb/100years/DetailArts.php?id=232&group=58",'_blank')
+       }
         
     }
     const openPopup =(e,position,officer)=>{
         if(e) e.preventDefault()
         console.log('position is',position);
         console.log('officer is',officer);
-        if (position !== "หัวหน้าโครงการ") {
+        if (officer.position !== "หัวหน้าโครงการ") {
             setActivOfficer(officer)
             setShowSmallPopup(true)
         }
         else{
             setShowBigPopup(true)
+            // setActivOfficer
             // document.getElementById('leader-popup').scrollIntoView
         }
     }
@@ -197,7 +204,9 @@ export default function officer() {
                 <div className={styles['officer-backdrop']}></div>
                 <div className="col-12">
                     <div style={{backgroundImage:`url('/img/officer/small-popup-frame.png')`}} className={styles['officer-popup']}>
-                    <img className={styles['officer-close-icon']} src='/Quit.png' onClick={(e)=>closePopup(e)}  alt="" />
+                    <div  className={styles['officer-close-icon-box']}  onClick={(e)=>closePopup(e)}>
+                    <img className={styles['officer-close-icon']} src='/Quit.png'   alt="" />
+                    </div>
                         <div className={styles['officer-flexbox']}>
                                     <div  className={styles['popup-image-box']} >
                                         <div className={styles['officer-image']} style={{backgroundImage:`url('${activOfficer.image ? `/uploadImage/officer/${activOfficer.image}`:'/img/officer/officer-placeholder.png'}')`}} ></div>
@@ -213,15 +222,15 @@ export default function officer() {
                                     </div>
                                     <div className={styles['contact-box']}>
                                 <div className={styles['row-box']}>
-                                    {activOfficer.youtube ? (
-                                        <div onClick={(e)=>toLink(e,activOfficer)} className={styles['youtube']} ></div>
+                                {activOfficer.youtube ? (
+                                        <div className={styles['youtube']} onClick={(e)=>toLink(e,activOfficer)} ></div>
                                         ):(
-                                        <div  className={styles['youtube']} ></div>
+                                            <div className={styles['no-youtube']} ></div>
                                         )}
                                     <div className={styles['social-col-box']}>
                                             <div className={styles['fb-box']}>
                                                 <img src={activOfficer.fb ? "/fb-icon-32.png":'/no-fb-32.png'} alt="" />
-                                                <span style={{color:`${activOfficer.ig ? '#383838':'#E1D3B6'}`}}>
+                                                <span style={{color:`${activOfficer.fb ? '#383838':'#E1D3B6'}`}}>
                                                     {activOfficer.fb ? activOfficer.fb:'-'}
                                                 </span>
                                             </div>
@@ -262,25 +271,27 @@ export default function officer() {
                             <div className={styles['contact-box']}>
                                 <div className={styles['row-box']}>
                                     {leader.youtube ? (
-                                        <a href={`${leader.youtube}`} className={styles['youtube']} target='_blank'></a>
-                                        ):null}
+                                        <div className={styles['youtube']} onClick={(e)=>toLink(e,leader)} ></div>
+                                        ):(
+                                            <div className={styles['no-youtube']} ></div>
+                                        )}
                                     <div className={styles['social-col-box']}>
                                             <div className={styles['fb-box']}>
                                                 <img src={leader.fb ? "/fb-icon-32.png":'/no-fb-32.png'} alt="" />
-                                                <span>
+                                                <span style={{color:`${activOfficer.fb ? '#383838':'#E1D3B6'}`}}>
                                                     {leader.fb ? leader.fb:'-'}
                                                 </span>
                                             </div>
                                             <div className={styles['ig-box']}>
                                                     <img src={leader.ig ? "/ig-icon.png":'/no-ig.png'} alt="" />
-                                                    <span>
+                                                    <span style={{color:`${activOfficer.ig ? '#383838':'#E1D3B6'}`}}>
                                                     {leader.ig ? leader.ig :'-'}
                                                     </span>
                                             </div>
                                     </div>
                                 </div>
                                 <div className={styles['link-box']}>
-                                <span  onClick={(e)=>toLink(e,)}>
+                                <span  onClick={(e)=>toLink(e,leader)}>
                                 ประวัติเพิ่มเติม
                                 </span>
                                 </div>

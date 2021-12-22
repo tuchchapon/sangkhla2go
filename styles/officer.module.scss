@@ -2,7 +2,8 @@
     display: flex;
     flex-direction: column;
     background: #FBF6E9;
-    font-family: Tahoma;
+    font-family: Sukhumvit Set;
+    padding-bottom: 80px;
     .logo-box{
         display: flex;
         justify-content: center;
@@ -266,17 +267,32 @@
     display: flex;
     align-items: flex-start;
     justify-content: center;
-    .officer-close-icon{
+    .officer-close-icon-box{
+        cursor: pointer;
+        z-index: 5;
         position: absolute;
         top: 120px;
         right: 96px;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+    }
+    .officer-close-icon{
+        // cursor: pointer;
+        // position: absolute;
+        // display: flex;
+        // top: 120px;
+        // right: 96px;
         width: 32px;
         height: 32px;
     }
     .officer-flexbox{
         margin-top: 140px;
         // padding: 16px  0 20px;
-        overflow-x: auto;
+        // overflow-x: auto;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -313,7 +329,7 @@
 
 }
 .popup-officer-name{
-    font-size: 24px;
+    font-size: 24px;;
     line-height: 32px;
     margin-top: 32px;
     color: #383838;
@@ -323,14 +339,20 @@
     display: flex;
     flex-direction: column;
     span{
+        display: flex;
+        justify-content: center;
         width: 578px;
-        margin-top: 32px;
+        // margin-top: 32px;
         font-size: 24px;
         line-height: 32px;
         color: #383838;
         font-weight: bold;
+        text-align: center;
         &:nth-child(2){
+            text-align: start;
             // text-indent: 50px;
+            height: 128px;
+            overflow-y: auto;
             font-weight: normal;
             margin-top: 16px;
             color: #757575;
@@ -369,6 +391,7 @@
 }
 
 .popup-close-icon{
+    cursor: pointer;
     position: absolute;
     top: 24px;
     right: 23px;
@@ -426,7 +449,7 @@
     color: #757575;
 }
 .contact-box{
-    margin-top: 40px;
+    margin-top: 8px;
     display: flex;
     flex-direction: column;
     align-self: center;
@@ -435,15 +458,23 @@
     .youtube{
         margin-right: 40px;
         cursor: pointer;
-        background-image: url('/yt-button.png');
+        background-image: url('/yt-button-hover.png');
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
         width: 130px;
         height: 80px;
     }
-    .youtube:hover{
-        background-image: url('/yt-button-hover.png');
+    .no-youtube{
+       
+        margin-right: 40px;
+        cursor: pointer;
+        background-image: url('/yt-button.png');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        width: 130px;
+        height: 80px;
     }
     .row-box{
         display: flex;
@@ -456,7 +487,7 @@
     .fb-box{
         display: flex;
         align-items: center;
-        justify-content: center;
+        justify-content: flex-start;
         height: 32px;
         
         // margin-right: 24px;
@@ -470,14 +501,16 @@
             margin-left: 8px;
             font-family: Sukhumvit Set;
             font-size: 24px;
+            line-height: 32px;
             padding-top: 4px;
+            font-weight: bold;
         }
     }
     .ig-box{
         margin-top: 16px;
         display: flex;
         align-items: center;
-        justify-content: center;
+        justify-content: flex-start;
         height: 32px;
         
         // margin-right: 24px;
@@ -488,6 +521,8 @@
 
         }
         span{
+            font-weight: bold;
+            line-height: 32px;
             margin-left: 8px;
             font-family: Sukhumvit Set;
             font-size: 24px;
@@ -511,12 +546,14 @@
             font-family: Sukhumvit Set;
             font-size: 24px;
             padding-top: 4px;
-            color: #757575;    
+            color: #383838;    
+            text-decoration: underline;
         }
     }
     .link-box:hover{
     
         span{
+            color: #7A2328;
             font-weight: bolder;
             text-decoration: underline;
         }
