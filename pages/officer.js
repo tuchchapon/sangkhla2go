@@ -214,8 +214,10 @@ export default function officer() {
                                     <div className={styles['contact-box']}>
                                 <div className={styles['row-box']}>
                                     {activOfficer.youtube ? (
-                                        <a href={`${activOfficer.youtube}`} className={styles['youtube']} target='_blank'></a>
-                                        ):null}
+                                        <div onClick={(e)=>toLink(e,activOfficer)} className={styles['youtube']} ></div>
+                                        ):(
+                                        <div  className={styles['youtube']} ></div>
+                                        )}
                                     <div className={styles['social-col-box']}>
                                             <div className={styles['fb-box']}>
                                                 <img src={activOfficer.fb ? "/fb-icon-32.png":'/no-fb-32.png'} alt="" />

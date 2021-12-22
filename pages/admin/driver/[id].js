@@ -7,9 +7,12 @@ import styles from '../../../styles/admin/create_edit.module.scss'
 import Swal from 'sweetalert2'
 import Image from 'next/image'
 import Header from '../Header'
+const path = require('path')
 import 'animate.css';
+import { pathToFileURL } from 'url';
 
  function Driver() {
+
     const router = useRouter()
     const id = router.query.id || []
     let service_option = ["รถพ่วงข้าง","รถสามล้อ"]
@@ -68,9 +71,22 @@ import 'animate.css';
         const files = e.target.files
         console.log('files is',files[0])
         let imageData = new FormData()
+        // window.URL.createObjectURL(files[0]);
         imageData.append('driver',files[0])
         imageData.append('id',`driver${id}`)
-        console.log('data is',imageData)
+
+        // let test = 'test test test'
+        // const response = await fetch("/api/uploadDriverImage", {
+        //     method: "POST",
+        //     headers: {
+        //       Accept: "application/json",
+        //       'Content-Type': 'multipart/form-data'
+        //     },
+        //     body:imageData,
+        //   });
+        //   console.log(response);
+        //   const json = await response.json();
+        //   console.log(json);
          await axios({
             method:'post',
             url:`${process.env.SERVER_API}/upload/driver-image`,
