@@ -131,21 +131,34 @@
             width: 1170px;
             margin: 0 auto;
             .position-box{
+                position: relative;
                 display: flex;
                 // width: 370px;
                 flex-direction: column;
+                .leader-vertical-line{
+                    position: absolute;
+                    width: 432px;
+                    height: 0;
+                    border: 2px solid #383838;
+                    z-index: 1;
+                    top: 60px;
+                   }
+                  .leader-horizental-line{
+                      position: absolute;
+                      width: 0;
+                      height: 80px;
+                      border: 2px solid #383838;
+                      left: 50%;
+                      top: -36px;
+                      z-index: 1;
+                  } 
                 .vertical-line{
                     align-self: center;
                     width: 0px;
                     height: 224px;
                     border: 2px solid #383838;
                 }
-                .vertical-short-line{
-                    align-self: center;
-                    width: 0px;
-                    height: 96px;
-                    border: 2px solid #383838;
-                }
+
                 .worker-white-box{
                     align-self: center;
                     background: #FFFDF8;
@@ -188,7 +201,11 @@
                     padding: 8px 0;
                     border: 4px solid black;
                     margin: 32px 30px 40px 30px;
+                    z-index: 2;
+                    position: relative;
 
+                    
+                    
                 }
                 .leader-name{
                     color: #383838;
@@ -249,8 +266,46 @@
                     color: #7A2328;
                     }
             }
+            
+        }
+        .vertical-line-box{
+            align-self: center;
+            width: 800px;
+            height: 96px;
+            position: relative;
+            .vertical-center-line{
+                position: absolute;
+                width: 0;
+                height: 96px;
+                left: 50%;
+                border: 2px solid #383838;
+            }
+            .horizental-line{
+                position: absolute;
+                width: 800px;
+                height: 0;
+                border: 2px solid #383838;
+                top: 50%;
+            }
+            .vertical-left-line{
+                position: absolute;
+                width: 0;
+                height: 48px;
+                border: 2px solid #383838;
+                bottom: 0;
+                left: 0;
+            }
+            .vertical-right-line{
+                position: absolute;
+                width: 0;
+                height: 48px;
+                border: 2px solid #383838;
+                bottom: 0;
+                right: 0;
+            }
         }
     }
+    
 
 }
 
@@ -372,7 +427,7 @@
     font-family: Sukhumvit Set;
     // display: none;
     z-index: 3;
-    padding: 40px 80px 100px 80px;
+    
     width: 1170px;
     height: 900px;
     display: flex;
@@ -382,9 +437,11 @@
     background-color: #FBF6E9;
     border: 4px solid #383838;
     border-radius: 16px;
-    overflow-y: auto;
+    // overflow-y: auto;
     justify-content: flex-start;
     .leader-flexbox{
+        padding: 40px 80px 100px 80px;
+        overflow-y: auto;
         display: flex;
         flex-direction: column;
     }
@@ -410,7 +467,37 @@
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
+
 }
+.big-image-frame-box{
+    width: 476px;
+    height: 636px;
+    // object-fit: contain;
+
+    // overflow: hidden;
+    position: relative;
+    .big-image-frame{
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;       
+        width: 476px; 
+        height: 636px;
+        position: absolute;
+        z-index: 2;
+    }
+    .big-image{
+        position: absolute;
+        z-index: 1;
+        width: 476px;
+        position: absolute;
+        // left: 8px;
+        object-fit: contain;
+        height: 636px;
+        border-radius: 24px;
+
+    }
+}
+
 .officer-image{
     z-index: 2;
     left: 0;
@@ -468,7 +555,7 @@
     .no-youtube{
        
         margin-right: 40px;
-        cursor: pointer;
+        // cursor: pointer;
         background-image: url('/yt-button.png');
         background-position: center;
         background-repeat: no-repeat;

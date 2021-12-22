@@ -135,6 +135,8 @@ export default function officer() {
                             )):''}
                         </div>
                         <div className={styles['position-box']}>
+                            <div className={styles['leader-vertical-line']}></div>
+                            <div className={styles['leader-horizental-line']}></div>
                                 <div  className={styles['position-leader-box']}>
                                     <span  >หัวหน้าโครงการ</span>
                                 </div>
@@ -147,8 +149,9 @@ export default function officer() {
                                 <div className={styles['worker-white-box']}>
                                     <span>ผู้ปฏิบัติงาน</span>
                                 </div>
-                                <div className={styles['vertical-short-line']}></div>
+   
                         </div>
+
                         <div className={styles['position-box']}>
                                 <div  className={styles['position-name-box']}>
                                     <span>ผู้ประสานงาน</span>
@@ -159,6 +162,12 @@ export default function officer() {
                                     </div>
                                 )) :''}
                         </div>
+                    </div>
+                    <div className={styles['vertical-line-box']}>
+                                <div className={styles['vertical-center-line']}></div>
+                                <div className={styles['horizental-line']}></div>
+                                <div className={styles['vertical-right-line']}></div>
+                                <div className={styles['vertical-left-line']}></div>
                     </div>
                     <div className={styles['officer-row-box']}>
                     <div className={styles['position-box']}>
@@ -294,6 +303,10 @@ export default function officer() {
                                 <span  onClick={(e)=>toLink(e,leader)}>
                                 ประวัติเพิ่มเติม
                                 </span>
+                                </div>
+                                <div className={styles['big-image-frame-box']} >
+                                    <div className={styles['big-image-frame']} style={{backgroundImage:`url('/img/officer/big-frame.png')`}}></div>
+                                        <img className={styles['big-image']} src="/img/officer/aura.jpeg" alt="" />
                                 </div>
                             </div>
                         </div>
