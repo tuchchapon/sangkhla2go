@@ -41,7 +41,7 @@ export default function index() {
   const [boatHouses, setBoatHouses] = useState([])
   const [attractions, setAttractions] = useState([])
   const [restaurants, setrestaurants] = useState([])
-
+  const [locations, setLocations] = useState([])
   const [loading, setLoading] = useState(true)
 
   const [boatProviders, setBoatProviders] = useState([])
@@ -56,9 +56,9 @@ export default function index() {
   const [openLeaderPopup, setOpenLeaderPopup] = useState(false)
   const [openRestaurantPopup, setOpenRestaurantPopup] = useState(false)
   const [openLocationPopup, setOpenLocationPopup] = useState(false)
+  const [openWinpopup, setopenWinpopup] = useState(false)  
   const [openBoatPopup, setOpenBoatPopup] = useState(false)
-  const [boatProvider, setBoatProvider] = useState(false)
-  
+
   const [openKarenPopup, setOpenKarenPopup] = useState(false)
   const [openMonPopup, setOpenMonPopup] = useState(false)
   const [openProductPopup, setOpenProductPopup] = useState(false)
@@ -77,6 +77,7 @@ export default function index() {
     id:'',club_name:'',driver_name:'',boat_quantity:'',contact:'',max_passenger:'',
     owner_name:'',provider_image:'',provider_image:'',boat_images:[]
   })
+  const [activeWin, setActiveWin] = useState({})
   const [activeBoat, setActiveBoat] = useState({
     id:'',club_name:'',driver_name:'',boat_quantity:'',contact:'',max_passenger:'',
     owner_name:'',provider_image:'',provider_image:'',boat_images:[]
@@ -90,7 +91,6 @@ export default function index() {
   const [activeProduct, setActiveProduct] = useState({
     id:'',name:'',fb_page:'',tel:'',link:'',images:[],detail:''
   })
-
   const showAccommodationPopup =(accommodation)=>{
       setActiveAcommodation(accommodation)
       setOpenAccommodationPopup(true)
@@ -108,6 +108,10 @@ export default function index() {
   const showBoatPopup =(boat)=>{
     setActiveBoat(boat)
     setOpenBoatPopup(true)
+  }
+  const ShowWinPopup =(location)=>{
+    setActiveWin(location)
+    setopenWinpopup(true)
   }
   const showKarenPopup=(tradition)=>{
         setActiveKaren(tradition)
@@ -182,6 +186,7 @@ export default function index() {
     
 }
 
+
   const showAllReview=()=>{
       let new_show_review = []
       let new_res_review = []
@@ -240,6 +245,20 @@ export default function index() {
       setrestaurants(restaurant_payload)
     }
   }
+  const getWinlocation =async()=>{
+    let  location_data = await axios.get(`${process.env.SERVER_API}/get/driverLocation`)
+    let location_api =[]
+    if (location_data.status === 200) {
+      let location_sort = location_data.data.payload
+      console.log('location sorting is',location_sort);
+      for (let i = 0; i < 8; i++) {
+     
+        console.log(`location  data is${i}`,location_data.data.payload[i])
+        location_api.push(location_data.data.payload[i])
+      }
+      setLocations(location_api)
+    }
+  }
   const getReview=async()=>{
     let review_data = await axios.get(`${process.env.SERVER_API}/get/reviews`)
     if(review_data.status === 200){
@@ -264,6 +283,7 @@ export default function index() {
           karenTraditions.length === 0 || monTraditions.length === 0 ? await getTradition():null
           products.length === 0 ? await getProduct():null
           showReview.length === 0 ? await getReview():null
+          getWinlocation()
           setLoading(false)
         }
       }
@@ -517,9 +537,9 @@ export default function index() {
         <span className={styles['transportation-title']}>ขนส่งสาธารณะ</span>
       <div className={styles['location-map-box']}>
             <span className={styles['win-title']}>วินมอเตอร์ไซค์</span>
-            {location_data.map((location)=>(
-                <div key={location.name} className={`${styles['location-box-name']} ${styles[location.class]}`}>
-                  <span>{location.name}</span>
+            {locations.map((location,i)=>(
+                <div onClick={(e)=>ShowWinPopup(location)} key={location.location_name} className={`${styles['location-box-name']} ${styles[`locationbox${i}`]}`}>
+                  <span>{location.location_name}</span>
                 </div>
             ))}
       </div>
@@ -686,7 +706,7 @@ export default function index() {
        <LeaderPopup open={openLeaderPopup} onClose={()=>setOpenLeaderPopup(false)}  />
        <BoatProviderPopup open={openBoatPopup} onClose={()=>setOpenBoatPopup(false)} activeBoat={activeBoat} />
       <RestaurantPopup open={openRestaurantPopup} onClose={()=>setOpenRestaurantPopup(false)} activeRestaurant={activeRestarant} />
-       <WinPopup open={openLocationPopup} onClose={()=>setOpenLocationPopup(false)}  />
+       <WinPopup open={openWinpopup} onClose={()=>setopenWinpopup(false)} activeWin={activeWin} />
        <KarenPopup open={openKarenPopup} onClose={()=>setOpenKarenPopup(false)} activeKarenTradition={activeKaren} />
        <MonPopup open={openMonPopup} onClose={()=>setOpenMonPopup(false)} activeMonTradition={activeMon} />
        <ProductPopup open={openProductPopup} onClose={()=>setOpenProductPopup(false)} activeProduct={activeProduct}  />  

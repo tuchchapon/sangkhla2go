@@ -15,7 +15,7 @@ export default function subHeader({first,second}) {
                     <span className={styles['arrow']} >{">"}</span>
                     <span style={{color:`${first && !second ?'#757575':''}`}} >{first ? first :''}</span>
                     {second ? <span className={styles['arrow']} >{">"}</span>:''}
-                    {second ? ( <span style={{color:' #757575;'}} >{second}</span>):''}
+                    {second ? ( <span style={{color:' #757575'}} >{second}</span>):''}
                 </div>
             </div>
         </>

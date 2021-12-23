@@ -716,6 +716,11 @@ router.route("/dbcheck").get((req, res) => {
   //get driver location
   router.route('/get/driverLocation').get((req,res)=>{
     let location_array =[]
+    const sortLocation =(arr)=>{
+      let location =["วินท่ารถตู้หน้าโรงพยาบาล","วินหน้า ธ.กรุงไทย","วินตรงข้าม ธ.กรุงไทย","วินสะพานไม้ฝั่งมอญ","วินตลาดฝั่งมอญ","วินดงสัก","วินกองทุนแม่","วินสหกรณ์สังขละบุรี"]
+      arr.sort((a,b)=>{return location.indexOf(a.location_name)
+      - location.indexOf(b.location_name)})
+    }
     DriverLocation.find({},function (err,data) {
       if (err){
         res.send(err)
@@ -727,7 +732,8 @@ router.route("/dbcheck").get((req, res) => {
         location.location_detail = data[i].location_detail
         location_array.push(location) 
       }
-      
+      console.log('location arr is sort is',location_array)
+      sortLocation(location_array)
       return res.status(200).json({
         status:200,
         type:'success',

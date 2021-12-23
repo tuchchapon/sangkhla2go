@@ -30,6 +30,10 @@ export default function productPopup({open,onClose,activeProduct}) {
         prevArrow: <LeftArrow/>
         
     }
+    const toLink=(e,link)=>{
+        if(e) e.preventDefault()
+        window.open(`${link}`)
+    }
     return (
         <>
             <Popup 
@@ -73,7 +77,7 @@ export default function productPopup({open,onClose,activeProduct}) {
                                     ):''}
                                     {activeProduct.link ?(
                                      <div className={activeProduct.fb_page || activeProduct.tel ? styles['link-box']:styles['link-box-no-border']}> 
-                                     <span><a  target="_blank" href={`${activeProduct.link}`}>ข้อมูลเพิ่มเติม</a></span>
+                                     <span onClick={(e)=>toLink(e,activeProduct.link)} >ข้อมูลเพิ่มเติม</span>
                                     </div>
                                     ):''}
                                    </div>

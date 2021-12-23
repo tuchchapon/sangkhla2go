@@ -396,24 +396,24 @@
     height: 32px;
     padding-left: 24px;
     margin-left: 24px;
+    cursor: pointer;
+    text-decoration: underline;
     border-left: 2px solid #383838;
     span{
         margin-left: 8px;
         font-family: Sukhumvit Set;
         font-size: 24px;
         padding-top: 4px;
-        
-        a{
-            text-decoration: none;
-            
-        }
+        text-decoration: underline;
+        color: #383838;
 
     }
 }
 .link-box:hover{
 
     span{
-        text-decoration: underline;
+
+        font-weight: bold;
     }
  
 }
@@ -421,7 +421,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
     height: 32px;
+    text-decoration: underline;
+    color: #383838;
     // padding-left: 24px;
     // margin-left: 24px;
     // border-left: 2px solid #383838;
@@ -430,10 +433,8 @@
         font-family: Sukhumvit Set;
         font-size: 24px;
         padding-top: 4px;
-        
-        a{
-            text-decoration: none;
-            
+        &:hover{
+            font-weight: bold;
         }
     }
 }
