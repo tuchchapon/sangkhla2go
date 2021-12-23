@@ -1,7 +1,7 @@
 .product-page{
     background-color: #FBF6E9;
     color: #383838;
-    font-family: "sukhumvit_medium";
+    font-family: "sukhumvit";
     .header-box{
         width: 100%;
         height: 300px;
@@ -185,7 +185,7 @@
             font-size: 24px;
             line-height: 32px;
             font-weight: bold;
-            font-family: "sukhumvit_medium";
+            font-family: "sukhumvit";
             padding: 24px 8px;
             text-align: center;
             span{
@@ -245,7 +245,7 @@
     text-align: center;
     margin-bottom: 48px;
     color: #383838;
-    font-family: "sukhumvit_medium";
+    font-family: "sukhumvit";
 }
 .content-text{
     font-family: Tahoma;
@@ -269,7 +269,7 @@
             display: flex;
             flex-direction: column;
             span{
-                font-family: "sukhumvit_medium";
+                font-family: "sukhumvit";
                 font-size: 40px;
                 line-height: 40px;
                 text-align: center;
@@ -372,7 +372,7 @@
     margin-right: 24px;
     span{
         margin-left: 8px;
-        font-family: "sukhumvit_medium";
+        font-family: "sukhumvit";
         font-size: 24px;
         padding-top: 4px;
     }
@@ -384,7 +384,7 @@
     height: 32px;
     span{
         margin-left: 8px;
-        font-family: "sukhumvit_medium";
+        font-family: "sukhumvit";
         font-size: 24px;
         padding-top: 4px;
     }
@@ -401,7 +401,7 @@
     border-left: 2px solid #383838;
     span{
         margin-left: 8px;
-        font-family: "sukhumvit_medium";
+        font-family: "sukhumvit";
         font-size: 24px;
         padding-top: 4px;
         text-decoration: underline;
@@ -430,7 +430,7 @@
     // border-left: 2px solid #383838;
     span{
         margin-left: 8px;
-        font-family: "sukhumvit_medium";
+        font-family: "sukhumvit";
         font-size: 24px;
         padding-top: 4px;
         &:hover{
@@ -448,7 +448,7 @@
     z-index: 1;
 }
 .product-popup{
-    font-family: "sukhumvit_medium";
+    font-family: "sukhumvit";
     z-index: 2;
     padding: 40px 80px 80px 80px;
     width: 970px;

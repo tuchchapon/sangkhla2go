@@ -6,7 +6,7 @@
 }
 .title {
     text-align: center;
-    font-family: "sukhumvit_medium";
+    font-family: "sukhumvit";
     font-weight: bold;
     font-size: 80px;
     line-height: 88px;
@@ -56,7 +56,7 @@
         background-image: url("/img/publictranspotation/win_frame_hover.png");
     }
     .win-name{
-        font-family: "sukhumvit_medium" ,'fc_fridayregular'  ;
+        font-family: "sukhumvit" ,'fc_fridayregular'  ;
         font-weight: normal;
         line-height: 40px;
         font-weight: bold;
@@ -71,7 +71,7 @@
 }
 .boat-title{
     text-align: center;
-    font-family: "sukhumvit_medium";
+    font-family: "sukhumvit";
     font-weight: bold;
     font-size: 80px;
     line-height: 88px;
@@ -88,7 +88,7 @@
     margin: auto;
     width: 100%;
     max-width: 1200px;
-    font-family: "sukhumvit_medium";
+    font-family: "sukhumvit";
     .boat-items{
         flex: 0 0 calc((100% - 60px)/3);
         // margin:  15px 30px 40px 0;
@@ -158,7 +158,7 @@
     display: flex;
     position: relative;
     height: 100%;
-    font-family: "sukhumvit_medium";
+    font-family: "sukhumvit";
     padding: 40px 80px;
     z-index: 2;
     border: 4px solid #383838;
@@ -249,7 +249,7 @@
 .boat-popup{
     display: flex;
     position: relative;
-    font-family: "sukhumvit_medium";
+    font-family: "sukhumvit";
     padding: 40px 80px 60px 80px;
     border: 4px solid #383838;
     border-radius: 16px;

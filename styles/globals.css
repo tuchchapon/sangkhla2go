@@ -32,7 +32,7 @@ body {
     font-style: bold;
 } */
 @font-face {
-  font-family: "sukhumvit_medium";
+  font-family: "sukhumvit";
   src: url("/fonts/sukhumvitset-medium-04-webfont.woff2") format("woff2"),
     url("/fonts/sukhumvitset-medium-04-webfont.woff") format("woff");
     font-weight: normal;
