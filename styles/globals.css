@@ -25,14 +25,14 @@ body {
   font-style: normal;
 }
 @font-face {
-  font-family: "sukhumbit_set_bold";
+  font-family: "sukhumvit_bold";
   src: url("/fonts/sukhumvitset-bold-webfont.woff2") format("woff2"),
     url("/fonts/sukhumvitset-bold-webfont.woff") format("woff");
     font-weight: bold;
     font-style: bold;
 }
 @font-face {
-  font-family: "sukhumvit_set_medium";
+  font-family: "sukhumvit_medium";
   src: url("/fonts/sukhumvitset-medium-webfont.woff2") format("woff2"),
     url("/fonts/sukhumvitset-medium-webfont.woff") format("woff");
     font-weight: normal;

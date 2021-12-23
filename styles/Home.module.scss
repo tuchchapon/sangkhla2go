@@ -1,3 +1,5 @@
+
+
 /////////////////// header ///////////////////
 .header-box{
   border-bottom:  4px solid #383838;;
@@ -6,7 +8,7 @@
   display: flex;
   font-size: 24px;
   font-weight: 500;
-  font-family: Sukhumvit Set;
+  font-family: "sukhumvit_medium";
   .row-box{
     display: flex;
     align-items: flex-end;
@@ -91,7 +93,7 @@
   }
 }
 .subheader{
-  font-family: Sukhumvit Set;
+  font-family: "sukhumvit_medium";
   font-size: 24px;
   font-weight: 500;
   position: relative;
@@ -129,7 +131,7 @@
   background-color: #E1D3B6;
   position: relative;
   padding-top: 56px;
-  font-family: Sukhumvit Set;
+  font-family: "sukhumvit_medium";
   padding-bottom: 376px;
   z-index: 2;
   // height: 1400px;
@@ -251,7 +253,7 @@
 .accommodation-section{
   background-color: #fbf6e9;
   color: #383838;
-  font-family: Sukhumvit Set;
+  font-family: "sukhumvit_medium";
   position: relative;
   padding: 80px 0 40px 0;
   &::before{
@@ -493,7 +495,7 @@
 
 ////////////////// attraction section //////////////////
 .attraction-section{
-  font-family: Sukhumvit Set;
+  font-family: "sukhumvit_medium";
   background-color: #fbf6e9;
   padding-top: 104px;
   .attraction-flexbox{
@@ -771,7 +773,7 @@
 
 ////////////////// restaurant section //////////////////
 .restaurant-section{
-  font-family: Sukhumvit Set;
+  font-family: "sukhumvit_medium";
   // background: rgba(225, 211, 182, 0.5);
   background-color: #eee4d0;
   position: relative;
@@ -918,7 +920,7 @@
   background-color:  #FBF6E9;
   padding-top: 72px;
   position: relative;
-  font-family: Sukhumvit Set;
+  font-family: "sukhumvit_medium";
   color: #383838;
 
   .transportation-flexbox{
@@ -1106,7 +1108,7 @@
    display: flex;
    flex-direction: column;
    background-color: #FBF6E9;
-   font-family: suKhumvit Set;
+   font-family: "sukhumvit_medium";
    padding-bottom: 48px;
   //  align-items: center;
   //  justify-content: center;
@@ -1256,7 +1258,7 @@
   background-color: #eee4d0 ;
   // opacity: 0.5;
   // bgttr
-  font-family: Sukhumvit Set;
+  font-family: "sukhumvit_medium";
   padding: 48px 0;
   display: flex;
   color: #383838;
@@ -1352,7 +1354,7 @@
   flex-direction: column;
   background-color: #FBF6E9;
   color: #383838;
-  font-family: Sukhumvit Set;
+  font-family: "sukhumvit_medium";
   padding: 80px 0;
   .review-slider-box{
     margin: auto;
@@ -1463,7 +1465,7 @@
 
 ////////////////// see all button //////////////////
 .see-all-button{
-  font-family: Sukhumvit Set;
+  font-family: "sukhumvit_medium";
   font-size: 32px;
   line-height: 40px;
   font-weight: bold;
@@ -1486,7 +1488,7 @@
    padding:0 8px 0 8px;
    background-color: #383838;
    color: #FBF6E9;
-   font: Sukhumvit Set 16px ;
+   font: "sukhumvit_medium" 16px ;
    .footer-row-box{
      justify-content: space-between;
      display: flex;

@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     background: #FBF6E9;
-    font-family: Sukhumvit Set;
+    font-family: "sukhumvit_medium";
     padding-bottom: 80px;
     .logo-box{
         display: flex;
@@ -49,7 +49,7 @@
                     line-height: 32px;
                     color: #757575;
                     margin-top: 16px;
-                    font-family: Sukhumvit Set;
+                    font-family: "sukhumvit_medium";
                 }
                 .logo-rowbox-left{
                     width: 392px;
@@ -73,7 +73,7 @@
                     font-size: 24px;
                     line-height: 32px;
                     color: #757575;
-                    font-family: Sukhumvit Set;
+                    font-family: "sukhumvit_medium";
                     margin-top: 16px;
                 }
                 .logo-rowbox-right{
@@ -98,7 +98,7 @@
         flex-direction: column;
         margin: 0 auto;
         justify-content: center;
-        font-family: Sukhumvit Set;
+        font-family: "sukhumvit_medium";
         width: 100%;
         .banner-box{
           position: relative;
@@ -113,7 +113,7 @@
           align-self: center;
           margin-top: 96px;
           span{
-              font-family: Sukhumvit Set;
+              font-family: "sukhumvit_medium";
               text-align: center;
               font-size: 48px;
               padding-bottom: 4px;
@@ -311,7 +311,7 @@
 
 
 .officer-popup{
-    font-family: Sukhumvit Set;
+    font-family: "sukhumvit_medium";
     z-index: 2;
     position: relative;
     width: 770px;
@@ -424,7 +424,7 @@
     z-index: 1;
 }
 .leader-popup{
-    font-family: Sukhumvit Set;
+    font-family: "sukhumvit_medium";
     // display: none;
     z-index: 3;
     
@@ -586,7 +586,7 @@
         }
         span{
             margin-left: 8px;
-            font-family: Sukhumvit Set;
+            font-family: "sukhumvit_medium";
             font-size: 24px;
             line-height: 32px;
             padding-top: 4px;
@@ -611,7 +611,7 @@
             font-weight: bold;
             line-height: 32px;
             margin-left: 8px;
-            font-family: Sukhumvit Set;
+            font-family: "sukhumvit_medium";
             font-size: 24px;
             padding-top: 4px;
         }
@@ -630,7 +630,7 @@
         span{
             cursor: pointer;
             margin-left: 8px;
-            font-family: Sukhumvit Set;
+            font-family: "sukhumvit_medium";
             font-size: 24px;
             padding-top: 4px;
             color: #383838;    
