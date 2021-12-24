@@ -5,6 +5,7 @@ import styles from '../styles/Tradition.module.scss'
 import KarenTraditionPopup from '../components/karenTraditionPopup'
 import MonTraditionPopup from '../components/monTraditionPopup'
 import SubHeader from '../layouts/subHeader'
+import Footer from '../layouts/footer'
 export default function traditions() { 
     const [karenTraditions, setKarenTraditions] = useState([])
     const [monTraditions, setMonTraditions] = useState([])
@@ -127,6 +128,7 @@ export default function traditions() {
                 </div>
                 <KarenTraditionPopup open={showKarenTradition} onClose={()=>setShowKarenTradition(false)} activeKarenTradition={activeKarenTradition} />
                 <MonTraditionPopup open={showMonTradition} onClose={()=>setShowMonTradition(false)} activeMonTradition={activeMonTradition} />
+                <Footer/>
         </div>
     )
 }

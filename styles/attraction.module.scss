@@ -185,7 +185,7 @@
         }
         .leader-left-box{
             width: 585px;
-            height: 440px;
+            // height: 440px;
             display: flex;
             align-items: center;
             flex-direction: column;
@@ -203,8 +203,9 @@
             align-items: center;
             flex-direction: column;
             display: flex;
+            border-left: 4px solid #383838;
             width: 585px;
-            height: 440px;
+            // height: 440px;
         }
         .leader-item{
             width: 170px;
@@ -367,7 +368,7 @@
     z-index: 1;
 }
 .sage-popup{
-    font-family: Tahoma;
+    font-family: "sukhumvit";
     // display: none;
     z-index: 3;
     padding: 40px 80px 100px 80px;
@@ -476,7 +477,7 @@
     z-index: 1;
 }
 .leader-popup{
-    font-family: Tahoma;
+    font-family: 'sukhumvit';
     // display: none;
     z-index: 3;
     padding: 40px 80px 100px 80px;

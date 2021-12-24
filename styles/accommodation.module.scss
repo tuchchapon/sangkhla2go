@@ -11,20 +11,22 @@
         background: linear-gradient(180deg, rgba(225, 211, 182, 0.5) 0%, rgba(225, 211, 182, 0) 100%);
     }
     .page-title-box{
-        width: 100%;
+        width: 1170px;
+        max-width: 1440;
+        margin: 0 auto;
         height: 508px;
         display: flex;
-        margin-bottom: 16px;
+        margin-bottom: -200px;
         position: relative;
         text-align: center;
-        font-size: 80px;
+        font-size: 64px;
         font-weight: bold;
         line-height: 88px;
         justify-content: center;
         .bg-title{
         position: absolute;
         top: 0;
-        left: -72px;
+        left: -135px;
         }
         .title-textbox{
             background-image: url('/img/accommodation/title-textbox.png');
@@ -37,13 +39,75 @@
             top: 38px;
             right: 0px;
         }
+
     }
+
     .accommodation-column{
         display: flex;
         flex-direction: column;
-        position: relative;
-        
-        top: -200px;
+        // position: relative;
+        .type-button{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 40px;
+            z-index: 2;
+            // margin-top: 294px;
+            .accom-tab{
+                background-image: url('/img/accommodation/type-button.png');
+                display: flex;
+                cursor: pointer;
+                justify-content: center;
+                align-items: center;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+                margin-right: 30px;
+                width: 170px;
+                height: 56px;
+            }
+            .accom-tab-active{
+                background-image: url('/img/accommodation/type-button-active.png');
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-position: center;
+                background-repeat: no-repeat;
+                margin-right: 30px;
+                background-size: cover;
+                width: 170px;
+                height: 56px;
+                cursor: pointer;
+            }
+            .boat-tab{
+                cursor: pointer;
+                background-image: url('/img/accommodation/type-button.png');
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+                width: 170px;
+                height: 56px;
+            }
+            .boat-tab-active{
+                cursor: pointer;
+                background-image: url('/img/accommodation/type-button-active.png');
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+                width: 170px;
+                height: 56px;
+            }
+                
+            
+        }
         .accommodation-list{
             margin: auto;
             width: 1170px;
@@ -122,11 +186,13 @@
         }
     }
     .load-content-text{
+        cursor: pointer;
         font-size: 32px;
         font-weight: bold;
         align-self: center;
         line-height: 40px;
         text-align: center;
+        margin: auto;
         text-decoration: underline;
         width: 122px;
         height: 40px;

@@ -51,7 +51,7 @@
     .restaurant-column{
         display: flex;
         flex-direction: column;
-        padding-bottom: 80px;
+        // padding-bottom: 80px;
     }
 
     .restaurant-list{
@@ -138,6 +138,7 @@
 }
 }
 .load-content-text{
+    cursor: pointer;
     font-size: 32px;
     font-weight: bold;
     align-self: center;

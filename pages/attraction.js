@@ -8,6 +8,7 @@ import AttractionPopup from '../components/attractionPopup'
 import SagePopup from '../components/sagePopup'
 import LeaderPopup from '../components/leaderPopup'
 import SubHeader from '../layouts/subHeader'
+import Footer from '../layouts/footer'
 
 function RightArrow(props) {
     const { className, style, onClick } = props;
@@ -190,10 +191,12 @@ export default function attraction() {
                         </div>
                     </div>
                 </div>
+                <Footer/>
             </div>
                 <AttractionPopup open={showAttraction} onClose={()=>setShowAttraction(false)} activeAttraction={activeAttraction} />
                <SagePopup open={showSage} onClose={()=>setShowSage(false)} />
                <LeaderPopup open={showLeader} onClose={()=>setShowLeader(false)} />
+
         </div>
     )
 }

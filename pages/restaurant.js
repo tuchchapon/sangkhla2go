@@ -4,6 +4,7 @@ import Head from 'next/head'
 import styles from '../styles/restaurant.module.scss'
 import RestaurantPopup from '../components/restaurantPopup'
 import SubHeader from '../layouts/subHeader'
+import Footer from '../layouts/footer'
 export default function restaurant() {
     const [restaurants, setrestaurants] = useState([])
     const [show_arr, setShow_arr] = useState([
@@ -113,6 +114,7 @@ export default function restaurant() {
                 </div>
             </div>
             <RestaurantPopup open={showRestaurant} onClose={()=>setShowRestaurant(false)} activeRestaurant={activeRestaurant} />
+            <Footer/>
         </div>
     )
 }

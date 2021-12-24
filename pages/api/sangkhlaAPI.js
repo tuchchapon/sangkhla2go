@@ -1231,12 +1231,7 @@ router.route("/check").get((req, res) => {
       let nature_attraction = []
       let tradition_attraction = []
       let agri_attraction = []
-      const sortAttraction =(arr)=>{
-        let attraction =[]
-        arr.sort((a,b)=>{return service.indexOf(a.service)
-        - service.indexOf(b.service)})
-      }
-      sortAttraction()
+
       Attraction.find({},function(err,data){
         
         for (let i = 0; i < data.length; i++) {

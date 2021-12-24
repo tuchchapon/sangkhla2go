@@ -4,13 +4,17 @@ import styles from "../styles/accommodation.module.scss";
 import axios from 'axios';
 import AccommodationPopup from '../components/accommodationPopup';
 import SubHeader from '../layouts/subHeader';
+import Footer from '../layouts/footer'
 export default function accommodation() {
     const [showAccommodation, setShowAccommodation] = useState([])
     const [resAccommodation, setResAccommodation] = useState([])
+    const [boatHouses, setBoatHouses] = useState([])
+    const [hotels, setHotels] = useState([])
     const [activeAcommodation, setActiveAcommodation] = useState({
         id:'',name:'',type:'',information:'',min_price:'',max_price:'',
         fb_page:'',images:[],services:[],tel:''
     })
+    const [activeTab, setActiveTab] = useState('accom')
     const [openPopup, setOpenPopup] = useState(false)
 
     const showPopup =(e,accommodation)=>{
@@ -39,8 +43,13 @@ export default function accommodation() {
         const getAccommodation =async()=>{
           const response = await axios.get(`${process.env.SERVER_API}/get/accommodation`)
           if (response.status === 200) {
+              
             console.log(response.data.payload);
             let data = response.data.payload 
+            for (let i = 0; i < data.length; i++) {
+                data[i].type === "แพพัก" ? boatHouses.push(data[i]) 
+                :hotels.push(data[i])
+              }
             let setarr = []
                 for (let j = 0; j < 9; j++) {
                     if(data[j] === 0 || data[j])setarr.push(data[j])
@@ -68,29 +77,62 @@ export default function accommodation() {
                             <div className={styles['title-textbox']} >
                                 <span>ที่พัก</span>
                             </div>
+
                         </div>
+
                         <div className={styles['accommodation-column']} >
-                            <div className={styles['accommodation-list']} >
-                                {showAccommodation.length >0 ? showAccommodation.map((accommodation)=>(
-                                    <div onClick={(e)=>showPopup(e,accommodation)} key={accommodation.id} className={styles['accommodation-item']} >
-                                        <img src={accommodation.images.length >0 ? `/uploadImage/accommodation/${accommodation.images[0]}`:'/no-imge.png'} alt="" />
-                                        {accommodation.type === "แพพัก" ? (
-                                            <div className={styles['boat-house-tag']} >แพพัก</div>
-                                        ) :''}
-                                        <span className={styles['accommodation-name']} >{accommodation.name}<br/></span>
-                                        {activeAcommodation.min_price || activeAcommodation ?                                         <div className={styles['price-box']} >
-                                           {accommodation.min_price !=='' && accommodation.max_price !== '' ?  <img className={styles['icon-b']} src="/img/accommodation/icon-B.png" alt="" />:''}
-                                           {accommodation.min_price === "" && accommodation.max_price ===''  ?'':  accommodation.min_price && accommodation.max_price ? <span>{`${accommodation.min_price} - ${accommodation.max_price} บาท`}</span>:
-                                            ''}
-                                        </div>:''}
-                                    </div>
-                                )):''}
-                            </div>
-                            {resAccommodation.length > 0 ? ( <div onClick={(e)=>showMore(e)} className={styles['load-content-text']} ><span   >โหลดเพิ่ม</span></div>):''}
+                        <div className={styles['type-button']}>
+                                <div onClick={(e)=>setActiveTab('accom')} className={activeTab === "accom" ? styles['accom-tab-active']:styles['accom-tab']}>
+                                        <span>ที่พัก</span>
+                                </div>
+                                <div onClick={(e)=>setActiveTab('boat')} className={activeTab ==='boat' ? styles['boat-tab-active']:styles['boat-tab']}>
+                                        <span>แพพัก</span>
+                                </div>
                         </div>
+                            {activeTab === "accom" ? (
+                            <div className={styles['accommodation-list']} >
+                            {hotels.length >0 ? hotels.map((accommodation)=>(
+                            <div onClick={(e)=>showPopup(e,accommodation)} key={accommodation.id} className={styles['accommodation-item']} >
+                            <img src={accommodation.images.length >0 ? `/uploadImage/accommodation/${accommodation.images[0]}`:'/no-imge.png'} alt="" />
+                            {/* {accommodation.type === "แพพัก" ? (
+                             <div className={styles['boat-house-tag']} >{accommodation.type}</div>
+                            ) :''} */}
+                            <span className={styles['accommodation-name']} >{accommodation.name}<br/></span>
+                            {activeAcommodation.min_price || activeAcommodation ?                                         <div className={styles['price-box']} >
+                            {accommodation.min_price !=='' && accommodation.max_price !== '' ?  <img className={styles['icon-b']} src="/img/accommodation/icon-B.png" alt="" />:''}
+                            {accommodation.min_price === "" && accommodation.max_price ===''  ?'':  accommodation.min_price && accommodation.max_price ? <span>{`${accommodation.min_price} - ${accommodation.max_price} บาท`}</span>:
+                            ''}
+                            </div>:''}
+                            </div>
+                            )):''}
+                            </div>
+                            ):''}
+                            {activeTab ==="boat"?(
+                            <div className={styles['accommodation-list']} >
+                            {boatHouses.length >0 ? boatHouses.map((accommodation)=>(
+                            <div onClick={(e)=>showPopup(e,accommodation)} key={accommodation.id} className={styles['accommodation-item']} >
+                            <img src={accommodation.images.length >0 ? `/uploadImage/accommodation/${accommodation.images[0]}`:'/no-imge.png'} alt="" />
+                            {accommodation.type === "แพพัก" ? (
+                            <div className={styles['boat-house-tag']} >แพพัก</div>
+                            ) :''}
+                            <span className={styles['accommodation-name']} >{accommodation.name}<br/></span>
+                            {activeAcommodation.min_price || activeAcommodation ?                                         <div className={styles['price-box']} >
+                            {accommodation.min_price !=='' && accommodation.max_price !== '' ?  <img className={styles['icon-b']} src="/img/accommodation/icon-B.png" alt="" />:''}
+                            {accommodation.min_price === "" && accommodation.max_price ===''  ?'':  accommodation.min_price && accommodation.max_price ? <span>{`${accommodation.min_price} - ${accommodation.max_price} บาท`}</span>:
+                            ''}
+                            </div>:''}
+                            </div>
+                            )):''}
+                            </div>
+                            ):''}
+
+                        </div>
+                        
                     </div>
+                   
                 </div>                
                 <AccommodationPopup open={openPopup} onClose={()=>setOpenPopup(false)} activeAcommodation={activeAcommodation}  />
+                <Footer/>
         </div>
     )
 }

@@ -32,7 +32,7 @@ export default function winPopup({open,onClose,activeWin}) {
     }
     useEffect(() => {
        setLoad(true) 
-       activeWin ? getDriverFromLocation(activeWin):''
+       activeWin ? getDriverFromLocation(activeWin):null
         
 
     }, [activeWin])

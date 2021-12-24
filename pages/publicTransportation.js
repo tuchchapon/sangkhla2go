@@ -7,6 +7,7 @@ import styles from '../styles/PublicTranspotation.module.scss'
 import axios from 'axios'
 import WinPopup from '../components/winPopup';
 import BoatPopup from '../components/boatPopup';
+import Footer from '../layouts/footer'
 import SubHeader from '../layouts/subHeader'
 
 export default function publicTransportation() {
@@ -101,6 +102,7 @@ export default function publicTransportation() {
             </div>
                 <WinPopup open={showWinPopup} onClose={()=>setShowWinPopup(false)} activeWin={activeWin} />
                 <BoatPopup open={showBoatPopup} onClose={()=>setShowBoatPopup(false)} activeBoat={activeBoat} />
+                <Footer/>
         </div>
     )
 }

@@ -3,6 +3,7 @@ import axios from 'axios'
 import Popup from 'reactjs-popup';
 import styles from '../styles/officer.module.scss'
 import SubHeader from '../layouts/subHeader';
+import Footer from '../layouts/footer'
 export default function officer() {
     const [check_data, setCheck_data] = useState(false)
     const [leader, setLeader] = useState({})
@@ -314,6 +315,7 @@ export default function officer() {
 
                     </div>
                 </Popup>
+                <Footer/>
         </div>
     )
 }

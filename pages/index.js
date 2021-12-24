@@ -55,7 +55,6 @@ export default function index() {
   const [openSagePopup, setOpenSagePopup] = useState(false)
   const [openLeaderPopup, setOpenLeaderPopup] = useState(false)
   const [openRestaurantPopup, setOpenRestaurantPopup] = useState(false)
-  const [openLocationPopup, setOpenLocationPopup] = useState(false)
   const [openWinpopup, setopenWinpopup] = useState(false)  
   const [openBoatPopup, setOpenBoatPopup] = useState(false)
 
@@ -678,9 +677,10 @@ export default function index() {
        <KarenPopup open={openKarenPopup} onClose={()=>setOpenKarenPopup(false)} activeKarenTradition={activeKaren} />
        <MonPopup open={openMonPopup} onClose={()=>setOpenMonPopup(false)} activeMonTradition={activeMon} />
        <ProductPopup open={openProductPopup} onClose={()=>setOpenProductPopup(false)} activeProduct={activeProduct}  />  
+       <Footer/>
   </div>
       
-  <Footer/>
+
       </div>
       
     )}

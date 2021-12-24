@@ -5,6 +5,7 @@ import styles from '../styles/product.module.scss'
 import Head from 'next/head'
 import ProductPopup from '../components/productPopup'
 import SubHeader from '../layouts/subHeader'
+import Footer from '../layouts/footer'
 function RightArrow(props) {
     const { className, style, onClick } = props;
     return (
@@ -271,8 +272,10 @@ export default function product() {
                         </div>
                     </div>
                 </div>
+                <Footer/>
             </div>
             <ProductPopup open={showProduct} onClose={()=>setShowProduct(false)} activeProduct={activeProduct} />
+           
         </div>
     )
 }
