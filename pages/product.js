@@ -20,7 +20,7 @@ function LeftArrow(props){
 
 
 export default function product() {
-    const [activeTab, setActiveTab] = useState('karen')
+    const [activeTab, setActiveTab] = useState('product')
     const [karenFabric, setKarenFabric] = useState({
         id:'',name:'',fb_page:'',tel:'',link:'',images:[],detail:''
     })

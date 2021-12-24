@@ -109,7 +109,8 @@ export default function index() {
     setActiveBoat(boat)
     setOpenBoatPopup(true)
   }
-  const ShowWinPopup =(location)=>{
+  const ShowWinPopup =(e,location)=>{
+    if(e) e.preventDefault()
     setActiveWin(location)
     setopenWinpopup(true)
   }
@@ -126,40 +127,7 @@ export default function index() {
         setActiveProduct(product)
         setOpenProductPopup(true)
   }
-  let location_data = [
-    {
-      name:'วินท่ารถตู้หน้าโรงพยาบาล',
-      class:'locationbox1'
-    },
-    {
-      name:'วินหน้า ธ.กรุงไทย',
-      class:'locationbox2'
-    },
-    {
-      name:'วินตรงข้าม ธ.กรุงไทย',
-      class:'locationbox3'
-    },
-    {
-      name:'วินสะพานไม้ฝั่งมอญ',
-      class:'locationbox4'
-    },
-    {
-      name:'วินตลาดฝั่งมอญ',
-      class:'locationbox5'
-    },
-    {
-      name:'วินดงสัก',
-      class:'locationbox6'
-    },
-    {
-      name:'วินกองทุนแม่',
-      class:'locationbox7'
-    },
-    {
-      name:'วินสหกรณ์สังขละบุรี',
-      class:'locationbox8'
-    }
-  ]
+
 
   const settings = {
     infinite: true,
@@ -313,9 +281,9 @@ export default function index() {
             <div className="col-md-7">
               <div className={styles['intro-textbox']}>
                 <span>
-                <b>สังขละบุรี </b>เป็นอำเภอชายแดนตะวันตก รอยต่อด่านเจดีย์สามองค์ติดกับเมืองพญาตองซูของประเทศเมียนมา <br/> มีตำบลหนองลูเป็นจุดศูนย์กลางการท่องเที่ยว โดยประกอบ<br/>ไปด้วยเส้นทางประวัติศาสตร์และแหล่งอารยธรรม 
-จนปัจจุบัน<br/>ถือเป็นสถานที่ท่องเที่ยวสำคัญแห่งหนึ่งของจังหวัดกาญจนบุรี ด้วยความงดงามของธรรมชาติและความหลากหลายทางวัฒนธรรมของชนชาติพันธุ์ ทั้งไทย มอญ กะเหรี่ยง ลาว และพม่า<br/> 
-หนึ่งในสถานที่สำคัญอันเปรียบเสมือนสัญลักษณ์แห่งเมืองนทีสามประสบที่ดึงดูดนักท่องเที่ยวให้มาเยือนสังขละบุรี<br/> คือสะพานอุตตมานุสรณ์ หรือเรียกสั้นๆ ว่า สะพานมอญ ซึ่งเป็นสะพานไม้ที่ยาวที่สุดในประเทศไทย และยาวเป็นอันดับสองของโลก
+                <b>สังขละบุรี </b>เป็นอำเภอชายแดนตะวันตก<br/> รอยต่อด่านเจดีย์สามองค์ติดกับเมืองพญาตองซูของประเทศเมียนมา  มีตำบลหนองลูเป็นจุดศูนย์กลางการท่องเที่ยว <br/> โดยประกอบไปด้วยเส้นทางประวัติศาสตร์และแหล่งอารยธรรม <br/>
+                 <br/> จนปัจจุบันถือเป็นสถานที่ท่องเที่ยวสำคัญแห่งหนึ่งของจังหวัดกาญจนบุรี ด้วยความงดงามของธรรมชาติและความหลากหลายทางวัฒนธรรมของชนชาติพันธุ์ ทั้งไทย มอญ กะเหรี่ยง ลาว และพม่า <br/><br/>
+                  หนึ่งในสถานที่สำคัญอันเปรียบเสมือนสัญลักษณ์แห่งเมืองนทีสามประสบที่ดึงดูดนักท่องเที่ยวให้มาเยือนสังขละบุรี <br/> คือสะพานอุตตมานุสรณ์ หรือเรียกสั้นๆ ว่า สะพานมอญ <br/> ซึ่งเป็นสะพานไม้ที่ยาวที่สุดในประเทศไทย <br/>และยาวเป็นอันดับสองของโลก
                 </span>
               </div>
             </div>
@@ -412,7 +380,7 @@ export default function index() {
                 <span>สถานที่ท่องเที่ยว</span>
                 <span>
                 สัมผัสบรรยากาศธรรมชาติ วัฒนธรรม<br/>
-                เกษตรกรรมและชุมชน แบบสังขละ 
+                เกษตรกรรมและชุมชน แบบสังขละบุรี
                 </span>
                 </div>
                     <div className={`${styles['right-pin']} ${styles['right-pin-position1']}`}>
@@ -437,7 +405,7 @@ export default function index() {
                     <div className={`${styles['left-pin']} ${styles['left-pin-position2']}`}>
                           <div className={styles['attraction-name-box']}>
                             <div className={styles['sm-box']}>
-                              <span>แม่น้ำบัคลี่</span>
+                              <span>แม่น้ำบีคลี่</span>
                             </div>
                           </div>
                     </div>

@@ -194,18 +194,14 @@ const  upload_accommodation_images = multer({ storage:accommodation_storage })
 const mongoURL = process.env.DB_URL
 
 
-router.route("/dbcheck").get((req, res) => {
-    mongoose.connect(mongoURL, (err) => {
-      if (err) {
-        return res
-          .status(400)
-          .json({ status: 400, type: "failed", payload: err.message });
-      }
-      return res
-        .status(200)
-        .json({ status: 200, type: "success", payload: "success",path:__dirname  });
-    });
-  });
+router.route("/check").get((req, res) => {
+  // const a = `${process.cwd}`
+// console.log(url.pathToFileURL(a)) 
+  let image_name =`${__dirname}`
+  let a = url.pathToFileURL(image_name)
+  console.log('a is',a);
+  res.status(200).json({ status: 200,cwd: image_name ,dir : __dirname , });
+});
   //////////// create api ////////////
 
    // create boat tour provider api
@@ -1235,6 +1231,12 @@ router.route("/dbcheck").get((req, res) => {
       let nature_attraction = []
       let tradition_attraction = []
       let agri_attraction = []
+      const sortAttraction =(arr)=>{
+        let attraction =[]
+        arr.sort((a,b)=>{return service.indexOf(a.service)
+        - service.indexOf(b.service)})
+      }
+      sortAttraction()
       Attraction.find({},function(err,data){
         
         for (let i = 0; i < data.length; i++) {
