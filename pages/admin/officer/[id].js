@@ -87,7 +87,7 @@ export default function officer() {
             let image64 = await toBase64(files[i])
             let imageName = Date.now() + '.jpg'
             const uploadTask = storage
-                .ref(`store/${imageName}`)
+                .ref(`officer-image/${imageName}`)
                 .putString(image64, `data_url`, { contentType: `image/jpg` });
             uploadTask.on(
                 "state_changed",
@@ -97,7 +97,7 @@ export default function officer() {
                 },
                 () => {
                     storage
-                        .ref(`store`)
+                        .ref(`officer-image`)
                         .child(imageName)
                         .getDownloadURL()
                         .then(async url => {
@@ -200,15 +200,15 @@ export default function officer() {
                             </div>
                             <div className={styles['first-input']} >
                                 <span>เฟสบุ๊ค</span>
-                                <input type="text" value={officer ? officer.fb : ''} onChange={(e) => setOfficer({ ...officer, fb: e.target.value })} />
+                                <input type="text" value={officer.fb ? officer.fb : ''} onChange={(e) => setOfficer({ ...officer, fb: e.target.value })} />
                             </div>
                             <div className={styles['first-input']} >
                                 <span>instagram</span>
-                                <input type="text" value={officer ? officer.ig : ''} onChange={(e) => setOfficer({ ...officer, ig: e.target.value })} />
+                                <input type="text" value={officer.ig ? officer.ig : ''} onChange={(e) => setOfficer({ ...officer, ig: e.target.value })} />
                             </div>
                             <div className={styles['first-input']} >
                                 <span>ลิ๊ง youtube</span>
-                                <input type="text" value={officer ? officer.youtube : ''} onChange={(e) => setOfficer({ ...officer, youtube: e.target.value })} />
+                                <input type="text" value={officer.youtube ? officer.youtube : ''} onChange={(e) => setOfficer({ ...officer, youtube: e.target.value })} />
                             </div>
                             <div className={styles['button-group']} >
                                 <Button onClick={id === 'create' ? createOfficer : editOfficer} className={styles['button-size']} color="info" variant="contained">บันทึกข้อมูล</Button>
