@@ -506,7 +506,7 @@ export default function index() {
       <div className={styles['location-map-box']}>
             <span className={styles['win-title']}>วินมอเตอร์ไซค์</span>
             {locations.map((location,i)=>(
-                <div onClick={(e)=>ShowWinPopup(location)} key={location.location_name} className={`${styles['location-box-name']} ${styles[`locationbox${i}`]}`}>
+                <div onClick={(e)=>ShowWinPopup(e,location)} key={location.location_name} className={`${styles['location-box-name']} ${styles[`locationbox${i}`]}`}>
                   <span>{location.location_name}</span>
                 </div>
             ))}
