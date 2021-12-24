@@ -22,6 +22,7 @@
     "date-fns": "^2.26.0",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
+    "firebase": "^7.1.0",
     "formidable-serverless": "^1.1.1",
     "jsonwebtoken": "^8.5.1",
     "less": "^4.1.2",
