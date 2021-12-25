@@ -518,7 +518,7 @@ export default function index() {
                       {boatProviders.length > 0 ? boatProviders.map((boatProvider) => (
                         <div key={boatProvider.id} className={styles['boat-slider-box']}>
                           <div onClick={() => showBoatPopup(boatProvider)} className={styles['boat-provider-item']}>
-                            <img className={styles['boat-provider-image']} src={boatProvider.boat_images.length > 0 ? `/uploadImage/boatProvider/${boatProvider.boat_images[0]}` : '/no-imge.png'} alt="" />
+                            <img className={styles['boat-provider-image']} src={boatProvider.boat_images.length > 0 ? `${boatProvider.boat_images[0]}` : '/no-imge.png'} alt="" />
                             <div className={styles['boat-textbox']} >
                               <p className={styles['boat-club-name']} >{boatProvider.club_name}</p>
                               <p className={styles['boat-provider-name']}>{boatProvider.provider_name} </p>
