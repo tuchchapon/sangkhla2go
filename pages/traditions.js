@@ -67,7 +67,7 @@ export default function traditions() {
                     <div className="col-5">
                         <div className={styles['tradition-title-box']} >
                             <img src="/img/tradition/tradition-title-box.png" alt="" />
-                            <span className={styles['tradition-title-name']} >ประเพณีชาวกระเหรี่ยง</span>
+                            <span className={styles['tradition-title-name']} >ประเพณีชาวกะเหรี่ยง</span>
                         </div>
                     </div>
                     <div className="col-7">

@@ -540,7 +540,7 @@ export default function index() {
                   <div className={styles['tradition-title-box']}>
                     <span>ประเพณี </span>
                     <div className={styles['tradition-title']}>
-                      ประเพณีชาวกระเหรี่ยง
+                      ประเพณีชาวกะเหรี่ยง
                     </div>
                     <div className={styles['black-line']}></div>
                   </div>

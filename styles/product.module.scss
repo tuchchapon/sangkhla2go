@@ -382,6 +382,21 @@
     align-items: center;
     justify-content: center;
     height: 32px;
+    padding-left: 24px;
+    border-left: 2px solid #383838;
+    span{
+        margin-left: 8px;
+        font-family: "sukhumvit";
+        font-size: 24px;
+        padding-top: 4px;
+    }
+
+}
+.tel-box-no-border{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 32px;
     span{
         margin-left: 8px;
         font-family: "sukhumvit";
