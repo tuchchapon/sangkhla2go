@@ -550,7 +550,7 @@ export default function index() {
                         <div className={styles['image-box-size']}>
 
                           <div className={styles['tradition-image-box']} style={{ backgroundImage: `url('/img/tradition/tradition-frame.png')}` }}>
-                            <div style={{ backgroundImage: `url(${karen.images.length > 0 ? `/uploadImage/tradition/${karen.images[0]}` : '/img/tradition/traditionPlaceholder.png'})` }} className={styles['tradition-image']}></div>
+                            <div style={{ backgroundImage: `url(${karen.images.length > 0 ? `${karen.images[0]}` : '/img/tradition/traditionPlaceholder.png'})` }} className={styles['tradition-image']}></div>
 
                           </div>
                         </div>
@@ -570,7 +570,7 @@ export default function index() {
                         <div className={styles['image-box-size']}>
 
                           <div className={styles['tradition-image-box']} >
-                            <div style={{ backgroundImage: `url(${mon.images.length > 0 ? `/uploadImage/tradition/${mon.images[0]}` : '/img/tradition/traditionPlaceholder.png'})` }} className={styles['tradition-image']}></div>
+                            <div style={{ backgroundImage: `url(${mon.images.length > 0 ? `${mon.images[0]}` : '/img/tradition/traditionPlaceholder.png'})` }} className={styles['tradition-image']}></div>
 
                           </div>
                         </div>

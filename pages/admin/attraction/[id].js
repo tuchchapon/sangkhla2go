@@ -68,7 +68,6 @@ export default function attraction() {
         if (files.length > 0) {
             for (let i = 0; i < files.length; i++) {
                 console.log(files[i])
-                let imageData = new FormData()
                 console.log(files[i].name);
                 uploadImageAsPromise(files[i], i)
             }

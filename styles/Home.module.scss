@@ -1411,6 +1411,7 @@
     flex-direction: column;
     span{
       &:nth-child(1){
+        margin-top: 108px;
         font-weight: bold;
         font-size: 72px;
         line-height: 80px;
@@ -1554,6 +1555,9 @@
          }
          span{
            margin: 0 8px 0  8px;
+           &:nth-child(2){
+             cursor: pointer;
+           }
          }
        }
      }
