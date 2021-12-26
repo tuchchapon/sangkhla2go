@@ -31,6 +31,8 @@ export default function Restaurant() {
         close_time: '',
         services: [],
         fb_page: '',
+        fb_link: '',
+        line: '',
         tel: '',
         images: []
     })
@@ -311,12 +313,20 @@ export default function Restaurant() {
                                 <input type="time" value={restaurant ? restaurant.close_time : ''} onChange={(e) => { e.preventDefault(), setRestaurant({ ...restaurant, close_time: e.target.value }) }} />
                             </div>
                             <div className={styles['first-input']} >
-                                <span>เฟจเฟสบุ๊ค</span>
+                                <span>ชื่อเพจเฟสบุ๊ค</span>
                                 <input type="text" value={restaurant ? restaurant.fb_page : ''} onChange={(e) => setRestaurant({ ...restaurant, fb_page: e.target.value })} />
+                            </div>
+                            <div className={styles['first-input']} >
+                                <span>ลิ๊งเฟสบุ๊ค</span>
+                                <input type="text" value={restaurant ? restaurant.fb_link : ''} onChange={(e) => setRestaurant({ ...restaurant, fb_link: e.target.value })} />
                             </div>
                             <div className={styles['first-input']} >
                                 <span>เบอร์ติดต่อ</span>
                                 <InputMask mask="999-999-9999" maskChar={null} value={restaurant ? restaurant.tel : ''} onChange={(e) => setRestaurant({ ...restaurant, tel: e.target.value })} />
+                            </div>
+                            <div className={styles['first-input']} >
+                                <span>LINE</span>
+                                <input type="text" value={restaurant ? restaurant.line : ''} onChange={(e) => setRestaurant({ ...restaurant, line: e.target.value })} />
                             </div>
                             <div className={styles['first-input']} >
                                 <span>บริการของร้าน</span>

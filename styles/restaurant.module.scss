@@ -375,6 +375,17 @@
                 font-size: 24px;
                 line-height: 32px;
             }
+            .fb-with-link {
+                cursor: pointer;
+                &:hover{
+                    text-decoration: underline;
+                    font-weight: bolder;
+                }
+            }
+
+            .fb-no-link{
+
+            }
 
         }
     }
