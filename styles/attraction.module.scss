@@ -43,6 +43,7 @@
             // }
         }
         .tab-box{
+            cursor: pointer;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -74,6 +75,7 @@
             background: #E1D3B6;
         }
         .tab-box-active{
+            cursor: pointer;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -354,6 +356,7 @@
         padding-top: 40px;
         width: 698px;
         margin: 0 auto;
+        white-space: pre-line;
         font-size: 24px;
         line-height: 32px;
     }
