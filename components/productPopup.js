@@ -53,7 +53,7 @@ export default function productPopup({ open, onClose, activeProduct }) {
                             <div className={styles['slider']}>
                                 <Slider {...settings} >
                                     {activeProduct.images ? activeProduct.images.map((image) => (
-                                        <div key={image} className={styles['slider-box']}  ><div className={styles['slider-image']} style={{ backgroundImage: `url(${image ? `/uploadImage/product/${image}` : ''})` }}></div></div>
+                                        <div key={image} className={styles['slider-box']}  ><div className={styles['slider-image']} style={{ backgroundImage: `url(${image ? `${image}` : ''})` }}></div></div>
                                     )) : (
                                         <div className={styles['slider-box']}  ><div className={styles['slider-image']} style={{ backgroundImage: `url('/no-image-big.png')` }}></div></div>
                                     )}

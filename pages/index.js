@@ -179,6 +179,11 @@ export default function index() {
     }
 
   }
+  const getAttraction = async () => {
+    let attraction_data = await axios.get(`${process.env.SERVER_API}/get/init-attraction`)
+    console.log(attraction_data.data.payload);
+    setAttractions(attraction_data.data.payload)
+  }
   const getBoatProvider = async () => {
     let boat_data = await axios.get(`${process.env.SERVER_API}/get/boat-provider`)
 
@@ -245,6 +250,7 @@ export default function index() {
     if (loading) {
       const getData = async () => {
         hotels.length === 0 ? await getAccommodation() : null
+        attractions.length === 0 ? await getAttraction() : null
         boatProviders.length === 0 ? await getBoatProvider() : null
         restaurants.length === 0 ? await getRestaurant() : null
         karenTraditions.length === 0 || monTraditions.length === 0 ? await getTradition() : null
@@ -382,6 +388,20 @@ export default function index() {
                         เกษตรกรรมและชุมชน แบบสังขละบุรี
                       </span>
                     </div>
+                    {attractions.length > 0 ? attractions.map((attration) => {
+                      <div className={styles['right-pin']} >
+                        <div className={styles['attraction-name-box']}>
+                          <span>{attration.name}</span>
+                        </div>
+                      </div>
+                    }) : ''}
+                    {/* <div className={styles['attraction-title-box']}>
+                      <span>สถานที่ท่องเที่ยว</span>
+                      <span>
+                        สัมผัสบรรยากาศธรรมชาติ วัฒนธรรม<br />
+                        เกษตรกรรมและชุมชน แบบสังขละบุรี
+                      </span>
+                    </div>
                     <div className={`${styles['right-pin']} ${styles['right-pin-position1']}`}>
                       <div className={styles['attraction-name-box']}>
                         <div className={styles['sm-box']}>
@@ -400,7 +420,7 @@ export default function index() {
                           <div className={styles['attraction-name-box']}>
                             <div className={styles['sm-box']}>บ้านห้วยกบ</div>
                           </div>
-                    </div> */}
+                    </div> 
                     <div className={`${styles['left-pin']} ${styles['left-pin-position2']}`}>
                       <div className={styles['attraction-name-box']}>
                         <div className={styles['sm-box']}>
@@ -437,7 +457,7 @@ export default function index() {
                           <span>วัดจมน้ำ</span>
                         </div>
                       </div>
-                    </div>
+                    </div> */}
 
                   </div>
                   <span onClick={(e) => router.push('/attraction')} className={styles['see-all-button']}>ดูทั้งหมด</span>
@@ -592,7 +612,7 @@ export default function index() {
                     {products.length > 0 ? products.map((product) => (
                       <div onClick={() => showProductPopup(product)} key={product.id} className={styles['product-item']}>
                         <div className={styles['product-image-box']}>
-                          <div style={{ backgroundImage: `url(${product.images.length > 0 ? `/uploadImage/product/${product.images[0]}` : '/no-imge.png'})` }}></div>
+                          <div style={{ backgroundImage: `url(${product.images.length > 0 ? `${product.images[0]}` : '/no-imge.png'})` }}></div>
                         </div>
                         <span>{product.name}</span>
                       </div>

@@ -130,7 +130,7 @@ export default function product() {
                                     <div className={styles['slider']}>
                                         <Slider {...settings} >
                                             {karenFabric.images.length > 0 ? karenFabric.images.map((image) => (
-                                                <div key={image} className={styles['slider-box']}  ><div className={styles['slider-image']} style={{ backgroundImage: `url(${image ? `/uploadImage/product/${image}` : ''})` }}></div></div>
+                                                <div key={image} className={styles['slider-box']}  ><div className={styles['slider-image']} style={{ backgroundImage: `url(${image ? `${image}` : ''})` }}></div></div>
                                             )) : (
                                                 <div className={styles['slider-box']}  ><div className={styles['slider-image']} style={{ backgroundImage: `url('/no-image-big.png')` }}></div></div>
                                             )}
@@ -160,7 +160,7 @@ export default function product() {
                                     {products.length > 0 ? products.map((product) => (
                                         <div onClick={(e) => openPopup(e, product)} key={product.id} className={styles['product-item']}>
                                             <div className={styles['product-image-box']}>
-                                                <div style={{ backgroundImage: `url(${product.images.length > 0 ? `/uploadImage/product/${product.images[0]}` : '/no-imge.png'})` }}></div>
+                                                <div style={{ backgroundImage: `url(${product.images.length > 0 ? `${product.images[0]}` : '/no-imge.png'})` }}></div>
                                             </div>
                                             <div className={styles['product-name-box']}>
                                                 <span>{product.name}</span>
