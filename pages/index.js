@@ -202,7 +202,7 @@ export default function index() {
   }
   const getRestaurant = async () => {
     let restaurant_data = await axios.get(`${process.env.SERVER_API}/get/restaurant`)
-
+    console.log(restaurant_data.data.payload.length);
     let restaurant_payload = restaurant_data.data.payload
     if (restaurant_data.status === 200) {
       for (let i = 0; i < restaurant_payload.length; i++) {
@@ -222,10 +222,8 @@ export default function index() {
     let location_api = []
     if (location_data.status === 200) {
       let location_sort = location_data.data.payload
-      console.log('location sorting is', location_sort);
       for (let i = 0; i < 8; i++) {
 
-        console.log(`location  data is${i}`, location_data.data.payload[i])
         location_api.push(location_data.data.payload[i])
       }
       setLocations(location_api)
@@ -502,7 +500,7 @@ export default function index() {
                   {restaurants.length > 0 ? restaurants.map((restaurant) => (
                     <div key={restaurant.id} className={styles['slider-box']}>
                       <div onClick={(e) => showRestaurantPopup(restaurant)} className={styles['restaurant-item']}>
-                        <img className={styles['restaurant-image']} src={restaurant.images.length > 0 ? `/uploadImage/restaurant/${restaurant.images[0]}` : '/no-imge.png'} alt="" />
+                        <img className={styles['restaurant-image']} src={restaurant.images.length > 0 ? `${restaurant.images[0]}` : '/no-imge.png'} alt="" />
                         <span>{restaurant.name}</span>
                         <span>{restaurant.type}</span>
                         <span><b style={{ color: '#383838' }}>เมนูแนะนำ : </b>{restaurant.recommend_menu}</span>

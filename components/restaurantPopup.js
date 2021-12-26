@@ -65,11 +65,11 @@ export default function restaurantPopup({ open, onClose, activeRestaurant }) {
                                     <div className={styles['image-box']}>
                                         {activeRestaurant.images.length > 1 ? (<a className={styles['prev']} onClick={(e) => prev(bigPhoto, activeRestaurant.images)} >❮ </a>) : ''}
                                         {activeRestaurant.images.length > 1 ? (<a className={styles['next']} onClick={(e) => next(bigPhoto, activeRestaurant.images)} >❯ </a>) : ''}
-                                        {activeRestaurant.images.length > 0 ? (<img className={styles['big-image']} src={`/uploadImage/restaurant/${bigPhoto}`} alt="" />) :
+                                        {activeRestaurant.images.length > 0 ? (<img className={styles['big-image']} src={`${bigPhoto}`} alt="" />) :
                                             (<img className={styles['no-image']} src="/no-image-big.png" alt="" />)}
                                         <div className={styles['image-list']}>
                                             {activeRestaurant.images.length > 0 ? activeRestaurant.images.map((image) => (
-                                                <img draggable={false} onClick={() => changeImage(image)} key={image} src={`/uploadImage/restaurant/${image}`} alt="" />
+                                                <img draggable={false} onClick={() => changeImage(image)} key={image} src={`${image}`} alt="" />
                                             )) : ''}
                                         </div>
 
@@ -77,15 +77,19 @@ export default function restaurantPopup({ open, onClose, activeRestaurant }) {
                                     <div className={styles['detail-box']}>
                                         <div className={styles['restaurant-detail']}>
                                             <div className={styles['recommend-box']}>
-                                                <span><b style={{ color: '#383838' }}>{activeRestaurant.recommend_menu ? 'เมนูแนะนำ' : ''}</b> :{activeRestaurant.recommend_menu} </span>
+                                                <span><b style={{ color: '#383838' }}>{activeRestaurant.recommend_menu ? 'เมนูแนะนำ :' : ''}</b> {activeRestaurant.recommend_menu} </span>
                                             </div>
                                             <div className={styles['food-price-box']}>
                                                 <span>ราคาอาหาร</span>
-                                                <span><b>{`${activeRestaurant.food_min_price}-${activeRestaurant.food_max_price} บาท`}</b> </span>
+                                                <span><b>{activeRestaurant.food_min_price && activeRestaurant.food_max_price ? (
+                                                    `${activeRestaurant.food_min_price}-${activeRestaurant.food_max_price} บาท`
+                                                ) : `${activeRestaurant.food_min_price ? `${activeRestaurant.food_min_price}บาท` : activeRestaurant.food_max_price ? `${activeRestaurant.food_max_price} บาท` : '-'}`}</b> </span>
                                             </div>
                                             <div className={styles['drink-price-box']} >
                                                 <span>ราคาเครื่องดื่ม</span>
-                                                <span><b>{`${activeRestaurant.drink_min_price}-${activeRestaurant.drink_max_price} บาท`}</b></span>
+                                                <span><b>{activeRestaurant.drink_min_price && activeRestaurant.drink_max_price ? (
+                                                    `${activeRestaurant.drink_min_price}-${activeRestaurant.drink_max_price} บาท`
+                                                ) : `${activeRestaurant.drink_min_price ? `${activeRestaurant.drink_min_price}บาท` : activeRestaurant.drink_max_price ? `${activeRestaurant.drink_max_price} บาท` : '-'}`}</b> </span>
                                             </div>
                                             <div className={styles['time-box']}>
                                                 <img src="/img/restaurant/clock-icon.png" alt="" />
