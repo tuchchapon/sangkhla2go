@@ -341,7 +341,7 @@ export default function index() {
                   <div className={styles['accommodation-list']}>
                     {hotels.length > 0 ? hotels.map((hotel) => (
                       <div onClick={() => showAccommodationPopup(hotel)} key={hotel.id} className={styles['accommodation-item']} >
-                        <img src={hotel.images.length > 0 ? `/uploadImage/accommodation/${hotel.images[0]}` : '/no-imge.png'} alt="" />
+                        <img src={hotel.images.length > 0 ? `${hotel.images[0]}` : '/no-imge.png'} alt="" />
                         <span className={styles['accommodation-name']} >{hotel.name}<br /></span>
                         <div className={styles['price-box']} >
                           <img className={styles['icon-b']} src="/img/accommodation/icon-B.png" alt="" />
@@ -354,7 +354,7 @@ export default function index() {
                     {boatHouses.length > 0 ? boatHouses.map((boatHouse) => (
                       <div onClick={() => showAccommodationPopup(boatHouse)} key={boatHouse.id} className={styles['boat-house-item']}>
                         <div className={styles['boat-image-box']} style={{ backgroundImage: `url('/img/home/boat-house-box.png')` }} >
-                          <img src={boatHouse.images.length > 0 ? `/uploadImage/accommodation/${boatHouse.images[0]}` : '/no-image-big.png'} alt="" />
+                          <img src={boatHouse.images.length > 0 ? `${boatHouse.images[0]}` : '/no-image-big.png'} alt="" />
                         </div>
                         <div className={styles['boat-house-name-box']}>
                           <span className={styles['accommodation-name']} >{boatHouse.name}<br /></span>

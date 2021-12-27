@@ -24,6 +24,7 @@ export default function officer() {
         max_price: '',
         information: '',
         fb_page: '',
+        fb_link: '',
         tel: '',
         services: [],
         images: []
@@ -209,6 +210,10 @@ export default function officer() {
                             <div className={styles['first-input']} >
                                 <span>เพจเฟสบุ๊ค</span>
                                 <input type="text" value={accommodation ? accommodation.fb_page : ''} onChange={(e) => setAccommodation({ ...accommodation, fb_page: e.target.value })} />
+                            </div>
+                            <div className={styles['first-input']} >
+                                <span>ลิ๊งเฟสบุ๊ค</span>
+                                <input type="text" value={accommodation ? accommodation.fb_link : ''} onChange={(e) => setAccommodation({ ...accommodation, fb_link: e.target.value })} />
                             </div>
                             <div className={styles['first-input']} >
                                 <span>เบอร์ติดต่อ</span>
