@@ -9,10 +9,10 @@ import Popup from 'reactjs-popup'
 import Footer from '../layouts/footer';
 import ReactPlayer from 'react-player'
 import AccommodationPopup from '../components/accommodationPopup'
-import AttractionPopup from '../components/attractionPopup';
 import SagePopup from '../components/sagePopup';
 import LeaderPopup from '../components/leaderPopup';
 import RestaurantPopup from '../components/restaurantPopup';
+import AttractionPopup from '../components/attractionPopup';
 import WinPopup from '../components/winPopup'
 import BoatProviderPopup from '../components/boatPopup'
 import KarenPopup from '../components/karenTraditionPopup';
@@ -55,6 +55,7 @@ export default function index() {
   const [openSagePopup, setOpenSagePopup] = useState(false)
   const [openLeaderPopup, setOpenLeaderPopup] = useState(false)
   const [openRestaurantPopup, setOpenRestaurantPopup] = useState(false)
+  const [openAttractionpopup, setopenAttractionpopup] = useState(false)
   const [openWinpopup, setOpenWinpopup] = useState(false)
   const [openBoatPopup, setOpenBoatPopup] = useState(false)
 
@@ -72,9 +73,8 @@ export default function index() {
     drink_min_price: '', drink_max_price: '', type: '', tel: '', fb_page: '',
     images: [], services: []
   })
-  const [activeLocation, setActiveLocation] = useState({
-    id: '', club_name: '', driver_name: '', boat_quantity: '', contact: '', max_passenger: '',
-    owner_name: '', provider_image: '', provider_image: '', boat_images: []
+  const [activeAttraction, setActiveAttraction] = useState({
+    id: '', type: '', name: '', detail: '', images: []
   })
   const [activeWin, setActiveWin] = useState({})
   const [activeBoat, setActiveBoat] = useState({
@@ -99,6 +99,10 @@ export default function index() {
   }
   const showLeaderPopup = () => {
     setOpenLeaderPopup(true)
+  }
+  const showAttractionPopup = (attraction) => {
+    setopenAttractionpopup(true)
+    setActiveAttraction(attraction)
   }
   const showRestaurantPopup = (restaurant) => {
     setActiveRestarant(restaurant)
@@ -181,7 +185,7 @@ export default function index() {
   }
   const getAttraction = async () => {
     let attraction_data = await axios.get(`${process.env.SERVER_API}/get/init-attraction`)
-    console.log(attraction_data.data.payload);
+    console.log('attraction is', attraction_data.data.payload);
     setAttractions(attraction_data.data.payload)
   }
   const getBoatProvider = async () => {
@@ -377,22 +381,19 @@ export default function index() {
             <div className="container">
               <div className="col">
                 <div className={styles['attraction-flexbox']}>
-
+                  <div className={styles['attraction-title-box']}>
+                    <span>สถานที่ท่องเที่ยว</span>
+                    <span>
+                      สัมผัสบรรยากาศธรรมชาติ วัฒนธรรม<br />
+                      เกษตรกรรมและชุมชน แบบสังขละบุรี
+                    </span>
+                  </div>
                   <div className={styles['attraction-map']}>
-                    <div className={styles['attraction-title-box']}>
-                      <span>สถานที่ท่องเที่ยว</span>
-                      <span>
-                        สัมผัสบรรยากาศธรรมชาติ วัฒนธรรม<br />
-                        เกษตรกรรมและชุมชน แบบสังขละบุรี
-                      </span>
-                    </div>
-                    {attractions.length > 0 ? attractions.map((attration) => {
-                      <div className={styles['right-pin']} >
-                        <div className={styles['attraction-name-box']}>
-                          <span>{attration.name}</span>
-                        </div>
+                    {attractions.length > 0 ? attractions.map((attraction, i) => (
+                      <div onClick={(e) => showAttractionPopup(attraction)} key={attraction.id} className={`${styles[`pin${i}`]} ${styles[`pin-position${i}`]}`}>
+                        <div className={`${styles['text-box']} ${styles[`text-box${i}`]}`}></div>
                       </div>
-                    }) : ''}
+                    )) : ''}
                     {/* <div className={styles['attraction-title-box']}>
                       <span>สถานที่ท่องเที่ยว</span>
                       <span>
@@ -690,6 +691,7 @@ export default function index() {
             <SagePopup open={openSagePopup} onClose={() => setOpenSagePopup(false)} />
             <LeaderPopup open={openLeaderPopup} onClose={() => setOpenLeaderPopup(false)} />
             <BoatProviderPopup open={openBoatPopup} onClose={() => setOpenBoatPopup(false)} activeBoat={activeBoat} />
+            <AttractionPopup open={openAttractionpopup} onClose={() => setopenAttractionpopup(false)} activeAttraction={activeAttraction} />
             <RestaurantPopup open={openRestaurantPopup} onClose={() => setOpenRestaurantPopup(false)} activeRestaurant={activeRestarant} />
             <WinPopup open={openWinpopup} onClose={() => setOpenWinpopup(false)} activeWin={activeWin} />
             <KarenPopup open={openKarenPopup} onClose={() => setOpenKarenPopup(false)} activeKarenTradition={activeKaren} />

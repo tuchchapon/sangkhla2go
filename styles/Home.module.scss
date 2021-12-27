@@ -555,151 +555,182 @@
       // top: -104px
       position: relative;
       width: 1170px;
-      height: 1392px;
+      height: 1144px;
       background-image: url('/img/home/attraction-map.png');
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
-      .right-pin{
+      .pin0{
+        cursor: pointer;
         width: 40px;
         height: 56px;
         position: absolute;
-          background-image: url('/img/home/right-pin.png');
-          background-position: center;
-          background-repeat: no-repeat;
-          background-size: contain;     
-      }
-      .right-pin:hover{
-        width: 40px;
-        height: 56px;
-          background-image: url('/img/home/right-pin-hover.png');
-      }
-       .left-pin{
-        width: 40px;
-        height: 56px;
-        position: absolute;
-          background-image: url('/img/home/left-pin.png');
-          background-position: center;
-          background-repeat: no-repeat;
-          background-size: contain;    
-      }
-      .left-pin:hover{
-        width: 40px;
-        height: 56px;
-          background-image: url('/img/home/left-pin-hover.png');
-      }
-      .sm-box{
-        display: none;
-        width: 170px;
-        height: 80px;
-        
-        text-align: center;
-        position: absolute;
-        background-image: url('/img/home/sm-box.png');
-        span{
+        left: 415px;
+        top: 80px;
+        background-image: url('/img/home/left-pin.png');
+        .text-box0{
           position: absolute;
-          left: 40px;
-          top: 24px;
-          font-size: 24px;
-          font-weight: 500;
-          color: #383838;
+          width: 270px;
+          height: 104px;
+          background-image: url('/img/home/text-frame-0.png');
+          display: none;
+          right:   70px;
+          top: -30px;
         }
-      }
-      .lg-box{
-        display: none;
-        width: 270px;
-        height: 104px;
-        position: absolute;
-        text-align: center;
-        background-image: url('/img/home/lg-box.png');
-        span{
-          position: absolute;
-          left: 50px;
-          top: 20px;
-          font-weight: 500;
-          color: #383838;
-          line-height: 30px;
-          font-size: 24px;
-          b{
-            font-size: 32px;
+        &:hover {
+          background-image: url('/img/home/left-pin-hover.png');
+          .text-box0{
+          display: block;
           }
         }
       }
-      .right-pin-position1{
+      .pin1{
+        cursor: pointer;
+        width: 40px;
+        height: 56px;
         position: absolute;
-        right:  310px;
-        top: 730px;
-
+        left: 415px;
+        top: 512px;
+        background-image: url('/img/home/left-pin.png');
+        .text-box1{
+          position: absolute;
+          width: 270px;
+          height: 104px;
+          right:   0;
+          top: -120px;
+          background-image: url('/img/home/text-frame-1.png');
+          display: none;
+        }
+        &:hover {
+          background-image: url('/img/home/left-pin-hover.png');
+          .text-box1{
+          display: block;
+          }
+        }
       }
-      .right-pin-position2{
+      .pin2{
+        cursor: pointer;
+        width: 40px;
+        height: 56px;
         position: absolute;
-        left: 420px;
-        top: 500px;
-        
+        left: 515px;
+        bottom: 464px;
+        background-image: url('/img/home/right-pin.png');
+        .text-box2{
+          position: absolute;
+          width: 270px;
+          height: 104px;
+          right:   85px;
+          top: -30px;
+          background-image: url('/img/home/text-frame-2.png');
+          display: none;
+        }
+        &:hover {
+          background-image: url('/img/home/right-pin-hover.png');
+          .text-box2{
+          display: block;
+          }
+        }
       }
-      .left-pin-position1{
-        left: 120px;
-        bottom: 480px;
-        
+      .pin3{
+        cursor: pointer;
+        width: 40px;
+        height: 56px;
+        position: absolute;
+        left: 415px;
+        bottom: 344px;
+        background-image: url('/img/home/left-pin.png');
+        .text-box3{
+          position: absolute;
+          width: 270px;
+          height: 104px;
+          right:   85px;
+          top: -20px;
+          background-image: url('/img/home/text-frame-3.png');
+          display: none;
+        }
+        &:hover {
+          background-image: url('/img/home/left-pin-hover.png');
+          .text-box3{
+          display: block;
+          }
+        }
       }
-      .left-pin-position2{
-        left: 300px;
-        bottom: 310px;
+      .pin4{
+        cursor: pointer;
+        width: 40px;
+        height: 56px;
+        position: absolute;
+        right: 515px;
+        top: 320px;
+        background-image: url('/img/home/right-pin.png');
+        .text-box4{
+          position: absolute;
+          width: 270px;
+          height: 104px;
+          left:   85px;
+          top: -20px;
+          background-image: url('/img/home/text-frame-4.png');
+          display: none;
+        }
+        &:hover {
+          background-image: url('/img/home/right-pin-hover.png');
+          .text-box4{
+          display: block;
+          }
+        }
       }
-      .left-pin-position3{
-        right: 310px;
-        top:  400px;
+      .pin5{
+        cursor: pointer;
+        width: 40px;
+        height: 56px;
+        position: absolute;
+        right: 515px;
+        top: 464px;
+        background-image: url('/img/home/right-pin.png');
+        .text-box5{
+          position: absolute;
+          width: 270px;
+          height: 104px;
+          left:   85px;
+          top: -20px;
+          background-image: url('/img/home/text-frame-5.png');
+          display: none;
+        }
+        &:hover {
+          background-image: url('/img/home/right-pin-hover.png');
+          .text-box5{
+          display: block;
+          }
+        }
       }
-      .left-pin-position4{
-        left: 410px;
-        bottom: 390px;
+      .pin6{
+        cursor: pointer;
+        width: 40px;
+        height: 56px;
+        position: absolute;
+        right: 315px;
+        bottom: 408px;
+        background-image: url('/img/home/right-pin.png');
+        .text-box6{
+          position: absolute;
+          width: 170px;
+          height: 80px;
+          left:   -20px;
+          top: -80px;
+          background-image: url('/img/home/text-frame-6.png');
+          display: none;
+        }
+        &:hover {
+          background-image: url('/img/home/right-pin-hover.png');
+          .text-box6{
+          display: block;
+          }
+        }
       }
-
-    }
-    .left-pin:hover .sm-box{
-      display: block;
-      width: 170px;
-      height: 80px;
-      position: absolute;
-      background-image: url('/img/home/sm-box.png');
-      position: absolute;
-      left: 50px;
-      top: 20px;
-
-    }
-    .right-pin:hover .sm-box{
-      display: block;
-      width: 170px;
-      height: 80px;
-      position: absolute;
-      background-image: url('/img/home/sm-box.png');
-      position: absolute;
-      left: 50px;
-      
-      top: 20px;
-    }
-    .left-pin:hover .lg-box{
-      display: block;
-      width: 270px;
-      height: 104px;
-      position: absolute;
-      background-image: url('/img/home/lg-box.png');
-      left: 50px;
-      top: 20px;
-      
-    }
-    .right-pin:hover .lg-box{
-
-      display: block;
-      width: 270px;
-      height: 104px;
-      position: absolute;
-      background-image: url('/img/home/lg-box.png');
-      position: absolute;
-      left: 50px;
-      top: 20px;
     }
   }
+
   .leader-box{
     .leader-row-box{
         display: flex;
