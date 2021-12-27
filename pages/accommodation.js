@@ -12,7 +12,7 @@ export default function accommodation() {
     const [hotels, setHotels] = useState([])
     const [activeAcommodation, setActiveAcommodation] = useState({
         id: '', name: '', type: '', information: '', min_price: '', max_price: '',
-        fb_page: '', images: [], services: [], tel: ''
+        fb_page: '', images: [], services: [], tel: '', fb_link: ''
     })
     const [activeTab, setActiveTab] = useState('accom')
     const [openPopup, setOpenPopup] = useState(false)
@@ -98,11 +98,16 @@ export default function accommodation() {
                              <div className={styles['boat-house-tag']} >{accommodation.type}</div>
                             ) :''} */}
                                         <span className={styles['accommodation-name']} >{accommodation.name}<br /></span>
-                                        {activeAcommodation.min_price || activeAcommodation ? <div className={styles['price-box']} >
-                                            {accommodation.min_price !== '' && accommodation.max_price !== '' ? <img className={styles['icon-b']} src="/img/accommodation/icon-B.png" alt="" /> : ''}
-                                            {accommodation.min_price === "" && accommodation.max_price === '' ? '' : accommodation.min_price && accommodation.max_price ? <span>{`${accommodation.min_price} - ${accommodation.max_price} บาท`}</span> :
-                                                ''}
-                                        </div> : ''}
+                                        {accommodation.min_price || accommodation.max_price ?
+                                            <div className={styles['price-box']} >
+                                                {accommodation.min_price || accommodation.max_price ? <img className={styles['icon-b']} src="/img/accommodation/icon-B.png" alt="" /> : ''}
+                                                {accommodation.min_price && accommodation.max_price ? (
+                                                    <span>{parseInt(accommodation.min_price) >= parseInt(accommodation.max_price) ? `${accommodation.min_price} บาท` :
+                                                        `${accommodation.min_price}-${accommodation.max_price} บาท`}</span>
+                                                ) : accommodation.min_price || accommodation.max_price ? (
+                                                    <span>{accommodation.min_price ? `${accommodation.min_price} บาท` : accommodation.max_price ? `${accommodation.max_price} บาท` : ''}</span>
+                                                ) : ''}
+                                            </div> : ''}
                                     </div>
                                 )) : ''}
                             </div>
@@ -116,11 +121,16 @@ export default function accommodation() {
                                             <div className={styles['boat-house-tag']} >แพพัก</div>
                                         ) : ''}
                                         <span className={styles['accommodation-name']} >{accommodation.name}<br /></span>
-                                        {activeAcommodation.min_price || activeAcommodation ? <div className={styles['price-box']} >
-                                            {accommodation.min_price !== '' && accommodation.max_price !== '' ? <img className={styles['icon-b']} src="/img/accommodation/icon-B.png" alt="" /> : ''}
-                                            {accommodation.min_price === "" && accommodation.max_price === '' ? '' : accommodation.min_price && accommodation.max_price ? <span>{`${accommodation.min_price} - ${accommodation.max_price} บาท`}</span> :
-                                                ''}
-                                        </div> : ''}
+                                        {accommodation.min_price || accommodation.max_price ?
+                                            <div className={styles['price-box']} >
+                                                {accommodation.min_price || accommodation.max_price ? <img className={styles['icon-b']} src="/img/accommodation/icon-B.png" alt="" /> : ''}
+                                                {accommodation.min_price && accommodation.max_price ? (
+                                                    <span>{parseInt(accommodation.min_price) >= parseInt(accommodation.max_price) ? `${accommodation.min_price} บาท` :
+                                                        `${accommodation.min_price}-${accommodation.max_price} บาท`}</span>
+                                                ) : accommodation.min_price || accommodation.max_price ? (
+                                                    <span>{accommodation.min_price ? `${accommodation.min_price} บาท` : accommodation.max_price ? `${accommodation.max_price} บาท` : ''}</span>
+                                                ) : ''}
+                                            </div> : ''}
                                     </div>
                                 )) : ''}
                             </div>

@@ -40,7 +40,7 @@ export default function accommodationPopup({ open, onClose, activeAcommodation }
     }
     useEffect(() => {
         let first_image = ''
-        activeAcommodation.images.length > 1 ? first_image = activeAcommodation.images[0] : ''
+        activeAcommodation.images.length > 0 ? first_image = activeAcommodation.images[0] : ''
         if (first_image) setBigPhoto(first_image)
         console.log('accom', activeAcommodation);
     }, [activeAcommodation])
@@ -161,7 +161,7 @@ export default function accommodationPopup({ open, onClose, activeAcommodation }
                             <div className={styles['contact-box']}>
                                 <div className={styles['contact-item']}>
                                     {activeAcommodation.fb_page ? <img src="/img/restaurant/fb-icon.png" alt="" /> : ''}
-                                    <span>{activeAcommodation.fb_page}</span>
+                                    <span className={activeAcommodation.fb_link ? styles['fb-with-link'] : styles['fb-no-link']} onClick={activeAcommodation.fb_link ? () => window.open(`${activeAcommodation.fb_link}`) : null} >{activeAcommodation.fb_page}</span>
                                 </div>
                                 <div className={styles['contact-item']}>
                                     {activeAcommodation.tel ? <img src="/img/restaurant/tel-icon.png" alt="" /> : ''}

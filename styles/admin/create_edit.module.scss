@@ -94,15 +94,16 @@
     align-items: flex-start;
     justify-content: flex-start;
     .photo-item{
-        flex: 0 0 calc((100% - 120px)/4);
+        flex: 0 0 calc((100% - 24px)/4);
         margin: 0 12px 12px; 
         cursor: pointer;
         position: relative;
         &:nth-child(3n) {
-            margin-right: 8px;
+            // margin-right: 8px;
+            margin-right: 0;
           }
         &:nth-child(4n) {
-            margin-right: 0;
+            // margin-right: 0;
           }
     }
     .img-button-box{
