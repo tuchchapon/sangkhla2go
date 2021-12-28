@@ -443,7 +443,7 @@
         overflow-y: auto;
         overflow-x: hidden;
         display: flex;
-        
+        padding: 0px 8px;
         flex-direction: column;
     }
     .sage-popup-close-icon {
@@ -532,15 +532,7 @@
     left: 0;
     z-index: 1;
 }
-.leader-popup-fixed-box {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    z-index: 10;
-    display: flex;
-}
+
 .leader-popup {
     font-family: "sukhumvit";
     // display: none;
@@ -564,7 +556,7 @@
         overflow-y: auto;
         overflow-x: hidden;
         display: flex;
-        
+        padding: 0 8px;
         flex-direction: column;
     }
     .leader-popup-close-icon {
