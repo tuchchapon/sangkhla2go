@@ -48,31 +48,31 @@ export default function winPopup({ open, onClose, activeWin }) {
                 >
                     <div >
                         <div className={styles['backdrop']} ></div>
-                        <div className="col-12" style={{ backgroundColor: 'white' }} >
+                        <div className={styles['popup-fixed-box']}  >
                             <div className={styles['win-popup']} >
-                                <img className={styles['popup-close-icon']} onClick={() => closeWinPopup()} src='/Quit.png' alt="" />
-                                <span className={styles['location-name']}>{activeWin ? activeWin.location_name : ''}</span>
-                                {activeWin && activeWin.location_detail ? <label className={styles['location-detail']} ><img style={{ marginRight: '16px' }} src="/glass.png" alt="" />{activeWin ? activeWin.location_detail : ''}</label> : ''}
-                                <div className={styles['popup-win-box']}>
-                                    {drivers ? drivers.map((driver) => (
-                                        <div key={driver.id}>
-                                            <div className={styles['popup-win-item']}>
+                                <div className={styles['win-flexbox']}>
+                                    <img className={styles['popup-close-icon']} onClick={() => closeWinPopup()} src='/Quit.png' alt="" />
+                                    <span className={styles['location-name']}>{activeWin ? activeWin.location_name : ''}</span>
+                                    {activeWin && activeWin.location_detail ? <label className={styles['location-detail']} ><img style={{ marginRight: '16px' }} src="/glass.png" alt="" />{activeWin ? activeWin.location_detail : ''}</label> : ''}
+                                    <div className={styles['popup-win-box']}>
+                                        {drivers ? drivers.map((driver) => (
+                                            <div className={styles['popup-win-item']} key={driver.id}>
                                                 <img className={styles['driver-image']} style={{ backgroundImage: `url(${driver.image ? `${driver.image}` : '/img/publictranspotation/winCoverPlaceholder.png'})` }} src={driver.image ? '/img/publictranspotation/driver-img-frame.png' : '/img/publictranspotation/winCoverPlaceholder.png'} alt="" />
                                                 {/* <Image style src={driver.image ? '/img/publictranspotation/driver-img-frame.png':'/img/publictranspotation/winCoverPlaceholder.png'} width={134} height={134} /> */}
                                                 <span className={styles['popup-win-name']} >{driver.name}</span>
                                                 <span className={styles['popup-win-tel']} >{driver.contact}</span>
                                             </div>
-                                        </div>
-                                    )) : ''}
+                                        )) : ''}
 
-                                </div>
-                                {drivers.length > 0 ? (
-                                    <div className={styles['popup-service-text']}  >
-                                        <div style={{ marginRight: '24px' }} >
-                                            <img style={{ marginRight: '16px' }} src={sideTow === true ? "/img/publictranspotation/circle-true.png" : "/img/publictranspotation/circle.png"} alt="" /> <span>วินมอเตอร์ไซต์พ่วงข้าง</span></div>
-                                        <div> <img style={{ marginRight: '16px' }} src={triCycle === true ? "/img/publictranspotation/circle-true.png" : "/img/publictranspotation/circle.png"} alt="" /> <span>รถสามล้อเครื่อง</span></div>
                                     </div>
-                                ) : ''}
+                                    {drivers.length > 0 ? (
+                                        <div className={styles['popup-service-text']}  >
+                                            <div style={{ marginRight: '24px' }} >
+                                                <img style={{ marginRight: '16px' }} src={sideTow === true ? "/img/publictranspotation/circle-true.png" : "/img/publictranspotation/circle.png"} alt="" /> <span>วินมอเตอร์ไซต์พ่วงข้าง</span></div>
+                                            <div> <img style={{ marginRight: '16px' }} src={triCycle === true ? "/img/publictranspotation/circle-true.png" : "/img/publictranspotation/circle.png"} alt="" /> <span>รถสามล้อเครื่อง</span></div>
+                                        </div>
+                                    ) : ''}
+                                </div>
                             </div>
                         </div>
                     </div>

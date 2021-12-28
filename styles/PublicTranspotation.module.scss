@@ -26,6 +26,7 @@
 
 
     .win-items {
+        color: #383838;
         flex: 0 0 calc((100% - 120px)/4);
         margin: 0 15px 32px;
         width: 270px;
@@ -154,23 +155,34 @@
     left: 0;
     z-index: 1;
 }
+.popup-fixed-box {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 10;
+    display: flex;
+}
 .win-popup{
     display: flex;
     position: relative;
-    height: 100%;
+    height: auto;
+    max-height: 95%;
     font-family: "sukhumvit";
     padding: 40px 80px;
     z-index: 2;
     border: 4px solid #383838;
     border-radius: 16px;
-    width: 2000px;
+    width: 100%;
+    margin: auto;
     align-items: center;
     flex-direction: column;
-    
     max-width: 1170px;
     // max-height: 528px;
     background-color: #FBF6E9;
-    
+    overflow-y: auto;
+    overflow-x: hidden;
 
     .location-name{
         font-size: 64px;
@@ -202,11 +214,23 @@
         justify-content: center;
         width: 1010px;
         height: 100%;
-        max-height: 500px;
+        
+        max-height: 432px;
         // border: 2px solid red;
         overflow-y: auto;
+
+    }
+    .win-flexbox{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+
+        // height: 100%;
     }
     .popup-win-item {
+        color: #383838;
         flex: 0 0 calc((100% )/5);
         display: flex;
         align-items: center;
@@ -231,6 +255,8 @@
 
     }
     .popup-service-text{
+        margin-top: 16px;
+        color: #383838;
         justify-content: flex-end;
         display: flex;
         font-size: 24px;
@@ -251,18 +277,20 @@
     position: relative;
     font-family: "sukhumvit";
     padding: 40px 80px 60px 80px;
+    height: auto;
+    max-height: 95%;
+    margin: auto;
     border: 4px solid #383838;
     border-radius: 16px;
     z-index: 2;
     width: 970px;
-    max-height: 1000px;
-    height: 100%;
+    // max-height: 1000px;
     align-items: center;
     flex-direction: column;
     // max-height: 528px;
     background-color: #FBF6E9;
     overflow-x: auto;
-    margin-bottom: 100px;
+    // margin-bottom: 100px;
     .popup-club-name {
         white-space: pre-wrap;
         width: 100%;
@@ -342,6 +370,7 @@
         line-height: 32px;
     }
     .boat-driver-box{
+        color: #383838;
         width: 508px;
         height: 80px;
         line-height: 32px;

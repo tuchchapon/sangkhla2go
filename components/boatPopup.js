@@ -42,7 +42,7 @@ export default function boatPopup({ open, onClose, activeBoat }) {
                 lockScroll>
                 <div>
                     <div className={styles['backdrop']} ></div>
-                    <div className="col-12">
+                    <div className={styles['popup-fixed-box']}>
                         <div className={styles['boat-popup']}>
                             <img className={styles['popup-close-icon']} src='/Quit.png' onClick={() => onClose()} alt="" />
                             <span className={styles['popup-club-name']} >ชมรม : {activeBoat.club_name}</span>
