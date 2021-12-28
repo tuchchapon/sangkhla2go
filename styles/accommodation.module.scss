@@ -266,7 +266,7 @@
                 line-height: 56px;
                 text-align: center;
                 color: #383838;
-                margin-bottom: 8px;
+                margin-bottom: 8px
             }
             &:nth-child(2){
                 color: #757575;
@@ -344,6 +344,7 @@
         .detail-box{
             position: relative;
             display: flex;
+            width: 485px;
             flex-direction: column;
             height: 504px;
         }
