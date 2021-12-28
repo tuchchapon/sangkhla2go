@@ -43,8 +43,8 @@ body {
 
 @font-face {
   font-family: 'sukhumvit';
-  src: url('/fonts/sukhumvitset-semibold-05-webfont.woff2') format('woff2'),
-       url('/fonts/sukhumvitset-semibold-05-webfont.woff') format('woff');
+  src: url('/fonts/sukhumvitset-bold-06_1-webfont.woff2') format('woff2'),
+       url('/fonts/sukhumvitset-bold-06_1-webfont.woff') format('woff');
   font-weight: bold;
   font-style: normal;
 

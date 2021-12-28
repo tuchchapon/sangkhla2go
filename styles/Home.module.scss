@@ -9,24 +9,24 @@
 //     font-weight: normal;
 //     font-style: normal;
 // }
-@font-face {
-  font-family: 'sukhumvit';
-  src: url('/fonts/sukhumvitset-medium-04-webfont.woff2') format('woff2'),
-       url('/fonts/sukhumvitset-medium-04-webfont.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
+// @font-face {
+//   font-family: 'sukhumvit';
+//   src: url('/fonts/sukhumvitset-medium-04-webfont.woff2') format('woff2'),
+//        url('/fonts/sukhumvitset-medium-04-webfont.woff') format('woff');
+//   font-weight: normal;
+//   font-style: normal;
 
-}
+// }
 
 
-@font-face {
-  font-family: 'sukhumvit';
-  src: url('/fonts/sukhumvitset-semibold-05-webfont.woff2') format('woff2'),
-       url('/fonts/sukhumvitset-semibold-05-webfont.woff') format('woff');
-  font-weight: bold;
-  font-style: normal;
+// @font-face {
+//   font-family: 'sukhumvit';
+//   src: url('/fonts/sukhumvitset-semibold-05-webfont.woff2') format('woff2'),
+//        url('/fonts/sukhumvitset-semibold-05-webfont.woff') format('woff');
+//   font-weight: bold;
+//   font-style: normal;
 
-}
+// }
 .header-box{
   border-bottom:  4px solid #383838;;
   background-color: #fbf6e9;
@@ -130,10 +130,13 @@
   max-width: 1440px;
   align-items: flex-start;
   .sub-header-box{
-    // display: flex;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+    // margin-top: 24px;
     // align-self: flex-start;
     width: 1170px;
-    margin: 0 auto;
+    margin: 24px auto 0;
     // margin-left: auto;
     // margin:auto;
     // padding-top: 24px;
@@ -141,7 +144,14 @@
     cursor: pointer;
   }
   .arrow{
-    
+    display: flex;
+    background-image: url('/header-next-arrow.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    width: 16px;
+    height: 32px;
+    // margin-top: -4px;
     position: relative;
     margin-left: 8px;
     margin-right: 8px;

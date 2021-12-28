@@ -37,7 +37,7 @@ export default function attractionPopup({ activeAttraction, open, onClose }) {
                 lockScroll
             >
                 <div className={styles['backdrop']} ></div>
-                <div className="col-12">
+                <div className={styles['popup-fixed-box']}>
                     <div className={styles['attraction-popup']}>
                         <img className={styles['popup-close-icon']} src='/Quit.png' onClick={() => onClose()} alt="" />
                         <div className={styles['attraction-popup-namebox']} >

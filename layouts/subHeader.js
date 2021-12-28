@@ -1,9 +1,9 @@
 import React from 'react'
 import styles from '../styles/Home.module.scss'
 import useRouter from 'next/router'
-export default function subHeader({first,second}) {
+export default function subHeader({ first, second }) {
 
-    const toHome =(e)=>{
+    const toHome = (e) => {
         if (e) e.preventDefault()
         useRouter.push('/')
     }
@@ -11,11 +11,11 @@ export default function subHeader({first,second}) {
         <>
             <div className={styles['subheader']}>
                 <div className={styles['sub-header-box']} >
-                    <span onClick={(e)=>toHome(e)}>หน้าแรก </span>
-                    <span className={styles['arrow']} >{">"}</span>
-                    <span style={{color:`${first && !second ?'#757575':''}`}} >{first ? first :''}</span>
-                    {second ? <span className={styles['arrow']} >{">"}</span>:''}
-                    {second ? ( <span style={{color:' #757575'}} >{second}</span>):''}
+                    <span onClick={(e) => toHome(e)}>หน้าแรก </span>
+                    <div className={styles['arrow']} ></div>
+                    <span style={{ color: `${first && !second ? '#757575' : ''}` }} >{first ? first : ''}</span>
+                    {second ? <div className={styles['arrow']} ></div> : ''}
+                    {second ? (<span style={{ color: ' #757575' }} >{second}</span>) : ''}
                 </div>
             </div>
         </>
