@@ -317,14 +317,14 @@
         overflow-y: auto;
         overflow-x: hidden;
         display: flex;
-        // overflow-y: auto;
         flex-direction: column;
-        // margin: auto;
         width: 100%;
         height: 100%;
-        // padding: 40px 80px 80px 80px;
         max-height: 880px;
         background-color: #FBF6E9;
+        // margin: auto;
+        // padding: 40px 80px 80px 80px;
+        // overflow-y: auto;
         // border: 4px solid #383838;
         border-radius: 16px;
         .attraction-popup-namebox {

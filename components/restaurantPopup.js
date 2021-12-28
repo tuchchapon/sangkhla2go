@@ -48,7 +48,7 @@ export default function restaurantPopup({ open, onClose, activeRestaurant }) {
                 lockScroll
             >
                 <div className={styles['backdrop']}></div>
-                <div className="col-12">
+                <div className={styles['popup-fixed-box']}>
                     <div className={styles['restaurant-popup']}>
                         <img draggable={false} className={styles['popup-close-icon']} src='/Quit.png' onClick={() => onClose()} alt="" />
                         <div>
