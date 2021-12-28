@@ -289,7 +289,8 @@
     flex-direction: column;
     // max-height: 528px;
     background-color: #FBF6E9;
-    overflow-x: auto;
+    overflow-x: hidden;
+    overflow-y: auto;
     // margin-bottom: 100px;
     .popup-club-name {
         white-space: pre-wrap;
