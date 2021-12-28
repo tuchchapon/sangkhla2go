@@ -147,7 +147,7 @@ export default function product() {
 
                                     <div className={styles['icon-row-box']}>
                                         <div className={styles['tel-box-no-border']}>
-                                            <img src="/tel-icon.png" alt="" />
+                                            <img src="/tel-icon-2.png" alt="" />
                                             <span>{karenFabric.tel} </span>
                                         </div>
                                         <div className={styles['link-box']}>
@@ -230,7 +230,7 @@ export default function product() {
                                             <span onClick={(e) => window.open('https://www.facebook.com/BanMaeNamSangklaburi/')}>บ้านแม่น้ำ</span>
                                         </div>
                                         <div className={styles['tel-box']}>
-                                            <img src="/tel-icon.png" alt="" />
+                                            <img src="/tel-icon-2.png" alt="" />
                                             <span>087-519-9150</span>
                                         </div>
                                     </div>
@@ -261,7 +261,7 @@ export default function product() {
                                             <span onClick={(e) => window.open('https://www.facebook.com/BanMaeNamSangklaburi/')}>บ้านแม่น้ำ</span>
                                         </div>
                                         <div className={styles['tel-box']}>
-                                            <img src="/tel-icon.png" alt="" />
+                                            <img src="/tel-icon-2.png" alt="" />
                                             <span>087-519-9150</span>
                                         </div>
                                     </div>

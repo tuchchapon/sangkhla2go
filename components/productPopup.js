@@ -71,7 +71,7 @@ export default function productPopup({ open, onClose, activeProduct }) {
                                 ) : ''}
                                 {activeProduct.tel ? (
                                     <div className={activeProduct.fb_page ? styles['tel-box'] : styles['tel-box-no-border']}>
-                                        <img src="/tel-icon.png" alt="" />
+                                        <img src="/tel-icon-2.png" alt="" />
                                         <span>{activeProduct.tel}</span>
                                     </div>
                                 ) : ''}
