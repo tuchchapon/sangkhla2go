@@ -53,7 +53,7 @@ export default function accommodationPopup({ open, onClose, activeAcommodation }
                 lockScroll
             >
                 <div className={styles['backdrop']} ></div>
-                <div className="col-12">
+                <div className={styles['popup-fixed-box']}>
                     <div className={styles['accommodation-popup']} >
                         <img draggable={false} className={styles['popup-close-icon']} onClick={() => onClose()} src="/Quit.png" alt="" />
                         <div className={styles['accommodation-flexbox']} >
