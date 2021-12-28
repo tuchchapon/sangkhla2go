@@ -45,7 +45,7 @@ export default function traditionPopup({ open, onClose, activeKarenTradition }) 
                 lockScroll
             >
                 <div className={styles['backdrop']} ></div>
-                <div className="col-12">
+                <div className={styles['popup-fixed-box']}>
                     <div className={styles['tradition-popup']}>
                         <img className={styles['popup-close-icon']} src='/Quit.png' onClick={() => onClose()} alt="" />
                         <div className={styles['tradition-flexbox']} >
@@ -67,23 +67,24 @@ export default function traditionPopup({ open, onClose, activeKarenTradition }) 
                                 <span className={styles['popup-local-name']} >{activeKarenTradition.local_name ? `(${activeKarenTradition.local_name})` : ''}</span>
                             </div>
 
-                        </div>
-                        {activeKarenTradition.images.length > 0 ? (
-                            <div className={styles['popup-slider-box']} >
-                                <div className={styles['slider']}>
-                                    <Slider {...settings} >
-                                        {activeKarenTradition.images ? activeKarenTradition.images.map((image) => (
-                                            <div key={image} className={styles['slider-box']}  ><div className={styles['slider-image']} style={{ backgroundImage: `url(${image ? `${image}` : ''})` }}></div></div>
-                                        )) : ''}
-                                    </Slider>
+
+                            {activeKarenTradition.images.length > 0 ? (
+                                <div className={styles['popup-slider-box']} >
+                                    <div className={styles['slider']}>
+                                        <Slider {...settings} >
+                                            {activeKarenTradition.images ? activeKarenTradition.images.map((image) => (
+                                                <div key={image} className={styles['slider-box']}  ><div className={styles['slider-image']} style={{ backgroundImage: `url(${image ? `${image}` : ''})` }}></div></div>
+                                            )) : ''}
+                                        </Slider>
+                                    </div>
                                 </div>
+                            ) : ''}
+                            <div className={styles['popup-detail-box']} >
+                                {activeKarenTradition.detail ? activeKarenTradition.detail : ''}
                             </div>
-                        ) : ''}
-                        <div className={styles['popup-detail-box']} >
-                            {activeKarenTradition.detail ? activeKarenTradition.detail : ''}
-                        </div>
-                        <div className={styles['popup-credit-box']} >
-                            <span><b>ข้อมูลจากเอกสาร</b><br /> ‘เล่าเรื่องประวัติศาสตร์ท้องถิ่นและวิถีวัฒนธรรมสังขละบุรี’ <br /> <b>จัดทำโดย</b> ศูนย์วัฒนธรรมอำเภอสังขละบุรี</span>
+                            <div className={styles['popup-credit-box']} >
+                                <span><b>ข้อมูลจากเอกสาร</b><br /> ‘เล่าเรื่องประวัติศาสตร์ท้องถิ่นและวิถีวัฒนธรรมสังขละบุรี’ <br /> <b>จัดทำโดย</b> ศูนย์วัฒนธรรมอำเภอสังขละบุรี</span>
+                            </div>
                         </div>
                     </div>
                 </div>

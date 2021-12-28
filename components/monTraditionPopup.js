@@ -43,7 +43,7 @@ export default function monTraditionPopup({ open, onClose, activeMonTradition })
                 lockScroll
             >
                 <div className={styles['backdrop']} ></div>
-                <div className="col-12">
+                <div className={styles['popup-fixed-box']}>
                     <div className={styles['tradition-popup']}>
                         <img className={styles['popup-close-icon']} src='/Quit.png' onClick={() => onClose()} alt="" />
                         <div className={styles['tradition-flexbox']} >
@@ -64,23 +64,24 @@ export default function monTraditionPopup({ open, onClose, activeMonTradition })
                                 <span>{activeMonTradition.name}<br /></span>
                                 <span className={styles['popup-local-name']} >{activeMonTradition.local_name ? `(${activeMonTradition.local_name})` : ''}</span>
                             </div>
-                        </div>
-                        {activeMonTradition.images.length > 0 ? (
-                            <div className={styles['popup-slider-box']} >
-                                <div className={styles['slider']}>
-                                    <Slider {...settings} >
-                                        {activeMonTradition.images ? activeMonTradition.images.map((image) => (
-                                            <div key={image} className={styles['slider-box']}  ><div className={styles['mon-slider-image']} style={{ backgroundImage: `url(${image ? `${image}` : '/no-imge.png'})` }}></div></div>
-                                        )) : ''}
-                                    </Slider>
+
+                            {activeMonTradition.images.length > 0 ? (
+                                <div className={styles['popup-slider-box']} >
+                                    <div className={styles['slider']}>
+                                        <Slider {...settings} >
+                                            {activeMonTradition.images ? activeMonTradition.images.map((image) => (
+                                                <div key={image} className={styles['slider-box']}  ><div className={styles['mon-slider-image']} style={{ backgroundImage: `url(${image ? `${image}` : '/no-imge.png'})` }}></div></div>
+                                            )) : ''}
+                                        </Slider>
+                                    </div>
                                 </div>
+                            ) : ''}
+                            <div className={styles['popup-detail-box']} >
+                                {activeMonTradition.detail ? activeMonTradition.detail : ''}
                             </div>
-                        ) : ''}
-                        <div className={styles['popup-detail-box']} >
-                            {activeMonTradition.detail ? activeMonTradition.detail : ''}
-                        </div>
-                        <div className={styles['popup-credit-box']} >
-                            <span><b>ภาพและข้อมูลจากเอกสาร</b><br /> ‘เล่าเรื่องประวัติศาสตร์ท้องถิ่นและวิถีวัฒนธรรมสังขละบุรี’ <br /> <b>จัดทำโดย</b> ศูนย์วัฒนธรรมอำเภอสังขละบุรี</span>
+                            <div className={styles['popup-credit-box']} >
+                                <span><b>ภาพและข้อมูลจากเอกสาร</b><br /> ‘เล่าเรื่องประวัติศาสตร์ท้องถิ่นและวิถีวัฒนธรรมสังขละบุรี’ <br /> <b>จัดทำโดย</b> ศูนย์วัฒนธรรมอำเภอสังขละบุรี</span>
+                            </div>
                         </div>
                     </div>
                 </div>
