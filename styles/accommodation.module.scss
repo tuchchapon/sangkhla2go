@@ -241,12 +241,14 @@
     right: 24px;
     width: 32px;
     height: 32px;
+
     }
     .accommodation-flexbox{
         max-height: 800px;
-
-        display: flex;
         overflow-y: auto;
+        overflow-x: hidden;
+        display: flex;
+        // overflow-y: auto;
         flex-direction: column;
         // margin: auto;
         width: 100%;
@@ -276,7 +278,7 @@
     }
     .row-box{
         display: flex;
-        overflow-x: hidden;
+        // overflow-x: hidden;
         margin-top: 40px;
         .image-box{
             width: 485px;
