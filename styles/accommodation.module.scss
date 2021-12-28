@@ -207,10 +207,22 @@
     left: 0;
     z-index: 1;
 }
+.popup-fixed-box{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 10;
+    display: none;
+}
 .accommodation-popup{
     display: flex;
     width: 1170px;
-    height: 792px;
+    // height: 100%;
+    max-height: 80%;
+    // height: 792px;
+    // margin: 80px 0;
     z-index: 3;
     padding: 40px 80px;
     background-color: #FBF6E9;
@@ -229,8 +241,10 @@
     }
     .accommodation-flexbox{
         display: flex;
+        overflow: auto;
         flex-direction: column;
         margin: auto;
+        height: 100%;
     }
     .popup-name-box{
         display: flex;
