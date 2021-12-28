@@ -357,7 +357,7 @@
             display: flex;
             position: relative;
             background-position: center;
-            background-size: contain;
+            background-size: cover;
             // background-size: auto;
             background-repeat: no-repeat;
             max-width: 698px;
@@ -424,10 +424,13 @@
     font-family: "sukhumvit";
     // display: none;
     z-index: 3;
-    padding: 40px 80px 100px 80px;
-    width: 1170px;
-    height: 1000px;
+    padding: 40px 80px 80px 80px;
+    max-width: 1170px;
+    height: 95%;
+    width: 100%;
+    max-height: 1000px;
     display: flex;
+    margin: auto;
     // max-height: 2000px;
     flex-direction: column;
     position: relative;
@@ -437,7 +440,10 @@
     overflow-y: auto;
     justify-content: flex-start;
     .sage-flexbox {
+        overflow-y: auto;
+        overflow-x: hidden;
         display: flex;
+        
         flex-direction: column;
     }
     .sage-popup-close-icon {
@@ -526,15 +532,26 @@
     left: 0;
     z-index: 1;
 }
-
+.leader-popup-fixed-box {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 10;
+    display: flex;
+}
 .leader-popup {
-    font-family: 'sukhumvit';
+    font-family: "sukhumvit";
     // display: none;
     z-index: 3;
-    padding: 40px 80px 100px 80px;
-    width: 1170px;
-    height: 900px;
+    padding: 40px 80px 80px 80px;
+    max-width: 1170px;
+    height: 95%;
+    width: 100%;
+    max-height: 1000px;
     display: flex;
+    margin: auto;
     // max-height: 2000px;
     flex-direction: column;
     position: relative;
@@ -544,7 +561,10 @@
     overflow-y: auto;
     justify-content: flex-start;
     .leader-flexbox {
+        overflow-y: auto;
+        overflow-x: hidden;
         display: flex;
+        
         flex-direction: column;
     }
     .leader-popup-close-icon {
