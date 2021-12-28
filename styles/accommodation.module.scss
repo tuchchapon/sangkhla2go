@@ -246,7 +246,7 @@
         max-height: 800px;
 
         display: flex;
-        overflow: auto;
+        overflow-y: auto;
         flex-direction: column;
         // margin: auto;
         width: 100%;
@@ -276,6 +276,7 @@
     }
     .row-box{
         display: flex;
+        overflow-x: hidden;
         margin-top: 40px;
         .image-box{
             width: 485px;
