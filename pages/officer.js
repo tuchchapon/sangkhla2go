@@ -212,7 +212,7 @@ export default function officer() {
                 lockScroll
             >
                 <div className={styles['officer-backdrop']}></div>
-                <div className="col-12">
+                <div className={styles['popup-fixed-box']}>
                     <div style={{ backgroundImage: `url('/img/officer/small-popup-frame.png')` }} className={styles['officer-popup']}>
                         <div className={styles['officer-close-icon-box']} onClick={(e) => closePopup(e)}>
                             <img className={styles['officer-close-icon']} src='/Quit.png' alt="" />
@@ -264,7 +264,7 @@ export default function officer() {
                 lockScroll
             >
                 <div className={styles['leader-backdrop']} ></div>
-                <div className="col-12">
+                <div className={styles['popup-fixed-box']}>
                     <div id='leader-popup' className={styles['leader-popup']}>
                         <img className={styles['popup-close-icon']} src='/Quit.png' onClick={(e) => closePopup(e)} alt="" />
                         <div className={styles['leader-flexbox']}>
