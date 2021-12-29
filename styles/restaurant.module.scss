@@ -308,6 +308,11 @@
             height: 80px;
             width: 485px;
             margin-bottom: 24px;
+            span{
+                word-break: break-word;
+                // white-space: pre-wrap;
+                // line-break: loose;
+            }
         }
         .food-price-box{
             width: 485px;

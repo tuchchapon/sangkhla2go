@@ -79,7 +79,6 @@ export default function restaurant() {
             <SubHeader first={'ร้านอาหาร/กาแฟ'} />
             <div >
                 <div className={styles['page-title-box']}>
-                    <div className={styles['header-line']}></div>
                     <img className={styles['title-top-left']} src="/img/restaurant/title-top-left.png" alt="" />
                     <img className={styles['title-top-right']} src="/img/restaurant/title-top-right.png" alt="" />
                     <span>ร้านอาหาร/กาแฟ</span>

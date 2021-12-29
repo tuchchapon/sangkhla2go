@@ -17,6 +17,7 @@ export default function subHeader({ first, second }) {
                     {second ? <div className={styles['arrow']} ></div> : ''}
                     {second ? (<span style={{ color: ' #757575' }} >{second}</span>) : ''}
                 </div>
+                <div className={styles['sub-header-line']}></div>
             </div>
         </>
     )

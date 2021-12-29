@@ -69,7 +69,6 @@ export default function accommodation() {
                 <title>โรงแรม/แพพัก</title>
             </Head>
             <SubHeader first={'ที่พัก'} />
-            <div className={styles['header-line']} ></div>
             <div className="container">
                 <div className="col-12">
                     <div className={styles['page-title-box']}>
