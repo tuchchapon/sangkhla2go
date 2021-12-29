@@ -19,7 +19,7 @@ export default function login() {
     const theme = createTheme();
     const signIn = () => {
         console.log('login');
-
+        console.log('password is', admin.password);
         axios.post(`${process.env.SERVER_API}/login`, admin).then((res) => {
             console.log(res.data.token);
             console.log('data is', res.data);

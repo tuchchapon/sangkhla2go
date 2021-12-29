@@ -114,8 +114,9 @@
             &:nth-child(4){
                 height: 80px;
                 width: 330px;
-                white-space: pre-wrap;
+                white-space: pre-line;
                 color: #757575;
+                Word-break: break-word;
                 text-overflow: ellipsis;
                 overflow: hidden;
             }
