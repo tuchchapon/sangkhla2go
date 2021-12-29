@@ -43,7 +43,7 @@ export default function productPopup({ open, onClose, activeProduct }) {
                 lockScroll
             >
                 <div className={styles['backdrop']}></div>
-                <div className="col-12">
+                <div className={styles['popup-fixed-box']}>
                     <div className={styles['product-popup']}>
                         <img onClick={() => onClose()} className={styles['close-popup-icon']} src="/Quit.png" alt="" />
                         <div className={styles['product-flexbox']}>
