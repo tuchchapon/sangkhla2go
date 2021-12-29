@@ -370,7 +370,7 @@
     }
     .officer-flexbox{
         overflow-y: hidden;
-        padding: 0  60px 80px;
+        padding: 0  80px 80px;
         margin-top: 140px;
         display: flex;
 
@@ -545,7 +545,7 @@
 .officer-detail{
     display: flex;
     flex-direction: column;
-    padding: 0 32px;
+    
     // overflow-x: hidden;
     overflow-y: auto;
     .detail-textbox{
