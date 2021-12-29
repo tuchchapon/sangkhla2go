@@ -103,6 +103,7 @@ export default function login() {
                                 id="password"
                                 label="password"
                                 name="password"
+                                type="password"
                                 autoComplete="password"
                                 autoFocus
                                 onChange={((e) => setAdmin({ ...admin, password: e.target.value }))}

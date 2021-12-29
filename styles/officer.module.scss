@@ -333,12 +333,13 @@
     width: 770px;
     max-height: 784px;
     height: 100%;
-    overflow-x: hidden;
+    // overflow-x: hidden;
     margin: auto;
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
     display: flex;
+    background-image: url('/img/officer/small-popup-frame.png');
     align-items: flex-start;
     justify-content: center;
     .officer-close-icon-box{
@@ -364,15 +365,138 @@
         height: 32px;
     }
     .officer-flexbox{
+        overflow-y: hidden;
+        padding: 0  80px 80px;
         margin-top: 140px;
-        // padding: 16px  0 20px;
-        // overflow-x: auto;
+        display: flex;
+
+    }
+    .officer-content-box{
         display: flex;
         flex-direction: column;
+        flex-direction: column;
         align-items: center;
-        position: relative;
-        width: 632px;
-        height: 530px;
+        overflow-y: auto;
+        width: 640px;
+        height: 500px;
+
+        .contact-box{
+            // background-color: red;
+            margin-top: 8px;
+            display: flex;
+            flex-direction: column;
+            align-self: center;
+            justify-content: center;
+            align-items: center;
+            .youtube{
+                margin-right: 40px;
+                cursor: pointer;
+                background-image: url('/yt-button-hover.png');
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+                width: 130px;
+                height: 80px;
+            }
+            .no-youtube{
+               
+                margin-right: 40px;
+                // cursor: pointer;
+                background-image: url('/yt-button.png');
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+                width: 130px;
+                height: 80px;
+            }
+            .row-box{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 100%;
+            }
+            
+            .social-col-box{
+                display: flex;
+                flex-direction: column;
+        
+            .fb-box{
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+                height: 32px;
+                // margin-right: 24px;
+                img{
+                    width: 32px;
+                    height: 32px;
+                    // object-fit: contain;
+                    
+                }
+                span{
+                    margin-left: 8px;
+                    height: 32px;
+                    font-family: "sukhumvit";
+                    font-size: 24px;
+                    line-height: 32px;
+                    padding-top: 4px;
+                    font-weight: bold;
+                }
+            }
+            .ig-box{
+                margin-top: 16px;
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+                height: 32px;
+                
+                // margin-right: 24px;
+                img{
+                    width: 32px;
+                    height: 32px;
+                    object-fit: cover;
+        
+                }
+                span{
+                    font-weight: bold;
+                    line-height: 32px;
+                    margin-left: 8px;
+                    height: 32px;
+                    font-family: "sukhumvit";
+                    font-size: 24px;
+                    padding-top: 4px;
+                }
+            }
+        
+            }
+            .link-box{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: 32px;
+                margin: 20px auto;
+                // padding-left: 24px;
+                // margin-left: 24px;
+                
+                span{
+                    cursor: pointer;
+                    margin-left: 8px;
+                    font-family: "sukhumvit";
+                    font-size: 24px;
+                    padding-top: 4px;
+                    color: #383838;    
+                    text-decoration: underline;
+                }
+            }
+            .link-box:hover{
+            
+                span{
+                    color: #7A2328;
+                    font-weight: bolder;
+                    text-decoration: underline;
+                }
+             
+            }
+        }
     }
 
 
@@ -408,30 +532,25 @@
     margin-top: 32px;
     color: #383838;
     font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 .officer-detail{
     display: flex;
     flex-direction: column;
-    span{
-        display: flex;
-        justify-content: center;
-        width: 578px;
-        // margin-top: 32px;
+    padding: 0 16px;
+    // overflow-x: hidden;
+    overflow-y: auto;
+    .detail-textbox{
+        // height: 100%;
+        // height: 40px;
         font-size: 24px;
-        line-height: 32px;
-        color: #383838;
-        font-weight: bold;
-        text-align: center;
-        &:nth-child(2){
-            text-align: start;
-            // text-indent: 50px;
-            height: 128px;
-            overflow-y: auto;
-            font-weight: normal;
-            margin-top: 16px;
-            color: #757575;
-        }
+        color: #757575;
     }
+    // max-height: 280px;
+    
 }
 .leader-backdrop{
     background-color: rgba(0, 0, 0, 0.7);
@@ -560,6 +679,7 @@
     color: #757575;
 }
 .contact-box{
+    // background-color: red;
     margin-top: 8px;
     display: flex;
     flex-direction: column;
@@ -589,6 +709,9 @@
     }
     .row-box{
         display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
     }
     
     .social-col-box{
@@ -600,7 +723,6 @@
         align-items: center;
         justify-content: flex-start;
         height: 32px;
-        
         // margin-right: 24px;
         img{
             width: 32px;
@@ -610,6 +732,7 @@
         }
         span{
             margin-left: 8px;
+            height: 32px;
             font-family: "sukhumvit";
             font-size: 24px;
             line-height: 32px;
@@ -635,6 +758,7 @@
             font-weight: bold;
             line-height: 32px;
             margin-left: 8px;
+            height: 32px;
             font-family: "sukhumvit";
             font-size: 24px;
             padding-top: 4px;

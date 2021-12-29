@@ -213,44 +213,49 @@ export default function officer() {
             >
                 <div className={styles['officer-backdrop']}></div>
                 <div className={styles['popup-fixed-box']}>
-                    <div style={{ backgroundImage: `url('/img/officer/small-popup-frame.png')` }} className={styles['officer-popup']}>
+                    <div className={styles['officer-popup']}>
                         <div className={styles['officer-close-icon-box']} onClick={(e) => closePopup(e)}>
                             <img className={styles['officer-close-icon']} src='/Quit.png' alt="" />
                         </div>
                         <div className={styles['officer-flexbox']}>
-                            <div className={styles['popup-image-box']} >
-                                <div className={styles['officer-image']} style={{ backgroundImage: `url('${activOfficer.image ? `${activOfficer.image}` : '/img/officer/officer-placeholder.png'}')` }} ></div>
-                            </div>
-                            <div className={styles['popup-officer-name']}>
-                                <span>{activOfficer.name}</span>
-                            </div>
-                            <div className={styles['officer-detail']}>
-                                <span style={{ textAlign: activOfficer.position === "ที่ปรึกษา" ? 'center' : 'start' }}>{activOfficer.position === "ที่ปรึกษา" ? "ตำแหน่ง"
-                                    : activOfficer.position === "ผู้ประสานงาน" ? "ประวัติ"
-                                        : "สะท้อนความรู้สึกจากการปฏิบัติโครงการ"}</span>
-                                <span>{activOfficer.detail}</span>
-                            </div>
-                            <div className={styles['contact-box']}>
-                                <div className={styles['row-box']}>
-                                    {activOfficer.youtube ? (
-                                        <div className={styles['youtube']} onClick={(e) => toLink(e, activOfficer)} ></div>
-                                    ) : (
-                                        <div className={styles['no-youtube']} ></div>
-                                    )}
-                                    <div className={styles['social-col-box']}>
-                                        <div className={styles['fb-box']}>
-                                            <img src={activOfficer.fb ? "/fb-icon-32.png" : '/no-fb-32.png'} alt="" />
-                                            <span style={{ color: `${activOfficer.fb ? '#383838' : '#E1D3B6'}` }}>
-                                                {activOfficer.fb ? activOfficer.fb : '-'}
-                                            </span>
-                                        </div>
-                                        <div className={styles['ig-box']}>
-                                            <img src={activOfficer.ig ? "/ig-icon.png" : '/no-ig.png'} alt="" />
-                                            <span style={{ color: `${activOfficer.ig ? '#383838' : '#E1D3B6'}` }}>
-                                                {activOfficer.ig ? activOfficer.ig : '-'}
-                                            </span>
+                            <div className={styles['officer-content-box']}>
+                                <div className={styles['popup-image-box']} >
+                                    <div className={styles['officer-image']} style={{ backgroundImage: `url('${activOfficer.image ? `${activOfficer.image}` : '/img/officer/officer-placeholder.png'}')` }} ></div>
+                                </div>
+                                <div className={styles['popup-officer-name']}>
+                                    <span>{activOfficer.name}</span>
+                                    <span style={{ textAlign: activOfficer.position === "ที่ปรึกษา" ? 'center' : 'start' }}>{activOfficer.position === "ที่ปรึกษา" ? "ตำแหน่ง"
+                                        : activOfficer.position === "ผู้ประสานงาน" ? "ประวัติ"
+                                            : "สะท้อนความรู้สึกจากการปฏิบัติโครงการ"}</span>
+                                </div>
+                                <div className={styles['officer-detail']}>
+                                    <div className={styles['detail-textbox']}>
+                                        <span>{activOfficer.detail}</span>
+                                        <div className={styles['contact-box']}>
+                                            <div className={styles['row-box']}>
+                                                {activOfficer.youtube ? (
+                                                    <div className={styles['youtube']} onClick={(e) => toLink(e, activOfficer)} ></div>
+                                                ) : (
+                                                    <div className={styles['no-youtube']} ></div>
+                                                )}
+                                                <div className={styles['social-col-box']}>
+                                                    <div className={styles['fb-box']}>
+                                                        <img src={activOfficer.fb ? "/fb-icon-32.png" : '/no-fb-32.png'} alt="" />
+                                                        <span style={{ color: `${activOfficer.fb ? '#383838' : '#E1D3B6'}` }}>
+                                                            {activOfficer.fb ? activOfficer.fb : '-'}
+                                                        </span>
+                                                    </div>
+                                                    <div className={styles['ig-box']}>
+                                                        <img src={activOfficer.ig ? "/ig-icon.png" : '/no-ig.png'} alt="" />
+                                                        <span style={{ color: `${activOfficer.ig ? '#383838' : '#E1D3B6'}` }}>
+                                                            {activOfficer.ig ? activOfficer.ig : '-'}
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
+
                                 </div>
                             </div>
                         </div>
