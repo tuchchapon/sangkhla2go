@@ -1,5 +1,5 @@
 import axios from 'axios'
-import {React,useState} from 'react';
+import { React, useState } from 'react';
 import { useRouter } from "next/router";
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
@@ -17,116 +17,117 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 export default function login() {
     const router = useRouter()
     const theme = createTheme();
-    const signIn = ()=>{
+    const signIn = () => {
         console.log('login');
 
-        axios.post(`${process.env.SERVER_API}/login`,admin).then((res)=>{
+        axios.post(`${process.env.SERVER_API}/login`, admin).then((res) => {
             console.log(res.data.token);
-            console.log('data is',res.data);
+            console.log('data is', res.data);
             localStorage.setItem("token", `${res.data.token}`);
             if (res.data.token) {
                 Swal.fire({
-                    title:'เข้าสู่ระบบสำเร็จ',
-                    icon:'success',
-                }).then((res)=>{
+                    title: 'เข้าสู่ระบบสำเร็จ',
+                    icon: 'success',
+                }).then((res) => {
                     if (res.isConfirmed) {
                         router.push('/admin')
                     }
                 })
 
             }
-            else{
-                Swal.fire({title:'ผิดพลาด',
-                text:'อีเมลล์และรหัสผ่านไม่ถูกต้อง',
-                icon:'error'
-            })
+            else {
+                Swal.fire({
+                    title: 'ผิดพลาด',
+                    text: 'อีเมลล์และรหัสผ่านไม่ถูกต้อง',
+                    icon: 'error'
+                })
                 // router.push('/admin')
             }
         })
         // console.log('admin is',admin);
     }
-    const register = ()=>{
+    const register = () => {
         console.log('register');
-        axios.post(`${process.env.SERVER_API}/createAdmin`,admin).then((res)=>{
+        axios.post(`${process.env.SERVER_API}/createAdmin`, admin).then((res) => {
             console.log(res);
         })
     }
-    const changePassword =()=>{
+    const changePassword = () => {
         console.log('change password');
-        axios.post(`${process.env.SERVER_API}/change-password`,newPassword) 
+        axios.post(`${process.env.SERVER_API}/change-password`, newPassword)
     }
 
     const [admin, setAdmin] = useState({
-        email:'',
+        email: '',
         password: ''
-      })
-   
-      const [newPassword, setNewPassword] = useState('')
-    
-    const testPOST =()=>{
-        console.log('test POST API');
-          axios.post(`${process.env.SERVER_API}/createAdmin'`,admin)
-          .then((res) => {
-            console.log(res);
-            console.log(res.data);
-            //router.replace("/");
-          })
-        } 
+    })
 
-        return(
-            <div>
-                <ThemeProvider theme={theme} >
-                    <Container component="main" maxWidth="xs">
-                        <CssBaseline/>
-                            <Box  sx={{ marginTop: 8,display: 'flex',flexDirection: 'column',alignItems: 'center',}}>
-                                <Avatar>
-                                    S2
-                                </Avatar>
-                                <Typography component="form" variant="h5">
-                                    Sign in
-                                </Typography>
-                                <Box component="form" >
-                                    <TextField 
-                                    margin="normal"
-                                    fullWidth
-                                    id="email"
-                                    label="Email Address"
-                                    name="email"
-                                    autoComplete="email"
-                                    autoFocus
-                                    onChange={((e)=>setAdmin({...admin,email:e.target.value}))}
-                                    />
-                                    <TextField 
-                                    margin="normal"
-                                    fullWidth
-                                    id="password"
-                                    label="password"
-                                    name="password"
-                                    autoComplete="password"
-                                    autoFocus
-                                    onChange={((e)=>setAdmin({...admin,password:e.target.value}))}
-                                    />
-                                   <Button
-                                   fullWidth
-                                   variant="contained"
-                                   sx={{mt:3,mb:2}}
-                                   onClick={signIn}
-                                   >
-                                       Sign In
-                                    </Button> 
-                                    <Grid container >
-                                        <Grid item xs style={{textAlign:'center'}} >
-                                         <Link href="/forgotPassword">
-                                         ลืมรหัสผ่าน
-                                         </Link>
-                                        </Grid>
-                                    </Grid>
-                                </Box>
-                            </Box>
-                    </Container>
-                </ThemeProvider>
-            </div>
-        )
+    const [newPassword, setNewPassword] = useState('')
+
+    const testPOST = () => {
+        console.log('test POST API');
+        axios.post(`${process.env.SERVER_API}/createAdmin'`, admin)
+            .then((res) => {
+                console.log(res);
+                console.log(res.data);
+                //router.replace("/");
+            })
+    }
+
+    return (
+        <div>
+            <ThemeProvider theme={theme} >
+                <Container component="main" maxWidth="xs">
+                    <CssBaseline />
+                    <Box sx={{ marginTop: 8, display: 'flex', flexDirection: 'column', alignItems: 'center', }}>
+                        <Avatar>
+                            S2
+                        </Avatar>
+                        <Typography component="form" variant="h5">
+                            Sign in
+                        </Typography>
+                        <Box component="form" >
+                            <TextField
+                                margin="normal"
+                                fullWidth
+                                id="email"
+                                label="Email Address"
+                                name="email"
+                                autoComplete="email"
+                                autoFocus
+                                onChange={((e) => setAdmin({ ...admin, email: e.target.value }))}
+                            />
+                            <TextField
+                                margin="normal"
+                                fullWidth
+                                id="password"
+                                label="password"
+                                name="password"
+                                autoComplete="password"
+                                autoFocus
+                                onChange={((e) => setAdmin({ ...admin, password: e.target.value }))}
+                            />
+                            <Button
+                                fullWidth
+                                variant="contained"
+                                sx={{ mt: 3, mb: 2 }}
+                                onClick={signIn}
+                            >
+                                Sign In
+                            </Button>
+                            <Grid container >
+                                <Grid item xs style={{ textAlign: 'center' }} >
+                                    <Link href="/forgotPassword">
+                                        ลืมรหัสผ่าน
+                                    </Link>
+                                </Grid>
+                            </Grid>
+                        </Box>
+                    </Box>
+                </Container>
+            </ThemeProvider>
+        </div>
+    )
 
     // return (
     //     <div>
