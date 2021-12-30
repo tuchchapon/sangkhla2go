@@ -35,3 +35,40 @@
       width: 400px;
     }
 }
+.admin-card{
+    background-color: wheat;
+    font-size: 24px;
+    box-shadow: 2px 2px #CCC;
+    border: 1px solid #CCC;
+  
+     span{
+         font-weight: bold;
+         margin-bottom: 4px;
+         &:nth-child(2){
+            font-size: 40px;
+            color: coral;
+         }
+     }
+    &:hover{
+        cursor: pointer;
+        background-color: blanchedalmond;
+        box-shadow: 10px -10px burlywood;
+        span{
+            transition: 0.5s;
+            // color: #353535;
+           &:nth-child(2){
+            margin-left: 4px;
+           }
+        }
+    }
+
+}
+.admin-title-text{
+    font-size: 24px;
+    cursor: pointer;
+    font-weight: bold;
+    &:hover{
+        
+        text-decoration: underline;
+    }
+}
