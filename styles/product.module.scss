@@ -385,6 +385,10 @@
         font-size: 24px;
         padding-top: 4px;
     }
+    &:hover{
+        text-decoration: underline;
+        font-weight: bold;
+    }
 }
 .tel-box{
     display: flex;

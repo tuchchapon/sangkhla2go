@@ -218,6 +218,7 @@ export default function officer() {
                             <img className={styles['officer-close-icon']} src='/Quit.png' alt="" />
                         </div>
                         <div className={styles['officer-flexbox']}>
+
                             <div className={styles['officer-content-box']}>
                                 <div className={styles['popup-image-box']} >
                                     <div className={styles['officer-image']} style={{ backgroundImage: `url('${activOfficer.image ? `${activOfficer.image}` : '/img/officer/officer-placeholder.png'}')` }} ></div>

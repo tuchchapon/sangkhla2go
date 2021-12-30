@@ -350,8 +350,8 @@
         cursor: pointer;
         z-index: 5;
         position: absolute;
-        top: 120px;
-        right: 96px;
+        top: 15%;
+        right: 12%;
         width: 40px;
         height: 40px;
         display: flex;
@@ -369,6 +369,7 @@
         height: 32px;
     }
     .officer-flexbox{
+        position: relative;
         overflow-y: hidden;
         padding: 0  80px 80px;
         margin-top: 140px;
