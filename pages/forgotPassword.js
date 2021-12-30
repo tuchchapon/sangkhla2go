@@ -51,8 +51,8 @@ const forgotPassword = () => {
                         <Avatar>
                             S2
                         </Avatar>
-                        <Typography component="form" variant="h5">
-                            forgot password
+                        <Typography sx={{ marginTop: 2 }} component="form" variant="h5">
+                            กรอกอีเมลที่ลืมรหัสผ่าน
                         </Typography>
                         <Box component="form" >
                             <TextField
