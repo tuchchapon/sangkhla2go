@@ -353,10 +353,17 @@
     justify-content: center;
 }
 .video-box{
-    width: 698px;
-    height: 562px;
+    width: 770px;
+    height: 480px;
     margin: 40px 0;
+    background-image: url('/img/product/video-frame.png');
     display: flex;
+    align-items: center;
+    justify-content: center;
+    iframe{
+        margin-bottom: -40px;
+        border-radius: 16px;
+    }
 }
 .contact-text{
     font-size: 26px;

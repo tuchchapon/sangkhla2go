@@ -138,7 +138,7 @@ export default function product() {
                                     </div>
                                     <div className={styles['icon-row-box']}>
                                         <div className={styles['video-box']}>
-                                            <iframe width="698" height="562" src="https://www.youtube.com/embed/pJ9JTcFuLKk" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                                            <iframe width="658" height="336" src="https://www.youtube.com/embed/pJ9JTcFuLKk" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                                         </div>
                                     </div>
                                     <span className={styles['contact-text']}>
