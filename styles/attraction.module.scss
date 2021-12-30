@@ -496,6 +496,7 @@
         display: flex;
         flex-direction: column;
         font-size: 20px;
+        
         span {
             &:nth-child(1) {
                 font-size: 28px;
@@ -510,6 +511,7 @@
         }
     }
     .sage-pa3 {
+        
         display: flex;
         flex-direction: column;
         .sage-image-box {
