@@ -100,7 +100,7 @@ export default function restaurant() {
                             <div className={styles['restaurant-list']} >
                                 {show_arr.map((restaurant) => (
                                     <div key={restaurant.id} onClick={(e) => { showPopup(restaurant) }} className={styles['restaurant-item']} >
-                                        <img src={restaurant.images.length > 0 ? `${restaurant.images[0]}` : '/no-imge.png'} className={styles['restaurant-image']} alt="" />
+                                        <img src={restaurant.images.length > 0 ? `${restaurant.images[0]}` : '/restaurant-placeholder.png'} className={styles['restaurant-image']} alt="" />
                                         <span>{restaurant.name}<br /></span>
                                         <span>{restaurant.type}<br /></span>
                                         {restaurant.recommend_menu ? <span><b style={{ color: '#383838' }}>เมนูแนะนำ : </b>{restaurant.recommend_menu}</span> : ''}

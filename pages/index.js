@@ -345,7 +345,7 @@ export default function index() {
                   <div className={styles['accommodation-list']}>
                     {hotels.length > 0 ? hotels.map((hotel) => (
                       <div onClick={() => showAccommodationPopup(hotel)} key={hotel.id} className={styles['accommodation-item']} >
-                        <img src={hotel.images.length > 0 ? `${hotel.images[0]}` : '/no-imge.png'} alt="" />
+                        <img src={hotel.images.length > 0 ? `${hotel.images[0]}` : '/accom-placeholder.png'} alt="" />
                         <span className={styles['accommodation-name']} >{hotel.name}<br /></span>
                         <div className={styles['price-box']} >
                           <img className={styles['icon-b']} src="/img/accommodation/icon-B.png" alt="" />
@@ -501,7 +501,7 @@ export default function index() {
                   {restaurants.length > 0 ? restaurants.map((restaurant) => (
                     <div key={restaurant.id} className={styles['slider-box']}>
                       <div onClick={(e) => showRestaurantPopup(restaurant)} className={styles['restaurant-item']}>
-                        <img className={styles['restaurant-image']} src={restaurant.images.length > 0 ? `${restaurant.images[0]}` : '/no-imge.png'} alt="" />
+                        <img className={styles['restaurant-image']} src={restaurant.images.length > 0 ? `${restaurant.images[0]}` : '/restaurant-placeholder.png'} alt="" />
                         <span>{restaurant.name}</span>
                         <span>{restaurant.type}</span>
                         <span><b style={{ color: '#383838' }}>เมนูแนะนำ : </b>{restaurant.recommend_menu}</span>
@@ -537,7 +537,7 @@ export default function index() {
                       {boatProviders.length > 0 ? boatProviders.map((boatProvider) => (
                         <div key={boatProvider.id} className={styles['boat-slider-box']}>
                           <div onClick={() => showBoatPopup(boatProvider)} className={styles['boat-provider-item']}>
-                            <img className={styles['boat-provider-image']} src={boatProvider.boat_images.length > 0 ? `${boatProvider.boat_images[0]}` : '/no-imge.png'} alt="" />
+                            <img className={styles['boat-provider-image']} src={boatProvider.boat_images.length > 0 ? `${boatProvider.boat_images[0]}` : '/boat-placeholder.png'} alt="" />
                             <div className={styles['boat-textbox']} >
                               <p className={styles['boat-club-name']} >{boatProvider.club_name}</p>
                               <p className={styles['boat-provider-name']}>{boatProvider.provider_name} </p>

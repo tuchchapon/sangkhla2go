@@ -65,8 +65,8 @@ export default function accommodationPopup({ open, onClose, activeAcommodation }
                                 <div className={styles['image-box']} >
                                     {activeAcommodation.images.length > 1 ? (<a className={styles['prev']} onClick={(e) => prev(bigPhoto, activeAcommodation.images)} >❮ </a>) : ''}
                                     {activeAcommodation.images.length > 1 ? (<a className={styles['next']} onClick={(e) => next(bigPhoto, activeAcommodation.images)} >❯ </a>) : ''}
-                                    {activeAcommodation.images.length > 0 ? <img className={styles['big-image']} src={activeAcommodation.images.length > 0 ? `${bigPhoto}` : '/no-image-big.png'} alt="" />
-                                        : <img className={styles['no-image']} src={'/no-image-big.png'} alt="" />}
+                                    {activeAcommodation.images.length > 0 ? <img className={styles['big-image']} src={activeAcommodation.images.length > 0 ? `${bigPhoto}` : '/accom-placeholder.png'} alt="" />
+                                        : <img className={styles['no-image']} src={'/accom-placeholder.png'} alt="" />}
                                     <div className={styles['image-list']} >
                                         {activeAcommodation.images.length > 0 ? activeAcommodation.images.map((image) => (
                                             <img onClick={() => changeImage(image)} key={image} src={`${image}`} alt="" />

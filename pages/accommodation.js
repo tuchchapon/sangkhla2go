@@ -92,7 +92,7 @@ export default function accommodation() {
                             <div className={styles['accommodation-list']} >
                                 {hotels.length > 0 ? hotels.map((accommodation) => (
                                     <div onClick={(e) => showPopup(e, accommodation)} key={accommodation.id} className={styles['accommodation-item']} >
-                                        <img src={accommodation.images.length > 0 ? `${accommodation.images[0]}` : '/no-imge.png'} alt="" />
+                                        <img src={accommodation.images.length > 0 ? `${accommodation.images[0]}` : '/accom-placeholder.png'} alt="" />
                                         {/* {accommodation.type === "แพพัก" ? (
                              <div className={styles['boat-house-tag']} >{accommodation.type}</div>
                             ) :''} */}
@@ -115,7 +115,7 @@ export default function accommodation() {
                             <div className={styles['accommodation-list']} >
                                 {boatHouses.length > 0 ? boatHouses.map((accommodation) => (
                                     <div onClick={(e) => showPopup(e, accommodation)} key={accommodation.id} className={styles['accommodation-item']} >
-                                        <img src={accommodation.images.length > 0 ? `${accommodation.images[0]}` : '/no-imge.png'} alt="" />
+                                        <img src={accommodation.images.length > 0 ? `${accommodation.images[0]}` : '/accom-placeholder.png'} alt="" />
                                         {accommodation.type === "แพพัก" ? (
                                             <div className={styles['boat-house-tag']} >แพพัก</div>
                                         ) : ''}

@@ -66,7 +66,7 @@ export default function restaurantPopup({ open, onClose, activeRestaurant }) {
                                         {activeRestaurant.images.length > 1 ? (<a className={styles['prev']} onClick={(e) => prev(bigPhoto, activeRestaurant.images)} >❮ </a>) : ''}
                                         {activeRestaurant.images.length > 1 ? (<a className={styles['next']} onClick={(e) => next(bigPhoto, activeRestaurant.images)} >❯ </a>) : ''}
                                         {activeRestaurant.images.length > 0 ? (<img className={styles['big-image']} src={`${bigPhoto}`} alt="" />) :
-                                            (<img className={styles['no-image']} src="/no-image-big.png" alt="" />)}
+                                            (<img className={styles['no-image']} src="/restaurant-placeholder.png" alt="" />)}
                                         <div className={styles['image-list']}>
                                             {activeRestaurant.images.length > 0 ? activeRestaurant.images.map((image) => (
                                                 <img draggable={false} onClick={() => changeImage(image)} key={image} src={`${image}`} alt="" />
