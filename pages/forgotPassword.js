@@ -14,6 +14,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 const forgotPassword = () => {
+    const router = useRouter()
     const theme = createTheme();
     const forgotPassword = () => {
 
@@ -26,6 +27,11 @@ const forgotPassword = () => {
                     title: `${res.data.payload}`,
                     text: 'กรุณาตรวจสอบอีเมลของท่าน',
                     icon: 'success'
+
+                }).then((res) => {
+                    if (res.isConfirmed) {
+                        router.push('/login')
+                    }
                 })
             })
         } catch (error) {
