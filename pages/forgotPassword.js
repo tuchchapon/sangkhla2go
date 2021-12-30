@@ -23,20 +23,20 @@ const forgotPassword = () => {
         try {
             axios.post(`${process.env.SERVER_API}/forgot-password`, userEmail).then((res) => {
                 console.log(res);
+                if (res.status === 200) {
+                    Swal.fire({
+                        title: `${res.data.payload}`,
+                        text: 'กรุณาตรวจสอบอีเมลของท่าน',
+                        icon: 'success'
 
+                    }).then((res) => {
+                        if (res.isConfirmed) {
+                            router.push('/login')
+                        }
+                    })
+                }
             })
-            setTimeout(() => {
-                Swal.fire({
-                    title: `${res.data.payload}`,
-                    text: 'กรุณาตรวจสอบอีเมลของท่าน',
-                    icon: 'success'
 
-                }).then((res) => {
-                    if (res.isConfirmed) {
-                        router.push('/login')
-                    }
-                })
-            }, 3000);
         } catch (error) {
             console.log(error);
         }
