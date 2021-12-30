@@ -23,6 +23,9 @@ const forgotPassword = () => {
         try {
             axios.post(`${process.env.SERVER_API}/forgot-password`, userEmail).then((res) => {
                 console.log(res);
+
+            })
+            setTimeout(() => {
                 Swal.fire({
                     title: `${res.data.payload}`,
                     text: 'กรุณาตรวจสอบอีเมลของท่าน',
@@ -33,7 +36,7 @@ const forgotPassword = () => {
                         router.push('/login')
                     }
                 })
-            })
+            }, 3000);
         } catch (error) {
             console.log(error);
         }
