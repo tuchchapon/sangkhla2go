@@ -53,6 +53,9 @@
         cursor: pointer;
         background-color: blanchedalmond;
         box-shadow: 10px -10px burlywood;
+        transform: rotate(1deg);
+        
+        transition: 0.5s;
         span{
             transition: 0.5s;
             // color: #353535;

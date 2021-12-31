@@ -35,6 +35,14 @@ const forgotPassword = () => {
                         }
                     })
                 }
+                else {
+                    Swal.fire({
+                        title: `เกิดข้อผิดพลาด`,
+                        text: 'ไม่พบอีเมลในระบบ',
+                        icon: 'warning'
+
+                    })
+                }
             })
 
         } catch (error) {
