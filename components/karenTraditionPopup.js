@@ -24,13 +24,31 @@ export default function traditionPopup({ open, onClose, activeKarenTradition }) 
         infinite: true,
         speed: 200,
         fade: true,
-        dot: true,
         slidesToShow: 1,
         slidesToScroll: 1,
         autoplay: true,
         nextArrow: <RightArrow />,
-        prevArrow: <LeftArrow />
-
+        prevArrow: <LeftArrow />,
+        responsive: [
+            {
+                breakpoint: 1400,
+                settings: {
+                    // slidesToShow: 3,
+                    // slidesToScroll: 3,
+                    infinite: true,
+                    dots: false
+                }
+            },
+            {
+                breakpoint: 360,
+                settings: {
+                    dots: true
+                    // slidesToShow: 2,
+                    // slidesToScroll: 2,
+                    // initialSlide: 2
+                }
+            },
+        ]
     }
     useEffect(() => {
 

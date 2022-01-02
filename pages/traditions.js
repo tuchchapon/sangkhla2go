@@ -11,6 +11,7 @@ export default function traditions() {
     const [monTraditions, setMonTraditions] = useState([])
     const [showMonTradition, setShowMonTradition] = useState(false)
     const [showKarenTradition, setShowKarenTradition] = useState(false)
+    const [activeTab, setActiveTab] = useState("karen")
     const [activeKarenTradition, setActiveKarenTradition] = useState({
         id: '', type: '', name: '', local_name: '', month: '', detail: '', images: []
     })
@@ -37,6 +38,10 @@ export default function traditions() {
         setShowKarenTradition(false)
         setShowMonTradition(false)
 
+    }
+    const changeTab = () => {
+        if (activeTab === 'karen') setActiveTab('mon')
+        if (activeTab === 'mon') setActiveTab('karen')
     }
     useEffect(() => {
         let componentMounted = true;
@@ -83,6 +88,35 @@ export default function traditions() {
             <div className="container">
 
                 <div className="col-12">
+                    <div className={styles['tradition-small-list']}>
+                        <div className={activeTab === 'karen' ? styles['tradition-karen-tab'] : styles['tradition-mon-tab']}>
+                            <div onClick={() => changeTab()} className={styles['change-tab']}></div>
+                        </div>
+                        <div className={styles['tradition-small-box']}>
+                            {activeTab === 'karen' ? karenTraditions.map((karenTradition) => (
+                                <div key={karenTradition.id} className={styles['small-tradition-item']} onClick={(e) => showPopup(karenTradition, "karen")} >
+                                    <div className={styles['image-box-size']}>
+                                        <div className={styles['tradition-image-box']} style={{ backgroundImage: `url('/img/tradition/tradition-frame.png')` }}>
+                                            <div style={{ backgroundImage: `url(${karenTradition.images.length > 0 ? `${karenTradition.images[0]}` : '/img/tradition/traditionPlaceholder.png'})` }} className={styles['tradition-image']}></div>
+                                        </div>
+                                    </div>
+                                    <div className={styles['month-name-box']} onClick={() => console.log(karenTradition)} ><span>{karenTradition.month}</span></div>
+                                    <span className={styles['tradition-name']} >{karenTradition.name}</span>
+                                    <span className={styles['tradition-local-name']} >{karenTradition.local_name ? `(${karenTradition.local_name})` : ''}</span>
+                                </div>
+                            )) : monTraditions.map((montradition) => (
+                                <div key={montradition.id} className={styles['small-tradition-item']} onClick={(e) => showPopup(montradition, "mon")} >
+                                    <div className={styles['image-box-size']}>
+                                        <div className={styles['tradition-image-box']} style={{ backgroundImage: `url('/img/tradition/tradition-frame.png')` }}>
+                                            <div style={{ backgroundImage: `url(${montradition.images.length > 0 ? `${montradition.images[0]}` : '/img/tradition/traditionPlaceholder.png'})` }} className={styles['tradition-image']}></div>
+                                        </div>
+                                    </div>
+                                    <div className={styles['month-name-box']} onClick={() => console.log(montradition)} ><span>{montradition.month}</span></div>
+                                    <span className={styles['tradition-name']} >{montradition.name}</span>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
                     <div className={styles['traditions-list']}>
                         <div className={styles['tradition-box']}>
                             {karenTraditions.length > 0 ? karenTraditions.map((karenTradition) => (
@@ -129,6 +163,6 @@ export default function traditions() {
             <KarenTraditionPopup open={showKarenTradition} onClose={() => setShowKarenTradition(false)} activeKarenTradition={activeKarenTradition} />
             <MonTraditionPopup open={showMonTradition} onClose={() => setShowMonTradition(false)} activeMonTradition={activeMonTradition} />
             <Footer />
-        </div>
+        </div >
     )
 }

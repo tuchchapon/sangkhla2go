@@ -23,12 +23,31 @@ export default function monTraditionPopup({ open, onClose, activeMonTradition })
         infinite: true,
         speed: 200,
         fade: true,
-        dot: true,
         slidesToShow: 1,
         slidesToScroll: 1,
         autoplay: true,
         nextArrow: <RightArrow />,
-        prevArrow: <LeftArrow />
+        prevArrow: <LeftArrow />,
+        responsive: [
+            {
+                breakpoint: 1400,
+                settings: {
+                    // slidesToShow: 3,
+                    // slidesToScroll: 3,
+                    infinite: true,
+                    dots: false
+                }
+            },
+            {
+                breakpoint: 360,
+                settings: {
+                    dots: true
+                    // slidesToShow: 2,
+                    // slidesToScroll: 2,
+                    // initialSlide: 2
+                }
+            },
+        ]
 
     }
     useEffect(() => {
@@ -70,7 +89,7 @@ export default function monTraditionPopup({ open, onClose, activeMonTradition })
                                     <div className={styles['slider']}>
                                         <Slider {...settings} >
                                             {activeMonTradition.images ? activeMonTradition.images.map((image) => (
-                                                <div key={image} className={styles['slider-box']}  ><div className={styles['mon-slider-image']} style={{ backgroundImage: `url(${image ? `${image}` : '/no-imge.png'})` }}></div></div>
+                                                <div key={image} className={styles['slider-box']}  ><div className={styles['slider-image']} style={{ backgroundImage: `url(${image ? `${image}` : '/no-imge.png'})` }}></div></div>
                                             )) : ''}
                                         </Slider>
                                     </div>
