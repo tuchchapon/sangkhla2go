@@ -1,12 +1,28 @@
+
+$xs: "screen and (max-width: 767px)";
+// $sm: "screen and (min-width: 576px)";
+$md: "screen and (min-width: 768px)";
+$lg: "screen and (min-width: 992px)";
+$xl: "screen and (min-width: 1200px)";
+$xxl: "screen and (min-width: 1400px)";
+
 .tradition-page {
     font-family: "sukhumvit";
     background-color: #FBF6E9;
-    overflow: hidden;
+    // overflow: hidden;
     height: 100%;
 }
 .header-background{
    position: absolute;
    z-index: 1;
+   @media #{$xs} {
+       width: 255px;
+       height: 72px;
+   }
+   @media #{$xxl} {
+       width: fit-content;
+       height: fit-content;
+   }
 }
 .tradition-title-box{
     position: relative;
@@ -14,7 +30,12 @@
     top: 112px;
     width: 470px;
     right: -63px;
-
+    @media #{$xs} {
+        display: none;
+    }
+    @media #{$xxl} {
+        display: block;
+    }
 }
 .tradition-title-name{
     position: absolute;
@@ -25,37 +46,219 @@
     font-weight: bold;
     line-height: 48px;
     text-align: center;
-    color:#383838
+    color:#383838;
+    @media #{$xs} {
+        display: none;
+    }
+    @media #{$xxl} {
+        display: block;
+    }
 }
 .header-title-box {
     position: relative;
     z-index: 3;
-    justify-content: space-between;
     width: 100%;
+    display: flex;
+    align-items: center;
     max-width: 700px;
-    bottom: -46px;
-    right: 27px;
-    padding-bottom: 8px;
-    border-bottom:  4px solid #383838;
-    margin-bottom: 56px;
+    @media #{$xs} {
+        justify-content: flex-end;
+        bottom: 0;
+        right: 0;
+        height: 72px;
+    }
+    @media #{$xxl} {
+        justify-content: space-between;
+        bottom: -46px;
+        right: 27px;
+        height: 156px;
+        padding-bottom: 8px;
+        border-bottom:  4px solid #383838;
+        margin-bottom: 56px;
+    }
     .title-page{
         position: relative;
-        left: 226px;
-        max-width: 470px;
-        max-height: 144px;
+        @media #{$xs} {
+            img{
+                position: relative;
+                bottom: 0;
+                // left: 36px;
+                width: 150px;
+                height: 46px;
+            }
+        }
+        @media #{$xxl} {
+            img{
+                width: fit-content;
+                height: fit-content;
+            }
+            left: 226px;
+            max-width: 470px;
+            max-height: 144px;
+        }
     }
     .title-page-name{
         position: absolute;
-        font-size: 80px;
-        line-height: 88px;
-        left: 100px;
-        top: 10px;
+        
+        
         font-weight: bold;
         text-align: center;
-        width: 370px;
         color: #383838;
+        @media #{$xs} {
+            font-size: 24px;
+            right: 16px;
+        }
+        @media #{$xxl} {
+            left: 100px;
+            top: 10px;
+            width: 370px;
+            font-size: 80px;
+            line-height: 88px;
+        }
     }
-}
+}   
+    .tradition-small-list{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        @media #{$lg} {
+            display: none;
+        }
+        .tradition-karen-tab{
+            position: relative;
+            margin-top: 16px;
+            left: -2px;
+            width: 340px;
+            height: 38px;
+            background-image: url('/img/tradition/karen-active.png');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
+            .change-tab{
+                right: 0;
+                width: 170px;
+                height: 38px;
+                position: absolute;
+            }
+            
+        }
+        .tradition-mon-tab{
+            position: relative;
+            background-image: url('/img/tradition/mon-active.png');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
+            margin-top: 16px;
+            left: -2px;
+            width: 340px;
+            height: 38px;
+            .change-tab{
+                                
+                left: 0;
+                width: 170px;
+                height: 38px;
+                position: absolute;
+            }
+        }
+
+        .tradition-small-box{
+            display: flex;
+            flex-wrap: wrap;
+            flex: 0 0 calc((100% - 20px)/2);
+            margin: 56px auto 0;
+            justify-content: center;
+            // max-width: 1172px;
+            .small-tradition-item{
+                color: #383838;
+                cursor: pointer;
+                align-items: center;
+                justify-content: flex-start;
+                display: flex;
+                margin-right: 20px;
+                width: 150px;
+                flex-direction: column;
+                margin-bottom: 24px;
+                // border: 1px solid blue;
+                &:nth-child(2n) {
+                    margin-right: 0;
+                    }
+
+                    .month-name-box{
+                        position: relative;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        font-size: 16px;
+                        line-height: 32px;
+                        font-weight: bold;
+                        width: 150px;
+                        height: 40px;
+                        background-image: url("/img/tradition/month-name-box.png");
+                        background-position: center;
+                        background-repeat: no-repeat;
+                        background-size: contain;
+                    
+                    }
+                    .tradition-name{
+                        margin-top: 8px;
+                        font-size: 10px;
+                        width: 128px;
+                        word-break: break-word;
+                        font-weight: bold;
+                        line-height: 16px;
+                        color: #383838;
+                        text-align: center;
+                    }
+                    .tradition-local-name{
+                        color: #383838;
+                        font-size: 10px;
+                        line-height: 16px;
+                        text-align: center;
+                        width: 100%;
+                        max-width: 128px;
+                    }
+
+                    .image-box-size{
+                        height: 120px;
+                        margin-bottom: 12px;
+                        // display: flex;
+                    
+                    }
+                    .tradition-image-box{
+                        position: relative;
+                        background-size: contain;
+                        width: 120px;
+                        height: 120px;
+                        overflow: hidden;   
+                        border-radius: 20%;
+                        z-index: 1;
+                        // overflow: hidden;
+                    }
+                    .tradition-image{
+                        // z-index: 2;
+                        position: absolute;
+                        background-size: cover;
+                        background-position: center;
+                        background-repeat: no-repeat;
+                        // object-fit: cover;
+                        
+                        border-radius: 47%;
+                        width: 114px;
+                        height: 116px;
+                        top: 2px;
+                        left: 3px;
+                    }
+            }
+        }
+    }
+    .traditions-list{
+        width: 100%;
+        display: none; 
+        @media #{$lg} {
+            display: block;
+        }       
+    }
 
     .tradition-box{
         display: flex;
@@ -63,7 +266,6 @@
         flex: 0 0 calc((100% - 90px)/4);
         margin: 56px auto 0;
         max-width: 1172px;
-
     }
     
     .tradition-item{
@@ -169,9 +371,12 @@
 
 }
 .tradition-grid-box{
-    width: 1172px;
-    margin: auto;
-    display: flex;
+    display: none;
+    @media #{$xxl} {
+        margin: auto;
+        width: 1172px;
+        display: flex;
+    }
 }
 .black-line {
     margin-top: -6px;
@@ -225,77 +430,102 @@
     margin: auto;
     font-family: "sukhumvit";
     z-index: 2;
-
-    width: 970px;
-    max-height: 980px;
-    height: 95%;
-    display: flex;
-    padding: 40px 60px 80px;
-    // max-height: 2000px;
     flex-direction: column;
     position: relative;
     background-color: #FBF6E9;
     border: 4px solid #383838;
     border-radius: 16px;
-    // overflow-y: hidden;
     overflow-x: hidden;
     justify-content: flex-start;
+    width: 90%;
+    height: 95%;
+    max-width: 320px;
+    padding: 16px 0;
+    @media #{$xxl} {
+        max-width: 970px;
+        max-height: 980px;
+        height: 95%;
+        display: flex;
+        padding: 40px 60px 80px;
+    }
     .popup-close-icon{
         position: absolute;
-        top: 20px;
-        right: 24px;
-        width: 32px;
-        height: 32px;
+        width: 16px;
+        height: 16px;
+        right: 8px;
+        top: 8px;
+        @media #{$xxl} {
+            top: 20px;
+            right: 24px;
+            width: 32px;
+            height: 32px;
+        }
     }
     .tradition-flexbox{
-        padding: 0 20px;
         display: flex;
         flex-direction: column;
         // height: 162px;
         overflow-y: auto;
         overflow-x: hidden;
+        padding: 0 20px;
         height: 100%;
-        max-height: 800px;
+        @media #{$xxl} {
+            
+            max-height: 800px;
+        }
         // overflow-y: auto;
         // overflow-x: hidden;
         
     }
     .popup-name-box{
-        
         display: flex;
         height: 144px;
-        
         flex-direction: column;
         justify-content: flex-start;
         text-align: center;
-        font-size: 32px;
         font-weight: bold;
-        line-height: 40px;
-        width: 604px;
         color: #383838;
-        margin: 0 auto 40px auto;
+        width: 280px;
+        font-size: 16px;
+        margin: 0 auto 8px auto;
+        @media #{$xxl} {
+            margin: 0 auto 40px auto;
+            line-height: 40px;
+            font-size: 32px;
+            width: 604px;
+        }
         span{
             color: #383838;
         }
     }
     .popup-local-name{
         margin-top: 8px;
-        font-size: 24px;
-        line-height: 32px;
         width: 100%;
-        // height: 80px;
         max-height: 80px;
+        // height: 80px;
+        font-size: 16px;
+        line-height: 16px;
         font-weight: normal;
+        @media #{$xxl} {
+            line-height: 32px;
+            font-size: 24px;
+            
+        }
     }
     .popup-slider-box{
         // width: 810px;
         // display: flex;
         // margin: auto;
+        
     }
     .slider {
         position: relative;
-        max-width: 692px;
         margin: auto;
+        max-width: 280px;
+        @media #{$xxl} {
+            max-width: 692px;
+            
+        }
     }
     .slider-box{
         position: relative;
@@ -307,47 +537,43 @@
         background-size: cover;
         // background-size: contain;
         background-repeat: no-repeat;
-        max-width: 698px;
-        height: 698px;
         margin: auto;
-        text-align: center;
+        border-radius: 8px;
         color: white;
         width: 698px;
-        border-radius: 16px;
         // border-radius: 90%;
-        height: 562px;
-        content: '';
-    }
-    .mon-slider-image{
-        display: flex;
-        position: relative;
-        background-position: center;
-        // background-size: cover;
-        background-size: contain;
-        background-repeat: no-repeat;
-        max-width: 698px;
+        max-width: 270px;
+        height: 240px;
+        @media #{$xxl} {
+            border-radius: 16px;
+            height: 560px;
+            max-width: 698px;
+            
+        }
         
-        // max-height: 562px;
-        margin: auto;
-        text-align: center;
-        color: white;
-        width: 698px;
-        border-radius: 16px;
-        // border-radius: 90%;
-        height: 562px;
-        content: '';
     }
+
     .popup-detail-box{
         color: #383838;
-        margin: 40px 0 24px 0;
-        font-size: 24px;
-        line-height: 32px;
-        padding: 0 52px;
+        margin: 16px 0;
+        font-size: 16px;
+        line-height: 24px;
+        @media #{$xxl} {
+            margin: 40px 0 24px 0;
+            font-size: 24px;
+            line-height: 32px;
+            padding: 0 52px;
+            
+        }
     }
     .popup-credit-box{
-        padding: 0 52px;
+        color: #757575;
+        font-size: 16px;
+        line-height: 24px;
+        @media #{$xxl} {
+            padding: 0 52px;
         font-size: 24px;
         line-height: 32px;
-        color: #757575;
+        }
     }
 }
