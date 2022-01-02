@@ -1,32 +1,14 @@
 
+$xs: "screen and (min-width: 360px)";
+$sm: "screen and (min-width: 576px)";
+$md: "screen and (min-width: 768px)";
+$lg: "screen and (min-width: 992px)";
+$xl: "screen and (min-width: 1200px)";
+$xxl: "screen and (min-width: 1400px)";
 
 /////////////////// header ///////////////////
 
-// @font-face {
-//   font-family: "sukhumvit";
-//   src: url("fonts/sukhumvitset-medium-webfont.woff2") format("woff2"),
-//     url("fonts/sukhumvitset-medium-webfont.woff") format("woff");
-//     font-weight: normal;
-//     font-style: normal;
-// }
-// @font-face {
-//   font-family: 'sukhumvit';
-//   src: url('/fonts/sukhumvitset-medium-04-webfont.woff2') format('woff2'),
-//        url('/fonts/sukhumvitset-medium-04-webfont.woff') format('woff');
-//   font-weight: normal;
-//   font-style: normal;
 
-// }
-
-
-// @font-face {
-//   font-family: 'sukhumvit';
-//   src: url('/fonts/sukhumvitset-semibold-05-webfont.woff2') format('woff2'),
-//        url('/fonts/sukhumvitset-semibold-05-webfont.woff') format('woff');
-//   font-weight: bold;
-//   font-style: normal;
-
-// }
 .header-box{
   border-bottom:  4px solid #383838;;
   background-color: #fbf6e9;
@@ -1601,47 +1583,89 @@
  ////////////////// footer //////////////////
  .footer-box{
    width: 100%;
-   height: 72px;
-   margin-top: 80px;
-   padding:0 8px 0 8px;
-   background-color: #383838;
-   color: #FBF6E9;
-   font-size: 16px;
    font-family: "sukhumvit";
+   background-color: #383838;
+   
+   color: #FBF6E9;
+   font-size: 16px; 
+   @media #{$xs} {
+     height: 104px;
+     font-size: 10px;
+     padding: 8px 8px;
+    }
+    @media #{$xxl} {
+      margin-top: 80px;
+     padding:0 16px ;
+    font-size: 16px; 
+    height: 72px;
+   }
    .footer-row-box{
      justify-content: space-between;
+
      display: flex;
      max-width: 1440px;
      margin: 0 auto;
+     
+     @media #{$xs} {
+       flex-direction: column;
+      }
+      @media #{$xxl} {
+       flex-direction: row;
+     }
      .footer-left-box{
-      width: 560px;
-      display: flex;
-      align-items: center;
+       display: flex;
+       align-items: center;
+       @media #{$xxl} {
+         width: 560px;
+         
+       }
      }
      .footer-right-box{
-       width: 560px;
-       height: 72px;
        display: flex;
        flex-direction: column;
-       align-items: flex-end;
-       justify-content: center;
+       text-align: center;
+       
+       @media #{$xxl} {
+         justify-content: center;
+         align-items: flex-end;
+         width: 560px;
+         height: 72px; 
+       }
+
        .contact-box{
-         align-items: center;
          display: flex;
          flex-direction: row;
-         width: 296px;
-         justify-content: flex-end;
          text-align: end;
          margin-bottom: 8px;
+         align-items: center;
+         justify-content: center;
+         margin-top: 16px;
+         @media #{$xxl} {
+           margin-top: 0;
+           justify-content: flex-end;
+          //  width: 296px;
+           
+         }
          img{
-           width: 24px;
-           height: 24px;
+           width: 16px;
+           height: 16px;
+           &:nth-child(2){
+            margin-left: 16px;
+          }
+          @media #{$xxl} {
+            width: 24px;
+            height: 24px;
+          }
            
          }
          span{
-           margin: 0 8px 0  8px;
+           margin: 0 0 0  8px;
            &:nth-child(2){
              cursor: pointer;
+             margin-right: 16px;
+             @media #{$xxl} {
+               margin-right: 24px;
+             }
              &:hover{
                text-decoration: underline;
              }
