@@ -170,6 +170,7 @@ $xxl: "screen and (min-width: 1400px)";
             justify-content: center;
             // max-width: 1172px;
             .small-tradition-item{
+                font-family: tahoma;
                 color: #383838;
                 cursor: pointer;
                 align-items: center;
@@ -185,6 +186,7 @@ $xxl: "screen and (min-width: 1400px)";
                     }
 
                     .month-name-box{
+                        font-family: 'sukhumvit';
                         position: relative;
                         display: flex;
                         justify-content: center;
