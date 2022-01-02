@@ -30,7 +30,7 @@ export default function login() {
                     icon: 'success',
                 }).then((res) => {
                     if (res.isConfirmed) {
-                        router.push('/admin/manage_restaurants')
+                        router.push('/admin')
                     }
                 })
 
