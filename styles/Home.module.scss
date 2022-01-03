@@ -109,6 +109,8 @@ $xxl: "screen and (min-width: 1400px)";
   background-color: #fbf6e9;
   display: flex;
   // max-width: 1440px;
+  align-items: center;
+  justify-content: flex-start;
   height: 48px;
   font-size: 16px;
   @media #{$xxl} {
@@ -129,29 +131,43 @@ $xxl: "screen and (min-width: 1400px)";
   .sub-header-box{
     display: flex;
     width: 1170px;
-    margin: 16px;
+    
     justify-content: flex-start;
     align-items: center;
     cursor: pointer;
+    height: 80px;
+    @media #{$xs} {
+      height: 48px;
+      padding: 16px 0 16px 16px;
+    }
+    @media #{$xxl} {
+      margin:  0 auto ;
+      height: 80px;
+    }
     span{
       @media #{$xs} {
+        height: 16px;
         &:nth-last-child(1){
           font-size: 12px;
+          line-height: 16px;
+          margin-top: 8px;
+          // width: 40px;
         }
       }
       @media #{$xxl} {
-        &:nth-child(3){
+        height: 32px;
+        align-items: flex-start;
+        justify-content: flex-start;
+        // margin: 0 auto 
+        line-height: 32px;;
+        &:nth-last-child(1){
+          margin-top: 16px;
           font-size: 24px;
         }
       }
     }
     
-    @media #{$xxl} {
-      align-items: flex-end;
-      justify-content: flex-start;
-      margin: 24px auto 0;
-      
-    }
+
   }
   .arrow{
     display: flex;
@@ -165,6 +181,7 @@ $xxl: "screen and (min-width: 1400px)";
     margin: 0 8px;
     width: 8px;
     height: 16px;
+    top: 4px;
     @media #{$xxl} {
       top: -2px;
       width: 16px;
