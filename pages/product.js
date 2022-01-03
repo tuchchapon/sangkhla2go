@@ -37,12 +37,12 @@ export default function product() {
         infinite: true,
         speed: 200,
         fade: true,
-        dot: true,
+        dots: true,
         slidesToShow: 1,
         slidesToScroll: 1,
         autoplay: true,
         nextArrow: <RightArrow />,
-        prevArrow: <LeftArrow />
+        prevArrow: <LeftArrow />,
 
     }
     const openPopup = (e, product) => {
@@ -136,11 +136,11 @@ export default function product() {
                                             )}
                                         </Slider>
                                     </div>
-                                    <div className={styles['icon-row-box']}>
-                                        <div className={styles['video-box']}>
-                                            <iframe width="658" height="336" src="https://www.youtube.com/embed/pJ9JTcFuLKk" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
-                                        </div>
+
+                                    <div className={styles['video-box']}>
+                                        <iframe width="658" height="336" src="https://www.youtube.com/embed/pJ9JTcFuLKk" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                                     </div>
+
                                     <span className={styles['contact-text']}>
                                         ติดต่อ ป้ามะติ่งเยง (บ้านโมรข่า)
                                     </span>

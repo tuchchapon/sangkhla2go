@@ -148,7 +148,19 @@ export default function index() {
     infinite: true,
     // speed: 1000,
     // fade:true,
-    dot: true,
+    dots: true,
+    customPaging: i => (
+      <div
+        style={{
+          position: "relative",
+          top: '40px',
+          width: "30px",
+          color: "#383838",
+        }}
+      >
+        {i + 1}
+      </div>
+    ),
     slidesToShow: 1,
     slidesToScroll: 1,
     // autoplay: true,

@@ -19,6 +19,7 @@ export default function accommodationPopup({ open, onClose, activeAcommodation }
         if (index === images.length) {
             setBigPhoto(images[0])
         }
+
     }
     const prev = (photo, images) => {
         let index = images.indexOf(photo)
@@ -38,6 +39,13 @@ export default function accommodationPopup({ open, onClose, activeAcommodation }
 
         setBigPhoto(image)
     }
+    // const autoPlay = (photo, images) => {
+    //     setTimeout(next(photo, images), 2000)
+    // }
+    // useEffect(() => {
+
+    //     bigPhoto ? autoPlay(bigPhoto, activeAcommodation.images[0]) : null
+    // }, [bigPhoto])
     useEffect(() => {
         let first_image = ''
         activeAcommodation.images.length > 0 ? first_image = activeAcommodation.images[0] : ''

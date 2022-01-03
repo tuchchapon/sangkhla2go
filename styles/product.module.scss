@@ -87,7 +87,8 @@
 
 .slider{
     position: relative;
-    max-width: 692px;
+    max-width: 770px;
+    height: 652px;
     
     margin: 0 auto 80px;
 }
@@ -101,16 +102,14 @@
     background-size: cover;
     // background-size: contain;
     background-repeat: no-repeat;
-    max-width: 698px;
+    max-width: 770px;
+    height: 652px;
+    width: 770px;
     
     // max-height: 562px;
     margin: auto;
-    text-align: center;
-    color: white;
-    width: 698px;
     border-radius: 16px;
     // border-radius: 90%;
-    height: 562px;
 }
 .product-list{
     display: flex;
@@ -355,7 +354,7 @@
 .video-box{
     width: 770px;
     height: 480px;
-    margin: 40px 0;
+    margin: 80px auto 80px;
     background-image: url('/img/product/video-frame.png');
     display: flex;
     align-items: center;
@@ -553,3 +552,4 @@
     }
 
 }
+
