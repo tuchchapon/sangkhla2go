@@ -75,6 +75,11 @@ export default function accommodationPopup({ open, onClose, activeAcommodation }
                                     {activeAcommodation.images.length > 1 ? (<a className={styles['next']} onClick={(e) => next(bigPhoto, activeAcommodation.images)} >❯ </a>) : ''}
                                     {activeAcommodation.images.length > 0 ? <img className={styles['big-image']} src={activeAcommodation.images.length > 0 ? `${bigPhoto}` : '/accom-placeholder.png'} alt="" />
                                         : <img className={styles['no-image']} src={'/accom-placeholder.png'} alt="" />}
+                                    <div className={styles['image-dots']}>
+                                        {activeAcommodation.images.length > 0 ? activeAcommodation.images.map((image) => (
+                                            <div key={image} className={image === bigPhoto ? styles['active-dot'] : styles['dot']} onClick={() => changeImage(image)} ></div>
+                                        )) : ''}
+                                    </div>
                                     <div className={styles['image-list']} >
                                         {activeAcommodation.images.length > 0 ? activeAcommodation.images.map((image) => (
                                             <img onClick={() => changeImage(image)} key={image} src={`${image}`} alt="" />
@@ -87,27 +92,29 @@ export default function accommodationPopup({ open, onClose, activeAcommodation }
                                             {activeAcommodation.information}
                                         </span>
                                     </div>
-                                    {activeAcommodation.min_price || activeAcommodation.max_price ? (
-                                        <div className={styles['popup-price-box']}>
-                                            <img src="/img/accommodation/icon-b-big.png" alt="" />
-                                            <span>{activeAcommodation.min_price >= activeAcommodation.max_price ? (
-                                                `${activeAcommodation.min_price} บาท`
-                                            ) : `${activeAcommodation.min_price} - ${activeAcommodation.max_price} บาท`}</span>
-                                        </div>
-                                    ) : ''}
-                                    <div className={styles['breakfast-box']}>
-                                        {activeAcommodation.services.includes("อาหารเช้า") ? (
-                                            <div className={styles['breakfast']} >
-                                                <img src="/img/accommodation/with-breakfast.png" alt="" />
-                                                <span style={{ color: '#383838', marginLeft: '8px' }}>อาหารเช้า</span>
+                                    <div className={styles['price-row-box']}>
+                                        {activeAcommodation.min_price || activeAcommodation.max_price ? (
+                                            <div className={styles['popup-price-box']}>
+                                                <img src="/img/accommodation/icon-b-big.png" alt="" />
+                                                <span>{activeAcommodation.min_price >= activeAcommodation.max_price ? (
+                                                    `${activeAcommodation.min_price} บาท`
+                                                ) : `${activeAcommodation.min_price} - ${activeAcommodation.max_price} บาท`}</span>
                                             </div>
-                                        ) : (
-                                            <div className={styles['breakfast']}>
-                                                <img src="/img/accommodation/no-breakfast.png" alt="" />
-                                                <span style={{ color: '#E1D3B6', marginLeft: '8px' }} >อาหารเช้า</span>
-                                            </div>
-                                        )}
+                                        ) : ''}
+                                        <div className={styles['breakfast-box']}>
+                                            {activeAcommodation.services.includes("อาหารเช้า") ? (
+                                                <div className={styles['breakfast']} >
+                                                    <img src="/img/accommodation/with-breakfast.png" alt="" />
+                                                    <span style={{ color: '#383838', marginLeft: '8px' }}>อาหารเช้า</span>
+                                                </div>
+                                            ) : (
+                                                <div className={styles['breakfast']}>
+                                                    <img src="/img/accommodation/no-breakfast.png" alt="" />
+                                                    <span style={{ color: '#E1D3B6', marginLeft: '8px' }} >อาหารเช้า</span>
+                                                </div>
+                                            )}
 
+                                        </div>
                                     </div>
                                     <div className={styles['service-box']}>
                                         {activeAcommodation.services.map((service) => (
