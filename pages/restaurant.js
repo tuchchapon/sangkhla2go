@@ -79,8 +79,10 @@ export default function restaurant() {
             <SubHeader first={'ร้านอาหาร/กาแฟ'} />
             <div >
                 <div className={styles['page-title-box']}>
+                    {/* <img src="/img/restaurant/title-background-top.png" alt="" className={styles['title-bg-top']} /> */}
                     <img className={styles['title-top-left']} src="/img/restaurant/title-top-left.png" alt="" />
                     <img className={styles['title-top-right']} src="/img/restaurant/title-top-right.png" alt="" />
+                    <img src="/img/restaurant/title-small-cloud.png" alt="" className={styles['small-cloude']} />
                     <span>ร้านอาหาร/กาแฟ</span>
                     <img className={styles['title-bottom-left']} src="/img/restaurant/title-bottom-left.png" alt="" />
                     <img className={styles['title-bottom-right']} src="/img/restaurant/title-bottom-right.png" alt="" />
@@ -103,7 +105,7 @@ export default function restaurant() {
                                         <img src={restaurant.images.length > 0 ? `${restaurant.images[0]}` : '/restaurant-placeholder.png'} className={styles['restaurant-image']} alt="" />
                                         <span>{restaurant.name}<br /></span>
                                         <span>{restaurant.type}<br /></span>
-                                        {restaurant.recommend_menu ? <span><b style={{ color: '#383838' }}>เมนูแนะนำ : </b>{restaurant.recommend_menu}</span> : ''}
+                                        {restaurant.recommend_menu ? <span ><b className={styles['recommend-bold-text']} style={{ color: '#383838' }}>เมนูแนะนำ : </b>{restaurant.recommend_menu}</span> : ''}
                                     </div>
                                 ))}
                             </div>
