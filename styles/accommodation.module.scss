@@ -531,7 +531,6 @@ $xxl: "screen and (min-width: 1400px)";
                 top: 40%;
                 width: auto;
                 padding: 16px;
-                margin-top: -50px;
                 color: black;
                 font-weight: bold;
                 font-size: 20px;
@@ -539,6 +538,10 @@ $xxl: "screen and (min-width: 1400px)";
                 user-select: none;
                 -webkit-user-select: none;
                 text-decoration: none;
+                margin-top: 0;
+                @media #{$xxl} {
+                    margin-top: -50px;
+                }
             }
             .next {
                 right: 0;
