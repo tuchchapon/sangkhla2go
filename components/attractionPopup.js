@@ -20,13 +20,27 @@ export default function attractionPopup({ activeAttraction, open, onClose }) {
         infinite: true,
         speed: 200,
         fade: true,
-        dot: true,
+        dots: false,
         slidesToShow: 1,
         slidesToScroll: 1,
         autoplay: true,
         nextArrow: <RightArrow />,
-        prevArrow: <LeftArrow />
-
+        prevArrow: <LeftArrow />,
+        responsive: [
+            {
+                breakpoint: 1400,
+                settings: {
+                    infinite: true,
+                    dots: false
+                }
+            },
+            {
+                breakpoint: 360,
+                settings: {
+                    dots: true
+                }
+            },
+        ]
     }
     return (
 
