@@ -24,13 +24,21 @@ export default function restaurant() {
         let new_show_arr = []
         let new_res_arr = []
         if (res_arr.length !== 0) {
-            for (let i = 0; i < 9; i++) {
-                if (res_arr[i]) new_show_arr.push(res_arr[i])
+            if (screen.availWidth > 1400) {
+                for (let i = 0; i < 9; i++) {
+                    if (res_arr[i]) new_show_arr.push(res_arr[i])
+                }
+                new_res_arr = res_arr.splice(0, 9)
+            }
+            else if (screen.availWidth < 1400) {
+                for (let i = 0; i < 6; i++) {
+                    if (res_arr[i]) new_show_arr.push(res_arr[i])
+                }
+                new_res_arr = res_arr.splice(0, 6)
             }
         }
-        new_res_arr = res_arr.splice(0, 9)
-        console.log('new show arr is', new_show_arr);
         setNewRestaurant(new_show_arr)
+        console.log('new show arr is', new_show_arr);
     }
     const showPopup = (restaurent) => {
         console.log('restaurant is', restaurent);
@@ -40,6 +48,7 @@ export default function restaurant() {
     }
 
     useEffect(() => {
+
         const getRestaurant = async () => {
             let response = await axios.get(`${process.env.SERVER_API}/get/restaurant`)
             if (response.status === 200) {
@@ -57,10 +66,18 @@ export default function restaurant() {
                 }
                 // data
                 let setarr = []
-                for (let j = 0; j < 9; j++) {
-                    if (data[j] === 0 || data[j]) setarr.push(data[j])
+                if (screen.availWidth > 1400) {
+                    for (let j = 0; j < 9; j++) {
+                        if (data[j] === 0 || data[j]) setarr.push(data[j])
+                    }
+                    data.splice(0, 9)
                 }
-                data.splice(0, 9)
+                else if (screen.availWidth < 1400) {
+                    for (let j = 0; j < 5; j++) {
+                        if (data[j] === 0 || data[j]) setarr.push(data[j])
+                    }
+                    data.splice(0, 5)
+                }
                 console.log('data is ', data);
                 console.log('setarr is', setarr);
                 setRes_arr(data)
@@ -68,6 +85,7 @@ export default function restaurant() {
 
             }
         }
+        console.log(screen.availWidth);
         if (show_arr.length === 0) getRestaurant()
         console.log(show_arr);
     }, [])
