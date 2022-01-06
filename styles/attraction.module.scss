@@ -305,11 +305,13 @@ $xxl: "screen and (min-width: 1400px)";
             align-items: center;
             justify-content: center;
             @media #{$xxl} {
+                height: 56px;
+                width: auto;
                 border: 4px solid #383838;
                 border-radius: 16px;
                 font-size: 32px;
                 line-height: 40px;
-                padding: 10px 15px;
+                padding: 16px 20px;
             }
         }
         .leader-right-box {
@@ -354,8 +356,10 @@ $xxl: "screen and (min-width: 1400px)";
                     background-size: cover;
                     background-repeat: no-repeat;
                     background-position: center;
-                    width: 79px;
-                    height: 79px;
+                    width: 78px;
+                    height: 78px;
+                    top: 1px;
+                    right: 1px;
                     border-radius: 100%;
                     @media #{$xxl} {
                         left: -1px;
@@ -400,8 +404,10 @@ $xxl: "screen and (min-width: 1400px)";
             background-size: cover;
             background-repeat: no-repeat;
             background-position: center;
-            width: 79px;
-            height: 79px;
+            width: 78px;
+            height: 78px;
+            top: 1px;
+            right: 1px;
             @media #{$xxl} {
                 left: -1px;
                 top: -1px;
