@@ -227,7 +227,7 @@ export default function officer() {
                             </div>
                             <div className={styles['sm-officer-list-box']}>
                                 <div className={styles['sm-position-name-box']}>
-                                    <span>ที่ปรึกษา</span>
+                                    <span>นักศึกษาฝึกงาน</span>
                                 </div>
                                 {interns.length > 0 ? interns.map((intern) => (
                                     <div onClick={(e) => openPopup(e, "นักศึกษาฝึกงาน", intern)} className={styles['officer-name-box']} key={intern.id}>
