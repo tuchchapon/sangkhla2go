@@ -91,8 +91,8 @@ export default function publicTransportation() {
                             <div key={boat.id} className={styles['boat-items']} onClick={(e) => openBoatPopup(e, boat)} >
                                 <img className={styles['boat-image']} src={boat && boat.boat_images.length > 0 ? `${boat.boat_images[0]}` : "/boat-placeholder.png"} alt="" />
                                 <div className={styles['boat-textbox']} >
-                                    <p className={styles['boat-club-name']} >{boat.club_name}</p>
-                                    <p className={styles['boat-provider-name']}>{boat.provider_name} </p>
+                                    <span className={styles['boat-club-name']} >{boat.club_name}</span>
+                                    <span className={styles['boat-provider-name']}>{boat.provider_name} </span>
                                 </div>
                             </div>
 

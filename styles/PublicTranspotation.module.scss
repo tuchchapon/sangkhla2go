@@ -1,4 +1,11 @@
 
+$xs: "screen and (max-width: 767px)";
+// $sm: "screen and (min-width: 576px)";
+$md: "screen and (min-width: 768px)";
+$lg: "screen and (min-width: 992px)";
+$xl: "screen and (min-width: 1200px)";
+$xxl: "screen and (min-width: 1400px)";
+
 .transpotation-page{
     background-color: #FBF6E9;
     
@@ -8,11 +15,17 @@
     text-align: center;
     font-family: "sukhumvit";
     font-weight: bold;
-    font-size: 80px;
-    line-height: 88px;
-    margin: 0 0 40px 0;
-    padding-top: 62px;
     // margin: auto;
+    font-size: 24px;
+    line-height: 32px;
+    margin-bottom: 16px;
+    padding-top: 16px;
+    @media #{$xxl} {
+        font-size: 80px;
+        line-height: 88px;
+        margin: 0 0 40px 0;
+        padding-top: 62px;
+    }
 }
 .win-box {
     display: flex;
@@ -22,36 +35,52 @@
     justify-content: flex-start;
     margin: auto;
     width: 100%;
-    max-width: 1200px;
-
+    max-width: 320px;
+    @media #{$xxl} {
+        max-width: 1200px;
+        
+    }
 
     .win-items {
         color: #383838;
-        flex: 0 0 calc((100% - 120px)/4);
-        margin: 0 15px 32px;
-        width: 270px;
         cursor: pointer;
         position: relative;
         justify-self: center;
-        // &:nth-child(4n) {
-        //     margin-right: 0;
-        //   }
-
+        width: 150px;
+        height: 136px;
+        flex: 0 0 calc((100% - 20px)/2);
+        margin: 0 20px 16px 0;
+        @media #{$xs} {
+            &:nth-child(2n){
+                margin-right: 0;
+            }
+        }
+        @media #{$xxl} {
+            flex: 0 0 calc((100% - 120px)/4);
+            margin: 0 15px 32px;
+            width: 270px;
+            height: 240px;
+        }
     }
     .location-image-box{
         position: relative;
         text-align: center;
-        padding:  0 40px;
-        width: 270px;
-        height: 240px;
+
         background-image: url("/img/publictranspotation/win_frame.png");
         background-position: center;
-        background-size: cover;
         background-repeat: no-repeat;
+        background-size: contain;
         justify-content: center;
         align-items: center;
         display: flex;
-
+        width: 150px;
+        height: 136px;
+        @media #{$xxl} {
+            background-size: cover;
+            padding:  0 40px;
+            width: 270px;
+            height: 240px;
+        }
     }
     .location-image-box:hover{
         background-image: url("/img/publictranspotation/win_frame_hover.png");
@@ -59,26 +88,37 @@
     .win-name{
         font-family: "sukhumvit" ,'fc_fridayregular'  ;
         font-weight: normal;
-        line-height: 40px;
         font-weight: bold;
         position: absolute;
-        font-size: 32px;
         margin: auto;
-        top: 87px;
         white-space: pre-wrap;
-        padding: 0 31px;
-        width: 208px;
+        font-size: 16px;
+        line-height: 24px;
+        top: 42px;
+        padding: 0 14px;
+        @media #{$xxl} {
+            line-height: 40px;
+            font-size: 32px;
+            top: 87px;
+            padding: 0 31px;
+            width: 208px;
+        }
     }
 }
 .boat-title{
     text-align: center;
     font-family: "sukhumvit";
     font-weight: bold;
-    font-size: 80px;
-    line-height: 88px;
     width: 100%;
-    margin: 40px  auto 80px;
     // margin: 40px 0 80px 0;
+    font-size: 24px;
+    line-height: 32px;
+    margin: 32px auto 16px;
+    @media #{$xxl} {
+        font-size: 80px;
+        line-height: 88px;
+        margin: 40px  auto 80px;
+    }
 }
 .boat-box {
     display: flex;
@@ -88,62 +128,101 @@
     justify-content: center;
     margin: auto;
     width: 100%;
-    max-width: 1200px;
     font-family: "sukhumvit";
-    .boat-items{
-        flex: 0 0 calc((100% - 60px)/3);
-        // margin:  15px 30px 40px 0;
-        // justify-self: flex-start;
-        margin: 20px 15px;
-        cursor: pointer;
-        position: relative;
-        // justify-self: center;
-        width: 370px;
-        height: 384px;
-        max-width: 370px;
-        max-height: 384px;
-        background-image: url("/img/publictranspotation/boat_frame.png");
-        background-position: center;
-        background-size: cover;
-        background-repeat: no-repeat;
-    }
-    .boat-items:hover{
-        background-image: url("/img/publictranspotation/boat_frame_hover.png");
-    }
-    .boat-image{
-        position: absolute;
-        left: 22px;
-        top: 22px;
-        width: 322px;
-        height: 256px;
+    max-width: 320px;
+    @media #{$xxl} {
+        max-width: 1200px;
         
     }
+    .boat-items{
+        cursor: pointer;
+        // position: relative;
+        background-position: center;
+        background-repeat: no-repeat;
+
+        width: 150px;
+        height: 204px;
+        padding: 6.5px;
+        margin: 0 20px 16px 0;
+        flex: 0 0 calc((100% - 21.5px)/2);
+        background-size: cover;
+        padding: 7px;
+        background-image: url('/img/publictranspotation/sm-boat-frame.png');
+        @media #{$xs} {
+            &:nth-child(2n){
+                margin-right: 0;
+            }
+        }
+        @media #{$xxl} {
+            background-image: url("/img/publictranspotation/boat_frame.png");
+            background-size: cover;
+            flex: 0 0 calc((100% - 60px)/3);
+            margin: 20px 15px;
+            padding: 22px;
+            width: 370px;
+            height: 384px;
+            max-width: 370px;
+            max-height: 384px;
+        }
+    }
+    .boat-items:hover{
+        background-image: url('/img/publictranspotation/sm-boat-frame-hover.png');
+        @media #{$xxl} {
+            background-image: url("/img/publictranspotation/boat_frame_hover.png");
+        }
+    }
+    .boat-image{
+        // position: relative;
+        width: 134px;
+        height: 132px;
+        border-radius: 4px;
+        margin-bottom: 8px;
+        @media #{$xxl} {
+            border-radius: 0;
+            left: 22px;
+            top: 22px;
+            width: 322px;
+            height: 256px;
+        }
+    }
     .boat-textbox{
-        position: absolute;
-        top: 294px;
-        left: 22px;
+        display: flex;
+        flex-direction: column;
         max-width: 250px;
 
     }
     .boat-club-name{
         font-weight: bold;
-        font-size: 24px;
-        line-height: 32px;
-        margin: 0;
-        max-width: 250px;
         white-space: pre;
         text-overflow: ellipsis;
         overflow: hidden;
+        font-size: 16px;
+        line-height: 24px;
+        width: 100%;
+        max-width: 134px;
+        @media #{$xxl} {
+            font-size: 24px;
+            line-height: 32px;
+            margin: 16px 0 0 ;
+            max-width: 250px;
+        }
     }
     .boat-provider-name{
-        font-size: 24px;
         font-weight: 500;
         color: #757575;
         margin: 0;
-        max-width: 250px;
         white-space: pre;
         text-overflow: ellipsis;
         overflow: hidden;
+        width: 100%;
+        font-size: 16px;
+        line-height: 24px;
+        max-width: 134px;
+        @media #{$xxl} {
+            line-height: 32px;
+            font-size: 24px;
+            max-width: 250px;
+        }
     }
 }
 .backdrop{
