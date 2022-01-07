@@ -73,6 +73,24 @@ export default function officer() {
                     <div className={styles['logo-box']}>
                         <img src="/LOGO.png" alt="" />
                     </div>
+                    <div className={styles['sm-detail-pa1']}>
+                        <span>การจัดทำ Web Application ของตำบลหนองลู อำเภอสังขละบุรี จังหวัดกาญจนบุรี นี้ <br /> เป็นส่วนหนึ่งของ <br />
+                            <a style={{ color: '#7A2328' }}>“โครงการยกระดับเศรษฐกิจและสังคมรายตำบลแบบบูรณาการ มหาวิทยาลัยสู่ตำบล สร้างรากแก้วให้ประเทศ (U2T)”  </a><br />
+                            บริหารจัดการโดย <b style={{ color: '#7A2328', fontWeight: 'bolder' }}>ผศ.ดร. อรองค์ ชาคร</b> ซึ่งเป็น Tambon System Integrator (TSI)
+                            สังกัด<b>สถาบันบัณฑิตพัฒนบริหารศาสตร์ (นิด้า)</b> ภายใต้การกำกับดูแลของกระทรวงการอุดมศึกษา
+                            วิทยาศาสตร์ วิจัยและนวัตกรรม</span>
+
+                    </div>
+                    <div className={styles['sm-detail-pa2']}>
+                        <span>
+                            <b>หมายเหตุ:</b> U2T เป็นโครงการภายใต้ “พ.ร.ก. <br /> ให้อำนาจกระทรวงการคลังกู้เงินเพื่อแก้ไขปัญหา เยียวยา
+                            และฟื้นฟูเศรษฐกิจและสังคม<br /> ที่ได้รับผลกระทบจากสถานการณ์การระบาดของโรคติดเชื้อไวรัสโคโรนา 2019” <br />
+                            โดยมีวัตถุประสงค์เพื่อให้เกิดการจ้างงาน<b>ประชาชนทั่วไป บัณฑิตจบใหม่ และนักศึกษา</b> ที่ได้รับผลกระทบจาก
+                            สถานการณ์ดังกล่าว<br /> โดยมีสถาบันอุดมศึกษาเป็นหน่วยบูรณาการการทำงานแบบบูรณาการในพื้นที่ตำบล<br /> “System Integrator”
+                            ครอบคลุมพื้นที่ในระยะแรก 3,000 ตำบล ทั่วประเทศ โดยส่งเสริมให้เกิดการพัฒนาตามปัญหาและความต้องการของชุมชน
+                            โดยประสานงานและทำงานร่วมกับองค์กรในพื้นที่ เพื่อลดปัญหาความยากจนแบบมีเป้าหมายชัดเจน<br /> (Targeted Poverty Alleviation)  <a target={'_blank'} href="https://u2tambon.com/">รายละเอียดของโครงการ คลิก https://u2tambon.com/</a>
+                        </span>
+                    </div>
                     <div className={styles['detail-pa1']}>
                         <span>การจัดทำ Web Application ของตำบลหนองลู อำเภอสังขละบุรี จังหวัดกาญจนบุรี นี้ เป็นส่วนหนึ่งของ<br />
                             <b style={{ color: '#7A2328', fontWeight: 'bolder' }}>“โครงการยกระดับเศรษฐกิจและสังคมรายตำบลแบบบูรณาการ มหาวิทยาลัยสู่ตำบล สร้างรากแก้วให้ประเทศ (U2T)” </b>
@@ -120,6 +138,105 @@ export default function officer() {
             </div>
             <div className="container">
                 <div className="col-12">
+                    <div className={styles['sm-officer-box']}>
+                        <div className={styles['banner-box']} style={{ backgroundImage: `url('/img/officer/officer-banner.png')` }}>
+                            <span>คณะผู้จัดทำ</span>
+                        </div>
+                        <div className={styles['sm-row-box']}>
+                            <div className={styles['sm-position-box']}>
+                                <img src="/img/officer/sm-consault.png" alt="" />
+                            </div>
+                            <div className={styles['sm-center-box']}>
+                                <img src="/img/officer/sm-leader.png" alt="" />
+                                <div className={styles['center-vertical-line']}></div>
+                                <div className={styles['center-horizental-line']}></div>
+                            </div>
+                            <div className={styles['sm-position-box']}>
+                                <img src="/img/officer/sm-coor.png" alt="" />
+                            </div>
+                        </div>
+                        <div className={styles['sm-officer-white-box']}>
+                            <img src="/img/officer/sm-officer.png" alt="" />
+                        </div>
+                        <div className={styles['sm-line-box']}>
+                            <div className={styles['sm-center-line']}></div>
+                            <div className={styles['sm-left-line']}></div>
+                            <div className={styles['sm-right-line']}></div>
+                        </div>
+                        <div className={styles['sm-bottom-row-box']} style={{ marginTop: '0' }}>
+                            <div className={styles['sm-position-box']}>
+                                <img src="/img/officer/sm-new-graduate.png" alt="" />
+                            </div>
+                            <div className={styles['sm-center-box']}>
+                                <img src="/img/officer/sm-citizen.png" alt="" />
+                            </div>
+                            <div className={styles['sm-position-box']}>
+                                <img src="/img/officer/sm-intern.png" alt="" />
+                            </div>
+                        </div>
+                        <div className={styles['column-officer-box']}>
+                            <div className={styles['sm-officer-list-box']}>
+                                <div className={styles['sm-position-name-box']}>
+                                    <span>ที่ปรึกษา</span>
+                                </div>
+                                {consultants.length > 0 ? consultants.map((consultant) => (
+                                    <div onClick={(e) => openPopup(e, "ที่ปรึกษา", consultant)} className={styles['officer-name-box']} key={consultant.id}>
+                                        <span>{consultant.name}</span>
+                                    </div>
+                                )) : ''}
+                            </div>
+                            <div className={styles['sm-officer-list-box']}>
+                                <div className={styles['sm-position-name-box']}>
+                                    <span>หัวหน้าโครงการ</span>
+                                </div>
+                                <div className={styles['officer-name-box']}>
+                                    {leader ? (
+                                        <span onClick={(e) => openPopup(e, "หัวหน้าโครงการ", leader)} >{leader.name}</span>
+                                    ) : ''}
+                                </div>
+                            </div>
+                            <div className={styles['sm-officer-list-box']}>
+                                <div className={styles['sm-position-name-box']}>
+                                    <span>ผู้ประสานงาน</span>
+                                </div>
+                                {coordinators.length > 0 ? coordinators.map((coordinator) => (
+                                    <div onClick={(e) => openPopup(e, "ผู้ประสานงาน", coordinator)} className={styles['officer-name-box']} key={coordinator.id}>
+                                        <span>{coordinator.name}</span>
+                                    </div>
+                                )) : ''}
+                            </div>
+                            <div className={styles['sm-officer-list-box']}>
+                                <div className={styles['sm-position-name-box']}>
+                                    <span>บัณฑิตจบใหม่</span>
+                                </div>
+                                {newGraduates.length > 0 ? newGraduates.map((newGraduate) => (
+                                    <div onClick={(e) => openPopup(e, "บัณฑิตจบใหม่", newGraduate)} className={styles['officer-name-box']} key={newGraduate.id}>
+                                        <span>{newGraduate.name}</span>
+                                    </div>
+                                )) : ''}
+                            </div>
+                            <div className={styles['sm-officer-list-box']}>
+                                <div className={styles['sm-position-name-box']}>
+                                    <span>ประชาชน</span>
+                                </div>
+                                {citizens.length > 0 ? citizens.map((citizen) => (
+                                    <div style={{ textAlign: 'start' }} onClick={(e) => openPopup(e, "ประชาชน", citizen)} className={styles['officer-name-box']} key={citizen.id}>
+                                        <span>{citizen.name}</span>
+                                    </div>
+                                )) : ''}
+                            </div>
+                            <div className={styles['sm-officer-list-box']}>
+                                <div className={styles['sm-position-name-box']}>
+                                    <span>ที่ปรึกษา</span>
+                                </div>
+                                {interns.length > 0 ? interns.map((intern) => (
+                                    <div onClick={(e) => openPopup(e, "นักศึกษาฝึกงาน", intern)} className={styles['officer-name-box']} key={intern.id}>
+                                        <span>{intern.name}</span>
+                                    </div>
+                                )) : ''}
+                            </div>
+                        </div>
+                    </div>
                     <div className={styles['officer-box']}>
                         <div className={styles['banner-box']} style={{ backgroundImage: `url('/img/officer/officer-banner.png')` }}>
                             <span>คณะผู้จัดทำ</span>
