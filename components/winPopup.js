@@ -53,7 +53,7 @@ export default function winPopup({ open, onClose, activeWin }) {
                                 <div className={styles['win-flexbox']}>
                                     <img className={styles['popup-close-icon']} onClick={() => closeWinPopup()} src='/Quit.png' alt="" />
                                     <span className={styles['location-name']}>{activeWin ? activeWin.location_name : ''}</span>
-                                    {activeWin && activeWin.location_detail ? <label className={styles['location-detail']} ><img style={{ marginRight: '16px' }} src="/glass.png" alt="" />{activeWin ? activeWin.location_detail : ''}</label> : ''}
+                                    {activeWin && activeWin.location_detail ? <label className={styles['location-detail']} ><img src="/glass.png" alt="" />{activeWin ? activeWin.location_detail : ''}</label> : ''}
                                     <div className={styles['popup-win-box']}>
                                         {drivers ? drivers.map((driver) => (
                                             <div className={styles['popup-win-item']} key={driver.id}>
@@ -66,10 +66,9 @@ export default function winPopup({ open, onClose, activeWin }) {
 
                                     </div>
                                     {drivers.length > 0 ? (
-                                        <div className={styles['popup-service-text']}  >
-                                            <div style={{ marginRight: '24px' }} >
-                                                <img style={{ marginRight: '16px' }} src={sideTow === true ? "/img/publictranspotation/circle-true.png" : "/img/publictranspotation/circle.png"} alt="" /> <span>วินมอเตอร์ไซต์พ่วงข้าง</span></div>
-                                            <div> <img style={{ marginRight: '16px' }} src={triCycle === true ? "/img/publictranspotation/circle-true.png" : "/img/publictranspotation/circle.png"} alt="" /> <span>รถสามล้อเครื่อง</span></div>
+                                        <div className={styles['popup-service-box']}  >
+                                            <div   > <img src={sideTow === true ? "/img/publictranspotation/circle-true.png" : "/img/publictranspotation/circle.png"} alt="" /> <span>วินมอเตอร์ไซต์พ่วงข้าง</span></div>
+                                            <div> <img src={triCycle === true ? "/img/publictranspotation/circle-true.png" : "/img/publictranspotation/circle.png"} alt="" /> <span>รถสามล้อเครื่อง</span></div>
                                         </div>
                                     ) : ''}
                                 </div>

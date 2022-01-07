@@ -23,13 +23,32 @@ export default function boatPopup({ open, onClose, activeBoat }) {
         infinite: true,
         speed: 200,
         fade: true,
-        dot: true,
+        dots: false,
         slidesToShow: 1,
         slidesToScroll: 1,
         autoplay: true,
         nextArrow: <RightArrow />,
-        prevArrow: <LeftArrow />
-
+        prevArrow: <LeftArrow />,
+        responsive: [
+            {
+                breakpoint: 1400,
+                settings: {
+                    // slidesToShow: 3,
+                    // slidesToScroll: 3,
+                    infinite: true,
+                    dots: false
+                }
+            },
+            {
+                breakpoint: 360,
+                settings: {
+                    dots: true
+                    // slidesToShow: 2,
+                    // slidesToScroll: 2,
+                    // initialSlide: 2
+                }
+            },
+        ]
     }
 
 
@@ -80,17 +99,15 @@ export default function boatPopup({ open, onClose, activeBoat }) {
 
                             </div>
                             <div className="col">
-                                {activeBoat.boat_images && activeBoat.boat_images.length > 0 ? (
-                                    <div className={styles['boat-image-box']} >
-                                        <div className={styles['slider']}>
-                                            <Slider {...settings} >
-                                                {activeBoat.boat_images ? activeBoat.boat_images.map((image) => (
-                                                    <div key={image} className={styles['slider-box']}  ><div className={styles['slider-image']} style={{ backgroundImage: `url(${image ? `${image}` : ''})` }}></div></div>
-                                                )) : ''}
-                                            </Slider>
-                                        </div>
+                                <div className={styles['boat-image-box']} >
+                                    <div className={styles['slider']}>
+                                        <Slider {...settings} >
+                                            {activeBoat.boat_images.length > 0 ? activeBoat.boat_images.map((image) => (
+                                                <div key={image} className={styles['slider-box']}  ><div className={styles['slider-image']} style={{ backgroundImage: `url(${image ? `${image}` : '/boat-placeholder.png'})` }}></div></div>
+                                            )) : (<div className={styles['slider-box']}  ><div className={styles['slider-image']} style={{ backgroundImage: `url('/boat-placeholder.png')` }}></div></div>)}
+                                        </Slider>
                                     </div>
-                                ) : ''}
+                                </div>
                             </div>
                         </div>
                     </div>
