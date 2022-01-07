@@ -423,14 +423,15 @@ export default function officer() {
                                         </div>
                                     </div>
                                 </div>
+
+                                <div className={styles['big-image-frame-box']} >
+                                    <div className={styles['big-image-frame']} style={{ backgroundImage: `url('/img/officer/big-frame.png')` }}></div>
+                                    <img className={styles['big-image']} src="/img/officer/aura.jpeg" alt="" />
+                                </div>
                                 <div className={styles['link-box']}>
                                     <span onClick={(e) => toLink(e, leader)}>
                                         ประวัติเพิ่มเติม
                                     </span>
-                                </div>
-                                <div className={styles['big-image-frame-box']} >
-                                    <div className={styles['big-image-frame']} style={{ backgroundImage: `url('/img/officer/big-frame.png')` }}></div>
-                                    <img className={styles['big-image']} src="/img/officer/aura.jpeg" alt="" />
                                 </div>
                             </div>
                         </div>
