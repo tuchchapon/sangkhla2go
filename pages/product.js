@@ -22,6 +22,7 @@ function LeftArrow(props) {
 
 export default function product() {
     const [activeTab, setActiveTab] = useState('product')
+    const [sc_width, setSc_width] = useState(0)
     const [karenFabric, setKarenFabric] = useState({
         id: '', name: '', fb_page: '', tel: '', link: '', images: [], detail: ''
     })
@@ -43,7 +44,23 @@ export default function product() {
         autoplay: true,
         nextArrow: <RightArrow />,
         prevArrow: <LeftArrow />,
-
+        responsive: [
+            {
+                breakpoint: 1400,
+                settings: {
+                    infinite: true,
+                    dots: false,
+                    arrows: true,
+                }
+            },
+            {
+                breakpoint: 360,
+                settings: {
+                    dots: true,
+                    arrows: false
+                }
+            },
+        ]
     }
     const openPopup = (e, product) => {
         if (e) e.preventDefault()
@@ -60,6 +77,9 @@ export default function product() {
         setActiveTab(type)
     }
     useEffect(() => {
+        let width = screen.availWidth
+        setSc_width(width)
+        console.log(width);
         const getProduct = async () => {
             let data = []
             let karen_fabric = { id: '', name: '', fb_page: '', tel: '', link: '', images: [], detail: '' }
@@ -125,7 +145,7 @@ export default function product() {
                         <div className={styles['content-box']}>
                             {activeTab === "karen" ? (
                                 <div className={styles['karen']}>
-                                    <span className={styles['content-title']}>{karenFabric.name}</span>
+                                    {/* <span className={styles['content-title']}>{karenFabric.name}</span> */}
                                     <span className={styles['content-text']}>{karenFabric ? karenFabric.detail : ''}</span>
                                     <div className={styles['slider']}>
                                         <Slider {...settings} >
@@ -138,7 +158,7 @@ export default function product() {
                                     </div>
 
                                     <div className={styles['video-box']}>
-                                        <iframe width="658" height="336" src="https://www.youtube.com/embed/pJ9JTcFuLKk" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                                        {sc_width < 1400 ? <iframe width="288" height="168" src="https://www.youtube.com/embed/pJ9JTcFuLKk" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe> : <iframe width="658" height="336" src="https://www.youtube.com/embed/pJ9JTcFuLKk" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>}
                                     </div>
 
                                     <span className={styles['contact-text']}>
@@ -160,7 +180,7 @@ export default function product() {
                                     {products.length > 0 ? products.map((product) => (
                                         <div onClick={(e) => openPopup(e, product)} key={product.id} className={styles['product-item']}>
                                             <div className={styles['product-image-box']}>
-                                                <div style={{ backgroundImage: `url(${product.images.length > 0 ? `${product.images[0]}` : '/no-imge.png'})` }}></div>
+                                                <div className={styles['product-image']} style={{ backgroundImage: `url(${product.images.length > 0 ? `${product.images[0]}` : '/no-imge.png'})` }}></div>
                                             </div>
                                             <div className={styles['product-name-box']}>
                                                 <span>{product.name}</span>
@@ -183,11 +203,37 @@ export default function product() {
                                             <div className={styles['book-frame']}>
                                                 <img src="/img/product/uttama-book1.png" alt="" />
                                             </div>
-                                            <span>(ปกอ่อน)</span>
+                                            <span style={{ fontWeight: 'bold' }}>(ปกอ่อน)</span>
+                                            <div className={styles['sm-text-pa1']}>
+                                                <span style={{ textIndent: '40px' }}>
+                                                    ภาค 1 มุฑิตา-สักการะ จากสมเด็จพระญาณสังวร
+                                                    สมเด็จพระสังฆราช สกลมหาสังฆปรินายก และพระชั้นผู้ใหญ่ทั่วประเทศ<br />
+
+                                                </span>
+                                                <span style={{ textIndent: '40px' }}>
+                                                    ภาค 2 ชีวประวัติ  แบ่งเป็นประวัติสังเขปกับประวัติโดยละเอียด ส่วนแรกคือประวัติสังเขป
+                                                    เล่าเส้นทางชีวิตอย่างย่อตั้งแต่ชาติภูมิ บรรพชา อุปสมบท วิทยฐานะการศึกษาเล่าเรียน
+                                                    การทำงานด้านต่างๆ ทั้งด้านปกครอง ด้านการศึกษา ด้านการเผยแผ่ ด้านสาธารณูปการ
+                                                    รวมถึงเกียรติคุณที่ได้รับการยกย่องและสมณศักดิ์ โดยแต่ละหัวข้อเรียงลำดับตามวันเวลา
+                                                    อีกส่วนในภาคนี้คือประวัติโดยละเอียด ส่วนนี้ถือเป็นความโดดเด่นของเล่ม เพราะพรรณาชีวิตหลวงพ่ออุตตมะแต่ละช่วงไว้อย่างละเอียด
+                                                    ตั้งแต่เกิดในหมู่บ้านชาวมอญ บ้านโมกคะเนียง อำเภอเย จังหวัดมะละแหม่ง ประเทศพม่า
+                                                    รวมถึงประวัติครอบครัว การเริ่มบวชเณร การตัดสินใจบวชไม่สึก นิสัยในวัยเยาว์และความพากเพียรของหลวงพ่อ
+                                                    ทั้งประวัติศาสตร์สงครามโลกครั้ง 2 ตอนญี่ปุ่นบุกพม่า หลวงพ่ออุตตมะก็มีส่วนช่วยเจรจากับกลุ่มโจร จนท่านเดินทางเข้าสู่ประเทศไทย
+                                                    ก่อสร้างวัดและอื่นๆ จนกลายเป็นศูนย์รวมศรัทธาของชาวสังขละบุรี ในแต่ละช่วงละฉากมีความน่าสนใจในวิธีการเล่า มีทั้งเรื่องเล่า ตำนานพื้นถิ่น ความเชื่อ ความศรัทธาของชาวบ้าน ผสมผสานชวนตื่นตะลึงกับเรื่องราวชีวิตของหลวงพ่ออุตตมะ
+                                                </span>
+                                            </div>
                                             <div className={styles['book-frame']}>
                                                 <img src="/img/product/uttama-book2.png" alt="" />
                                             </div>
-                                            <span>(ปกแข็ง)</span>
+                                            <span style={{ fontWeight: 'bold' }} >(ปกแข็ง)</span>
+                                            <div className={styles['sm-text-pa2']}>
+                                                <span style={{ textIndent: '40px' }}>
+                                                    ภาค 3 ปกิณณกธรรม   เป็นการรวบรวมคาถาบทสวดมนต์ที่หลวงพ่ออุตตมะใช้เป็นประจำอย่างละเอียด ทั้งการสวดแบบไทยและแบบมอญ รวมทั้งสูตรตำรายาโบราณในการรักษาโรคภัยต่างๆ<br />
+                                                </span>
+                                                <span style={{ textIndent: '40px' }}>
+                                                    ภาค 4 แนวธรรมปฏิบัติของหลวงพ่ออุตตมะ  ผู้เป็นศูนย์รวมศรัทธา ทำนุบำรุงพุทธศาสนามาต่อเนื่องยาวนาน
+                                                </span>
+                                            </div>
                                         </div>
                                         <div className={styles['right-box']}>
                                             <div className={styles['text-pa1']}>
