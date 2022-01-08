@@ -362,10 +362,15 @@ $xxl: "screen and (min-width: 1400px)";
                 border: 2px solid #383838;
             }
             .officer-name-box{
+                cursor: pointer;
                 font-size: 16px;
                 line-height: 24px;
                 font-weight: 500;
                 margin-bottom: 16px;
+                &:hover{
+                    font-weight: bold;
+                    text-decoration: underline;
+                }
             }
         }
     }
