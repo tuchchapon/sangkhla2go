@@ -22,12 +22,29 @@ export default function productPopup({ open, onClose, activeProduct }) {
         infinite: true,
         speed: 200,
         fade: true,
-        dot: true,
+        dots: false,
         slidesToShow: 1,
         slidesToScroll: 1,
         autoplay: true,
         nextArrow: <RightArrow />,
-        prevArrow: <LeftArrow />
+        prevArrow: <LeftArrow />,
+        responsive: [
+            {
+                breakpoint: 1400,
+                settings: {
+                    infinite: true,
+                    dots: false,
+                    arrows: true,
+                }
+            },
+            {
+                breakpoint: 360,
+                settings: {
+                    dots: true,
+                    arrows: false
+                }
+            },
+        ]
 
     }
     const toLink = (e, link) => {
@@ -50,12 +67,12 @@ export default function productPopup({ open, onClose, activeProduct }) {
                             <div className={styles['popup-name-box']}>
                                 <span>{activeProduct.name}</span>
                             </div>
-                            <div className={styles['slider']}>
+                            <div className={styles['popup-slider']}>
                                 <Slider {...settings} >
                                     {activeProduct.images ? activeProduct.images.map((image) => (
-                                        <div key={image} className={styles['slider-box']}  ><div className={styles['slider-image']} style={{ backgroundImage: `url(${image ? `${image}` : ''})` }}></div></div>
+                                        <div key={image} className={styles['popup-slider-box']}  ><div className={styles['popup-slider-image']} style={{ backgroundImage: `url(${image ? `${image}` : ''})` }}></div></div>
                                     )) : (
-                                        <div className={styles['slider-box']}  ><div className={styles['slider-image']} style={{ backgroundImage: `url('/no-image-big.png')` }}></div></div>
+                                        <div className={styles['slider-box']}  ><div className={styles['popup-slider-image']} style={{ backgroundImage: `url('/no-image-big.png')` }}></div></div>
                                     )}
                                 </Slider>
                             </div>
