@@ -442,7 +442,7 @@ $xxl: "screen and (min-width: 1400px)";
     width: 90%;
     height: 95%;
     max-width: 320px;
-    padding: 16px 0;
+    padding: 26px 0 16px;
     @media #{$xxl} {
         max-width: 970px;
         max-height: 980px;
