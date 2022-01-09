@@ -19,6 +19,7 @@ import KarenPopup from '../components/karenTraditionPopup';
 import MonPopup from '../components/monTraditionPopup';
 import ProductPopup from '../components/productPopup';
 import Header from '../layouts/header';
+import FixedHeader from '../layouts/fixedHeader';
 function RightArrow(props) {
   const { className, style, onClick } = props;
   return (
@@ -286,9 +287,9 @@ export default function index() {
         </div>
       ) : (
         <div>
+          <FixedHeader />
           <Header />
           <div className={styles['intro-section']}>
-
             <div className="container">
 
               <div className="row">
@@ -327,7 +328,7 @@ export default function index() {
                   <span>ร้านอาหาร/กาแฟ</span>
                 </div>
                 <div onClick={(e) => document.getElementById("transportation-section").scrollIntoView({ behavior: 'smooth' })} className={styles['menu-box']}>
-                  <img src="/img/home/tradition-icon.png" alt="" />
+                  <img src="/img/home/transportation-icon.png" alt="" />
                   <span>ขนส่งสาธารณะ</span>
                 </div>
 
@@ -406,70 +407,6 @@ export default function index() {
                         <div className={`${styles['text-box']} ${styles[`text-box${i}`]}`}></div>
                       </div>
                     )) : ''}
-                    {/* <div className={styles['attraction-title-box']}>
-                      <span>สถานที่ท่องเที่ยว</span>
-                      <span>
-                        สัมผัสบรรยากาศธรรมชาติ วัฒนธรรม<br />
-                        เกษตรกรรมและชุมชน แบบสังขละบุรี
-                      </span>
-                    </div>
-                    <div className={`${styles['right-pin']} ${styles['right-pin-position1']}`}>
-                      <div className={styles['attraction-name-box']}>
-                        <div className={styles['sm-box']}>
-                          <span>จุดล่องแพ</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div className={`${styles['left-pin']} ${styles['left-pin-position1']}`}>
-                      <div className={styles['attraction-name-box']}>
-                        <div className={styles['sm-box']}>
-                          <span>ร.ร.ห้วยกบ</span>
-                        </div>
-                      </div>
-                    </div>
-                    {/* <div className={`${styles['left-pin']} ${styles['left-pin-position2']}`}>
-                          <div className={styles['attraction-name-box']}>
-                            <div className={styles['sm-box']}>บ้านห้วยกบ</div>
-                          </div>
-                    </div> 
-                    <div className={`${styles['left-pin']} ${styles['left-pin-position2']}`}>
-                      <div className={styles['attraction-name-box']}>
-                        <div className={styles['sm-box']}>
-                          <span>แม่น้ำบีคลี่</span>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className={`${styles['left-pin']} ${styles['left-pin-position3']}`}>
-                      <div className={styles['attraction-name-box']}>
-                        <div className={styles['lg-box']}>
-                          <span>เขตรักษาพันธุ์สัตว์ป่า<br />
-                            <b>ทุ่งใหญ่นเรศวร</b></span>
-                        </div>
-                      </div>
-                    </div>
-                    <div className={`${styles['left-pin']} ${styles['left-pin-position4']}`}>
-                      <div className={styles['attraction-name-box']}>
-                        <div className={styles['sm-box']}>
-                          <span>สะพานมอญ</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div className={`${styles['right-pin']} ${styles['right-pin-position2']} `}>
-                      <div className={styles['attraction-name-box']}>
-                        <div className={styles['lg-box']}>
-                          <span>วัดเจดีสามองค์</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div className={styles['temple-box']}>
-                      <div className={styles['attraction-name-box']}>
-                        <div className={styles['lg-box']}>
-                          <span>วัดจมน้ำ</span>
-                        </div>
-                      </div>
-                    </div> */}
-
                   </div>
                   <span onClick={(e) => router.push('/attraction')} className={styles['see-all-button']}>ดูทั้งหมด</span>
                   <div className={styles['leader-box']}>
