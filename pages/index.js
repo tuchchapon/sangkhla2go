@@ -139,11 +139,22 @@ export default function index() {
     // fade:true,
     dot: true,
     slidesToShow: 3,
-    slidesToScroll: 3,
+    slidesToScroll: 6,
     autoplay: true,
     nextArrow: <RightArrow />,
     prevArrow: <LeftArrow />
 
+  }
+  const BoatSettings = {
+    infinite: true,
+    speed: 1000,
+    // fade:true,
+    dot: true,
+    slidesToShow: 4,
+    slidesToScroll: 4,
+    autoplay: true,
+    nextArrow: <RightArrow />,
+    prevArrow: <LeftArrow />
   }
   const videoSettings = {
     infinite: true,
@@ -190,10 +201,12 @@ export default function index() {
     let accommodation_data = await axios.get(`${process.env.SERVER_API}/get/accommodation`)
     let fetch_accommodation = accommodation_data.data.payload
     setAccommodation(fetch_accommodation)
-    for (let i = 0; i < fetch_accommodation.length; i++) {
-      fetch_accommodation[i].type === "แพพัก" ? boatHouses.push(fetch_accommodation[i])
-        : hotels.push(fetch_accommodation[i])
-    }
+    setHotels(accommodation_data.data.hotel)
+    setBoatHouses(accommodation_data.data.boat_house)
+    // for (let i = 0; i < fetch_accommodation.length; i++) {
+    //   fetch_accommodation[i].type === "แพพัก" ? boatHouses.push(fetch_accommodation[i])
+    //     : hotels.push(fetch_accommodation[i])
+    // }
 
   }
   const getAttraction = async () => {
@@ -314,6 +327,37 @@ export default function index() {
             </div>
             <div className={styles['page-banner']} style={{ backgroundImage: `url('/img/home/banner.png')` }}></div>
             <div className={styles['menu-bg-box']}>
+              <div className={styles['sm-menu-wrap']}>
+                <div onClick={(e) => document.getElementById("accommodation-section").scrollIntoView({ behavior: 'smooth' })} className={styles['sm-menu-box']}>
+                  <img src="/img/menu/sm-accom-icon.png" alt="" />
+                  <span>ที่พัก</span>
+                </div>
+                <div onClick={(e) => document.getElementById("attraction-section").scrollIntoView({ behavior: 'smooth' })} className={styles['sm-menu-box']}>
+                  <img src="/img/menu/sm-attraction-icon.png" alt="" />
+                  <span>ที่เที่ยว</span>
+                </div>
+                <div onClick={(e) => document.getElementById("restaurant-section").scrollIntoView({ behavior: 'smooth' })} className={styles['sm-menu-box']}>
+                  <img src="/img/menu/sm-restaurant-icon.png" alt="" />
+                  <span>ร้านอาหาร/กาแฟ</span>
+                </div>
+                <div onClick={(e) => document.getElementById("transportation-section").scrollIntoView({ behavior: 'smooth' })} className={styles['sm-menu-box']}>
+                  <img src="/img/menu/sm-pt-icon.png" alt="" />
+                  <span>ขนส่งสาธารณะ</span>
+                </div>
+
+                <div onClick={(e) => document.getElementById("tradition-section").scrollIntoView({ behavior: 'smooth' })} className={styles['sm-menu-box']}>
+                  <img src="/img/menu/sm-tradition-icon.png" alt="" />
+                  <span>วัฒนธรรม</span>
+                </div>
+                <div onClick={(e) => document.getElementById("product-section").scrollIntoView({ behavior: 'smooth' })} className={styles['sm-menu-box']}>
+                  <img src="/img/menu/sm-product-icon.png" alt="" />
+                  <span>ผลิตภัณฑ์ชุมชน</span>
+                </div>
+                <div onClick={(e) => document.getElementById("review-section").scrollIntoView({ behavior: 'smooth' })} className={styles['sm-menu-box']}>
+                  <img src="/img/menu/sm-review-icon.png" alt="" />
+                  <span>รีวิว</span>
+                </div>
+              </div>
               <div className={styles['menu-wrap']}>
                 <div onClick={(e) => document.getElementById("accommodation-section").scrollIntoView({ behavior: 'smooth' })} className={styles['menu-box']}>
                   <img src="/img/home/house-icon.png" alt="" />
@@ -355,34 +399,42 @@ export default function index() {
                     <span>ที่พัก</span>
                     <span>โรงแรม / โฮมสเตย์ / รีสอร์ท / แพพัก / เรือนรับรอง / โฮสเทล</span>
                   </div>
-                  <div className={styles['accommodation-list']}>
-                    {hotels.length > 0 ? hotels.map((hotel) => (
-                      <div onClick={() => showAccommodationPopup(hotel)} key={hotel.id} className={styles['accommodation-item']} >
-                        <img src={hotel.images.length > 0 ? `${hotel.images[0]}` : '/accom-placeholder.png'} alt="" />
-                        <span className={styles['accommodation-name']} >{hotel.name}<br /></span>
-                        <div className={styles['price-box']} >
-                          <img className={styles['icon-b']} src="/img/accommodation/icon-B.png" alt="" />
-                          <span>{`${hotel.min_price} - ${hotel.max_price} บาท`}</span>
-                        </div>
-                      </div>
-                    )) : ''}
-                  </div>
-                  <div className={styles['boat-house-list']}>
-                    {boatHouses.length > 0 ? boatHouses.map((boatHouse) => (
-                      <div onClick={() => showAccommodationPopup(boatHouse)} key={boatHouse.id} className={styles['boat-house-item']}>
-                        <div className={styles['boat-image-box']} style={{ backgroundImage: `url('/img/home/boat-house-box.png')` }} >
-                          <img src={boatHouse.images.length > 0 ? `${boatHouse.images[0]}` : '/no-image-big.png'} alt="" />
-                        </div>
-                        <div className={styles['boat-house-name-box']}>
-                          <span className={styles['accommodation-name']} >{boatHouse.name}<br /></span>
-                          <div className={styles['price-box']} >
-                            <img className={styles['icon-b']} src="/img/accommodation/icon-B.png" alt="" />
-                            <span>{`${boatHouse.min_price} - ${boatHouse.max_price} บาท`}</span>
+                  <div className={styles['slider']}>
+                    <Slider  {...settings}>
+
+                      {hotels.length > 0 ? hotels.map((hotel) => (
+                        <div key={hotel.id} className={styles['slider-box']}>
+                          <div onClick={() => showAccommodationPopup(hotel)} key={hotel.id} className={styles['accommodation-item']} >
+                            <img src={hotel.images.length > 0 ? `${hotel.images[0]}` : '/accom-placeholder.png'} alt="" />
+                            <span className={styles['accommodation-name']} >{hotel.name}<br /></span>
+                            <div className={styles['price-box']} >
+                              <img className={styles['icon-b']} src="/img/accommodation/icon-B.png" alt="" />
+                              <span>{`${hotel.min_price} - ${hotel.max_price} บาท`}</span>
+                            </div>
                           </div>
                         </div>
-                      </div>
-                    )) : ''}
-
+                      )) : ''}
+                    </Slider>
+                  </div>
+                  <div className={styles['slider']}>
+                    <Slider {...BoatSettings}>
+                      {boatHouses.length > 0 ? boatHouses.map((boatHouse) => (
+                        <div className={styles['slider-box']} key={boatHouse.id}>
+                          <div onClick={() => showAccommodationPopup(boatHouse)} className={styles['boat-house-item']}>
+                            <div className={styles['boat-image-box']} style={{ backgroundImage: `url('/img/home/boat-house-box.png')` }} >
+                              <img src={boatHouse.images.length > 0 ? `${boatHouse.images[0]}` : '/no-image-big.png'} alt="" />
+                            </div>
+                            <div className={styles['boat-house-name-box']}>
+                              <span className={styles['accommodation-name']} >{boatHouse.name}<br /></span>
+                              <div className={styles['price-box']} >
+                                <img className={styles['icon-b']} src="/img/accommodation/icon-B.png" alt="" />
+                                <span>{`${boatHouse.min_price} - ${boatHouse.max_price} บาท`}</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      )) : ''}
+                    </Slider>
                   </div>
                   <Link href={'/accommodation'}><span className={styles['see-all-button']}>ดูทั้งหมด</span></Link>
                 </div>
@@ -556,15 +608,19 @@ export default function index() {
               <div className="col">
                 <div className={styles['product-flexbox']}>
                   <span className={styles['product-title']}>ผลิตภัณฑ์ชุมชน</span>
-                  <div className={styles['product-list']}>
-                    {products.length > 0 ? products.map((product) => (
-                      <div onClick={() => showProductPopup(product)} key={product.id} className={styles['product-item']}>
-                        <div className={styles['product-image-box']}>
-                          <div style={{ backgroundImage: `url(${product.images.length > 0 ? `${product.images[0]}` : '/no-imge.png'})` }}></div>
+                  <div className={styles['slider']}>
+                    <Slider {...BoatSettings}>
+                      {products.length > 0 ? products.map((product) => (
+                        <div className={styles['slider-box']} key={product.id}>
+                          <div onClick={() => showProductPopup(product)} key={product.id} className={styles['product-item']}>
+                            <div className={styles['product-image-box']}>
+                              <div style={{ backgroundImage: `url(${product.images.length > 0 ? `${product.images[0]}` : '/no-imge.png'})` }}></div>
+                            </div>
+                            <span>{product.name}</span>
+                          </div>
                         </div>
-                        <span>{product.name}</span>
-                      </div>
-                    )) : ''}
+                      )) : ''}
+                    </Slider>
                   </div>
                   <span onClick={(e) => router.push('/product')} className={styles['see-all-button']}>ดูทั้งหมด</span>
                 </div>
