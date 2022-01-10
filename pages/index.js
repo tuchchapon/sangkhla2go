@@ -233,7 +233,7 @@ export default function index() {
             <div
               style={{
                 position: "relative",
-                top: '40px',
+                top: '20px',
                 width: "24px",
                 height: "24px",
                 borderRadius: "50%",

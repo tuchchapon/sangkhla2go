@@ -2371,9 +2371,13 @@ $xxl: "screen and (min-width: 1400px)";
       display: flex;
       width: 288px;
       height: 168px;
-      top: 40px;
+      // top: 80px;
+      margin-top: 32px;
       left: 16px;
+      border-radius: 8px;
       @media #{$xxl} {
+        margin-top: 0;
+        border-radius: 16px;
         width: 577px;
         height: 382px;
         left: 40px;
@@ -2407,6 +2411,7 @@ $xxl: "screen and (min-width: 1400px)";
     display: flex;
     flex-direction: column;
     justify-content: center;
+    
     width: 320px;
     @media #{$xxl} {
       margin: 0 auto;
@@ -2433,6 +2438,7 @@ $xxl: "screen and (min-width: 1400px)";
       flex-wrap: wrap;
       width: 320px;
       align-items: center;
+      justify-content: center;
       @media #{$xxl} {
         width: 1170px;
       }
