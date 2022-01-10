@@ -21,15 +21,17 @@ $xxl: "screen and (min-width: 1400px)";
         justify-content: center;
         // align-items: center;
         height: 32px;
-        height: 320px;
         font-size: 24px;
         line-height: 32px;
         height: 112px;
-        font-size: 24px;
-        line-height: 32px;
         margin-bottom: 8px;
-        @media #{$xxl} {
+        @media #{$md} {
+            height: 224px;
+            font-size: 40px;
+            line-height: 48px;
             margin-bottom: 16px;
+        }
+        @media #{$xxl} {
             height: 446px;
             line-height: 88px;
             font-size: 80px;
@@ -38,8 +40,10 @@ $xxl: "screen and (min-width: 1400px)";
             position: relative;
             top: 24px;
             height: 32px;
+            @media #{$md} {
+            top: 40px;
+            }
             @media #{$xxl} {
-
                 top: 118px;
                 
             }
@@ -57,6 +61,12 @@ $xxl: "screen and (min-width: 1400px)";
             bottom: 24px;
             left: 83px;
             // display: none;
+            @media #{$md} {
+            left: 178px;
+            bottom: 48px;
+            width: 144px;
+            height: 56px;
+            }
             @media #{$xxl} {
                 width: 270px;
                 height: 104px;
@@ -70,6 +80,10 @@ $xxl: "screen and (min-width: 1400px)";
         left: 0;
         width: 77px;
         height: 43px;
+        @media #{$md} {
+            width: 168px;
+            height: 96px;   
+        }
         @media #{$xxl} {
             width: 305px;
             height: 168px;
@@ -81,6 +95,10 @@ $xxl: "screen and (min-width: 1400px)";
         right: 0;
         width: 127px;
         height: 48px;
+        @media #{$md} {
+         width: 272px;
+         height: 104px;   
+        }
         @media #{$xxl} {
             width: 505px;
             height: 184px;
@@ -93,6 +111,10 @@ $xxl: "screen and (min-width: 1400px)";
         left: 0;
         width: 130px;
         height: 80px;
+        @media #{$md} {
+         width: 273px;
+         height: 168px;   
+        }
         @media #{$xxl} {
             width: 505px;
             height: 320px;
@@ -105,6 +127,10 @@ $xxl: "screen and (min-width: 1400px)";
         right: 0;
         width: 104px;
         height: 104px;
+        @media #{$md} {
+         width: 216px;
+         height: 216px;   
+        }
         @media #{$xxl} {
             width: 434px;
             height: 432px;
@@ -149,6 +175,23 @@ $xxl: "screen and (min-width: 1400px)";
         height: 256px;
         margin: 0 20px 16px 0;
         padding: 7px;
+        &:nth-child(2n){
+            @media #{$xs} {
+                margin-right: 0;
+            }
+        }
+        &:nth-child(3n){
+            @media #{$md} {
+                margin-right: 0;
+            }
+        }
+        @media #{$md} {
+         flex: 0 0 calc((100% - 30px)/3);   
+         width: 220px;
+         height: 368px;
+         margin-right: 15px;
+         padding: 14.5px 14.5px 22.5px;
+        }
         @media #{$xxl} {
             border: 4px solid #383838;
             flex: 0 0 calc(( 100% - 60px)/3);
@@ -167,6 +210,10 @@ $xxl: "screen and (min-width: 1400px)";
             height: 134px;
             border-radius: 4px;
             margin-bottom: 10px;
+            @media #{$md} {
+                width: 188px;
+                height: 184px;
+            }
             @media #{$xxl} {
                 width: 322px ;
                 height: 322px;
@@ -176,16 +223,7 @@ $xxl: "screen and (min-width: 1400px)";
                 
             }
         }
-        &:nth-child(2n){
-            @media #{$xs} {
-                margin-right: 0;
-            }
-        }
-        &:nth-child(3n){
-            @media #{$xxl} {
-                margin-right: 0;
-            }
-        }
+
 
         span{
             text-align: start;
@@ -209,9 +247,23 @@ $xxl: "screen and (min-width: 1400px)";
                 height: 48px;
                 font-size: 16px;
                 line-height: 24px;
-                @media #{$xxl} {
-                    width: 330px;
+                @media #{$md} {
+                    word-break: break-word;
+                    white-space: pre-line;
+                    font-size: 16px;
+                    line-height: 24px;
                     height: 48px;
+                    width: 188px;
+                    display: -webkit-box;
+                    -webkit-box-orient: vertical;
+                    -webkit-line-clamp: 2;
+                }
+                @media #{$xxl} {
+                    white-space: pre;
+                    display: block;
+                    -webkit-line-clamp: unset;
+                    -webkit-box-orient: unset;
+                    width: 330px;
                     line-height: 48px;
                     font-size: 32px;
                     
@@ -242,8 +294,16 @@ $xxl: "screen and (min-width: 1400px)";
                 display: -webkit-box;
                 -webkit-box-orient: vertical;
                 -webkit-line-clamp: 2;
+                @media #{$md} {
+                    width: 188px;
+                    height: 72px;
+                    display: -webkit-box;
+                    -webkit-box-orient: vertical;
+                    -webkit-line-clamp: 3;
+                }
                 @media #{$xxl} { 
                     // white-space: nowrap;
+                    -webkit-line-clamp: 2;
                     font-size: 24px;
                     line-height: 40px;
                     height: 80px;
@@ -312,13 +372,18 @@ $xxl: "screen and (min-width: 1400px)";
     font-family: "sukhumvit";
     z-index: 3;
     background-color: #FBF6E9;
-    border: 4px solid #383838;
     box-sizing: border-box;
     border-radius: 16px;
     position: relative;
     justify-content: center;
     margin: auto;
     padding: 16px 20px 24px;
+    border: 2px solid #383838;
+    @media #{$md} {
+        border: 4px solid #383838;
+        max-width: 690px;
+        padding: 40px 0 44px ;
+    }
     @media #{$xxl} {
         max-height: 832px;
         padding: 40px 60px;
@@ -331,12 +396,11 @@ $xxl: "screen and (min-width: 1400px)";
     height: 16px;
     right:  8px;
     top: 8px;
-    @media #{$xxl} {
-        top: 20px;
+    @media #{$md} {
+        top: 24px;
         right: 24px;
         width: 32px;
         height: 32px;
-        
     }
     }
     .restaurant-flexbox{
@@ -349,7 +413,10 @@ $xxl: "screen and (min-width: 1400px)";
     width: 100%;
     height: 100%;
     max-width: 320px;
-    
+    @media #{$md} {
+        max-width: 690px;
+        padding: 0 60px;
+    }
     @media #{$xxl} {
         max-width: 1170px;
         max-height: 800px;
@@ -368,10 +435,14 @@ $xxl: "screen and (min-width: 1400px)";
                 color: #383838;
                 font-size: 16px;
                 line-height: 24px;
+                @media #{$md} {
+                    font-size: 40px;
+                    margin-bottom: 8px;
+                    line-height: 48px;
+                }
                 @media #{$xxl} {
                     font-size: 48px;
                     line-height: 56px;
-                    margin-bottom: 8px;
                     
                 }
             }
@@ -379,9 +450,13 @@ $xxl: "screen and (min-width: 1400px)";
                 color: #757575;
                 font-size: 16px;
                 line-height: 24px;
-                @media #{$xxl} {
-                    font-size: 20px;
+                @media #{$md} {
+                    
+                    font-size: 24px;
                     line-height: 32px;
+                    margin-bottom: 16px;
+                }
+                @media #{$xxl} {
                     margin-bottom: 8px;
                     
                 }
@@ -401,12 +476,12 @@ $xxl: "screen and (min-width: 1400px)";
         justify-content: center;
         span{
             width: 256px;
-            @media #{$xxl} {
+            @media #{$md} {
                 width: auto;
             }
             // display: none;
         }
-        @media #{$xxl} {
+        @media #{$md} {
             width: 100%;
             font-size: 24px;
             text-align: center;
@@ -417,6 +492,11 @@ $xxl: "screen and (min-width: 1400px)";
             width: 16px;
             height: 16px;
             margin-right: 8px;
+            @media #{$md} {
+                width: 24px;
+                height: 24px;
+
+            }
             @media #{$xxl} {
                 margin-right: 16px;
                 width: 32px;
@@ -437,6 +517,11 @@ $xxl: "screen and (min-width: 1400px)";
             width: 280px;
             height: 256px;
             margin-bottom: 16px;
+            @media #{$md} {
+                width: 570px;
+                height: 448px;
+                margin-bottom: 48px;
+            }
             @media #{$xxl} {
                 margin-right: 40px;
                 width: 485px;
@@ -447,6 +532,10 @@ $xxl: "screen and (min-width: 1400px)";
                 width: 280px;
                 height: 240px;
                 border-radius: 8px;
+                @media #{$md} {
+                    width: 570px;
+                    height: 448px;
+                }
                 @media #{$xxl} {
                     width: 485px;
                     height: 406px;
@@ -460,7 +549,10 @@ $xxl: "screen and (min-width: 1400px)";
                 object-fit: cover;
                 width: 280px;
                 height: 240px;
-
+                @media #{$md} {
+                   width: 100%; 
+                   height: 100%;
+                }   
                 border-radius: 16px;
                 @media #{$xxl} {
                     width: 485px;
@@ -471,7 +563,7 @@ $xxl: "screen and (min-width: 1400px)";
             .next {
               cursor: pointer;
               position: absolute;
-              top: 40%;
+              top: 35%;
               width: auto;
               padding: 16px;
               color: black;
@@ -482,8 +574,11 @@ $xxl: "screen and (min-width: 1400px)";
               -webkit-user-select: none;
               text-decoration: none;
               margin-top: 0;
-              @media #{$xxl} {
-                  margin-top: -50px;
+              @media #{$md} {
+                  top: 45%;
+            }
+            @media #{$xxl} {
+                  top: 40%;
                   
               }
 
@@ -547,6 +642,12 @@ $xxl: "screen and (min-width: 1400px)";
             font-size: 16px;
             line-height: 24px;
             margin-bottom: 8px;
+            @media #{$md} {
+                font-size: 24px;
+                line-height: 32px;
+                margin-bottom: 16px;
+                width: 570px;
+            }
             @media #{$xxl} {
                 font-size: 24px;
                 line-height: 40px;
@@ -565,17 +666,29 @@ $xxl: "screen and (min-width: 1400px)";
             font-size: 16px;
             line-height: 24px;
             display: flex;
+            @media #{$md} {
+                font-size: 24px;
+                line-height: 32px;
+                width: 365px;
+                margin-bottom: 16px;
+            }
             @media #{$xxl} {
                 display: block;
                 width: 485px;
                 font-size: 24px;
-                margin-bottom: 16px;
                 height: 32px;
                 
             }
             span{
                 width: 96px;
                 margin-right: 8px;
+                @media #{$md} {
+                    width: 170px;
+                    margin-right: 14px;
+                    b{
+                        width: 170px;
+                    }
+                }
                 @media #{$xxl} {
                     width: 138px;
                     margin-right: 50px;
@@ -589,6 +702,12 @@ $xxl: "screen and (min-width: 1400px)";
             font-size: 16px;
             line-height: 24px;
             display: flex;
+            @media #{$md} {
+                font-size: 24px;
+                line-height: 32px;
+                width: 365px;
+                margin-bottom: 16px;
+            }
             @media #{$xxl} {
                 display: block;
                 width: 485px;
@@ -600,6 +719,9 @@ $xxl: "screen and (min-width: 1400px)";
             span{
                 width: 96px;
                 margin-right: 8px;
+                @media #{$md} {
+                    width: 170px;
+                }
                 @media #{$xxl} {
                     width: 138px;
                     margin: 24px;
@@ -613,6 +735,10 @@ $xxl: "screen and (min-width: 1400px)";
             line-height: 24px;
             align-items: center;
             margin-bottom: 24px;
+            @media #{$md} {
+                font-size: 24px;
+                line-height: 32px;
+            }
             @media #{$xxl} {
                 width: 485px;
                 height: 32px;
@@ -623,7 +749,7 @@ $xxl: "screen and (min-width: 1400px)";
                 width: 16px;
                 height: 16px;
                 margin-right: 8px;
-                @media #{$xxl} {
+                @media #{$md} {
                 width: 32px;
                 height: 32px;
                 }
@@ -639,7 +765,10 @@ $xxl: "screen and (min-width: 1400px)";
         border-radius: 8px;
         padding: 16px 0;
         justify-content: center;
-        
+        @media #{$md} {
+            width: 570px;
+            padding: 32px 57px ;
+        }
         @media #{$xxl} {
             justify-content: flex-start;
             padding: 32px 37px;
@@ -657,6 +786,15 @@ $xxl: "screen and (min-width: 1400px)";
         
         // flex-wrap: wrap;
         flex: 0 0 calc((100%)/3);
+        @media #{$md} {
+            flex: 0 0 calc((100% - 48px)/4);
+         width: 120px;
+            height: 80;
+            margin-right: 16px;
+            &:nth-child(4n){
+                margin-right: 0;
+            }
+        }
         @media #{$xxl} {
             width: 121px;
             max-height: 48px;
@@ -684,9 +822,13 @@ $xxl: "screen and (min-width: 1400px)";
         justify-content: center;
         flex-direction: column;
         margin-top: 16px;
-        @media #{$xxl} {
-            margin: 40px 0 auto;
+        @media #{$md} {
+            flex-wrap: wrap;
             flex-direction: row;
+            margin: 12px auto;
+        }
+        @media #{$xxl} {
+            margin:  0 auto;
             
         }
         // margin-top: 40px;
@@ -697,17 +839,18 @@ $xxl: "screen and (min-width: 1400px)";
             align-items: center;
             justify-content: flex-start;
             width: 100%;
-            @media #{$xxl} {
+            @media #{$md} {
+                
                 width: auto;
                 justify-content: center;
-                margin: 0 24px;
+                margin: 12px 24px 0;
                 
             }
             img{
                 width: 16px;
                 height: 16px;
                 vertical-align: middle;
-                @media #{$xxl} {
+                @media #{$md} {
                     width: 24px;
                     height: 24px;
                     
@@ -718,7 +861,7 @@ $xxl: "screen and (min-width: 1400px)";
                 margin-left: 8px;
                 font-size: 16px;
                 line-height: 16px;
-                @media #{$xxl} {
+                @media #{$md} {
                     line-height: 32px;
                     font-size: 24px;
                 }

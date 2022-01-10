@@ -330,7 +330,6 @@ $xxl: "screen and (min-width: 1400px)";
                     @media #{$md} {
                         font-size: 16px;
                         line-height: 24px;
-                        
                     }
                     @media #{$xxl} {
                         height: 32px;
@@ -347,9 +346,8 @@ $xxl: "screen and (min-width: 1400px)";
                 object-fit: cover;
                 border-radius: 8px;
                 @media #{$md} {
-                width: 188px;
-                height: 188px;
-                
+                    width: 188px;
+                    height: 188px;
                 }
                 @media #{$xxl} {
                     object-fit: cover;
@@ -445,13 +443,13 @@ $xxl: "screen and (min-width: 1400px)";
     @media #{$md} {
         // padding: 40px 60px;
         max-width: 690px;
+        border: 4px solid #383838;
     }
     @media #{$xxl} {
         padding: 30px 20px 24px;
         margin: 40px auto;
         max-width: 1170px;
         max-height: 832px;
-        border: 4px solid #383838;
         border-radius: 16px;
         padding: 40px 60px;
     }
@@ -498,10 +496,12 @@ $xxl: "screen and (min-width: 1400px)";
                 font-size: 16px;
                 line-height: 24px;
                 @media #{$md} {
-                font-size: 40px;
-                line-height: 48px;
+                    margin-top: 8px;
+                    font-size: 40px;
+                    line-height: 56px;
                 }
                 @media #{$xxl} {
+                    margin-top: 12px;
                     font-size: 48px;
                     line-height: 56px;
                     margin-bottom: 8px;
@@ -515,8 +515,8 @@ $xxl: "screen and (min-width: 1400px)";
                 margin-bottom: 8px;
                 @media #{$md} {
                     margin-bottom: 16px;
-                font-size: 24px;
-                line-height: 32px;
+                    font-size: 24px;
+                    line-height: 32px;
                 }
                 @media #{$xxl} {
                     font-size: 24px;
@@ -531,7 +531,7 @@ $xxl: "screen and (min-width: 1400px)";
         flex-direction: column;
         margin-bottom: 8px;
         @media #{$md} {
-                align-items: center;
+            align-items: center;
         }
         @media #{$xxl} {
             align-items: initial;
@@ -545,9 +545,9 @@ $xxl: "screen and (min-width: 1400px)";
             position: relative;
             margin-bottom: 16px;
             @media #{$md} {
-            width: 570px;
-            height: 448px;
-            margin-bottom: 28px;
+                width: 570px;
+                height: 448px;
+                margin-bottom: 28px;
             }
             @media #{$xxl} {
                 margin-right: 40px;
@@ -561,8 +561,8 @@ $xxl: "screen and (min-width: 1400px)";
                 border-radius: 8px;
                 object-fit: fill;
                 @media #{$md} {
-                width: 570px;
-                height: 448px;
+                    width: 570px;
+                    height: 448px;
                 }
                 @media #{$xxl} {
                     width: 485px;
@@ -572,10 +572,14 @@ $xxl: "screen and (min-width: 1400px)";
                 }
             }
             .no-image {
-                object-fit: contain;
+                object-fit: cover;
                 width: 280px;
                 height: 240px;
                 border-radius: 8px;
+                @media #{$md} {
+                    width: 100%;
+                    height: 100%;
+                }
                 @media #{$xxl} {
                     width: 485px;
                     height: 509px;
@@ -638,7 +642,7 @@ $xxl: "screen and (min-width: 1400px)";
                 text-decoration: none;
                 margin-top: -20px;
                 @media #{$md} {
-                top: 50%;
+                    top: 50%;
                 }
                 @media #{$xxl} {
                     top: 40%;
@@ -696,7 +700,7 @@ $xxl: "screen and (min-width: 1400px)";
             justify-content: flex-start;
             margin-bottom: 24px;
             @media #{$md} {
-             flex-direction: column;   
+                flex-direction: column;
             }
             @media #{$xxl} {
                 flex-direction: column;
@@ -709,8 +713,8 @@ $xxl: "screen and (min-width: 1400px)";
             align-items: center;
             height: 16px;
             @media #{$md} {
-             height: 32px;   
-             margin-bottom: 24px;
+                height: 32px;
+                margin-bottom: 24px;
             }
             @media #{$xxl} {
                 height: 32px;
@@ -739,10 +743,9 @@ $xxl: "screen and (min-width: 1400px)";
             font-weight: 600;
             color: #383838;
             @media #{$md} {
-             margin-bottom: 32px;
-             line-height: 32px;
-             font-size: 24px;
-
+                margin-bottom: 32px;
+                line-height: 32px;
+                font-size: 24px;
             }
             @media #{$xxl} {
                 margin-bottom: 24px;
@@ -783,9 +786,9 @@ $xxl: "screen and (min-width: 1400px)";
             border-radius: 8px;
             padding: 16px 2px 15px;
             @media #{$md} {
-             width: 570px;   
-             height: 240px;
-             padding: 32px 21px;
+                width: 570px;
+                height: 240px;
+                padding: 32px 21px;
             }
             @media #{$xxl} {
                 width: 485px;
@@ -810,12 +813,12 @@ $xxl: "screen and (min-width: 1400px)";
                     margin-right: 52px;
                     margin-bottom: 16px;
                     height: 80px;
-                    &:nth-child(4n){
+                    &:nth-child(4n) {
                         margin-right: 0;
                     }
                 }
                 @media #{$xxl} {
-                    flex: 0 0 calc((100%)/4);
+                    flex: 0 0 calc((100%) / 4);
                     margin-right: 0;
                     // max-height: 48px;
                     width: 121px;
