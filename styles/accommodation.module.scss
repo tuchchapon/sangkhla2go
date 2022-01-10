@@ -480,9 +480,15 @@ $xxl: "screen and (min-width: 1400px)";
             }
             .no-image {
                 object-fit: contain;
-                border-radius: 16px;
-                width: 485px;
-                height: 509px;
+                width: 280px;
+                height: 240px;
+                border-radius: 8px;
+                @media #{$xxl} {
+                    width: 485px;
+                    height: 509px;
+                    border-radius: 16px;
+                    
+                }
             }
             .image-dots{
                 display: flex;
