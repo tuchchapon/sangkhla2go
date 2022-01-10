@@ -509,7 +509,7 @@ export default function index() {
                         <div className={styles['boat-house-slider-box']} key={boatHouse.id}>
                           <div onClick={() => showAccommodationPopup(boatHouse)} className={styles['boat-house-item']}>
                             <div className={styles['boat-image-box']} >
-                              <img src={boatHouse.images.length > 0 ? `${boatHouse.images[0]}` : '/no-image-big.png'} alt="" />
+                              <img src={boatHouse.images.length > 0 ? `${boatHouse.images[0]}` : '/accom-placeholder.png'} alt="" />
                             </div>
                             <div className={styles['boat-house-name-box']}>
                               <span className={styles['accommodation-name']} >{boatHouse.name}<br /></span>
