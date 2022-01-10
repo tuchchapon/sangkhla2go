@@ -37,10 +37,12 @@ function LeftArrow(props) {
 export default function index() {
 
   const router = useRouter();
+  const [nowDots, setNowDots] = useState(0)
   const [accommodation, setAccommodation] = useState([])
   const [hotels, setHotels] = useState([])
   const [boatHouses, setBoatHouses] = useState([])
   const [attractions, setAttractions] = useState([])
+  const [mobileAttraction, setMobileAttraction] = useState([])
   const [restaurants, setrestaurants] = useState([])
   const [locations, setLocations] = useState([])
   const [loading, setLoading] = useState(true)
@@ -135,26 +137,63 @@ export default function index() {
 
   const settings = {
     infinite: true,
-    speed: 1000,
+    speed: 2000,
     // fade:true,
     dot: true,
     slidesToShow: 3,
-    slidesToScroll: 6,
+    slidesToScroll: 3,
     autoplay: true,
     nextArrow: <RightArrow />,
-    prevArrow: <LeftArrow />
+    prevArrow: <LeftArrow />,
+    responsive: [
+      {
+        breakpoint: 1400,
+        settings: {
+          arrows: true,
+          speed: 2000,
+
+        }
+      },
+      {
+        breakpoint: 360,
+        settings: {
+
+          slidesToScroll: 1,
+          slidesToShow: 2,
+          dots: false,
+          arrows: false
+        }
+      },
+    ]
 
   }
   const BoatSettings = {
     infinite: true,
-    speed: 1000,
+    speed: 5000,
     // fade:true,
-    dot: true,
+    dots: false,
     slidesToShow: 4,
     slidesToScroll: 4,
     autoplay: true,
     nextArrow: <RightArrow />,
-    prevArrow: <LeftArrow />
+    prevArrow: <LeftArrow />,
+    responsive: [
+      {
+        breakpoint: 1400,
+        settings: {
+          arrows: true,
+        }
+      },
+      {
+        breakpoint: 360,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          dots: false,
+          arrows: false
+        }
+      },
+    ]
   }
   const videoSettings = {
     infinite: true,
@@ -163,21 +202,53 @@ export default function index() {
     dots: true,
     customPaging: i => (
       <div
-        style={{
-          position: "relative",
-          top: '40px',
-          width: "30px",
-          color: "#383838",
-        }}
+        className={styles['review-dots']}
       >
         {i + 1}
       </div>
     ),
     slidesToShow: 1,
     slidesToScroll: 1,
-    // autoplay: true,
     nextArrow: <RightArrow />,
-    prevArrow: <LeftArrow />
+    prevArrow: <LeftArrow />,
+    responsive: [
+      {
+        breakpoint: 1400,
+        settings: {
+          arrows: true,
+        }
+      },
+      {
+        breakpoint: 360,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          dots: true,
+          arrows: false,
+          beforeChange: (prev, next) => {
+            // this.setState({ currentSlide: next });
+            setNowDots(next)
+          },
+          customPaging: (i) => (
+            <div
+              style={{
+                position: "relative",
+                top: '40px',
+                width: "24px",
+                height: "24px",
+                borderRadius: "50%",
+                color: "#383838",
+                border: '1px solid #383838',
+                backgroundColor: `${i === nowDots ? '#E1D3B6' : '#FBF6E9'}`,
+              }}
+
+            >
+              {`${i + 1}`}
+            </div>
+          ),
+        }
+      },
+    ]
 
   }
 
@@ -213,6 +284,11 @@ export default function index() {
     let attraction_data = await axios.get(`${process.env.SERVER_API}/get/init-attraction`)
     console.log('attraction is', attraction_data.data.payload);
     setAttractions(attraction_data.data.payload)
+  }
+  const getMobileAttraction = async () => {
+    let mobile_attraction_data = await axios.get(`${process.env.SERVER_API}/get/init-attraction-mobile`)
+    console.log('mobile attraction is', mobile_attraction_data.data.payload);
+    setMobileAttraction(mobile_attraction_data.data.payload)
   }
   const getBoatProvider = async () => {
     let boat_data = await axios.get(`${process.env.SERVER_API}/get/boat-provider`)
@@ -250,13 +326,23 @@ export default function index() {
   const getWinlocation = async () => {
     let location_data = await axios.get(`${process.env.SERVER_API}/get/driverLocation`)
     let location_api = []
-    if (location_data.status === 200) {
-      let location_sort = location_data.data.payload
-      for (let i = 0; i < 8; i++) {
+    if (screen.availWidth < 1400) {
+      if (location_data.status === 200) {
+        for (let i = 0; i < 4; i++) {
 
-        location_api.push(location_data.data.payload[i])
+          location_api.push(location_data.data.payload[i])
+        }
+        setLocations(location_api)
       }
-      setLocations(location_api)
+    }
+    else {
+      if (location_data.status === 200) {
+        for (let i = 0; i < 8; i++) {
+
+          location_api.push(location_data.data.payload[i])
+        }
+        setLocations(location_api)
+      }
     }
   }
   const getReview = async () => {
@@ -279,6 +365,7 @@ export default function index() {
       const getData = async () => {
         hotels.length === 0 ? await getAccommodation() : null
         attractions.length === 0 ? await getAttraction() : null
+        mobileAttraction.length === 0 ? await getMobileAttraction() : null
         boatProviders.length === 0 ? await getBoatProvider() : null
         restaurants.length === 0 ? await getRestaurant() : null
         karenTraditions.length === 0 || monTraditions.length === 0 ? await getTradition() : null
@@ -419,9 +506,9 @@ export default function index() {
                   <div className={styles['slider']}>
                     <Slider {...BoatSettings}>
                       {boatHouses.length > 0 ? boatHouses.map((boatHouse) => (
-                        <div className={styles['slider-box']} key={boatHouse.id}>
+                        <div className={styles['boat-house-slider-box']} key={boatHouse.id}>
                           <div onClick={() => showAccommodationPopup(boatHouse)} className={styles['boat-house-item']}>
-                            <div className={styles['boat-image-box']} style={{ backgroundImage: `url('/img/home/boat-house-box.png')` }} >
+                            <div className={styles['boat-image-box']} >
                               <img src={boatHouse.images.length > 0 ? `${boatHouse.images[0]}` : '/no-image-big.png'} alt="" />
                             </div>
                             <div className={styles['boat-house-name-box']}>
@@ -449,9 +536,22 @@ export default function index() {
                   <div className={styles['attraction-title-box']}>
                     <span>สถานที่ท่องเที่ยว</span>
                     <span>
-                      สัมผัสบรรยากาศธรรมชาติ วัฒนธรรม<br />
+                      สัมผัสบรรยากาศ ธรรมชาติ วัฒนธรรม<br />
                       เกษตรกรรมและชุมชน แบบสังขละบุรี
                     </span>
+                  </div>
+                  <div className={styles['sm-attraction-map-box']}>
+                    <div className={styles['sm-attraction-map']}>
+
+                    </div>
+                    <div className={styles['sm-attraction-list']}>
+                      {mobileAttraction.length > 0 ? mobileAttraction.map((mbAttraction, i) => (
+                        <div className={styles['sm-attraction-item']} onClick={(e) => showAttractionPopup(mbAttraction)} key={mbAttraction.id}>
+                          <div className={styles['attraction-number']}>{i + 1}</div>
+                          <span>{mbAttraction.name}</span>
+                        </div>
+                      )) : ''}
+                    </div>
                   </div>
                   <div className={styles['attraction-map']}>
                     {attractions.length > 0 ? attractions.map((attraction, i) => (
@@ -460,9 +560,9 @@ export default function index() {
                       </div>
                     )) : ''}
                   </div>
-                  <span onClick={(e) => router.push('/attraction')} className={styles['see-all-button']}>ดูทั้งหมด</span>
+                  <span onClick={(e) => router.push('/attraction')} className={styles['see-all-button']}>{screen.availWidth > 360 ? "ดูทั้งหมด" : "ดูข้อมูลสถานที่ทั้งหมด"}</span>
                   <div className={styles['leader-box']}>
-                    <div className="container">
+                    <div className="container-fluid">
                       <div className="col-12">
                         <div className={styles['leader-row-box']}>
                           <div className={styles['leader-left-box']}>
@@ -513,8 +613,10 @@ export default function index() {
               </div>
               <div onClick={(e) => router.push('/restaurant')} className={styles['see-all-box']}> <span className={styles['see-all-button']}>ดูทั้งหมด</span></div>
               <div className={styles['restaurant-bg-image-box']}>
-                <img src="/img/restaurant/title-bottom-left.png" alt="" />
-                <img src="/img/restaurant/title-bottom-right.png" alt="" />
+                {/* <img src="/img/restaurant/title-bottom-left.png" alt="" /> */}
+                <div></div>
+                <div></div>
+                {/* <img src="/img/restaurant/title-bottom-right.png" alt="" /> */}
               </div>
             </div>
           </div>
@@ -522,6 +624,14 @@ export default function index() {
             <div className="container">
               <div className={styles['transportation-flexbox']}>
                 <span className={styles['transportation-title']}>ขนส่งสาธารณะ</span>
+                <span className={styles['sm-win-title']}>วินมอเตอร์ไซค์</span>
+                <div className={styles['sm-location-list']}>
+                  {locations.map((location) => (
+                    <div onClick={(e) => ShowWinPopup(e, location)} key={location.id} className={styles['sm-location-item']}>
+                      <span>{location.location_name}</span>
+                    </div>
+                  ))}
+                </div>
                 <div className={styles['location-map-box']}>
                   <span className={styles['win-title']}>วินมอเตอร์ไซค์</span>
                   {locations.map((location, i) => (
@@ -563,9 +673,12 @@ export default function index() {
                       ประเพณีชาวกะเหรี่ยง
                     </div>
                     <div className={styles['black-line']}></div>
+
                   </div>
+                  <span className={styles['sm-tradition-title']}>ประเพณี</span>
+                  <div className={styles['sm-karen-title']}></div>
                   <div className={styles['tradition-list-box']}>
-                    {karenTraditions.length > 0 ? karenTraditions.map((karen) => (
+                    {karenTraditions.length > 0 ? karenTraditions.map((karen, i) => (
                       <div onClick={() => showKarenPopup(karen)} key={karen.id} className={styles['tradition-item']}>
                         <div className={styles['image-box-size']}>
 
@@ -574,7 +687,7 @@ export default function index() {
 
                           </div>
                         </div>
-                        <div className={styles['month-name-box']}>{karen.month}</div>
+                        <div className={styles['month-name-box']}>{screen.availWidth < 1400 ? i === 0 ? "มกราคม" : i === 1 ? "กุมภาพันธ์" : i === 2 ? "มีนาคม" : i === 3 ? "เมษายน" : '' : karen.month}</div>
                       </div>
                     )) : ''}
                   </div>
@@ -584,8 +697,9 @@ export default function index() {
                       ประเพณีชาวมอญ
                     </div>
                   </div>
+                  <div className={styles['sm-mon-title']}></div>
                   <div className={styles['tradition-list-box']}>
-                    {monTraditions.length > 0 ? monTraditions.map((mon) => (
+                    {monTraditions.length > 0 ? monTraditions.map((mon, i) => (
                       <div onClick={() => showMonPopup(mon)} key={mon.id} className={styles['tradition-item']}>
                         <div className={styles['image-box-size']}>
 
@@ -594,11 +708,11 @@ export default function index() {
 
                           </div>
                         </div>
-                        <div className={styles['month-name-box']}>{mon.month}</div>
+                        <div className={styles['month-name-box']}>{screen.availWidth < 1400 ? i === 0 ? "มกราคม" : i === 1 ? "กุมภาพันธ์" : i === 2 ? "มีนาคม" : i === 3 ? "เมษายน" : '' : mon.month}</div>
                       </div>
                     )) : ''}
                   </div>
-                  <span onClick={(e) => router.push('/traditions')} className={styles['see-all-button']}>ดูทั้งหมด</span>
+                  <div onClick={(e) => router.push('/traditions')} className={styles['see-all-box']}><span className={styles['see-all-button']}>ดูทั้งหมด</span></div>
                 </div>
               </div>
             </div>
@@ -628,6 +742,7 @@ export default function index() {
             </div>
           </div>
           <div id='review-section' className={styles['review-section']}>
+            <span className={styles['sm-review-head']}>สังขละรีวิว</span>
             <div className="container">
               <div className="col">
                 <div className={styles['review-flexbox']}>
@@ -636,33 +751,61 @@ export default function index() {
                     <div className="row">
                       <div className="col-md-8">
                         <div className={styles['review-slider-box']}>
-                          <Slider {...videoSettings}>
+                          {screen.availWidth > 1400 ? (
+                            <Slider {...videoSettings}>
+                              <div className={styles['video-item']}>
+                                <iframe width="577" height="315" src="https://www.youtube.com/embed/36iD3HmGt8g" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                              </div>
+                              <div className={styles['video-item']}>
+                                <iframe width="560" height="315" src="https://www.youtube.com/embed/7myqazGs5_Y" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                              </div>
+                              <div className={styles['video-item']}>
+                                <iframe width="560" height="315" src="https://www.youtube.com/embed/MKJZ3Jdsucg" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                              </div>
+                              <div className={styles['video-item']}>
+                                <iframe width="560" height="315" src="https://www.youtube.com/embed/jD7vUEytFdw" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                              </div>
+                              <div className={styles['video-item']}>
+                                <iframe width="560" height="315" src="https://www.youtube.com/embed/Wr1PBrBZkQw" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                              </div>
+                              <div className={styles['video-item']}>
+                                <iframe width="560" height="315" src="https://www.youtube.com/embed/BHFVD2hJ7KA" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                              </div>
+                              <div className={styles['video-item']}>
+                                <iframe width="560" height="315" src="https://www.youtube.com/embed/B7ync4odCJk" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                              </div>
+                              <div className={styles['video-item']}>
+                                <iframe width="560" height="315" src="https://www.youtube.com/embed/v_ulqJa2Jpw" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                              </div>
+
+                            </Slider>
+                          ) : <Slider {...videoSettings}>
                             <div className={styles['video-item']}>
-                              <iframe width="577" height="315" src="https://www.youtube.com/embed/36iD3HmGt8g" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                              <iframe width="288" height="168" src="https://www.youtube.com/embed/36iD3HmGt8g" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                             </div>
                             <div className={styles['video-item']}>
-                              <iframe width="560" height="315" src="https://www.youtube.com/embed/7myqazGs5_Y" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                              <iframe width="288" height="168" src="https://www.youtube.com/embed/7myqazGs5_Y" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                             </div>
                             <div className={styles['video-item']}>
-                              <iframe width="560" height="315" src="https://www.youtube.com/embed/MKJZ3Jdsucg" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                              <iframe width="288" height="168" src="https://www.youtube.com/embed/MKJZ3Jdsucg" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                             </div>
                             <div className={styles['video-item']}>
-                              <iframe width="560" height="315" src="https://www.youtube.com/embed/jD7vUEytFdw" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                              <iframe width="288" height="168" src="https://www.youtube.com/embed/jD7vUEytFdw" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                             </div>
                             <div className={styles['video-item']}>
-                              <iframe width="560" height="315" src="https://www.youtube.com/embed/Wr1PBrBZkQw" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                              <iframe width="288" height="168" src="https://www.youtube.com/embed/Wr1PBrBZkQw" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                             </div>
                             <div className={styles['video-item']}>
-                              <iframe width="560" height="315" src="https://www.youtube.com/embed/BHFVD2hJ7KA" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                              <iframe width="288" height="168" src="https://www.youtube.com/embed/BHFVD2hJ7KA" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                             </div>
                             <div className={styles['video-item']}>
-                              <iframe width="560" height="315" src="https://www.youtube.com/embed/B7ync4odCJk" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                              <iframe width="288" height="168" src="https://www.youtube.com/embed/B7ync4odCJk" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                             </div>
                             <div className={styles['video-item']}>
-                              <iframe width="560" height="315" src="https://www.youtube.com/embed/v_ulqJa2Jpw" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                              <iframe width="288" height="168" src="https://www.youtube.com/embed/v_ulqJa2Jpw" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                             </div>
 
-                          </Slider>
+                          </Slider>}
                         </div>
                       </div>
                       <div className="col-md-4">
