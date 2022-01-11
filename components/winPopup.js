@@ -53,11 +53,18 @@ export default function winPopup({ open, onClose, activeWin }) {
                                 <div className={styles['win-flexbox']}>
                                     <img className={styles['popup-close-icon']} onClick={() => closeWinPopup()} src='/Quit.png' alt="" />
                                     <span className={styles['location-name']}>{activeWin ? activeWin.location_name : ''}</span>
-                                    {activeWin && activeWin.location_detail ? <label className={styles['location-detail']} ><img src="/glass.png" alt="" />{activeWin ? activeWin.location_detail : ''}</label> : ''}
+                                    {activeWin && activeWin.location_detail ? <div className={styles['location-detail']} >
+                                        <img src="/glass.png" alt="" />
+                                        <span>{activeWin ? activeWin.location_detail : ''}</span>
+                                    </div> : ''}
                                     <div className={styles['popup-win-box']}>
                                         {drivers ? drivers.map((driver) => (
                                             <div className={styles['popup-win-item']} key={driver.id}>
-                                                <img className={styles['driver-image']} style={{ backgroundImage: `url(${driver.image ? `${driver.image}` : '/img/publictranspotation/winCoverPlaceholder.png'})` }} src={driver.image ? '/img/publictranspotation/driver-img-frame.png' : '/img/publictranspotation/winCoverPlaceholder.png'} alt="" />
+                                                <div className={styles['driver-image']} >
+                                                    {/* <img src={driver.image ? `${driver.image}` : '/img/publictranspotation/winCoverPlaceholder.png'} alt="" /> */}
+                                                    <img src={`${driver.image ? driver.image : '/img/publictranspotation/winCoverPlaceholder.png'}`} alt="" />
+                                                </div>
+
                                                 {/* <Image style src={driver.image ? '/img/publictranspotation/driver-img-frame.png':'/img/publictranspotation/winCoverPlaceholder.png'} width={134} height={134} /> */}
                                                 <span className={styles['popup-win-name']} >{driver.name}</span>
                                                 <span className={styles['popup-win-tel']} >{driver.contact}</span>

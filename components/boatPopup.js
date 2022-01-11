@@ -40,9 +40,20 @@ export default function boatPopup({ open, onClose, activeBoat }) {
                 }
             },
             {
+                breakpoint: 768,
+                settings: {
+                    dots: true,
+                    arrows: false,
+                    // slidesToShow: 2,
+                    // slidesToScroll: 2,
+                    // initialSlide: 2
+                }
+            },
+            {
                 breakpoint: 360,
                 settings: {
-                    dots: true
+                    dots: true,
+                    arrows: false,
                     // slidesToShow: 2,
                     // slidesToScroll: 2,
                     // initialSlide: 2
@@ -64,41 +75,41 @@ export default function boatPopup({ open, onClose, activeBoat }) {
                     <div className={styles['popup-fixed-box']}>
                         <div className={styles['boat-popup']}>
                             <img className={styles['popup-close-icon']} src='/Quit.png' onClick={() => onClose()} alt="" />
-                            <span className={styles['popup-club-name']} >ชมรม : {activeBoat.club_name}</span>
-                            <span className={styles['popup-boat-name']}>เรือ {activeBoat.provider_name}</span>
-                            <div className={styles['boat-d-flex']} >
-                                <div className={styles['provider-detail-box']} >
-                                    <img className={styles['boat-provider-image']} style={{ backgroundImage: `url(${activeBoat.provider_image ? `${activeBoat.provider_image}` : '/img/publictranspotation/provider-img-frame.png'})` }} src={activeBoat.provider_image ? '/img/publictranspotation/provider-img-frame.png' : '/img/publictranspotation/boatProviderPlaceholder.png'} alt="" />
-                                    <div className={styles['provider-name-box']} >
-                                        <p >เจ้าของเรือ</p>
-                                        <span>{activeBoat.provider_name}</span>
+                            <div className={styles['boat-column-box']}>
+                                <span className={styles['popup-club-name']} >ชมรม : {activeBoat.club_name}</span>
+                                <span className={styles['popup-boat-name']}>เรือ {activeBoat.provider_name}</span>
+                                <div className={styles['boat-d-flex']} >
+                                    <div className={styles['provider-detail-box']} >
+                                        <img className={styles['boat-provider-image']} style={{ backgroundImage: `url(${activeBoat.provider_image ? `${activeBoat.provider_image}` : '/img/publictranspotation/provider-img-frame.png'})` }} src={activeBoat.provider_image ? '/img/publictranspotation/provider-img-frame.png' : '/img/publictranspotation/boatProviderPlaceholder.png'} alt="" />
+                                        <div className={styles['provider-name-box']} >
+                                            <p >เจ้าของเรือ</p>
+                                            <span>{activeBoat.provider_name}</span>
+                                        </div>
                                     </div>
-                                </div>
-                                <div className={styles['boat-detail-box']} >
-                                    <div className={styles['boat-driver-box']}>
-                                        <span style={{ fontWeight: 'bold' }} >ผู้ขับเรือ : </span>
-                                        <span>{activeBoat.driver_name}</span>
+                                    <div className={styles['boat-detail-box']} >
+                                        <div className={styles['boat-driver-box']}>
+                                            <span style={{ fontWeight: 'bold' }} >ผู้ขับเรือ : </span>
+                                            <span>{activeBoat.driver_name}</span>
+                                        </div>
+                                        <div className={styles['text-column-box']}>
+                                            <span className={styles['boat-left-text']}>จำนวนเรือ : </span>
+                                            <span className={styles['boat-right-text']} >{activeBoat.boat_quantity} ลำ</span>
+                                        </div>
+                                        <div className={styles['text-column-box']}>
+                                            <span className={styles['boat-left-text']} >จำนวนผู้โดยสารสูงสุด : </span>
+                                            <span className={styles['boat-right-text']} >{activeBoat.max_passenger} คน</span>
+                                        </div>
+                                        <div className={styles['text-column-box']}>
+                                            <span className={styles['boat-left-text']}>อุปกรณ์ความปลอดภัย : </span>
+                                            <span className={styles['boat-right-text']} >มี</span>
+                                        </div>
+                                        <div className={styles['text-column-box']}>
+                                            <span className={styles['boat-left-text']} >โทร :</span>
+                                            <span className={styles['boat-right-text']} >{activeBoat.contact}</span>
+                                        </div>
                                     </div>
-                                    <div className={styles['text-column-box']}>
-                                        <span className={styles['boat-left-text']}>จำนวนเรือ : </span>
-                                        <span className={styles['boat-right-text']} >{activeBoat.boat_quantity} ลำ</span>
-                                    </div>
-                                    <div className={styles['text-column-box']}>
-                                        <span className={styles['boat-left-text']} >จำนวนผู้โดยสารสูงสุด : </span>
-                                        <span className={styles['boat-right-text']} >{activeBoat.max_passenger} คน</span>
-                                    </div>
-                                    <div className={styles['text-column-box']}>
-                                        <span className={styles['boat-left-text']}>อุปกรณ์ความปลอดภัย : </span>
-                                        <span className={styles['boat-right-text']} >มี</span>
-                                    </div>
-                                    <div className={styles['text-column-box']}>
-                                        <span className={styles['boat-left-text']} >โทร :</span>
-                                        <span className={styles['boat-right-text']} >{activeBoat.contact}</span>
-                                    </div>
-                                </div>
 
-                            </div>
-                            <div className="col">
+                                </div>
                                 <div className={styles['boat-image-box']} >
                                     <div className={styles['slider']}>
                                         <Slider {...settings} >
@@ -109,6 +120,7 @@ export default function boatPopup({ open, onClose, activeBoat }) {
                                     </div>
                                 </div>
                             </div>
+
                         </div>
                     </div>
                 </div>
