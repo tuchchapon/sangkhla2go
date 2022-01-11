@@ -40,6 +40,16 @@ export default function traditionPopup({ open, onClose, activeKarenTradition }) 
                 }
             },
             {
+                breakpoint: 786,
+                settings: {
+                    dots: true,
+                    arrows: false
+                    // slidesToShow: 2,
+                    // slidesToScroll: 2,
+                    // initialSlide: 2
+                }
+            },
+            {
                 breakpoint: 360,
                 settings: {
                     dots: true

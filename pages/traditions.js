@@ -100,7 +100,7 @@ export default function traditions() {
                                             <div style={{ backgroundImage: `url(${karenTradition.images.length > 0 ? `${karenTradition.images[0]}` : '/img/tradition/traditionPlaceholder.png'})` }} className={styles['tradition-image']}></div>
                                         </div>
                                     </div>
-                                    <div className={styles['month-name-box']} onClick={() => console.log(karenTradition)} ><span>{karenTradition.month}</span></div>
+                                    <div className={styles['sm-month-name-box']} onClick={() => console.log(karenTradition)} ><span>{karenTradition.month}</span></div>
                                     <span className={styles['tradition-name']} >{karenTradition.name}</span>
                                     <span className={styles['tradition-local-name']} >{karenTradition.local_name ? `(${karenTradition.local_name})` : ''}</span>
                                 </div>
@@ -111,7 +111,7 @@ export default function traditions() {
                                             <div style={{ backgroundImage: `url(${montradition.images.length > 0 ? `${montradition.images[0]}` : '/img/tradition/traditionPlaceholder.png'})` }} className={styles['tradition-image']}></div>
                                         </div>
                                     </div>
-                                    <div className={styles['month-name-box']} onClick={() => console.log(montradition)} ><span>{montradition.month}</span></div>
+                                    <div className={styles['sm-month-name-box']} onClick={() => console.log(montradition)} ><span>{montradition.month}</span></div>
                                     <span className={styles['tradition-name']} >{montradition.name}</span>
                                 </div>
                             ))}

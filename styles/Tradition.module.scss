@@ -19,6 +19,10 @@ $xxl: "screen and (min-width: 1400px)";
        width: 255px;
        height: 72px;
    }
+   @media #{$md} {
+       width: 510px;
+       height: 144px;
+   }
    @media #{$xxl} {
        width: fit-content;
        height: fit-content;
@@ -31,6 +35,9 @@ $xxl: "screen and (min-width: 1400px)";
     width: 470px;
     right: -63px;
     @media #{$xs} {
+        display: none;
+    }
+    @media #{$md} {
         display: none;
     }
     @media #{$xxl} {
@@ -67,12 +74,16 @@ $xxl: "screen and (min-width: 1400px)";
         right: 0;
         height: 72px;
     }
+    @media #{$md} {
+        justify-content: flex-end;
+         height: 144px;   
+    }
     @media #{$xxl} {
         justify-content: space-between;
-        bottom: -46px;
+        // bottom: -46px;
         right: 27px;
-        height: 156px;
-        padding-bottom: 8px;
+        height: 202px;
+        // padding-bottom: 8px;
         border-bottom:  4px solid #383838;
         margin-bottom: 56px;
     }
@@ -85,6 +96,16 @@ $xxl: "screen and (min-width: 1400px)";
                 // left: 36px;
                 width: 150px;
                 height: 46px;
+            }
+        }
+        @media #{$md} {
+            // width: 300px;
+            height: 144px;
+            img{
+            position: relative;
+            width: 300px;
+            height: 92px;
+            top: 20px;
             }
         }
         @media #{$xxl} {
@@ -107,6 +128,13 @@ $xxl: "screen and (min-width: 1400px)";
         @media #{$xs} {
             font-size: 24px;
             right: 16px;
+        }
+        @media #{$md} {
+            font-size: 40px;
+            line-height: 48px;
+            right: 0;
+            top: 24px;
+            width: 240px;
         }
         @media #{$xxl} {
             left: 100px;
@@ -140,6 +168,16 @@ $xxl: "screen and (min-width: 1400px)";
                 width: 170px;
                 height: 38px;
                 position: absolute;
+                @media #{$md} {
+                    width: 330px;
+                    height: 72px;
+                }
+            }
+            @media #{$md} {
+                background-image: url('/img/tradition//md-karen-active.png');
+                margin-top: 16px;
+                width: 690px;
+                height: 72px;
             }
             
         }
@@ -153,24 +191,34 @@ $xxl: "screen and (min-width: 1400px)";
             left: -2px;
             width: 340px;
             height: 38px;
-            .change-tab{
-                                
+            .change-tab{      
                 left: 0;
                 width: 170px;
                 height: 38px;
                 position: absolute;
+                @media #{$md} {
+                    width: 330px;
+                    height: 72px;
+                }
+            }
+            @media #{$md} {
+                background-image: url('/img/tradition/md-mon-active.png');
+                margin-top: 16px;
+                width: 690px;
+                height: 72px;
             }
         }
 
         .tradition-small-box{
             display: flex;
             flex-wrap: wrap;
-            flex: 0 0 calc((100% - 20px)/2);
+            // 
             margin: 56px auto 0;
             justify-content: center;
             // max-width: 1172px;
             .small-tradition-item{
                 font-family: tahoma;
+                flex: 0 0 calc((100% - 20px)/2);
                 color: #383838;
                 cursor: pointer;
                 align-items: center;
@@ -181,11 +229,21 @@ $xxl: "screen and (min-width: 1400px)";
                 flex-direction: column;
                 margin-bottom: 24px;
                 // border: 1px solid blue;
-                &:nth-child(2n) {
-                    margin-right: 0;
+                @media #{$xs} {
+                    &:nth-child(2n) {
+                        margin-right: 0;
+                        }
+                }
+                @media #{$md} {
+                    font-family: "sukhumvit";
+                    // margin-right: 0px;
+                    flex: 0 0 calc((100% - 60px)/4);
+                    &:nth-child(4n){
+                        margin-right: 0;
                     }
+                }
 
-                    .month-name-box{
+                    .sm-month-name-box{
                         font-family: 'sukhumvit';
                         position: relative;
                         display: flex;
@@ -193,32 +251,51 @@ $xxl: "screen and (min-width: 1400px)";
                         align-items: center;
                         font-size: 16px;
                         line-height: 32px;
-                        font-weight: bold;
+                        font-weight: 500;
                         width: 150px;
                         height: 40px;
-                        background-image: url("/img/tradition/month-name-box.png");
+                        border-radius: 10px;
+                        border: 2px solid #383838;
+                        background-color: #FFFDF8;
+                        // background-image: url("/img/tradition/month-name-box.png");
                         background-position: center;
                         background-repeat: no-repeat;
-                        background-size: contain;
-                    
+                        background-size: cover;
+                        @media #{$md} {
+                            border: 3px solid #383838;
+                            font-size: 20px;
+                            line-height: 24px;
+                        }
                     }
                     .tradition-name{
                         margin-top: 8px;
                         font-size: 10px;
-                        width: 128px;
+                        max-width: 128px;
+                        width: 100%;
                         word-break: break-word;
                         font-weight: bold;
                         line-height: 16px;
                         color: #383838;
                         text-align: center;
+                        @media #{$md} {
+                            max-width: 159px;
+                            font-size: 16px;
+                            line-height: 24px;
+                        }
                     }
                     .tradition-local-name{
                         color: #383838;
                         font-size: 10px;
                         line-height: 16px;
+                        word-break: break-word;
                         text-align: center;
                         width: 100%;
                         max-width: 128px;
+                        @media #{$md} {
+                            max-width: 140px;
+                            font-size: 16px;
+                            line-height: 24px;
+                        }
                     }
 
                     .image-box-size{
@@ -250,7 +327,33 @@ $xxl: "screen and (min-width: 1400px)";
                         height: 116px;
                         top: 2px;
                         left: 3px;
+                        &::before{
+                            content: '';
+                            position: absolute;
+                            width: 114px;
+                            height: 116px;
+                            opacity: 0.5;
+                            border-radius: 47%;
+                            background: rgba(56, 56, 56, 0.5);
+                            display: none;
+                        }
                     }
+                    &:hover .sm-month-name-box{
+                        background-color: #E1D3B6;
+                    }
+                    &:hover .tradition-name{
+                        color: #757575;;
+                    }
+                    &:hover .tradition-local-name{
+                        color: #757575;;
+                    }
+                    &:hover .tradition-image{
+                        // opacity: 0.8;
+                        &::before{
+                            display: block;
+                        }
+                    }
+
             }
         }
     }
@@ -357,19 +460,21 @@ $xxl: "screen and (min-width: 1400px)";
 }
 
 .month-name-box{
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 24px;
-    line-height: 32px;
-    font-weight: bold;
-    width: 270px;
-    height: 80px;
-    background-image: url("/img/tradition/month-name-box.png");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+    @media #{$xxl} {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 24px;
+        line-height: 32px;
+        font-weight: bold;
+        width: 270px;
+        height: 80px;
+        background-image: url("/img/tradition/month-name-box.png");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
 
 }
 .tradition-grid-box{
@@ -443,6 +548,10 @@ $xxl: "screen and (min-width: 1400px)";
     height: 95%;
     max-width: 320px;
     padding: 26px 0 16px;
+    @media #{$md} {
+        padding: 40px 0 ;
+        max-width: 690px;
+    }
     @media #{$xxl} {
         max-width: 970px;
         max-height: 980px;
@@ -456,7 +565,7 @@ $xxl: "screen and (min-width: 1400px)";
         height: 16px;
         right: 8px;
         top: 8px;
-        @media #{$xxl} {
+        @media #{$md} {
             top: 20px;
             right: 24px;
             width: 32px;
@@ -471,6 +580,9 @@ $xxl: "screen and (min-width: 1400px)";
         overflow-x: hidden;
         padding: 0 20px;
         height: 100%;
+        @media #{$md} {
+            padding: 0 60px;
+        }
         @media #{$xxl} {
             
             max-height: 800px;
@@ -490,6 +602,13 @@ $xxl: "screen and (min-width: 1400px)";
         width: 280px;
         font-size: 16px;
         margin: 0 auto 8px auto;
+        @media #{$md} {
+         font-size: 32px;   
+         line-height: 48px;
+         width: auto;
+         margin-bottom: 16px;
+         height: auto;
+        }
         @media #{$xxl} {
             margin: 0 auto 40px auto;
             line-height: 40px;
@@ -508,6 +627,10 @@ $xxl: "screen and (min-width: 1400px)";
         font-size: 16px;
         line-height: 16px;
         font-weight: normal;
+        @media #{$md} {
+            font-size: 24px;
+            line-height: 32px;
+        }
         @media #{$xxl} {
             line-height: 32px;
             font-size: 24px;
@@ -524,6 +647,9 @@ $xxl: "screen and (min-width: 1400px)";
         position: relative;
         margin: auto;
         max-width: 280px;
+        @media #{$md} {
+            max-width: 570px;
+        }
         @media #{$xxl} {
             max-width: 692px;
             
@@ -546,6 +672,11 @@ $xxl: "screen and (min-width: 1400px)";
         // border-radius: 90%;
         max-width: 270px;
         height: 240px;
+        @media #{$md} {
+            max-width: 564px;
+            height: 440px;
+            background-size: fill;
+        }
         @media #{$xxl} {
             border-radius: 16px;
             height: 560px;
@@ -560,11 +691,16 @@ $xxl: "screen and (min-width: 1400px)";
         margin: 32px 0 16px ;
         font-size: 16px;
         line-height: 24px;
+        @media #{$md} {
+            font-size: 24px;
+            line-height: 32px;
+            margin-top: 48px;
+        }
         @media #{$xxl} {
             margin: 40px 0 24px 0;
             font-size: 24px;
             line-height: 32px;
-            padding: 0 52px;
+            padding: 0 12px;
             
         }
     }
@@ -572,10 +708,12 @@ $xxl: "screen and (min-width: 1400px)";
         color: #757575;
         font-size: 16px;
         line-height: 24px;
+        @media #{$md} {
+            font-size: 24px;
+            line-height: 32px;
+        }
         @media #{$xxl} {
-            padding: 0 52px;
-        font-size: 24px;
-        line-height: 32px;
+            padding: 0 12px;
         }
     }
 }
