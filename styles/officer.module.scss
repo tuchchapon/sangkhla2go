@@ -777,10 +777,9 @@ $xxl: "screen and (min-width: 1400px)";
         max-height: 704px;
     }
     @media #{$xxl} {
-        width: 95%;
-        height: 95%;
+
         max-width: 770px;
-        max-height: 784px;
+        max-height: 684px;
     }
     .officer-close-icon-box {
         cursor: pointer;
@@ -800,7 +799,7 @@ $xxl: "screen and (min-width: 1400px)";
             height: 32px;
         }
         @media #{$xxl} {
-            // top: 16px;
+            top: 0;
             right: 12%;
             width: 40px;
             height: 40px;
@@ -1107,7 +1106,7 @@ $xxl: "screen and (min-width: 1400px)";
 
         }
         @media #{$xxl} {
-            height: 128px;
+            height: 100px;
             // height: auto;
             line-height: 32px;
             font-size: 24px;
