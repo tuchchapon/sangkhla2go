@@ -364,7 +364,7 @@ $xxl: "screen and (min-width: 1400px)";
         font-size: 16px;
         line-height: 24px;
         color: #383838;
-        margin-bottom: 16px;
+        
         width: 256px;
         display: flex;
     
@@ -384,7 +384,7 @@ $xxl: "screen and (min-width: 1400px)";
             }
         }
         @media #{$md} {
-            margin-bottom: 24px;
+
             max-width: 570px;
             width: 570px;
             font-size: 24px;
@@ -396,7 +396,6 @@ $xxl: "screen and (min-width: 1400px)";
             color: #757575;
             max-width: unset;
             font-size: 24px;
-            margin-bottom: 40px;
             line-height: 32px;
         }
     }
@@ -440,10 +439,13 @@ $xxl: "screen and (min-width: 1400px)";
         width: 272px;
         max-height: 432px;
         overflow-y: auto;
+        margin-top: 16px;
         @media #{$md} {
+            margin-top: 24px;
             width: 520px;
         }
         @media #{$xxl} {
+            margin-top: 40px;
             width: 1010px;
             max-height: 432px;
         }
