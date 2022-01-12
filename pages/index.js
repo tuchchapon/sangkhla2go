@@ -219,7 +219,7 @@ export default function index() {
         }
       },
       {
-        breakpoint: 375,
+        breakpoint: 400,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
