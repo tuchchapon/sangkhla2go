@@ -2559,9 +2559,13 @@ $xxl: "screen and (min-width: 1400px)";
   color: #fbf6e9;
   font-size: 16px;
   @media #{$xs} {
+    margin-top: 24px;
     height: 104px;
     font-size: 10px;
     padding: 8px 8px;
+  }
+  @media #{$md} {
+    margin-top: 48px;
   }
   @media #{$xxl} {
     margin-top: 80px;

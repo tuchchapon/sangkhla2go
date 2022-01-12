@@ -331,10 +331,11 @@ export default function officer() {
                 <div className={styles['officer-backdrop']}></div>
                 <div className={styles['popup-fixed-box']}>
                     <div className={styles['officer-popup']}>
-                        <div className={styles['officer-close-icon-box']} onClick={(e) => closePopup(e)}>
-                            <img className={styles['officer-close-icon']} src='/Quit.png' alt="" />
-                        </div>
+
                         <div className={styles['officer-flexbox']}>
+                            <div className={styles['officer-close-icon-box']} onClick={(e) => closePopup(e)}>
+                                <img className={styles['officer-close-icon']} src='/Quit.png' alt="" />
+                            </div>
 
                             <div className={styles['officer-content-box']}>
                                 <div className={styles['popup-image-box']} >
