@@ -155,7 +155,7 @@ export default function index() {
         }
       },
       {
-        breakpoint: 360,
+        breakpoint: 768,
         settings: {
 
           slidesToScroll: 1,
@@ -185,7 +185,7 @@ export default function index() {
         }
       },
       {
-        breakpoint: 360,
+        breakpoint: 768,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 2,
