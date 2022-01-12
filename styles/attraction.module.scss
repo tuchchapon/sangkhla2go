@@ -593,7 +593,7 @@ $xxl: "screen and (min-width: 1400px)";
         padding: 40px 56px;
     }
     @media #{$xxl} {
-        padding: 40px 0 60px 0;
+        padding: 40px 80 60px 80;
         border-radius: 16px;
         border: 4px solid #383838;
         max-width: 970px;
@@ -741,10 +741,13 @@ $xxl: "screen and (min-width: 1400px)";
                 
             }
             span {
+                max-width: 270px;
                 @media #{$md} {
                     max-width: 570px;
                 }
-                max-width: 698px;
+                @media #{$xxl} {
+                    max-width: 698px;
+                }
             }
         }
         .link-box {
