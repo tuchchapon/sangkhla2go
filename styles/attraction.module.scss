@@ -44,6 +44,7 @@ $xxl: "screen and (min-width: 1400px)";
         background-color: rgba(225, 211, 182, 0.5);
         height: 104px;
         
+            justify-content: center;
         @media #{$xxl} {
             height: 312px;
             

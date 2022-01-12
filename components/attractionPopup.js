@@ -35,8 +35,9 @@ export default function attractionPopup({ activeAttraction, open, onClose }) {
                 }
             },
             {
-                breakpoint: 400,
+                breakpoint: 800,
                 settings: {
+                    arrows: false,
                     dots: true
                 }
             },
