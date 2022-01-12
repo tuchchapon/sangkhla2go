@@ -50,7 +50,7 @@ export default function boatPopup({ open, onClose, activeBoat }) {
                 }
             },
             {
-                breakpoint: 360,
+                breakpoint: 400,
                 settings: {
                     dots: true,
                     arrows: false,

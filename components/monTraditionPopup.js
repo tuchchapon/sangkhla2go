@@ -39,7 +39,7 @@ export default function monTraditionPopup({ open, onClose, activeMonTradition })
                 }
             },
             {
-                breakpoint: 360,
+                breakpoint: 400,
                 settings: {
                     dots: true
                     // slidesToShow: 2,

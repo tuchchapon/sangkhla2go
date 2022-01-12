@@ -50,7 +50,7 @@ export default function traditionPopup({ open, onClose, activeKarenTradition }) 
                 }
             },
             {
-                breakpoint: 360,
+                breakpoint: 400,
                 settings: {
                     dots: true
                     // slidesToShow: 2,

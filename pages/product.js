@@ -54,7 +54,7 @@ export default function product() {
                 }
             },
             {
-                breakpoint: 360,
+                breakpoint: 400,
                 settings: {
                     dots: true,
                     arrows: false
