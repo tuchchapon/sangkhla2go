@@ -32,6 +32,18 @@ function LeftArrow(props) {
     <img src="/left-arrow.png" alt="" style={{ ...style, width: '32px', height: '64px', left: '-57px', top: '50%' }} className={className} onClick={onClick} />
   )
 }
+const MDRightArrow = (props) => {
+  const { className, style, onClick } = props;
+  return (
+    <img src="/right-arrow.png" style={{ ...style, width: '16px', height: '32px', right: '-24px', top: '40%' }} className={className} onClick={onClick} alt="" />
+  );
+}
+const MDLeftArrow = (props) => {
+  const { className, style, onClick } = props;
+  return (
+    <img src="/left-arrow.png" alt="" style={{ ...style, width: '16px', height: '32px', left: '-24px', top: '40%' }} className={className} onClick={onClick} />
+  )
+}
 
 
 export default function index() {
@@ -142,7 +154,8 @@ export default function index() {
     dot: true,
     slidesToShow: 3,
     slidesToScroll: 3,
-    autoplay: true,
+    // autoplay: true,
+    autoplay: false,
     nextArrow: <RightArrow />,
     prevArrow: <LeftArrow />,
     responsive: [
@@ -155,7 +168,18 @@ export default function index() {
         }
       },
       {
-        breakpoint: 768,
+        breakpoint: 1024,
+        settings: {
+
+          slidesToScroll: 3,
+          slidesToShow: 3,
+          dots: false,
+          nextArrow: <MDRightArrow />,
+          prevArrow: <MDLeftArrow />,
+        }
+      },
+      {
+        breakpoint: 767,
         settings: {
 
           slidesToScroll: 1,
@@ -174,7 +198,8 @@ export default function index() {
     dots: false,
     slidesToShow: 4,
     slidesToScroll: 4,
-    autoplay: true,
+    // autoplay: true,
+    autoplay: false,
     nextArrow: <RightArrow />,
     prevArrow: <LeftArrow />,
     responsive: [
@@ -185,7 +210,18 @@ export default function index() {
         }
       },
       {
-        breakpoint: 768,
+        breakpoint: 1024,
+        settings: {
+          speed: 1000,
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          dots: false,
+          nextArrow: <MDRightArrow />,
+          prevArrow: <MDLeftArrow />,
+        }
+      },
+      {
+        breakpoint: 767,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 2,
@@ -219,7 +255,7 @@ export default function index() {
         }
       },
       {
-        breakpoint: 700,
+        breakpoint: 1300,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
@@ -326,7 +362,7 @@ export default function index() {
   const getWinlocation = async () => {
     let location_data = await axios.get(`${process.env.SERVER_API}/get/driverLocation`)
     let location_api = []
-    if (screen.availWidth < 1400) {
+    if (screen.availWidth <= 767) {
       if (location_data.status === 200) {
         for (let i = 0; i < 4; i++) {
 
@@ -350,9 +386,21 @@ export default function index() {
     if (review_data.status === 200) {
       let reviews = review_data.data.payload
       let set_review = []
-      for (let i = 0; i < 9; i++) {
-        if (reviews[i] === 0 || reviews[i]) set_review.push(reviews[i])
+      if (screen.availWidth < 400 && screen.availWidth > 768) {
+        for (let i = 0; i < 4; i++) {
+          if (reviews[i] === 0 || reviews[i]) set_review.push(reviews[i])
+        }
+      } else if (screen.availWidth <= 768 && screen.availWidth > 1300) {
+        for (let i = 0; i < 8; i++) {
+          if (reviews[i] === 0 || reviews[i]) set_review.push(reviews[i])
+        }
+      } else {
+        for (let i = 0; i < 9; i++) {
+          if (reviews[i] === 0 || reviews[i]) set_review.push(reviews[i])
+        }
       }
+
+
       reviews.splice(0, 9)
       setRes_reviews(reviews)
       setShowReview(set_review)
@@ -360,7 +408,7 @@ export default function index() {
   }
   useEffect(() => {
 
-
+    console.log('wide is', screen.availWidth);
     if (loading) {
       const getData = async () => {
         hotels.length === 0 ? await getAccommodation() : null
@@ -393,23 +441,33 @@ export default function index() {
             <div className="container">
 
               <div className="row">
-                <div className="col-md-5">
+                <div className="col-xl-5">
                   <div className={styles['logo-box']}>
                     <img src="/LOGO.png" alt="" />
                   </div>
                 </div>
-                <div className="col-md-7">
-                  <div className={styles['intro-textbox']}>
+                <div className="col-xl-7">
+                  {/* <div className={styles['md-intro-textbox']}>
                     <span>
                       <b>สังขละบุรี </b>เป็นอำเภอชายแดนตะวันตก<br /> รอยต่อด่านเจดีย์สามองค์ติดกับเมืองพญาตองซูของประเทศเมียนมา  มีตำบลหนองลูเป็นจุดศูนย์กลางการท่องเที่ยว <br /> โดยประกอบไปด้วยเส้นทางประวัติศาสตร์และแหล่งอารยธรรม <br />
                       <br /> จนปัจจุบันถือเป็นสถานที่ท่องเที่ยวสำคัญแห่งหนึ่งของจังหวัดกาญจนบุรี ด้วยความงดงามของธรรมชาติและความหลากหลายทางวัฒนธรรมของชนชาติพันธุ์ ทั้งไทย มอญ กะเหรี่ยง ลาว และพม่า <br /><br />
                       หนึ่งในสถานที่สำคัญอันเปรียบเสมือนสัญลักษณ์แห่งเมืองนทีสามประสบที่ดึงดูดนักท่องเที่ยวให้มาเยือนสังขละบุรี <br /> คือสะพานอุตตมานุสรณ์ หรือเรียกสั้นๆ ว่า สะพานมอญ <br /> ซึ่งเป็นสะพานไม้ที่ยาวที่สุดในประเทศไทย <br />และยาวเป็นอันดับสองของโลก
                     </span>
+                  </div> */}
+                  <div className={styles['intro-textbox']}>
+                    <span>
+                      <b>สังขละบุรี </b>เป็นอำเภอชายแดนตะวันตก รอยต่อด่านเจดีย์สามองค์ติดกับเมืองพญาตองซูของประเทศเมียนมา  มีตำบลหนองลูเป็นจุดศูนย์กลางการท่องเที่ยว  โดยประกอบไปด้วยเส้นทางประวัติศาสตร์และแหล่งอารยธรรม<br /><br />
+                    </span>
+                    <span>
+
+                      จนปัจจุบันถือเป็นสถานที่ท่องเที่ยวสำคัญแห่งหนึ่งของจังหวัดกาญจนบุรี ด้วยความงดงามของธรรมชาติและความหลากหลายทางวัฒนธรรมของชนชาติพันธุ์ ทั้งไทย มอญ กะเหรี่ยง ลาว และพม่า <br /><br />
+
+                    </span>
+                    <span>หนึ่งในสถานที่สำคัญอันเปรียบเสมือนสัญลักษณ์แห่งเมืองนทีสามประสบที่ดึงดูดนักท่องเที่ยวให้มาเยือนสังขละบุรี  คือสะพานอุตตมานุสรณ์ หรือเรียกสั้นๆ ว่า สะพานมอญ  ซึ่งเป็นสะพานไม้ที่ยาวที่สุดในประเทศไทย และยาวเป็นอันดับสองของโลก</span>
                   </div>
                 </div>
               </div>
               <div>
-
               </div>
             </div>
             <div className={styles['page-banner']} style={{ backgroundImage: `url('/img/home/banner.png')` }}></div>
@@ -431,7 +489,6 @@ export default function index() {
                   <img src="/img/menu/sm-pt-icon.png" alt="" />
                   <span>ขนส่งสาธารณะ</span>
                 </div>
-
                 <div onClick={(e) => document.getElementById("tradition-section").scrollIntoView({ behavior: 'smooth' })} className={styles['sm-menu-box']}>
                   <img src="/img/menu/sm-tradition-icon.png" alt="" />
                   <span>วัฒนธรรม</span>
@@ -560,7 +617,7 @@ export default function index() {
                       </div>
                     )) : ''}
                   </div>
-                  <span onClick={(e) => router.push('/attraction')} className={styles['see-all-button']}>{screen.availWidth > 360 ? "ดูทั้งหมด" : "ดูข้อมูลสถานที่ทั้งหมด"}</span>
+                  <span onClick={(e) => router.push('/attraction')} className={styles['see-all-button']}>{screen.availWidth > 800 ? "ดูทั้งหมด" : "ดูข้อมูลสถานที่ทั้งหมด"}</span>
                   <div className={styles['leader-box']}>
                     <div className="container-fluid">
                       <div className="col-12">
@@ -749,63 +806,90 @@ export default function index() {
 
                   <div className="container">
                     <div className="row">
-                      <div className="col-md-8">
+                      <div className="col-xl-8">
                         <div className={styles['review-slider-box']}>
-                          {screen.availWidth > 1400 ? (
+                          {screen.availWidth > 1200 ? (
                             <Slider {...videoSettings}>
                               <div className={styles['video-item']}>
                                 <iframe width="577" height="315" src="https://www.youtube.com/embed/36iD3HmGt8g" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                               </div>
                               <div className={styles['video-item']}>
-                                <iframe width="560" height="315" src="https://www.youtube.com/embed/7myqazGs5_Y" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                                <iframe width="577" height="315" src="https://www.youtube.com/embed/7myqazGs5_Y" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                               </div>
                               <div className={styles['video-item']}>
-                                <iframe width="560" height="315" src="https://www.youtube.com/embed/MKJZ3Jdsucg" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                                <iframe width="577" height="315" src="https://www.youtube.com/embed/MKJZ3Jdsucg" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                               </div>
                               <div className={styles['video-item']}>
-                                <iframe width="560" height="315" src="https://www.youtube.com/embed/jD7vUEytFdw" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                                <iframe width="577" height="315" src="https://www.youtube.com/embed/jD7vUEytFdw" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                               </div>
                               <div className={styles['video-item']}>
-                                <iframe width="560" height="315" src="https://www.youtube.com/embed/Wr1PBrBZkQw" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                                <iframe width="577" height="315" src="https://www.youtube.com/embed/Wr1PBrBZkQw" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                               </div>
                               <div className={styles['video-item']}>
-                                <iframe width="560" height="315" src="https://www.youtube.com/embed/BHFVD2hJ7KA" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                                <iframe width="577" height="315" src="https://www.youtube.com/embed/BHFVD2hJ7KA" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                               </div>
                               <div className={styles['video-item']}>
-                                <iframe width="560" height="315" src="https://www.youtube.com/embed/B7ync4odCJk" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                                <iframe width="577" height="315" src="https://www.youtube.com/embed/B7ync4odCJk" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                               </div>
                               <div className={styles['video-item']}>
-                                <iframe width="560" height="315" src="https://www.youtube.com/embed/v_ulqJa2Jpw" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                                <iframe width="577" height="315" src="https://www.youtube.com/embed/v_ulqJa2Jpw" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                               </div>
 
                             </Slider>
-                          ) : <Slider {...videoSettings}>
+                          ) : screen.availWidth > 767 ? <Slider {...videoSettings}>
                             <div className={styles['video-item']}>
-                              <iframe width="288" height="168" src="https://www.youtube.com/embed/36iD3HmGt8g" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                              <iframe width="478" height="280" src="https://www.youtube.com/embed/36iD3HmGt8g" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                             </div>
                             <div className={styles['video-item']}>
-                              <iframe width="288" height="168" src="https://www.youtube.com/embed/7myqazGs5_Y" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                              <iframe width="478" height="280" src="https://www.youtube.com/embed/7myqazGs5_Y" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                             </div>
                             <div className={styles['video-item']}>
-                              <iframe width="288" height="168" src="https://www.youtube.com/embed/MKJZ3Jdsucg" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                              <iframe width="478" height="280" src="https://www.youtube.com/embed/MKJZ3Jdsucg" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                             </div>
                             <div className={styles['video-item']}>
-                              <iframe width="288" height="168" src="https://www.youtube.com/embed/jD7vUEytFdw" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                              <iframe width="478" height="280" src="https://www.youtube.com/embed/jD7vUEytFdw" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                             </div>
                             <div className={styles['video-item']}>
-                              <iframe width="288" height="168" src="https://www.youtube.com/embed/Wr1PBrBZkQw" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                              <iframe width="478" height="280" src="https://www.youtube.com/embed/Wr1PBrBZkQw" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                             </div>
                             <div className={styles['video-item']}>
-                              <iframe width="288" height="168" src="https://www.youtube.com/embed/BHFVD2hJ7KA" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                              <iframe width="478" height="280" src="https://www.youtube.com/embed/BHFVD2hJ7KA" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                             </div>
                             <div className={styles['video-item']}>
-                              <iframe width="288" height="168" src="https://www.youtube.com/embed/B7ync4odCJk" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                              <iframe width="478" height="280" src="https://www.youtube.com/embed/B7ync4odCJk" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                             </div>
                             <div className={styles['video-item']}>
-                              <iframe width="288" height="168" src="https://www.youtube.com/embed/v_ulqJa2Jpw" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                              <iframe width="478" height="280" src="https://www.youtube.com/embed/v_ulqJa2Jpw" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                             </div>
 
-                          </Slider>}
+                          </Slider> :
+                            <Slider {...videoSettings}>
+                              <div className={styles['video-item']}>
+                                <iframe width="288" height="168" src="https://www.youtube.com/embed/36iD3HmGt8g" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                              </div>
+                              <div className={styles['video-item']}>
+                                <iframe width="280" height="168" src="https://www.youtube.com/embed/7myqazGs5_Y" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                              </div>
+                              <div className={styles['video-item']}>
+                                <iframe width="280" height="168" src="https://www.youtube.com/embed/MKJZ3Jdsucg" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                              </div>
+                              <div className={styles['video-item']}>
+                                <iframe width="280" height="168" src="https://www.youtube.com/embed/jD7vUEytFdw" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                              </div>
+                              <div className={styles['video-item']}>
+                                <iframe width="280" height="168" src="https://www.youtube.com/embed/Wr1PBrBZkQw" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                              </div>
+                              <div className={styles['video-item']}>
+                                <iframe width="280" height="168" src="https://www.youtube.com/embed/BHFVD2hJ7KA" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                              </div>
+                              <div className={styles['video-item']}>
+                                <iframe width="280" height="168" src="https://www.youtube.com/embed/B7ync4odCJk" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                              </div>
+                              <div className={styles['video-item']}>
+                                <iframe width="280" height="168" src="https://www.youtube.com/embed/v_ulqJa2Jpw" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                              </div>
+
+                            </Slider>}
                         </div>
                       </div>
                       <div className="col-md-4">

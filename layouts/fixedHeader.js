@@ -15,7 +15,10 @@ export default function fixedHeader() {
         document.getElementById("review-section").scrollIntoView({ behavior: 'smooth' })
         setShowMenu(false)
     }
-    const closePopup = () => setShowMenu(false)
+    const closePopup = (e) => {
+        if (e) e.preventDefault()
+        setShowMenu(false)
+    }
     return (
         <>
             <div>
@@ -28,63 +31,65 @@ export default function fixedHeader() {
                         open={(e) => e.preventDefault(), showMenu}
                         closeOnEscape={true}
                         closeOnDocumentClick={true}
-                        onClose={closePopup}
+                        onClose={(e) => closePopup(e)}
                         lockScroll
                     >
-                        <div onClick={closePopup} className={styles['menu-backdrop']}></div>
+                        <div onClick={(e) => closePopup(e)} className={styles['menu-backdrop']}></div>
                         <div className={styles['menu-fixed-box']}>
 
-                            <div className={styles['dropdown-menu']}>
-                                <div onClick={closePopup} className={styles['in-menu-box']}>
+                            <div className={styles['dropdown-menu-box']}>
+                                <div onClick={(e) => closePopup(e)} className={styles['in-menu-box']}>
                                     <img src="/menu.png" alt="" />
                                     <span className={styles['in-menu-text']} >เมนู</span>
                                 </div>
-                                <div className={styles['menu-list']}>
-                                    <div onClick={() => router.push('/accommodation')} className={styles['menu-item']}>
-                                        <div className={styles['accom-menu']}>
-                                            <div></div>
-                                            <span>ที่พัก</span>
+                                <div className={styles['dropdown-menu']} >
+                                    <div className={styles['menu-list']}>
+                                        <div onClick={() => router.push('/accommodation')} className={styles['menu-item']}>
+                                            <div className={styles['accom-menu']}>
+                                                <div></div>
+                                                <span>ที่พัก</span>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div onClick={() => router.push('/attraction')} className={styles['menu-item']}>
-                                        <div className={styles['attraction-menu']}>
-                                            <div></div>
-                                            <span>ที่เที่ยว</span>
+                                        <div onClick={() => router.push('/attraction')} className={styles['menu-item']}>
+                                            <div className={styles['attraction-menu']}>
+                                                <div></div>
+                                                <span>ที่เที่ยว</span>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div onClick={() => router.push('/restaurant')} className={styles['menu-item']}>
-                                        <div className={styles['restaurant-menu']}>
-                                            <div></div>
-                                            <span>ร้านอาหาร/กาแฟ</span>
+                                        <div onClick={() => router.push('/restaurant')} className={styles['menu-item']}>
+                                            <div className={styles['restaurant-menu']}>
+                                                <div></div>
+                                                <span>ร้านอาหาร/กาแฟ</span>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div onClick={() => router.push('/publicTransportation')} className={styles['menu-item']}>
-                                        <div className={styles['pt-menu']}>
-                                            <div></div>
-                                            <span>ขนส่งสาธารณะ</span>
+                                        <div onClick={() => router.push('/publicTransportation')} className={styles['menu-item']}>
+                                            <div className={styles['pt-menu']}>
+                                                <div></div>
+                                                <span>ขนส่งสาธารณะ</span>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div onClick={() => router.push('/traditions')} className={styles['menu-item']}>
-                                        <div className={styles['tradition-menu']}>
-                                            <div></div>
-                                            <span>วัฒนธรรม</span>
+                                        <div onClick={() => router.push('/traditions')} className={styles['menu-item']}>
+                                            <div className={styles['tradition-menu']}>
+                                                <div></div>
+                                                <span>วัฒนธรรม</span>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div className={styles['menu-item']}>
-                                        <div onClick={() => router.push('/product')} className={styles['product-menu']}>
-                                            <div></div>
-                                            <span>ผลิตภัณฑ์ชุมชน</span>
+                                        <div className={styles['menu-item']}>
+                                            <div onClick={() => router.push('/product')} className={styles['product-menu']}>
+                                                <div></div>
+                                                <span>ผลิตภัณฑ์ชุมชน</span>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div className={styles['menu-item']}>
-                                        <div onClick={(e) => toReview(e)} className={styles['review-menu']}>
-                                            <div></div>
-                                            <span>รีวิว</span>
+                                        <div className={styles['menu-item']}>
+                                            <div onClick={(e) => toReview(e)} className={styles['review-menu']}>
+                                                <div></div>
+                                                <span>รีวิว</span>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div onClick={() => router.push('/officer')} className={styles['menu-item']}>
-                                        <div></div>
-                                        <span>ผู้จัดทำ</span>
+                                        <div onClick={() => router.push('/officer')} className={styles['menu-item']}>
+                                            <div></div>
+                                            <span>ผู้จัดทำ</span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
