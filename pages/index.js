@@ -386,16 +386,16 @@ export default function index() {
     if (review_data.status === 200) {
       let reviews = review_data.data.payload
       let set_review = []
-      if (screen.availWidth < 400 && screen.availWidth > 768) {
-        for (let i = 0; i < 4; i++) {
+      if (screen.availWidth >= 1300) {
+        for (let i = 0; i < 9; i++) {
           if (reviews[i] === 0 || reviews[i]) set_review.push(reviews[i])
         }
-      } else if (screen.availWidth <= 768 && screen.availWidth > 1300) {
+      } else if (screen.availWidth >= 768) {
         for (let i = 0; i < 8; i++) {
           if (reviews[i] === 0 || reviews[i]) set_review.push(reviews[i])
         }
       } else {
-        for (let i = 0; i < 9; i++) {
+        for (let i = 0; i < 4; i++) {
           if (reviews[i] === 0 || reviews[i]) set_review.push(reviews[i])
         }
       }
