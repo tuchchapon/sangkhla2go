@@ -45,9 +45,16 @@ $xxl: "screen and (min-width: 1400px)";
         justify-content: center;
         max-width: 320px;
         margin: 0 auto;
-        @media #{$xxl} {
-            max-width: 100%;
+        @media #{$md} {
+            max-width: 690px;
+            flex-wrap: wrap;
+            justify-content: space-between;
             flex-direction: initial;
+        }
+        @media #{$xxl} {
+            flex-wrap: nowrap;
+            justify-content: center;
+            max-width: 100%;
         }
         .product-tab {
             cursor: pointer;
@@ -55,12 +62,19 @@ $xxl: "screen and (min-width: 1400px)";
             text-align: center;
             justify-content: center;
             align-items: center;
-            width: 280px;
+            width: 230px;
             height: 40px;
             border: 2px solid #383838;
             border-radius: 8px;
             margin-bottom: 16px;
             padding: 7px;
+            @media #{$md} {
+                flex:  0 0 calc((100% - 30px)/2);
+                max-width: 330px;
+                // margin-right: 30px;
+
+                
+            }
             @media #{$xxl} {
                 padding: 0;
                 align-self: flex-end;
@@ -69,6 +83,7 @@ $xxl: "screen and (min-width: 1400px)";
                 height: 32px;
                 margin-bottom: 24px;
                 width: 300px;
+                max-width: 300px;
                 border-right: 3px solid #383838;
                 &:nth-child(4) {
                     border-right: 0;
@@ -90,7 +105,7 @@ $xxl: "screen and (min-width: 1400px)";
         }
         .product-tab-active {
             text-align: center;
-            width: 280px;
+            width: 230px;
             height: 40px;
             border: 2px solid #383838;
             border-radius: 8px;
@@ -99,6 +114,12 @@ $xxl: "screen and (min-width: 1400px)";
             align-items: center;
             justify-content: center;
             padding: 7px;
+            @media #{$md} {
+                flex:  0 0 calc((100% - 30px)/2);
+                // margin-right: 30px;
+                max-width: 330px;
+
+            }
             @media #{$xxl} {
                 padding: 0;
                 align-self: flex-end;
@@ -108,6 +129,7 @@ $xxl: "screen and (min-width: 1400px)";
                 height: 32px;
                 margin-bottom: 24px;
                 width: 300px;
+                max-width: 300px;
                 border-right: 3px solid #383838;
                 &:nth-child(4) {
                     border-right: 0;
@@ -137,6 +159,9 @@ $xxl: "screen and (min-width: 1400px)";
         display: flex;
         flex-direction: column;
         padding: 16px 0 0 0;
+        @media #{$md} {
+            padding-top: 32px;
+        }
         @media #{$xxl} {
             font-family: "sukhumvit";
             padding: 80px 0 0 0;
@@ -145,13 +170,23 @@ $xxl: "screen and (min-width: 1400px)";
             margin: 0 auto; 
             width: 100%;
             max-width: 320px;
+            @media #{$md} {
+                max-width: 690px;
+            }
             @media #{$xxl} {
                 max-width: 1170px;
             }
             .karen {
-                max-width: 1170px;
                 display: flex;
                 flex-direction: column;
+                max-width: 320px;
+                @media #{$md} {
+                    max-width: 690px;
+                }
+                @media #{$xxl} {
+                    
+                    max-width: 1170px;
+                }
             }
         }
     }
@@ -163,6 +198,11 @@ $xxl: "screen and (min-width: 1400px)";
     max-height: 270px;
     width: 100%;
     height: 100%;
+    @media #{$md} {
+        max-width: 570px;
+        max-height: 448px;
+        margin: 0 auto 22px;
+    }
     @media #{$xxl} {
         margin: 0 auto 80px;
         max-width: 770px;
@@ -178,18 +218,27 @@ $xxl: "screen and (min-width: 1400px)";
     max-width: 320px;
     height: 240px;
     margin-bottom: 20px;
+    @media #{$md} {
+        margin-bottom: 0;
+        max-width: 570px;
+        height: 448px;
+        
+    }
     @media #{$xxl} {
         max-width: 770px;
         height: 652px;
     }
 }
 .popup-slider {
-    position: relative;
     max-width: 280px;
     max-height: 280px;
     width: 100%;
     height: 100%;
     margin-bottom: 40px;
+    @media #{$md} {
+        max-width: 570px;
+        max-height: 492px;
+    }
     @media #{$xxl} {
         margin: 0 auto 40px;
         max-width: 698px;
@@ -202,24 +251,33 @@ $xxl: "screen and (min-width: 1400px)";
     max-width: 280px;
     height: 240px;
     margin-bottom: 20px;
-    @media #{$xxl} {
+    @media #{$md} {
+        height: 100%;
         margin: auto;
+        max-width: 570px;
+        max-height: 448px;
+        // display: none;
+    }
+    @media #{$xxl} {
         max-width: 698px;
         height: 560px;
     }
     .popup-slider-image {
-        display: flex;
-        position: relative;
+
+        // position: relative;
         background-position: center;
         background-size: cover;
         // background-size: contain;
         background-repeat: no-repeat;
-        
         // max-height: 562px;
         margin: auto;
         width: 276px;
         height: 240px;
         border-radius: 8px;
+        @media #{$md} {
+            width: 570px;
+            height: 448px;
+        }
         @media #{$xxl} {
             border-radius: 16px;
             max-width: 698px;
@@ -231,17 +289,20 @@ $xxl: "screen and (min-width: 1400px)";
 }
 .slider-image {
     display: flex;
-    position: relative;
-    background-position: center;
+    // position: relative;
+    // background-attachment: fixed;
     background-size: cover;
-    // background-size: contain;
     background-repeat: no-repeat;
-    
-    // max-height: 562px;
-    margin: auto;
-    width: 320px;
-    height: 240px;
+    background-position: center ;
+    width: 100%!important;
+    height: 100%!important;
+    max-width: 320px;
+    max-height: 240px;
     border-radius: 8px;
+    @media #{$md} {
+        max-width: 570px;
+        max-height: 448px;
+    }
     @media #{$xxl} {
         border-radius: 16px;
         max-width: 770px;
@@ -258,6 +319,9 @@ $xxl: "screen and (min-width: 1400px)";
     width: 100%;
     margin: auto;
     max-width: 320px;
+    @media #{$md} {
+        max-width: 690px;
+    }
     @media #{$xxl} {
         max-width: 1170px;
     }
@@ -269,8 +333,19 @@ $xxl: "screen and (min-width: 1400px)";
         margin: 0 20px 16px 0;
         width: 150px;
         height: 190px;
-        &:nth-child(2n){
-            margin-right: 0;
+        @media #{$xs} {
+            &:nth-child(2n){
+                margin-right: 0;
+            }
+        }
+        @media #{$md} {
+            width: 220px;
+            height: 284px;
+            flex: 0 0 calc((100% - 30px)/3);
+            margin: 0 15px 24px 0;
+            &:nth-last-child(3n){
+                margin-right: 0;
+            }
         }
         @media #{$xxl} {
             flex: 0 0 calc((100% - 90px) / 4);
@@ -301,6 +376,10 @@ $xxl: "screen and (min-width: 1400px)";
             width: 150px;
             height: 150px;
             background-size: contain;
+            @media #{$md} {
+                width: 220px;
+                height: 220px;
+            }
             @media #{$xxl} {
                 background-size: cover;
                 margin-bottom: 24px;
@@ -336,6 +415,11 @@ $xxl: "screen and (min-width: 1400px)";
             border-radius: 10px;
             height: 140px;
             width: 140px;
+            @media #{$md} {
+                width: 206px;
+                height: 206px;
+                border-radius: 14px;
+            }
             @media #{$xxl} {
                 width: 254px;
                 height: 254px;
@@ -357,6 +441,11 @@ $xxl: "screen and (min-width: 1400px)";
 
             background-size: cover;
             padding: 6px;
+            @media #{$md} {
+            background-size: contain;
+             width: 220px;
+             height: 48px;   
+            }
             @media #{$xxl} {
                 background-image: url("/img/product/product-name-box.png");
                 width: 270px;
@@ -385,6 +474,9 @@ $xxl: "screen and (min-width: 1400px)";
         background-position: center;
         background-size: cover;
         background-repeat: no-repeat;
+        @media #{$md} {
+            background-size: contain;
+        }
         @media #{$xxl} {
             background-image: url("/img/product/product-name-box-hover.png");
         }
@@ -411,6 +503,10 @@ $xxl: "screen and (min-width: 1400px)";
             background: black;
             width: 140px;
             height: 140px;
+            @media #{$md} {
+                width: 206px;
+                height: 206px;
+            }
             @media #{$xxl} {
                 width: 254px;
                 height: 254px;
@@ -425,6 +521,10 @@ $xxl: "screen and (min-width: 1400px)";
             border-radius: 10px;
             height: 140px;
             width: 140px;
+            @media #{$md} {
+                width: 206px;
+                height: 206px;
+            }
             @media #{$xxl} {
                 width: 254px;
                 height: 254px;
@@ -439,6 +539,11 @@ $xxl: "screen and (min-width: 1400px)";
     color: #383838;
     font-family: "sukhumvit";
     margin: 16px 0 8px;
+    @media #{$md} {
+        font-size: 24px;
+        line-height: 32px;
+        margin: 24px 0;
+    }
     @media #{$xxl} {
         margin-top: 0;
         margin-bottom: 24px;
@@ -455,8 +560,12 @@ $xxl: "screen and (min-width: 1400px)";
     line-height: 24px;
     margin-bottom: 16px;
     font-family: Tahoma;
-    @media #{$xxl} {
+    @media #{$md} {
+        font-size: 24px;
         font-family: "sukhumvit";
+        line-height: 32px;
+    }
+    @media #{$xxl} {
         font-size: 26px;
         line-height: 40px;
         margin-bottom: 40px;
@@ -470,6 +579,9 @@ $xxl: "screen and (min-width: 1400px)";
         display: flex;
         margin: 0 auto;
         width: 320px;
+        @media #{$md} {
+            width: 690px;
+        }
         @media #{$xxl} {
             width: 1170px;
         }
@@ -484,6 +596,9 @@ $xxl: "screen and (min-width: 1400px)";
                 line-height: 24px;
                 font-size: 16px;
                 width: 320px;
+                @media #{$md} {
+                    width: 690px;
+                }
                 @media #{$xxl} {
                     font-size: 40px;
                     line-height: 40px;
@@ -495,9 +610,8 @@ $xxl: "screen and (min-width: 1400px)";
             .sm-text-pa1,.sm-text-pa2{
                 color: #757575;
                 display: inline-block;
-                font-size: 16px;
-                line-height: 24px;
                 margin-bottom: 24px;
+
                 span{
                     font-weight: normal;
                     font-family: Tahoma;
@@ -505,6 +619,13 @@ $xxl: "screen and (min-width: 1400px)";
                     text-indent: 20px;
                     text-align: start;
                     display: inline-block;
+                    font-size: 16px;
+                    line-height: 24px;
+                    @media #{$md} {
+                        font-family: "sukhumvit";
+                        font-size: 24px;
+                        line-height: 32px;
+                    }
                 }
                 // &:nth-child(1){
                 //     text-indent: 20px;
@@ -557,6 +678,12 @@ $xxl: "screen and (min-width: 1400px)";
     justify-content: center;
     width: 320px;
     height: 356px;
+    @media #{$md} {
+        background-size: contain;
+        width: 510px;
+        height: 560px;
+        margin: 0 auto;
+    }
     @media #{$xxl} {
         width: 540px;
         height: 600px;
@@ -569,6 +696,12 @@ $xxl: "screen and (min-width: 1400px)";
         height: 306px;
         left: -8px;
         object-fit: cover;
+        @media #{$md} {
+            // display: none;
+            left: -12px;
+            width: 405px;
+            height: 483px;
+        }
         @media #{$xxl} {
             left: -13px;
             width: 435px;
@@ -584,7 +717,10 @@ $xxl: "screen and (min-width: 1400px)";
     align-items: center;
     justify-content: center;
     width: 320px;
-
+    @media #{$md} {
+        width: 690px;
+        padding-top: 8px;
+    }
     @media #{$xxl} {
         width: 1170px;
     }
@@ -599,6 +735,10 @@ $xxl: "screen and (min-width: 1400px)";
     font-size: 16px;
     line-height: 24px;
     color: #383838;
+    @media #{$md} {
+        font-size: 24px;
+        line-height: 32px;
+    }
     @media #{$xxl} {
         font-size: 40px;
         line-height: 48px;
@@ -614,7 +754,7 @@ $xxl: "screen and (min-width: 1400px)";
     justify-content: center;
     width: auto;
     margin: 0 auto 16px;
-    @media #{$xxl} {
+    @media #{$md} {
         flex-direction: initial;
         margin: 0;
     }
@@ -629,7 +769,11 @@ $xxl: "screen and (min-width: 1400px)";
     height: 216px;
     margin: 40px auto 24px;
     width: 320px;
-    display: flex;
+    display: flex; 
+    @media #{$md} {
+        width: 510px;
+        height: 344px;
+    }
     @media #{$xxl} {
         background-size: cover;
         width: 770px;
@@ -643,6 +787,11 @@ $xxl: "screen and (min-width: 1400px)";
         max-height: 168px;
         border-radius: 8px;
         margin-bottom: -16px;
+        @media #{$md} {
+            max-width: 478px;
+            max-height: 280px;
+            margin-bottom: -24px;
+        }
         @media #{$xxl} {
             margin-bottom: -40px;
             border-radius: 16px;
@@ -658,6 +807,10 @@ $xxl: "screen and (min-width: 1400px)";
     line-height: 24px;
     color: #383838;
     margin-bottom: 8px;
+    @media #{$md} {
+        font-size: 24px;
+        line-height: 32px;
+    }
     @media #{$xxl} {
         font-family: 'sukhumvit';
         font-size: 26px;
@@ -675,6 +828,10 @@ $xxl: "screen and (min-width: 1400px)";
     img{
         width: 16px;
         height: 16px;
+        @media #{$md} {
+            width: 24px;
+            height: 24px;
+        }
         @media #{$xxl} {
             width: 32px;
             height: 32px;
@@ -685,7 +842,10 @@ $xxl: "screen and (min-width: 1400px)";
         font-family: "sukhumvit";
         padding-top: 4px;
         font-size: 16px;
-
+        @media #{$md} {
+            font-size: 24px;
+            line-height: 32px;
+        }
         @media #{$xxl} {
             font-size: 24px;
         }
@@ -704,15 +864,22 @@ $xxl: "screen and (min-width: 1400px)";
     img{
         width: 16px;
         height: 16px;
+        @media #{$md} {
+            width: 24px;
+            height: 24px;
+        }
         @media #{$xxl} {
             width: 32px;
             height: 32px;
         }
     }
+    @media #{$md} {
+        width: auto;
+        padding-left: 25px;
+        height: 32px;
+    }
     @media #{$xxl} {
         border-left: 2px solid #383838;
-        width: auto;
-        height: 32px;
         padding-left: 24px;
     }
     span {
@@ -721,6 +888,10 @@ $xxl: "screen and (min-width: 1400px)";
         margin-left: 8px;
         font-size: 16px;
         line-height: 16px;
+        @media #{$md} {
+            
+            font-size: 24px;
+        }
         @media #{$xxl} {
             font-size: 24px;
             padding-top: 4px;
@@ -735,14 +906,22 @@ $xxl: "screen and (min-width: 1400px)";
     height: 16px;
     width: 136px;
     margin-bottom: 8px;
-    @media #{$xxl} {
+    @media #{$md} {
         width: auto;
+        height: 32px;
         margin-bottom: 0;
+
+    }
+    @media #{$xxl} {
         height: 32px;
     }
     img{
         width: 16px;
         height: 16px;
+        @media #{$md} {
+            width: 24px;
+            height: 24px;
+        }
         @media #{$xxl} {
             width: 32px;
             height: 32px;
@@ -753,6 +932,9 @@ $xxl: "screen and (min-width: 1400px)";
         margin-left: 8px;
         font-size: 16px;
         line-height: 16px;
+        @media #{$md} {
+            font-size: 24px;
+        }
         @media #{$xxl} {
             font-size: 24px;
             padding-top: 4px;
@@ -766,12 +948,16 @@ $xxl: "screen and (min-width: 1400px)";
     cursor: pointer;
     text-decoration: underline;
     margin-top: 8px;
+    @media #{$md} {
+        margin-top: 0;
+        margin-left: 25px;
+    }
     @media #{$xxl} {
         margin-top: 0;
+        margin-left: 24px;
         border-left: 2px solid #383838;
         height: 32px;
         padding-left: 24px;
-        margin-left: 24px;
     }
     span {
         margin-left: 8px;
@@ -780,9 +966,13 @@ $xxl: "screen and (min-width: 1400px)";
         font-size: 16px;
         line-height: 16px;
         color: #383838;
+        @media #{$md} {
+            font-size: 24px;
+            padding-top: 5px;
+        }
         @media #{$xxl} {
             font-size: 24px;
-            padding-top: 4px;
+            padding-top: 2px;
         }
     }
 }
@@ -847,6 +1037,10 @@ $xxl: "screen and (min-width: 1400px)";
     padding: 26px 0 16px;
     border: 2px solid #383838;
     border-radius: 8px;
+    @media #{$md} {
+        max-width: 690px;
+        padding: 40px 0;
+    }
     @media #{$xxl} {
         padding: 40px 0 80px;
         max-width: 970px;
@@ -861,8 +1055,8 @@ $xxl: "screen and (min-width: 1400px)";
         height: 16px;
         right: 8px;
         top: 8px;
-        @media #{$xxl} {
-            top: 20px;
+        @media #{$md} {
+            top: 24px;
             right: 24px;
             width: 32px;
             height: 32px;
@@ -876,7 +1070,10 @@ $xxl: "screen and (min-width: 1400px)";
         overflow-x: hidden;
         width: 100%;
         height: 100%;
-        padding: 0 20px ;
+        padding: 0 60px ;
+        @media #{$md} {
+            
+        }
         @media #{$xxl} {
             padding: 0 80px;
             max-height: 800px;
@@ -889,6 +1086,11 @@ $xxl: "screen and (min-width: 1400px)";
             font-size: 16px;
             line-height: 24px;
             margin-bottom: 16px;
+            @media #{$md} {
+                margin: 8px 0 16px;
+                font-size: 40px;
+                line-height: 49px;
+            }
             @media #{$xxl} {
                 margin-top: 4px;
                 font-size: 48px;
@@ -916,6 +1118,10 @@ $xxl: "screen and (min-width: 1400px)";
         width: 276px;
         height: 240px;
         border-radius: 8px;
+        @media #{$md} {
+            width: 570px;
+            height: 448px;
+        }
         @media #{$xxl} {
             width: auto;
             border-radius: 16px;
@@ -932,6 +1138,11 @@ $xxl: "screen and (min-width: 1400px)";
         margin-bottom: 16px;
         font-size: 16px;
         line-height: 24px;
+        @media #{$md} {
+            max-width: 570px;
+            font-size: 24px;
+            line-height: 32px;
+        }
         @media #{$xxl} {
             font-size: 24px;
             line-height: 32px;

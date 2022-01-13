@@ -38,7 +38,7 @@ export default function productPopup({ open, onClose, activeProduct }) {
                 }
             },
             {
-                breakpoint: 400,
+                breakpoint: 768,
                 settings: {
                     dots: true,
                     arrows: false
