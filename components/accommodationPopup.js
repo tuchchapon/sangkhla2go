@@ -89,7 +89,7 @@ export default function accommodationPopup({ open, onClose, activeAcommodation }
                                 <div className={styles['detail-box']} >
                                     <div className={styles['information-box']} >
                                         <span>
-                                            {activeAcommodation.information}
+                                            {activeAcommodation.information ? activeAcommodation.information : 'ที่พักสวย บรรยากาศดี เหมาะที่จะมาพักผ่อน'}
                                         </span>
                                     </div>
                                     <div className={styles['price-row-box']}>
@@ -100,7 +100,11 @@ export default function accommodationPopup({ open, onClose, activeAcommodation }
                                                     `${activeAcommodation.min_price} บาท`
                                                 ) : `${activeAcommodation.min_price} - ${activeAcommodation.max_price} บาท`}</span>
                                             </div>
-                                        ) : ''}
+                                        ) : (
+                                            <div className={styles['popup-price-box']}>
+                                                <span>{`ไม่ระบุราคา`}</span>
+                                            </div>
+                                        )}
                                         <div className={styles['breakfast-box']}>
                                             {activeAcommodation.services.includes("อาหารเช้า") ? (
                                                 <div className={styles['breakfast']} >
@@ -116,61 +120,119 @@ export default function accommodationPopup({ open, onClose, activeAcommodation }
 
                                         </div>
                                     </div>
-                                    <div className={styles['service-box']}>
-                                        {activeAcommodation.services.map((service) => (
-                                            service === "ลานจอดรถ" ? (
-                                                <div key={service} className={styles['icon-box']}>
-                                                    <img src="/img/accommodation/parking-icon.png" alt="" />
-                                                    <span>{service}</span>
-                                                </div>
-                                            ) : service === "สระว่ายน้ำ" ? (
-                                                <div key={service} className={styles['icon-box']}>
-                                                    <img src="/img/accommodation/pool-icon.png" alt="" />
-                                                    <span>{service}</span>
-                                                </div>
-                                            ) : service === "Wi-Fi" ? (
-                                                <div key={service} className={styles['icon-box']}>
-                                                    <img src="/img/accommodation/wifi-icon.png" alt="" />
-                                                    <span>{service}</span>
-                                                </div>
-                                            ) : service === "ห้องน้ำส่วนตัว" ? (
-                                                <div key={service} className={styles['icon-box']}>
-                                                    <img src="/img/accommodation/bath-icon.png" alt="" />
-                                                    <span>{service}</span>
-                                                </div>
-                                            ) : service === "ร้านอาหาร" ? (
-                                                <div key={service} className={styles['icon-box']}>
-                                                    <img src="/img/accommodation/restaurant-icon.png" alt="" />
-                                                    <span>{service}</span>
-                                                </div>
-                                            ) : service === "ห้องประชุม" ? (
-                                                <div key={service} className={styles['icon-box']}>
-                                                    <img src="/img/accommodation/meetting-icon.png" alt="" />
-                                                    <span>{service}</span>
-                                                </div>
-                                            ) : service === "เช่ารายเดือน" ? (
-                                                <div key={service} className={styles['icon-box']}>
-                                                    <img src="/img/accommodation/monthly.png" alt="" />
-                                                    <span>{service}</span>
-                                                </div>
-                                            ) : service === "ลานกางเต็นท์" ? (
-                                                <div key={service} className={styles['icon-box']}>
-                                                    <img src="/img/accommodation/tent-icon.png" alt="" />
-                                                    <span>{service}</span>
-                                                </div>
-                                            ) : service === "บริการลากแพ" ? (
-                                                <div key={service} className={styles['icon-box']}>
-                                                    <img src="/img/accommodation/raft-icon.png" alt="" />
-                                                    <span>{service}</span>
-                                                </div>
-                                            ) : service === "คาราโอเกะ" ? (
-                                                <div key={service} className={styles['icon-box']}>
-                                                    <img src="/img/accommodation/karaoke-icon.png" alt="" />
-                                                    <span>{service}</span>
-                                                </div>
-                                            ) : ''
-                                        ))}
-                                    </div>
+                                    {screen.availWidth <= 768 && activeAcommodation.services.length > 0 ? (
+                                        <div className={styles['service-box']}>
+                                            {activeAcommodation.services.map((service) => (
+                                                service === "ลานจอดรถ" ? (
+                                                    <div key={service} className={styles['icon-box']}>
+                                                        <img src="/img/accommodation/parking-icon.png" alt="" />
+                                                        <span>{service}</span>
+                                                    </div>
+                                                ) : service === "สระว่ายน้ำ" ? (
+                                                    <div key={service} className={styles['icon-box']}>
+                                                        <img src="/img/accommodation/pool-icon.png" alt="" />
+                                                        <span>{service}</span>
+                                                    </div>
+                                                ) : service === "Wi-Fi" ? (
+                                                    <div key={service} className={styles['icon-box']}>
+                                                        <img src="/img/accommodation/wifi-icon.png" alt="" />
+                                                        <span>{service}</span>
+                                                    </div>
+                                                ) : service === "ห้องน้ำส่วนตัว" ? (
+                                                    <div key={service} className={styles['icon-box']}>
+                                                        <img src="/img/accommodation/bath-icon.png" alt="" />
+                                                        <span>{service}</span>
+                                                    </div>
+                                                ) : service === "ร้านอาหาร" ? (
+                                                    <div key={service} className={styles['icon-box']}>
+                                                        <img src="/img/accommodation/restaurant-icon.png" alt="" />
+                                                        <span>{service}</span>
+                                                    </div>
+                                                ) : service === "ห้องประชุม" ? (
+                                                    <div key={service} className={styles['icon-box']}>
+                                                        <img src="/img/accommodation/meetting-icon.png" alt="" />
+                                                        <span>{service}</span>
+                                                    </div>
+                                                ) : service === "เช่ารายเดือน" ? (
+                                                    <div key={service} className={styles['icon-box']}>
+                                                        <img src="/img/accommodation/monthly.png" alt="" />
+                                                        <span>{service}</span>
+                                                    </div>
+                                                ) : service === "ลานกางเต็นท์" ? (
+                                                    <div key={service} className={styles['icon-box']}>
+                                                        <img src="/img/accommodation/tent-icon.png" alt="" />
+                                                        <span>{service}</span>
+                                                    </div>
+                                                ) : service === "บริการลากแพ" ? (
+                                                    <div key={service} className={styles['icon-box']}>
+                                                        <img src="/img/accommodation/raft-icon.png" alt="" />
+                                                        <span>{service}</span>
+                                                    </div>
+                                                ) : service === "คาราโอเกะ" ? (
+                                                    <div key={service} className={styles['icon-box']}>
+                                                        <img src="/img/accommodation/karaoke-icon.png" alt="" />
+                                                        <span>{service}</span>
+                                                    </div>
+                                                ) : ''
+                                            ))}
+                                        </div>
+                                    ) : screen.availWidth > 1400 ? (
+                                        <div className={styles['service-box']}>
+                                            {activeAcommodation.services.map((service) => (
+                                                service === "ลานจอดรถ" ? (
+                                                    <div key={service} className={styles['icon-box']}>
+                                                        <img src="/img/accommodation/parking-icon.png" alt="" />
+                                                        <span>{service}</span>
+                                                    </div>
+                                                ) : service === "สระว่ายน้ำ" ? (
+                                                    <div key={service} className={styles['icon-box']}>
+                                                        <img src="/img/accommodation/pool-icon.png" alt="" />
+                                                        <span>{service}</span>
+                                                    </div>
+                                                ) : service === "Wi-Fi" ? (
+                                                    <div key={service} className={styles['icon-box']}>
+                                                        <img src="/img/accommodation/wifi-icon.png" alt="" />
+                                                        <span>{service}</span>
+                                                    </div>
+                                                ) : service === "ห้องน้ำส่วนตัว" ? (
+                                                    <div key={service} className={styles['icon-box']}>
+                                                        <img src="/img/accommodation/bath-icon.png" alt="" />
+                                                        <span>{service}</span>
+                                                    </div>
+                                                ) : service === "ร้านอาหาร" ? (
+                                                    <div key={service} className={styles['icon-box']}>
+                                                        <img src="/img/accommodation/restaurant-icon.png" alt="" />
+                                                        <span>{service}</span>
+                                                    </div>
+                                                ) : service === "ห้องประชุม" ? (
+                                                    <div key={service} className={styles['icon-box']}>
+                                                        <img src="/img/accommodation/meetting-icon.png" alt="" />
+                                                        <span>{service}</span>
+                                                    </div>
+                                                ) : service === "เช่ารายเดือน" ? (
+                                                    <div key={service} className={styles['icon-box']}>
+                                                        <img src="/img/accommodation/monthly.png" alt="" />
+                                                        <span>{service}</span>
+                                                    </div>
+                                                ) : service === "ลานกางเต็นท์" ? (
+                                                    <div key={service} className={styles['icon-box']}>
+                                                        <img src="/img/accommodation/tent-icon.png" alt="" />
+                                                        <span>{service}</span>
+                                                    </div>
+                                                ) : service === "บริการลากแพ" ? (
+                                                    <div key={service} className={styles['icon-box']}>
+                                                        <img src="/img/accommodation/raft-icon.png" alt="" />
+                                                        <span>{service}</span>
+                                                    </div>
+                                                ) : service === "คาราโอเกะ" ? (
+                                                    <div key={service} className={styles['icon-box']}>
+                                                        <img src="/img/accommodation/karaoke-icon.png" alt="" />
+                                                        <span>{service}</span>
+                                                    </div>
+                                                ) : ''
+                                            ))}
+                                        </div>
+                                    ) : ''}
                                 </div>
                             </div>
                             <div className={styles['contact-box']}>

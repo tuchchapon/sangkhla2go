@@ -234,13 +234,15 @@ $xxl: "screen and (min-width: 1400px)";
         height: 132px;
         border-radius: 4px;
         margin-bottom: 8px;
+        border-radius: 8px;
         @media #{$md} {
             width: 188px;
+            border-radius: 12px;
             height: 184px;
             border-radius: 4px;
         }
         @media #{$xxl} {
-            border-radius: 0;
+            border-radius: 16px;
             left: 22px;
             top: 22px;
             width: 322px;

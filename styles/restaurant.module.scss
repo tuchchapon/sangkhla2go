@@ -472,7 +472,7 @@ $xxl: "screen and (min-width: 1400px)";
         display: flex;
         width: 280px;
         margin: 0 auto;
-        align-items: center;
+        align-items: flex-start;
         justify-content: center;
         span{
             width: 256px;

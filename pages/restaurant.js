@@ -30,7 +30,13 @@ export default function restaurant() {
                 }
                 new_res_arr = res_arr.splice(0, 9)
             }
-            else if (screen.availWidth < 1400) {
+            else if (screen.availWidth >= 768) {
+                for (let i = 0; i < 12; i++) {
+                    if (res_arr[i]) new_show_arr.push(res_arr[i])
+                }
+                new_res_arr = res_arr.splice(0, 12)
+            }
+            else if (screen.availWidth > 400) {
                 for (let i = 0; i < 6; i++) {
                     if (res_arr[i]) new_show_arr.push(res_arr[i])
                 }
@@ -72,11 +78,17 @@ export default function restaurant() {
                     }
                     data.splice(0, 9)
                 }
-                else if (screen.availWidth < 1400) {
-                    for (let j = 0; j < 5; j++) {
+                else if (screen.availWidth > 766) {
+                    for (let j = 0; j < 12; j++) {
                         if (data[j] === 0 || data[j]) setarr.push(data[j])
                     }
-                    data.splice(0, 5)
+                    data.splice(0, 12)
+                }
+                else if (screen.availWidth > 1400) {
+                    for (let j = 0; j < 6; j++) {
+                        if (data[j] === 0 || data[j]) setarr.push(data[j])
+                    }
+                    data.splice(0, 6)
                 }
                 console.log('data is ', data);
                 console.log('setarr is', setarr);
