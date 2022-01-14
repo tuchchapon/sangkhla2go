@@ -413,18 +413,21 @@ export default function index() {
         for (let i = 0; i < 9; i++) {
           if (reviews[i] === 0 || reviews[i]) set_review.push(reviews[i])
         }
+        reviews.splice(0, 9)
       } else if (screen.availWidth >= 768) {
         for (let i = 0; i < 8; i++) {
           if (reviews[i] === 0 || reviews[i]) set_review.push(reviews[i])
         }
+        reviews.splice(0, 8)
       } else {
         for (let i = 0; i < 4; i++) {
           if (reviews[i] === 0 || reviews[i]) set_review.push(reviews[i])
         }
+        reviews.splice(0, 4)
       }
 
 
-      reviews.splice(0, 9)
+
       setRes_reviews(reviews)
       setShowReview(set_review)
     }
@@ -829,7 +832,7 @@ export default function index() {
 
                   <div className="container">
                     <div className="row">
-                      <div className="col-xl-8">
+                      <div className="col-xxl-8">
                         <div className={styles['review-slider-box']}>
                           {screen.availWidth > 1300 ? (
                             <Slider {...videoSettings}>
@@ -915,7 +918,7 @@ export default function index() {
                             </Slider>}
                         </div>
                       </div>
-                      <div className="col-xl-4">
+                      <div className="col-xxl-4">
                         <div className={styles['review-title-box']}>
                           <span>สังขละรีวิว</span>
                           <span>นอกจากสะพานมอญ ที่เป็นไฮไลท์

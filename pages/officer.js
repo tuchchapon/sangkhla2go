@@ -4,6 +4,76 @@ import Popup from 'reactjs-popup';
 import styles from '../styles/officer.module.scss'
 import SubHeader from '../layouts/subHeader';
 import Footer from '../layouts/footer'
+import Slider from 'react-slick';
+const videoSettings = {
+    infinite: true,
+    speed: 1000,
+    // fade:true,
+    dots: true,
+    customPaging: i => (
+        <div
+            className={styles['review-dots']}
+        >
+            {i + 1}
+        </div>
+    ),
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    nextArrow: <RightArrow />,
+    prevArrow: <LeftArrow />,
+    responsive: [
+        {
+            breakpoint: 1400,
+            settings: {
+                arrows: true,
+            }
+        },
+        {
+            breakpoint: 1300,
+            settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                dots: true,
+                arrows: false,
+                beforeChange: (prev, next) => {
+                    // this.setState({ currentSlide: next });
+                    setNowDots(next)
+                },
+                customPaging: (i) => (
+                    <div
+                        style={{
+                            position: "relative",
+                            top: '20px',
+                            width: "24px",
+                            height: "24px",
+                            borderRadius: "50%",
+                            color: "#383838",
+                            border: '2px solid #383838',
+                            backgroundColor: `${i === nowDots ? '#E1D3B6' : '#FBF6E9'}`,
+                        }}
+
+                    >
+                        {`${i + 1}`}
+                    </div>
+                ),
+            }
+        },
+    ]
+
+
+}
+function RightArrow(props) {
+    const { className, style, onClick } = props;
+    return (
+        <img src="/right-arrow.png" style={{ ...style, width: '32px', height: '64px', right: '-57px', top: '50%' }} className={className} onClick={onClick} alt="" />
+    );
+}
+function LeftArrow(props) {
+    const { className, style, onClick } = props;
+    return (
+        <img src="/left-arrow.png" alt="" style={{ ...style, width: '32px', height: '64px', left: '-57px', top: '50%' }} className={className} onClick={onClick} />
+    )
+}
 export default function officer() {
     const [check_data, setCheck_data] = useState(false)
     const [leader, setLeader] = useState({})
@@ -43,6 +113,8 @@ export default function officer() {
             // document.getElementById('leader-popup').scrollIntoView
         }
     }
+
+
     const closePopup = (e) => {
         if (e) e.preventDefault()
         setShowBigPopup(false)
@@ -61,6 +133,7 @@ export default function officer() {
                 setCitizens(data.citizen)
                 setInterns(data.intern)
                 setCheck_data(true)
+                console.log(screen.availWidth);
             }
         }
         if (check_data === false) getOfficer()
@@ -320,6 +393,54 @@ export default function officer() {
                             </div>
                         </div>
                     </div>
+
+                </div>
+            </div>
+            <div className={styles['video-section']}>
+                <div className="container">
+                    <div className="col-12">
+                        <div className={styles['video-box']}>
+                            <div className={styles['review-slider-box']}>
+                                <Slider {...videoSettings}>
+                                    <div className={styles['video-item']}>
+                                        <iframe width="577" height="320" src="https://www.youtube.com/embed/B7ync4odCJk" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                                    </div>
+                                    <div className={styles['video-item']}>
+                                        <iframe width="577" height="320" src="https://www.youtube.com/embed/v_ulqJa2Jpw" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                                    </div>
+                                </Slider>
+                                {/* {screen.availWidth > 1300 ? (
+                                    <Slider {...videoSettings}>
+
+                                        <div className={styles['video-item']}>
+                                            <iframe width="577" height="315" src="https://www.youtube.com/embed/B7ync4odCJk" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                                        </div>
+                                        <div className={styles['video-item']}>
+                                            <iframe width="577" height="315" src="https://www.youtube.com/embed/v_ulqJa2Jpw" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                                        </div>
+
+                                    </Slider>
+                                ) : screen.availWidth > 767 ?
+                                    <Slider {...videoSettings}>
+                                        <div className={styles['video-item']}>
+                                            <iframe width="478" height="280" src="https://www.youtube.com/embed/B7ync4odCJk" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                                        </div>
+                                        <div className={styles['video-item']}>
+                                            <iframe width="478" height="280" src="https://www.youtube.com/embed/v_ulqJa2Jpw" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                                        </div>
+
+                                    </Slider> :
+                                    <Slider {...videoSettings}>
+                                        <div className={styles['video-item']}>
+                                            <iframe width="280" height="168" src="https://www.youtube.com/embed/B7ync4odCJk" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                                        </div>
+                                        <div className={styles['video-item']}>
+                                            <iframe width="280" height="168" src="https://www.youtube.com/embed/v_ulqJa2Jpw" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                                        </div>
+                                    </Slider>} */}
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <Popup
@@ -376,6 +497,7 @@ export default function officer() {
                                     </div>
 
                                 </div>
+
                             </div>
                         </div>
                     </div>
