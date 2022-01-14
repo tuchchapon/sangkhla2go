@@ -120,7 +120,7 @@ export default function accommodationPopup({ open, onClose, activeAcommodation }
 
                                         </div>
                                     </div>
-                                    {screen.availWidth <= 768 && activeAcommodation.services.length > 0 ? (
+                                    {screen.width <= 768 && activeAcommodation.services.length > 0 ? (
                                         <div className={styles['service-box']}>
                                             {activeAcommodation.services.map((service) => (
                                                 service === "ลานจอดรถ" ? (
@@ -176,7 +176,7 @@ export default function accommodationPopup({ open, onClose, activeAcommodation }
                                                 ) : ''
                                             ))}
                                         </div>
-                                    ) : screen.availWidth > 1400 ? (
+                                    ) : screen.width > 1400 ? (
                                         <div className={styles['service-box']}>
                                             {activeAcommodation.services.map((service) => (
                                                 service === "ลานจอดรถ" ? (
