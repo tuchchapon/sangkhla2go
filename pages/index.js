@@ -915,7 +915,7 @@ export default function index() {
                             </Slider>}
                         </div>
                       </div>
-                      <div className="col-md-4">
+                      <div className="col-xl-4">
                         <div className={styles['review-title-box']}>
                           <span>สังขละรีวิว</span>
                           <span>นอกจากสะพานมอญ ที่เป็นไฮไลท์
