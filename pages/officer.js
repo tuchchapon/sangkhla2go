@@ -87,7 +87,7 @@ export default function officer() {
     const [showBigPopup, setShowBigPopup] = useState(false)
     const [activOfficer, setActivOfficer] = useState({})
     const [activeLeader, setActiveLeader] = useState({})
-
+    const [SC_wide, setSC_wide] = useState(0)
     const toLink = (e, officer) => {
         if (e) e.preventDefault()
         console.log(officer);
@@ -122,6 +122,7 @@ export default function officer() {
     }
     useEffect(() => {
         const getOfficer = async () => {
+            setSC_wide(screen.availWidth)
             const response = await axios.get(`${process.env.SERVER_API}/get/officers`)
             if (response.status === 200) {
                 console.log(response.data.payload);
@@ -401,15 +402,7 @@ export default function officer() {
                     <div className="col-12">
                         <div className={styles['video-box']}>
                             <div className={styles['review-slider-box']}>
-                                <Slider {...videoSettings}>
-                                    <div className={styles['video-item']}>
-                                        <iframe width="577" height="320" src="https://www.youtube.com/embed/B7ync4odCJk" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
-                                    </div>
-                                    <div className={styles['video-item']}>
-                                        <iframe width="577" height="320" src="https://www.youtube.com/embed/v_ulqJa2Jpw" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
-                                    </div>
-                                </Slider>
-                                {/* {screen.availWidth > 1300 ? (
+                                {SC_wide > 1300 ? (
                                     <Slider {...videoSettings}>
 
                                         <div className={styles['video-item']}>
@@ -420,7 +413,7 @@ export default function officer() {
                                         </div>
 
                                     </Slider>
-                                ) : screen.availWidth > 767 ?
+                                ) : SC_wide > 767 ?
                                     <Slider {...videoSettings}>
                                         <div className={styles['video-item']}>
                                             <iframe width="478" height="280" src="https://www.youtube.com/embed/B7ync4odCJk" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
@@ -437,7 +430,7 @@ export default function officer() {
                                         <div className={styles['video-item']}>
                                             <iframe width="280" height="168" src="https://www.youtube.com/embed/v_ulqJa2Jpw" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                                         </div>
-                                    </Slider>} */}
+                                    </Slider>}
                             </div>
                         </div>
                     </div>
