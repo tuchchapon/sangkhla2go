@@ -34,6 +34,7 @@ export default function officer() {
         slidesToScroll: 1,
         nextArrow: <RightArrow />,
         prevArrow: <LeftArrow />,
+        dots: false,
         responsive: [
             {
                 breakpoint: 1400,
@@ -54,13 +55,14 @@ export default function officer() {
                     },
                     customPaging: (i) => (
                         <div
+                            className={styles['review-dots']}
                             style={{
                                 position: "relative",
-                                top: '20px',
                                 width: "24px",
                                 height: "24px",
                                 borderRadius: "50%",
                                 color: "#383838",
+
                                 border: '2px solid #383838',
                                 backgroundColor: `${i === nowDots ? '#E1D3B6' : '#FBF6E9'}`,
                             }}
