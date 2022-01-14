@@ -84,7 +84,7 @@ export default function restaurant() {
                     }
                     data.splice(0, 12)
                 }
-                else if (screen.availWidth > 1400) {
+                else if (screen.availWidth > 500) {
                     for (let j = 0; j < 6; j++) {
                         if (data[j] === 0 || data[j]) setarr.push(data[j])
                     }
