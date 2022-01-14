@@ -137,6 +137,7 @@ $xxl: "screen and (min-width: 1400px)";
             @media #{$xxl} {
                 flex-direction: initial;
                 width: auto;
+                align-items: flex-start;
             }
             .logo-left-box {
                 display: flex;
@@ -1101,7 +1102,9 @@ $xxl: "screen and (min-width: 1400px)";
         font-size: 10px;
         height: 72px;
         overflow: auto;
+        padding: 0 8px;
         @media #{$md} {
+
             padding: 8px;
             font-size: 16px;
             line-height: 24px;

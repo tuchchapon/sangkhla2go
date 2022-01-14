@@ -523,7 +523,8 @@ $xxl: "screen and (min-width: 1400px)";
     width: 100%;
     top: 0;
     z-index: 1;
-    height: 765px;
+    // height: 765px;
+    height: 80%;
     background-color: #e1d3b6;
     @media #{$md} {
       padding-top: 40px;
@@ -546,7 +547,8 @@ $xxl: "screen and (min-width: 1400px)";
     // bottom: 135px;
     bottom: 0;
     width: 100%;
-    height: 200px; 
+    // height: 200px; 
+    height: 20%;
     // display: none;
     @media #{$md} {
       height: 256px;
@@ -568,14 +570,17 @@ $xxl: "screen and (min-width: 1400px)";
     z-index: 2;
     width: 100%;
     height: 208px;
-    margin-top: -50px;
-    margin: 0 auto;
+    margin: -50px auto 0;
+    max-width: 360px;
     @media #{$md} {
       height: 330px;
       margin-top: -30px;
+      max-width: 768px;
     }
     @media #{$xxl} {
+      // background-size: cover;
       margin-top: -40px;
+      max-width: initial;
       height: 608px;
     }
     // max-width: 1440px;
@@ -2792,7 +2797,7 @@ $xxl: "screen and (min-width: 1400px)";
         flex: 0 0 calc((100% - 90px) / 4);
         width: 270px;
         height: 304px;
-        padding: 22px 22px 22px 22px;
+        padding: 22px 22px 10px 22px;
       }
       &:hover {
         background-image: url("/img/attraction/attraction-frame-hover.png");

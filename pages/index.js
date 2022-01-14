@@ -297,7 +297,7 @@ export default function index() {
                 height: "24px",
                 borderRadius: "50%",
                 color: "#383838",
-                border: '1px solid #383838',
+                border: '2px solid #383838',
                 backgroundColor: `${i === nowDots ? '#E1D3B6' : '#FBF6E9'}`,
               }}
 
@@ -464,12 +464,12 @@ export default function index() {
             <div className="container">
 
               <div className="row">
-                <div className="col-xl-5">
+                <div className="col-xxl-5">
                   <div className={styles['logo-box']}>
                     <img src="/LOGO.png" alt="" />
                   </div>
                 </div>
-                <div className="col-xl-7">
+                <div className="col-xxl-7">
                   {/* <div className={styles['md-intro-textbox']}>
                     <span>
                       <b>สังขละบุรี </b>เป็นอำเภอชายแดนตะวันตก<br /> รอยต่อด่านเจดีย์สามองค์ติดกับเมืองพญาตองซูของประเทศเมียนมา  มีตำบลหนองลูเป็นจุดศูนย์กลางการท่องเที่ยว <br /> โดยประกอบไปด้วยเส้นทางประวัติศาสตร์และแหล่งอารยธรรม <br />
@@ -831,7 +831,7 @@ export default function index() {
                     <div className="row">
                       <div className="col-xl-8">
                         <div className={styles['review-slider-box']}>
-                          {screen.availWidth > 1200 ? (
+                          {screen.availWidth > 1300 ? (
                             <Slider {...videoSettings}>
                               <div className={styles['video-item']}>
                                 <iframe width="577" height="315" src="https://www.youtube.com/embed/36iD3HmGt8g" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
