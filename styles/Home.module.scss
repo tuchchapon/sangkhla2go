@@ -635,8 +635,8 @@ $xxl: "screen and (min-width: 1400px)";
     }
     @media #{$xxl} {
       height: auto;
-      width: 668px;
-      padding: 33px 38px;
+      max-width: 668px;
+      padding: 33px 30px;
       border-radius: 32px;
     }
     span {
@@ -646,6 +646,7 @@ $xxl: "screen and (min-width: 1400px)";
       // word-break: keep-all;      
       font-size: 16px;
       line-height: 24px;
+
       @media #{$md} {
         // width: 580px;
         font-size: 19px;
@@ -653,8 +654,9 @@ $xxl: "screen and (min-width: 1400px)";
 
       }
       @media #{$xxl} {
-        font-size: 24px;
+        font-size: 25px;
         line-height: 32px;
+
       }
     }
   }
