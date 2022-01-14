@@ -407,7 +407,7 @@ $xxl: "screen and (min-width: 1400px)";
     overflow-x: hidden;
     overflow-y: auto;
     display: flex;
-    padding: 0 40px;
+    padding: 0 16px;
     flex-direction: column;
     margin: auto;
     width: 100%;
@@ -418,6 +418,7 @@ $xxl: "screen and (min-width: 1400px)";
         padding: 0 60px;
     }
     @media #{$xxl} {
+        
         padding: 0 70px;
         max-width: 1170px;
         max-height: 800px;
