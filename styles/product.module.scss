@@ -249,7 +249,7 @@ $xxl: "screen and (min-width: 1400px)";
     position: relative;
     width: 100%;
     max-width: 280px;
-    height: 240px;
+    // height: 240px;
     margin-bottom: 20px;
     @media #{$md} {
         height: 100%;
@@ -260,7 +260,7 @@ $xxl: "screen and (min-width: 1400px)";
     }
     @media #{$xxl} {
         max-width: 698px;
-        height: 560px;
+        max-height: 560px;
     }
     .popup-slider-image {
 
@@ -1144,6 +1144,7 @@ $xxl: "screen and (min-width: 1400px)";
             line-height: 32px;
         }
         @media #{$xxl} {
+            max-width: 810px;
             font-size: 24px;
             line-height: 32px;
             margin-bottom: 40px;

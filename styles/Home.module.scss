@@ -451,8 +451,8 @@ $xxl: "screen and (min-width: 1400px)";
   }
   .sub-header-box {
     display: flex;
-    width: 1170px;
-
+    width: 100%;
+    max-width: 1170;
     justify-content: flex-start;
     align-items: center;
     cursor: pointer;
@@ -869,6 +869,7 @@ $xxl: "screen and (min-width: 1400px)";
     display: flex;
     text-align: center;
     flex-direction: column;
+    margin: 0 auto;
     max-width: 320px;
     @media #{$md} {
       max-width: 690px;
@@ -2493,6 +2494,7 @@ $xxl: "screen and (min-width: 1400px)";
       width: 340px;
       height: 38px;
       background-repeat: no-repeat;
+      margin: 0 auto;
       @media #{$md} {
         background-image: url('/img/home/md-karen-title.png');
         width: 690px;
@@ -2508,6 +2510,7 @@ $xxl: "screen and (min-width: 1400px)";
       width: 340px;
       height: 38px;
       background-repeat: no-repeat;
+      margin: 0 auto;
       @media #{$md} {
         background-image: url('/img/home/md-mon-title.png');
         width: 690px;

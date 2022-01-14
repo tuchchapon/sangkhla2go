@@ -44,6 +44,18 @@ const MDLeftArrow = (props) => {
     <img src="/left-arrow.png" alt="" style={{ ...style, width: '16px', height: '32px', left: '-24px', top: '40%' }} className={className} onClick={onClick} />
   )
 }
+const SMRightArrow = (props) => {
+  const { className, style, onClick } = props;
+  return (
+    <img src="/right-arrow.png" style={{ ...style, width: '12px', height: '24px', right: '-16px', top: '40%' }} className={className} onClick={onClick} alt="" />
+  );
+}
+const SMLeftArrow = (props) => {
+  const { className, style, onClick } = props;
+  return (
+    <img src="/left-arrow.png" alt="" style={{ ...style, width: '12px', height: '24px', left: '-16px', top: '40%' }} className={className} onClick={onClick} />
+  )
+}
 
 
 export default function index() {
@@ -105,25 +117,31 @@ export default function index() {
   const [activeProduct, setActiveProduct] = useState({
     id: '', name: '', fb_page: '', tel: '', link: '', images: [], detail: ''
   })
-  const showAccommodationPopup = (accommodation) => {
+  const showAccommodationPopup = (e, accommodation) => {
+    if (e) e.preventDefault()
     setActiveAcommodation(accommodation)
     setOpenAccommodationPopup(true)
   }
-  const showSagePopup = () => {
+  const showSagePopup = (e) => {
+    if (e) e.preventDefault()
     setOpenSagePopup(true)
   }
   const showLeaderPopup = () => {
+
     setOpenLeaderPopup(true)
   }
-  const showAttractionPopup = (attraction) => {
+  const showAttractionPopup = (e, attraction) => {
+    if (e) e.preventDefault()
     setopenAttractionpopup(true)
     setActiveAttraction(attraction)
   }
-  const showRestaurantPopup = (restaurant) => {
+  const showRestaurantPopup = (e, restaurant) => {
+    if (e) e.preventDefault()
     setActiveRestarant(restaurant)
     setOpenRestaurantPopup(true)
   }
-  const showBoatPopup = (boat) => {
+  const showBoatPopup = (e, boat) => {
+    if (e) e.preventDefault()
     setActiveBoat(boat)
     setOpenBoatPopup(true)
   }
@@ -132,16 +150,19 @@ export default function index() {
     setActiveWin(location)
     setOpenWinpopup(true)
   }
-  const showKarenPopup = (tradition) => {
+  const showKarenPopup = (e, tradition) => {
+    if (e) e.preventDefault()
     setActiveKaren(tradition)
     setOpenKarenPopup(true)
 
   }
-  const showMonPopup = (tradition) => {
+  const showMonPopup = (e, tradition) => {
+    if (e) e.preventDefault()
     setActiveMon(tradition)
     setOpenMonPopup(true)
   }
-  const showProductPopup = (product) => {
+  const showProductPopup = (e, product) => {
+    if (e) e.preventDefault()
     setActiveProduct(product)
     setOpenProductPopup(true)
   }
@@ -149,7 +170,7 @@ export default function index() {
 
   const settings = {
     infinite: true,
-    speed: 2000,
+    speed: 1000,
     // fade:true,
     dot: true,
     slidesToShow: 3,
@@ -163,7 +184,7 @@ export default function index() {
         breakpoint: 1400,
         settings: {
           arrows: true,
-          speed: 2000,
+          speed: 1000,
 
         }
       },
@@ -185,7 +206,8 @@ export default function index() {
           slidesToScroll: 1,
           slidesToShow: 2,
           dots: false,
-          arrows: false
+          nextArrow: <SMRightArrow />,
+          prevArrow: <SMLeftArrow />,
         }
       },
     ]
@@ -193,7 +215,7 @@ export default function index() {
   }
   const BoatSettings = {
     infinite: true,
-    speed: 5000,
+    speed: 1000,
     // fade:true,
     dots: false,
     slidesToShow: 4,
@@ -226,14 +248,15 @@ export default function index() {
           slidesToShow: 2,
           slidesToScroll: 2,
           dots: false,
-          arrows: false
+          nextArrow: <SMRightArrow />,
+          prevArrow: <SMLeftArrow />,
         }
       },
     ]
   }
   const videoSettings = {
     infinite: true,
-    // speed: 1000,
+    speed: 1000,
     // fade:true,
     dots: true,
     customPaging: i => (
@@ -548,7 +571,7 @@ export default function index() {
 
                       {hotels.length > 0 ? hotels.map((hotel) => (
                         <div key={hotel.id} className={styles['slider-box']}>
-                          <div onClick={() => showAccommodationPopup(hotel)} key={hotel.id} className={styles['accommodation-item']} >
+                          <div onClick={(e) => showAccommodationPopup(e, hotel)} key={hotel.id} className={styles['accommodation-item']} >
                             <img src={hotel.images.length > 0 ? `${hotel.images[0]}` : '/accom-placeholder.png'} alt="" />
                             <span className={styles['accommodation-name']} >{hotel.name}<br /></span>
                             <div className={styles['price-box']} >
@@ -564,7 +587,7 @@ export default function index() {
                     <Slider {...BoatSettings}>
                       {boatHouses.length > 0 ? boatHouses.map((boatHouse) => (
                         <div className={styles['boat-house-slider-box']} key={boatHouse.id}>
-                          <div onClick={() => showAccommodationPopup(boatHouse)} className={styles['boat-house-item']}>
+                          <div onClick={(e) => showAccommodationPopup(e, boatHouse)} className={styles['boat-house-item']}>
                             <div className={styles['boat-image-box']} >
                               <img src={boatHouse.images.length > 0 ? `${boatHouse.images[0]}` : '/accom-placeholder.png'} alt="" />
                             </div>
@@ -603,7 +626,7 @@ export default function index() {
                     </div>
                     <div className={styles['sm-attraction-list']}>
                       {mobileAttraction.length > 0 ? mobileAttraction.map((mbAttraction, i) => (
-                        <div className={styles['sm-attraction-item']} onClick={(e) => showAttractionPopup(mbAttraction)} key={mbAttraction.id}>
+                        <div className={styles['sm-attraction-item']} onClick={(e) => showAttractionPopup(e, mbAttraction)} key={mbAttraction.id}>
                           <div className={styles['attraction-number']}>{i + 1}</div>
                           <span>{mbAttraction.name}</span>
                         </div>
@@ -612,7 +635,7 @@ export default function index() {
                   </div>
                   <div className={styles['attraction-map']}>
                     {attractions.length > 0 ? attractions.map((attraction, i) => (
-                      <div onClick={(e) => showAttractionPopup(attraction)} key={attraction.id} className={`${styles[`pin${i}`]} ${styles[`pin-position${i}`]}`}>
+                      <div onClick={(e) => showAttractionPopup(e, attraction)} key={attraction.id} className={`${styles[`pin${i}`]} ${styles[`pin-position${i}`]}`}>
                         <div className={`${styles['text-box']} ${styles[`text-box${i}`]}`}></div>
                       </div>
                     )) : ''}
@@ -658,7 +681,7 @@ export default function index() {
                 <Slider {...settings}>
                   {restaurants.length > 0 ? restaurants.map((restaurant) => (
                     <div key={restaurant.id} className={styles['slider-box']}>
-                      <div onClick={(e) => showRestaurantPopup(restaurant)} className={styles['restaurant-item']}>
+                      <div onClick={(e) => showRestaurantPopup(e, restaurant)} className={styles['restaurant-item']}>
                         <img className={styles['restaurant-image']} src={restaurant.images.length > 0 ? `${restaurant.images[0]}` : '/restaurant-placeholder.png'} alt="" />
                         <span>{restaurant.name}</span>
                         <span>{restaurant.type}</span>
@@ -704,7 +727,7 @@ export default function index() {
                     <Slider {...settings}>
                       {boatProviders.length > 0 ? boatProviders.map((boatProvider) => (
                         <div key={boatProvider.id} className={styles['boat-slider-box']}>
-                          <div onClick={() => showBoatPopup(boatProvider)} className={styles['boat-provider-item']}>
+                          <div onClick={(e) => showBoatPopup(e, boatProvider)} className={styles['boat-provider-item']}>
                             <img className={styles['boat-provider-image']} src={boatProvider.boat_images.length > 0 ? `${boatProvider.boat_images[0]}` : '/boat-placeholder.png'} alt="" />
                             <div className={styles['boat-textbox']} >
                               <p className={styles['boat-club-name']} >{boatProvider.club_name}</p>
@@ -736,7 +759,7 @@ export default function index() {
                   <div className={styles['sm-karen-title']}></div>
                   <div className={styles['tradition-list-box']}>
                     {karenTraditions.length > 0 ? karenTraditions.map((karen, i) => (
-                      <div onClick={() => showKarenPopup(karen)} key={karen.id} className={styles['tradition-item']}>
+                      <div onClick={(e) => showKarenPopup(e, karen)} key={karen.id} className={styles['tradition-item']}>
                         <div className={styles['image-box-size']}>
 
                           <div className={styles['tradition-image-box']} style={{ backgroundImage: `url('/img/tradition/tradition-frame.png')}` }}>
@@ -757,7 +780,7 @@ export default function index() {
                   <div className={styles['sm-mon-title']}></div>
                   <div className={styles['tradition-list-box']}>
                     {monTraditions.length > 0 ? monTraditions.map((mon, i) => (
-                      <div onClick={() => showMonPopup(mon)} key={mon.id} className={styles['tradition-item']}>
+                      <div onClick={(e) => showMonPopup(e, mon)} key={mon.id} className={styles['tradition-item']}>
                         <div className={styles['image-box-size']}>
 
                           <div className={styles['tradition-image-box']} >
@@ -783,7 +806,7 @@ export default function index() {
                     <Slider {...BoatSettings}>
                       {products.length > 0 ? products.map((product) => (
                         <div className={styles['slider-box']} key={product.id}>
-                          <div onClick={() => showProductPopup(product)} key={product.id} className={styles['product-item']}>
+                          <div onClick={(e) => showProductPopup(e, product)} key={product.id} className={styles['product-item']}>
                             <div className={styles['product-image-box']}>
                               <div style={{ backgroundImage: `url(${product.images.length > 0 ? `${product.images[0]}` : '/no-imge.png'})` }}></div>
                             </div>
