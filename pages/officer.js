@@ -5,63 +5,6 @@ import styles from '../styles/officer.module.scss'
 import SubHeader from '../layouts/subHeader';
 import Footer from '../layouts/footer'
 import Slider from 'react-slick';
-const videoSettings = {
-    infinite: true,
-    speed: 1000,
-    // fade:true,
-    dots: true,
-    customPaging: i => (
-        <div
-            className={styles['review-dots']}
-        >
-            {i + 1}
-        </div>
-    ),
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    nextArrow: <RightArrow />,
-    prevArrow: <LeftArrow />,
-    responsive: [
-        {
-            breakpoint: 1400,
-            settings: {
-                arrows: true,
-            }
-        },
-        {
-            breakpoint: 1300,
-            settings: {
-                slidesToShow: 1,
-                slidesToScroll: 1,
-                dots: true,
-                arrows: false,
-                beforeChange: (prev, next) => {
-                    // this.setState({ currentSlide: next });
-                    setNowDots(next)
-                },
-                customPaging: (i) => (
-                    <div
-                        style={{
-                            position: "relative",
-                            top: '20px',
-                            width: "24px",
-                            height: "24px",
-                            borderRadius: "50%",
-                            color: "#383838",
-                            border: '2px solid #383838',
-                            backgroundColor: `${i === nowDots ? '#E1D3B6' : '#FBF6E9'}`,
-                        }}
-
-                    >
-                        {`${i + 1}`}
-                    </div>
-                ),
-            }
-        },
-    ]
-
-
-}
 function RightArrow(props) {
     const { className, style, onClick } = props;
     return (
@@ -75,6 +18,64 @@ function LeftArrow(props) {
     )
 }
 export default function officer() {
+    const videoSettings = {
+        infinite: true,
+        speed: 1000,
+        // fade:true,
+        dots: true,
+        customPaging: i => (
+            <div
+                className={styles['review-dots']}
+            >
+                {i + 1}
+            </div>
+        ),
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        nextArrow: <RightArrow />,
+        prevArrow: <LeftArrow />,
+        responsive: [
+            {
+                breakpoint: 1400,
+                settings: {
+                    arrows: true,
+                }
+            },
+            {
+                breakpoint: 1300,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    dots: true,
+                    arrows: false,
+                    beforeChange: (prev, next) => {
+                        // this.setState({ currentSlide: next });
+                        setNowDots(next)
+                    },
+                    customPaging: (i) => (
+                        <div
+                            style={{
+                                position: "relative",
+                                top: '20px',
+                                width: "24px",
+                                height: "24px",
+                                borderRadius: "50%",
+                                color: "#383838",
+                                border: '2px solid #383838',
+                                backgroundColor: `${i === nowDots ? '#E1D3B6' : '#FBF6E9'}`,
+                            }}
+
+                        >
+                            {`${i + 1}`}
+                        </div>
+                    ),
+                }
+            },
+        ]
+
+
+    }
+    const [nowDots, setNowDots] = useState(0)
     const [check_data, setCheck_data] = useState(false)
     const [leader, setLeader] = useState({})
     const [consultants, setConsultants] = useState([])
@@ -121,8 +122,8 @@ export default function officer() {
         setShowSmallPopup(false)
     }
     useEffect(() => {
+        setSC_wide(screen.availWidth)
         const getOfficer = async () => {
-            setSC_wide(screen.availWidth)
             const response = await axios.get(`${process.env.SERVER_API}/get/officers`)
             if (response.status === 200) {
                 console.log(response.data.payload);
