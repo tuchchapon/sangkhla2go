@@ -644,6 +644,7 @@ $xxl: "screen and (min-width: 1400px)";
             padding: 40px 0 44px;
         }
         @media #{$xxl} {
+            align-items: center;
             width: 970px;
              padding: 40px 80px 60px 80px;
         }
@@ -842,11 +843,12 @@ $xxl: "screen and (min-width: 1400px)";
             }
             @media #{$xxl} {
                 width: 238px;
+                &:nth-child(4n) {
+                    margin-bottom: 0;
+                  }
             }
         }
-        &:nth-child(4n) {
-                margin-bottom: 0;
-              }
+
     }
 
     .boat-image-box{
@@ -889,7 +891,6 @@ $xxl: "screen and (min-width: 1400px)";
         .slider-box {
             position: relative;
             max-width: 690px;
-            
         }
         .slider-image{
             display: block;
