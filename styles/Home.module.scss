@@ -1877,6 +1877,8 @@ $xxl: "screen and (min-width: 1400px)";
 
           }
           @media #{$xxl} {
+            font-size: 24px;
+            line-height: 40px;
             height: 80px;
             width: 330px;
           }
@@ -1888,11 +1890,14 @@ $xxl: "screen and (min-width: 1400px)";
         object-fit: cover;
         max-width: 134px;
         max-height: 134px;
+        border-radius: 8px;
         @media #{$md} {
           max-width: 188px;
           max-height: 184px;
+          border-radius: 12px;
         }
         @media #{$xxl} {
+          border-radius: 16px;
           max-width: 322px;
           max-height: 322px;
         }
@@ -1989,6 +1994,7 @@ $xxl: "screen and (min-width: 1400px)";
         width: 108px;
         height: 108px;
         bottom: -55px;
+
         @media #{$md} {
           width: 160px;
           height: 160px;
