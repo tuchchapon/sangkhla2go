@@ -366,10 +366,9 @@ $xxl: "screen and (min-width: 1400px)";
         font-size: 16px;
         line-height: 24px;
         color: #383838;
-        
-        width: 256px;
+        width: 100%;
+        max-width: 256px;
         display: flex;
-    
         img{
             width: 16px;
             height: 16px;
@@ -388,7 +387,6 @@ $xxl: "screen and (min-width: 1400px)";
         @media #{$md} {
 
             max-width: 570px;
-            width: 570px;
             font-size: 24px;
             line-height: 32px;
             text-align: start;
