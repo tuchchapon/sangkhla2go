@@ -493,6 +493,7 @@ $xxl: "screen and (min-width: 1400px)";
             text-align: center;
             margin: 0 auto;
             width: 690px;
+
             @media #{$xxl} {
                 width: 1170px;
                 
@@ -901,6 +902,9 @@ $xxl: "screen and (min-width: 1400px)";
                 align-items: center;
                 justify-content: center;
                 width: 100%;
+                @media #{$xxl} {
+                    min-width: 474px;
+                }
             }
 
             .social-col-box {
