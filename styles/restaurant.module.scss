@@ -805,6 +805,9 @@ $xxl: "screen and (min-width: 1400px)";
         
         // flex-wrap: wrap;
         flex: 0 0 calc((100%)/3);
+        &:nth-last-child(1){
+            margin-right: 0;
+        }
         @media #{$md} {
             flex: 0 0 calc((100% - 48px)/4);
          width: 120px;
