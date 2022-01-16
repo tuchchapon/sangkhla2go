@@ -259,6 +259,9 @@ $xxl: "screen and (min-width: 1400px)";
             display: flex;
             position: relative;
             flex-direction: column;
+            &:nth-last-child(1){
+                margin-right: 0;
+            }
             @media #{$xs} {
                 width: 150px;
                 margin-right: 20px;
@@ -392,19 +395,33 @@ $xxl: "screen and (min-width: 1400px)";
             background-color: #e1d3b6;
         }
     }
-    .load-content-text {
+    .accom-column-box{
+        display: flex;
+        flex-direction: column;
+    }
+    .load-content-text{
         cursor: pointer;
-        font-size: 32px;
         font-weight: bold;
         align-self: center;
-        line-height: 40px;
         text-align: center;
-        margin: auto;
+        justify-content: center;
+        display: flex;
+        flex: 1;
+        margin: 0 auto;
         text-decoration: underline;
-        width: 122px;
-        height: 40px;
+        margin-bottom: 24px;
+        font-size: 16px;
+        line-height: 24px;
+        @media #{$xxl} {
+            margin-bottom: 0;
+            font-size: 32px;
+            line-height: 40px;
+            width: 150px;
+            height: 40px;
+        }
     }
 }
+
 
 .backdrop {
     background-color: rgba(0, 0, 0, 0.7);
@@ -429,8 +446,9 @@ $xxl: "screen and (min-width: 1400px)";
 .accommodation-popup {
     display: flex;
     width: 95%;
-    height: 95%;
+    height: auto;
     max-width: 320px;
+    max-height: 95%;
     border: 2px solid #383838;
     border-radius: 8px;
     z-index: 3;
@@ -442,6 +460,7 @@ $xxl: "screen and (min-width: 1400px)";
     padding: 30px 0 24px;
     @media #{$md} {
         // padding: 40px 60px;
+        border-radius: 16px;
         max-width: 690px;
         border: 4px solid #383838;
     }
@@ -478,7 +497,7 @@ $xxl: "screen and (min-width: 1400px)";
         flex-direction: column;
         // margin: auto;
         width: 100%;
-        height: 100%;
+        height: auto;
         padding: 0 16px ;
         @media #{$xxl} {
             padding: 0 60px;
@@ -632,7 +651,7 @@ $xxl: "screen and (min-width: 1400px)";
             .next {
                 cursor: pointer;
                 position: absolute;
-                top: 40%;
+                top: 45%;
                 width: auto;
                 padding: 16px;
                 color: black;
@@ -643,7 +662,9 @@ $xxl: "screen and (min-width: 1400px)";
                 -webkit-user-select: none;
                 text-decoration: none;
                 margin-top: -20px;
+                // display: none;
                 @media #{$md} {
+                    // display: block;
                     top: 50%;
                 }
                 @media #{$xxl} {
@@ -781,6 +802,7 @@ $xxl: "screen and (min-width: 1400px)";
             bottom: 0;
 
             align-content: flex-start;
+            justify-content: center;
             width: 280px;
             height: 100%;
             // height: 100% ;
@@ -810,7 +832,7 @@ $xxl: "screen and (min-width: 1400px)";
                 flex-direction: column;
                 flex: 0 0 calc((100%) / 3);
                 width: 94px;
-                margin-bottom: 8px;
+                // margin-bottom: 8px;
                 margin-bottom: 24px;
                 height: 72px;
                 @media #{$md} {
