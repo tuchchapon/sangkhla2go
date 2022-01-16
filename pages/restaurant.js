@@ -140,7 +140,7 @@ export default function restaurant() {
                                     </div>
                                 ))}
                             </div>
-                            {res_arr.length > 0 ? (<div onClick={(e) => showMore(e)} className={styles['load-content-text']} ><span   >โหลดเพิ่ม</span></div>) : ''}
+                            {res_arr.length > 0 ? (<div onClick={(e) => showMore(e)} className={styles['load-content-text']} ><span   >แสดงเพิ่ม</span></div>) : ''}
                         </div>
                     </div>
                 </div>

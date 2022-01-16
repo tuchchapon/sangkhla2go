@@ -3,7 +3,7 @@ import Popup from 'reactjs-popup'
 import styles from '../styles/restaurant.module.scss'
 export default function restaurantPopup({ open, onClose, activeRestaurant }) {
     const [bigPhoto, setBigPhoto] = useState('')
-
+    const [sc_width, setSc_width] = useState(0)
     const changeImage = (image) => {
         setBigPhoto(image)
     }
@@ -33,6 +33,8 @@ export default function restaurantPopup({ open, onClose, activeRestaurant }) {
 
     }
     useEffect(() => {
+        let width = screen.availWidth
+        setSc_width(width)
         let first_image = ''
         activeRestaurant.images.length ? first_image = `${activeRestaurant.images[0]}` : ''
         setBigPhoto(first_image)
@@ -101,34 +103,65 @@ export default function restaurantPopup({ open, onClose, activeRestaurant }) {
                                                 <span><b>{`${activeRestaurant.open_time}-${activeRestaurant.close_time} น.`}</b></span>
                                             </div>
                                         </div>
-                                        <div className={styles['service-box']}>
-                                            {activeRestaurant.services.map((service) => (
-                                                service === "บริการส่ง" ? (<div className={styles['icon-box']} key={service} >
-                                                    <img src="/img/restaurant/Delivery-icon.png" alt="" />
-                                                    <span>{service}</span>
-                                                </div>) :
-                                                    service === "ห้องแอร์" ? (<div className={styles['icon-box']} key={service}>
-                                                        <img src="/img/restaurant/air-icon.png" alt="" />
+                                        {sc_width > 1300 ? (
+                                            <div className={styles['service-box']}>
+                                                {activeRestaurant.services.map((service) => (
+                                                    service === "บริการส่ง" ? (<div className={styles['icon-box']} key={service} >
+                                                        <img src="/img/restaurant/Delivery-icon.png" alt="" />
                                                         <span>{service}</span>
                                                     </div>) :
-                                                        service === "คาราโอเกะ" ? (<div className={styles['icon-box']} key={service} >
-                                                            <img src="/img/restaurant/karaoke-icon.png" alt="" />
+                                                        service === "ห้องแอร์" ? (<div className={styles['icon-box']} key={service}>
+                                                            <img src="/img/restaurant/air-icon.png" alt="" />
                                                             <span>{service}</span>
                                                         </div>) :
-                                                            service === "แอลกอฮอล์" ? (<div className={styles['icon-box']} key={service} >
-                                                                <img src="/img/restaurant/alcohol-icon.png" alt="" />
-                                                                <span>
-                                                                    {service}
-                                                                </span>
+                                                            service === "คาราโอเกะ" ? (<div className={styles['icon-box']} key={service} >
+                                                                <img src="/img/restaurant/karaoke-icon.png" alt="" />
+                                                                <span>{service}</span>
                                                             </div>) :
-                                                                service === "เค้ก" ? (<div className={styles['icon-box']} key={service}>
-                                                                    <img src="/img/restaurant/cake-icon.png" alt="" />
+                                                                service === "แอลกอฮอล์" ? (<div className={styles['icon-box']} key={service} >
+                                                                    <img src="/img/restaurant/alcohol-icon.png" alt="" />
                                                                     <span>
                                                                         {service}
                                                                     </span>
-                                                                </div>) : ''
-                                            ))}
-                                        </div>
+                                                                </div>) :
+                                                                    service === "เค้ก" ? (<div className={styles['icon-box']} key={service}>
+                                                                        <img src="/img/restaurant/cake-icon.png" alt="" />
+                                                                        <span>
+                                                                            {service}
+                                                                        </span>
+                                                                    </div>) : ''
+                                                ))}
+                                            </div>
+                                        ) : sc_width < 1300 && activeRestaurant.services.length >= 1 ? (
+                                            <div className={styles['service-box']}>
+                                                {activeRestaurant.services.map((service) => (
+                                                    service === "บริการส่ง" ? (<div className={styles['icon-box']} key={service} >
+                                                        <img src="/img/restaurant/Delivery-icon.png" alt="" />
+                                                        <span>{service}</span>
+                                                    </div>) :
+                                                        service === "ห้องแอร์" ? (<div className={styles['icon-box']} key={service}>
+                                                            <img src="/img/restaurant/air-icon.png" alt="" />
+                                                            <span>{service}</span>
+                                                        </div>) :
+                                                            service === "คาราโอเกะ" ? (<div className={styles['icon-box']} key={service} >
+                                                                <img src="/img/restaurant/karaoke-icon.png" alt="" />
+                                                                <span>{service}</span>
+                                                            </div>) :
+                                                                service === "แอลกอฮอล์" ? (<div className={styles['icon-box']} key={service} >
+                                                                    <img src="/img/restaurant/alcohol-icon.png" alt="" />
+                                                                    <span>
+                                                                        {service}
+                                                                    </span>
+                                                                </div>) :
+                                                                    service === "เค้ก" ? (<div className={styles['icon-box']} key={service}>
+                                                                        <img src="/img/restaurant/cake-icon.png" alt="" />
+                                                                        <span>
+                                                                            {service}
+                                                                        </span>
+                                                                    </div>) : ''
+                                                ))}
+                                            </div>
+                                        ) : null}
                                     </div>
                                 </div>
                                 <div className={styles['contact-box']}>

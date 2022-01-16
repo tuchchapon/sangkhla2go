@@ -445,8 +445,8 @@ $xxl: "screen and (min-width: 1400px)";
 
 .accommodation-popup {
     display: flex;
-    width: 95%;
     height: auto;
+    width: 95%;
     max-width: 320px;
     max-height: 95%;
     border: 2px solid #383838;
@@ -469,7 +469,6 @@ $xxl: "screen and (min-width: 1400px)";
         margin: 40px auto;
         max-width: 1170px;
         max-height: 832px;
-        border-radius: 16px;
         padding: 40px 0;
     }
     .popup-close-icon {
