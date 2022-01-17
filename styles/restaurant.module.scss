@@ -593,6 +593,7 @@ $xxl: "screen and (min-width: 1400px)";
               -webkit-user-select: none;
               text-decoration: none;
               margin-top: 0;
+              display: none;
               @media #{$md} {
                   top: 45%;
             }

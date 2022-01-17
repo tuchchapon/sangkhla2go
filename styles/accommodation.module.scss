@@ -662,6 +662,7 @@ $xxl: "screen and (min-width: 1400px)";
                 text-decoration: none;
                 margin-top: -20px;
                 // display: none;
+                display: none;
                 @media #{$md} {
                     // display: block;
                     top: 50%;
