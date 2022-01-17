@@ -1,4 +1,4 @@
-import React from 'react'
+import { React, useState } from 'react'
 import styles from '../styles/product.module.scss'
 import Popup from 'reactjs-popup'
 import Slider from 'react-slick'
@@ -17,7 +17,7 @@ function LeftArrow(props) {
 
 
 export default function productPopup({ open, onClose, activeProduct }) {
-
+    const [nowDots, setNowDots] = useState(0)
     const settings = {
         infinite: true,
         speed: 200,
@@ -38,10 +38,26 @@ export default function productPopup({ open, onClose, activeProduct }) {
                 }
             },
             {
-                breakpoint: 768,
+                breakpoint: 1300,
                 settings: {
+                    autoplay: false,
                     dots: true,
-                    arrows: false
+                    arrows: false,
+                    dotsClass: styles['slick'],
+                    beforeChange: (prev, next) => {
+                        // this.setState({ currentSlide: next });
+                        setNowDots(next)
+                    },
+                    customPaging: (i) => (
+                        <div
+                            className={styles['slider-dots']}
+                            style={{
+                                backgroundColor: `${i === nowDots ? '#383838' : '#757575'}`,
+                            }}
+
+                        >
+                        </div>
+                    ),
                 }
             },
         ]

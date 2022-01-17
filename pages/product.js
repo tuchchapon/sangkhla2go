@@ -28,6 +28,8 @@ export default function product() {
     })
     const [check_data, setCheck_data] = useState(false)
     const [products, setProducts] = useState([])
+    const [remain_product, setRemain_product] = useState([])
+    const [nowDots, setNowDots] = useState(0)
     // const [showPopup, setShowPopup] = useState(false)
     const [showProduct, setShowProduct] = useState(false)
     const [activeProduct, setActiveProduct] = useState({
@@ -38,7 +40,7 @@ export default function product() {
         infinite: true,
         speed: 200,
         fade: true,
-        dots: true,
+        dots: false,
         slidesToShow: 1,
         slidesToScroll: 1,
         autoplay: true,
@@ -57,7 +59,23 @@ export default function product() {
                 breakpoint: 800,
                 settings: {
                     dots: true,
-                    arrows: false
+                    // dots: false,
+                    arrows: false,
+                    dotsClass: styles['slick'],
+                    beforeChange: (prev, next) => {
+                        // this.setState({ currentSlide: next });
+                        setNowDots(next)
+                    },
+                    customPaging: (i) => (
+                        <div
+                            className={styles['slider-dots']}
+                            style={{
+                                backgroundColor: `${i === nowDots ? '#383838' : '#757575'}`,
+                            }}
+
+                        >
+                        </div>
+                    ),
                 }
             },
         ]
@@ -76,6 +94,29 @@ export default function product() {
         if (e) e.preventDefault()
         setActiveTab(type)
     }
+    const setNewProduct = (new_show_arr) => {
+        setProducts([...products, ...new_show_arr])
+    }
+    const showMore = () => {
+        let new_show_arr = []
+        let new_res_arr = []
+        if (remain_product.length !== 0) {
+            if (screen.availWidth >= 768) {
+                for (let i = 0; i < 9; i++) {
+                    if (remain_product[i]) new_show_arr.push(remain_product[i])
+                }
+                new_res_arr = remain_product.splice(0, 9)
+            }
+            if (screen.availWidth < 768) {
+                for (let i = 0; i < 6; i++) {
+                    if (remain_product[i]) new_show_arr.push(remain_product[i])
+                }
+                new_res_arr = remain_product.splice(0, 6)
+            }
+        }
+        setNewProduct(new_show_arr)
+        console.log('new show arr is', new_show_arr);
+    }
     useEffect(() => {
         let width = screen.availWidth
         setSc_width(width)
@@ -88,16 +129,25 @@ export default function product() {
                 // console.log(response.data.payload);
                 data = response.data.payload
                 console.log('data is', data);
-
                 for (let i = 0; i < data.length; i++) {
                     if (data[i].name === "ผ้าทอมือกะเหรี่ยง") {
                         karen_fabric = data[i]
-                        // data.splice(i, 1)
-
                     }
                 }
-                setProducts(data)
                 setKarenFabric(karen_fabric)
+                if (width < 768) {
+                    let setarr = []
+                    for (let j = 0; j < 6; j++) {
+                        if (data[j] === 0 || data[j]) setarr.push(data[j])
+                        console.log('768');
+                    }
+                    data.splice(0, 6)
+                    setProducts(setarr)
+                    setRemain_product(data)
+                }
+                else {
+                    setProducts(data)
+                }
                 setCheck_data(true)
                 // console.log('karen is',karen_fabric);
             }
@@ -178,17 +228,21 @@ export default function product() {
                                     </div>
                                 </div>
                             ) : activeTab === "product" ? (
-                                <div className={styles['product-list']}>
-                                    {products.length > 0 ? products.map((product) => (
-                                        <div onClick={(e) => openPopup(e, product)} key={product.id} className={styles['product-item']}>
-                                            <div className={styles['product-image-box']}>
-                                                <div className={styles['product-image']} style={{ backgroundImage: `url(${product.images.length > 0 ? `${product.images[0]}` : '/no-imge.png'})` }}></div>
+                                <div className={styles['product-column-list']}>
+                                    <div className={styles['product-list']}>
+                                        {products.length > 0 ? products.map((product) => (
+                                            <div onClick={(e) => openPopup(e, product)} key={product.id} className={styles['product-item']}>
+                                                <div className={styles['product-image-box']}>
+                                                    <div className={styles['product-image']} style={{ backgroundImage: `url(${product.images.length > 0 ? `${product.images[0]}` : '/no-imge.png'})` }}></div>
+                                                </div>
+                                                <div className={styles['product-name-box']}>
+                                                    <span>{product.name}</span>
+                                                </div>
                                             </div>
-                                            <div className={styles['product-name-box']}>
-                                                <span>{product.name}</span>
-                                            </div>
-                                        </div>
-                                    )) : ''}
+                                        )) : ''}
+
+                                    </div>
+                                    {sc_width < 768 && remain_product.length > 0 ? (<span onClick={(e) => showMore(e)} className={styles['load-content-text']}>แสดงเพิ่ม</span>) : null}
                                 </div>
                             ) : activeTab === "uttama" ? (
                                 <div className={styles['uttama-book']}>
