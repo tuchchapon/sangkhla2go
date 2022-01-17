@@ -86,9 +86,12 @@ $xxl: "screen and (min-width: 1400px)";
     .detail-pa1 {
         color: #1f6397;
         margin: 0 auto;
-
+        br{
+            // display: none;
+        }
         display: none;
         @media #{$xxl} {
+            word-break: break-word;
             display: block;
             width: 1170px;
             font-size: 26px;
@@ -103,6 +106,7 @@ $xxl: "screen and (min-width: 1400px)";
             cursor: pointer;
         }
         @media #{$xxl} {
+            word-break: break-word;
             display: block;
             margin: 40px auto;
             width: 1170px;
@@ -1639,7 +1643,7 @@ $xxl: "screen and (min-width: 1400px)";
           }
           @media #{$xxl} {
               max-width: 577px;
-              max-height: 382px;
+              max-height: 320px;
           }
       }
       @media #{$md} {
@@ -1657,7 +1661,8 @@ $xxl: "screen and (min-width: 1400px)";
         width: 577px;
         height: 382px;
         left: 40px;
-        top: 60px;
+        margin-top: 60px;
+        // top: 110px;
       }
     }
   }
