@@ -33,20 +33,48 @@ $xxl: "screen and (min-width: 1400px)";
         padding-top: 62px;
     }
 }
+.pt-column-box{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'sukhumvit';
+    .load-content-text{
+        cursor: pointer;
+        font-weight: bold;
+        align-self: center;
+        text-align: center;
+        text-decoration: underline;
+        margin-bottom: 24px;
+        font-size: 16px;
+        line-height: 24px;
+        @media #{$md} {
+            font-size: 24px;
+line-height: 32px;
+        }
+        @media #{$xxl} {
+            margin-bottom: 32px;
+            font-size: 32px;
+            line-height: 40px;
+            width: 150px;
+            height: 40px;
+        }
+    }
+}
 .win-box {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     align-items: flex-start;
-    justify-content: flex-start;
     margin: auto;
     width: 100%;
     max-width: 320px;
+    justify-content: center;
     @media #{$md} {
         max-width: 690px;
-        justify-content: center;
     }
     @media #{$xxl} {
+        // justify-content: flex-start;
         max-width: 1200px;
         
     }
@@ -211,7 +239,7 @@ $xxl: "screen and (min-width: 1400px)";
             background-image: url("/img/publictranspotation/boat_frame.png");
             flex: 0 0 calc((100% - 60px)/3);
             background-size: cover;
-            margin: 20px 15px;
+            margin: 0 15px 24px;
             padding: 22px;
             width: 370px;
             height: 384px;

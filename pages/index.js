@@ -571,7 +571,6 @@ export default function index() {
                   </div>
                   <div className={styles['slider']}>
                     <Slider  {...settings}>
-
                       {hotels.length > 0 ? hotels.map((hotel) => (
                         <div key={hotel.id} className={styles['slider-box']}>
                           <div onClick={(e) => showAccommodationPopup(e, hotel)} key={hotel.id} className={styles['accommodation-item']} >
