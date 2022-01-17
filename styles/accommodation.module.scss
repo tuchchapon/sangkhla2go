@@ -415,6 +415,7 @@ $xxl: "screen and (min-width: 1400px)";
         // display: none;
         max-width: 120px;
         @media #{$xxl} {
+            max-width: 200px;
             margin-bottom: 0;
             font-size: 32px;
             line-height: 40px;
