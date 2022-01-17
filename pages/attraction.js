@@ -28,7 +28,9 @@ export default function attraction() {
     const [nature_attraction, setNature_attraction] = useState([])
     const [tradition_attraction, setTradition_attraction] = useState([])
     const [agri_attraction, setAgri_attraction] = useState([])
-
+    const [remainNature, setRemainNature] = useState([])
+    const [remainTradition, setRemainTradition] = useState([])
+    const [remainAgri, setRemainAgri] = useState([])
     const [check_data, setCheck_data] = useState(false)
 
     const settings = {
@@ -47,6 +49,7 @@ export default function attraction() {
     const [showAttraction, setShowAttraction] = useState(false)
     const [showLeader, setShowLeader] = useState(false)
     const [showSage, setShowSage] = useState(false)
+    const [Sc_width, setSc_width] = useState([])
     const [activeAttraction, setActiveAttraction] = useState({
         id: '', type: '', name: '', detail: '', images: []
     })
@@ -72,22 +75,184 @@ export default function attraction() {
         }
 
     }
+    const setNewAttraction = (new_show_attraction) => {
+        if (activeTab === 'nature') {
+            setNature_attraction([...nature_attraction, ...new_show_attraction])
+        }
+        if (activeTab === 'tradition') {
+            setTradition_attraction([...tradition_attraction, ...new_show_attraction])
+        }
+        if (activeTab === 'agri') {
+            setAgri_attraction([...agri_attraction, ...new_show_attraction])
+        }
+
+    }
+    const showMoreAttraction = (e) => {
+        if (activeTab === "nature") {
+            let new_show_nature = []
+            let new_remain_nature = []
+            if (remainNature.length !== 0) {
+                if (screen.availWidth > 1400) {
+                    for (let i = 0; i < 9; i++) {
+                        if (remainNature[i]) new_show_nature.push(remainNature[i])
+                    }
+                    new_remain_nature = remainNature.splice(0, 9)
+                }
+                else if (screen.availWidth >= 768) {
+                    for (let i = 0; i < 12; i++) {
+                        if (remainNature[i]) new_show_nature.push(remainNature[i])
+                    }
+                    new_remain_nature = remainNature.splice(0, 12)
+                }
+                else if (screen.availWidth < 768) {
+                    for (let i = 0; i < 6; i++) {
+                        if (remainNature[i]) new_show_nature.push(remainNature[i])
+                    }
+                    new_remain_nature = remainNature.splice(0, 6)
+                }
+                setNewAttraction(new_show_nature)
+            }
+        }
+        if (activeTab === "tradition") {
+            let new_show_tradition = []
+            let new_remain_tradition = []
+            if (remainTradition.length !== 0) {
+                if (screen.availWidth > 1400) {
+                    for (let i = 0; i < 9; i++) {
+                        if (remainTradition[i]) new_show_tradition.push(remainTradition[i])
+                    }
+                    new_remain_tradition = remainTradition.splice(0, 9)
+                }
+                else if (screen.availWidth >= 768) {
+                    for (let i = 0; i < 12; i++) {
+                        if (remainTradition[i]) new_show_tradition.push(remainTradition[i])
+                    }
+                    new_remain_tradition = remainTradition.splice(0, 12)
+                }
+                else if (screen.availWidth < 768) {
+                    for (let i = 0; i < 6; i++) {
+                        if (remainTradition[i]) new_show_tradition.push(remainTradition[i])
+                    }
+                    new_remain_tradition = remainTradition.splice(0, 6)
+                }
+                setNewAttraction(new_show_tradition)
+            }
+        }
+        if (activeTab === "agri") {
+            let new_show_agri = []
+            let new_remain_agri = []
+            if (remainAgri.length !== 0) {
+                if (screen.availWidth > 1400) {
+                    for (let i = 0; i < 9; i++) {
+                        if (remainAgri[i]) new_show_agri.push(remainAgri[i])
+                    }
+                    new_remain_agri = remainAgri.splice(0, 9)
+                }
+                else if (screen.availWidth >= 768) {
+                    for (let i = 0; i < 12; i++) {
+                        if (remainAgri[i]) new_show_agri.push(remainAgri[i])
+                    }
+                    new_remain_agri = remainAgri.splice(0, 12)
+                }
+                else if (screen.availWidth < 768) {
+                    for (let i = 0; i < 6; i++) {
+                        if (remainAgri[i]) new_show_agri.push(remainAgri[i])
+                    }
+                    new_remain_agri = remainAgri.splice(0, 6)
+                }
+                setNewAttraction(new_show_agri)
+            }
+        }
+    }
     const closePopup = (e) => {
         setShowAttraction(false)
         setShowLeader(false)
         setShowSage(false)
     }
     useEffect(() => {
-
+        let width = screen.availWidth
+        setSc_width(width)
         const getAttraction = async () => {
             const response = await axios.get(`${process.env.SERVER_API}/get/attractions`)
             if (response.status === 200) {
                 let data = response.data.payload
-                console.log(response.data.payload);
-                setNature_attraction(data.nature_attraction)
-                setTradition_attraction(data.tradition_attraction)
-                setAgri_attraction(data.agri_attraction)
-                setCheck_data(true)
+                let nature_data = data.nature_attraction
+                let tradition_data = data.tradition_attraction
+                let agri_data = data.agri_attraction
+                let init_nature = []
+                let init_tradition = []
+                let init_agri = []
+                console.log(data.nature_attraction)
+                console.log(data.tradition_attraction)
+                console.log(data.agri_attraction)
+                if (screen.availWidth > 1400) {
+                    for (let i = 0; i < 9; i++) {
+                        if (nature_data[i] === 0 || nature_data[i]) init_nature.push(nature_data[i])
+                    }
+                    for (let j = 0; j < 9; j++) {
+                        if (tradition_data[j] === 0 || tradition_data[j]) init_tradition.push(tradition_data[j])
+                    }
+                    for (let k = 0; k < 9; k++) {
+                        if (agri_data[k] === 0 || agri_data[k]) init_agri.push(agri_data[k])
+                    }
+                    nature_data.splice(0, 9)
+                    tradition_data.splice(0, 9)
+                    agri_data.splice(0, 9)
+                    setRemainNature(nature_data)
+                    setRemainTradition(tradition_data)
+                    setRemainAgri(agri_data)
+                    setNature_attraction(init_nature)
+                    setTradition_attraction(init_tradition)
+                    setAgri_attraction(init_agri)
+                }
+                else if (screen.availWidth >= 768) {
+                    console.log('768')
+                    for (let i = 0; i < 12; i++) {
+                        if (nature_data[i] === 0 || nature_data[i]) init_nature.push(nature_data[i])
+                    }
+                    for (let j = 0; j < 12; j++) {
+                        if (tradition_data[j] === 0 || tradition_data[j]) init_tradition.push(tradition_data[j])
+                    }
+                    for (let k = 0; k < 12; k++) {
+                        if (agri_data[k] === 0 || agri_data[k]) init_agri.push(agri_data[k])
+                    }
+                    nature_data.splice(0, 12)
+                    tradition_data.splice(0, 12)
+                    agri_data.splice(0, 12)
+                    setRemainNature(nature_data)
+                    setRemainTradition(tradition_data)
+                    setRemainAgri(agri_data)
+                    setNature_attraction(init_nature)
+                    setTradition_attraction(init_tradition)
+                    setAgri_attraction(init_agri)
+                }
+                else if (screen.availWidth < 768) {
+                    for (let i = 0; i < 6; i++) {
+                        if (nature_data[i] === 0 || nature_data[i]) init_nature.push(nature_data[i])
+                    }
+                    for (let j = 0; j < 6; j++) {
+                        if (tradition_data[j] === 0 || tradition_data[j]) init_tradition.push(tradition_data[j])
+                    }
+                    for (let k = 0; k < 6; k++) {
+                        if (agri_data[k] === 0 || agri_data[k]) init_agri.push(agri_data[k])
+                    }
+                    nature_data.splice(0, 6)
+                    tradition_data.splice(0, 6)
+                    agri_data.splice(0, 6)
+                    setRemainNature(nature_data)
+                    setRemainTradition(tradition_data)
+                    setRemainAgri(agri_data)
+                    setNature_attraction(init_nature)
+                    setTradition_attraction(init_tradition)
+                    setAgri_attraction(init_agri)
+                }
+
+                // console.log(response.data.payload);
+                // setNature_attraction(data.nature_attraction)
+                // setTradition_attraction(data.tradition_attraction)
+                // setAgri_attraction(data.agri_attraction)
+                // setCheck_data(true)
+
             }
         }
         if (check_data === false) getAttraction()
@@ -161,7 +326,11 @@ export default function attraction() {
                                         </div>
                                     ))
                                 ) : ''}
+
                             </div>
+                            {activeTab === "nature" && remainNature.length > 0 ? <span onClick={(e) => showMoreAttraction(e)} className={styles['load-content-text']}>แสดงเพิ่ม</span> :
+                                activeTab === "tradition" && remainTradition.length > 0 ? <span onClick={(e) => showMoreAttraction(e)} className={styles['load-content-text']}>แสดงเพิ่ม</span> :
+                                    activeTab === "agri" && remainAgri.length > 0 ? <span onClick={(e) => showMoreAttraction(e)} className={styles['load-content-text']}>แสดงเพิ่ม</span> : null}
                         </div>
                     </div>
                 </div>

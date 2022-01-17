@@ -1,21 +1,22 @@
-import React from 'react'
+import { React, useState } from 'react'
 import styles from '../styles/attraction.module.scss'
 import Popup from 'reactjs-popup'
 import Slider from 'react-slick';
+function RightArrow(props) {
+    const { className, style, onClick } = props;
+    return (
+        <img src="/right-arrow.png" style={{ ...style, width: '32px', height: '64px', right: '-57px', top: '50%' }} className={className} onClick={onClick} alt="" />
+    );
+}
+function LeftArrow(props) {
+    const { className, style, onClick } = props;
+    return (
+        <img src="/left-arrow.png" alt="" style={{ ...style, width: '32px', height: '64px', left: '-57px', top: '50%' }} className={className} onClick={onClick} />
+    )
+}
 export default function attractionPopup({ activeAttraction, open, onClose }) {
+    const [nowDots, setNowDots] = useState(0)
 
-    function RightArrow(props) {
-        const { className, style, onClick } = props;
-        return (
-            <img src="/right-arrow.png" style={{ ...style, width: '32px', height: '64px', right: '-57px', top: '50%' }} className={className} onClick={onClick} alt="" />
-        );
-    }
-    function LeftArrow(props) {
-        const { className, style, onClick } = props;
-        return (
-            <img src="/left-arrow.png" alt="" style={{ ...style, width: '32px', height: '64px', left: '-57px', top: '50%' }} className={className} onClick={onClick} />
-        )
-    }
     const settings = {
         infinite: true,
         speed: 200,
@@ -38,7 +39,22 @@ export default function attractionPopup({ activeAttraction, open, onClose }) {
                 breakpoint: 800,
                 settings: {
                     arrows: false,
-                    dots: true
+                    dots: true,
+                    dotsClass: styles['slick'],
+                    beforeChange: (prev, next) => {
+                        // this.setState({ currentSlide: next });
+                        setNowDots(next)
+                    },
+                    customPaging: (i) => (
+                        <div
+                            className={styles['slider-dots']}
+                            style={{
+                                backgroundColor: `${i === nowDots ? '#383838' : '#757575'}`,
+                            }}
+
+                        >
+                        </div>
+                    ),
                 }
             },
         ]
