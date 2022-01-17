@@ -19,7 +19,7 @@ function LeftArrow(props) {
 
 export default function traditionPopup({ open, onClose, activeKarenTradition }) {
 
-
+    const [nowDots, setNowDots] = useState(0)
     const settings = {
         infinite: true,
         speed: 200,
@@ -33,6 +33,7 @@ export default function traditionPopup({ open, onClose, activeKarenTradition }) 
             {
                 breakpoint: 1400,
                 settings: {
+
                     // slidesToShow: 3,
                     // slidesToScroll: 3,
                     infinite: true,
@@ -40,22 +41,26 @@ export default function traditionPopup({ open, onClose, activeKarenTradition }) 
                 }
             },
             {
-                breakpoint: 786,
+                breakpoint: 1300,
                 settings: {
+                    autoplay: false,
                     dots: true,
-                    arrows: false
-                    // slidesToShow: 2,
-                    // slidesToScroll: 2,
-                    // initialSlide: 2
-                }
-            },
-            {
-                breakpoint: 400,
-                settings: {
-                    dots: true
-                    // slidesToShow: 2,
-                    // slidesToScroll: 2,
-                    // initialSlide: 2
+                    arrows: false,
+                    dotsClass: styles['slick'],
+                    beforeChange: (prev, next) => {
+                        // this.setState({ currentSlide: next });
+                        setNowDots(next)
+                    },
+                    customPaging: (i) => (
+                        <div
+                            className={styles['slider-dots']}
+                            style={{
+                                backgroundColor: `${i === nowDots ? '#383838' : '#757575'}`,
+                            }}
+
+                        >
+                        </div>
+                    ),
                 }
             },
         ]

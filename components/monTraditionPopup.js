@@ -18,7 +18,7 @@ function LeftArrow(props) {
 
 
 export default function monTraditionPopup({ open, onClose, activeMonTradition }) {
-
+    const [nowDots, setNowDots] = useState(0)
     const settings = {
         infinite: true,
         speed: 200,
@@ -39,12 +39,26 @@ export default function monTraditionPopup({ open, onClose, activeMonTradition })
                 }
             },
             {
-                breakpoint: 400,
+                breakpoint: 1300,
                 settings: {
-                    dots: true
-                    // slidesToShow: 2,
-                    // slidesToScroll: 2,
-                    // initialSlide: 2
+                    dots: true,
+                    arrows: false,
+                    autoplay: false,
+                    dotsClass: styles['slick'],
+                    beforeChange: (prev, next) => {
+                        // this.setState({ currentSlide: next });
+                        setNowDots(next)
+                    },
+                    customPaging: (i) => (
+                        <div
+                            className={styles['slider-dots']}
+                            style={{
+                                backgroundColor: `${i === nowDots ? '#383838' : '#757575'}`,
+                            }}
+
+                        >
+                        </div>
+                    ),
                 }
             },
         ]
