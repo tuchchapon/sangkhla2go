@@ -405,13 +405,15 @@ $xxl: "screen and (min-width: 1400px)";
         align-self: center;
         text-align: center;
         justify-content: center;
-        display: flex;
-        flex: 1;
+        // display: flex;
         margin: 0 auto;
         text-decoration: underline;
         margin-bottom: 24px;
         font-size: 16px;
         line-height: 24px;
+        width: auto;
+        // display: none;
+        max-width: 120px;
         @media #{$xxl} {
             margin-bottom: 0;
             font-size: 32px;

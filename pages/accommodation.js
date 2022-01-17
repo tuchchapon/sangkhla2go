@@ -179,7 +179,7 @@ export default function accommodation() {
                             </div>
                         </div>
                         {activeTab === "accom" ? (
-                            <div className={styles['accom-column']}>
+                            <div className={styles['accom-column-box']}>
                                 <div className={styles['accommodation-list']} >
                                     {showHotel.length > 0 ? showHotel.map((accommodation) => (
                                         <div onClick={(e) => showPopup(e, accommodation)} key={accommodation.id} className={styles['accommodation-item']} >
@@ -206,7 +206,7 @@ export default function accommodation() {
                             </div>
                         ) : ''}
                         {activeTab === "boat" ? (
-                            <div className={styles['accom-column']}>
+                            <div className={styles['accom-column-box']}>
                                 <div className={styles['accommodation-list']} >
                                     {showBoatHouse.length > 0 ? showBoatHouse.map((accommodation) => (
                                         <div onClick={(e) => showPopup(e, accommodation)} key={accommodation.id} className={styles['accommodation-item']} >
