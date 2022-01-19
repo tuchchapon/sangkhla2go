@@ -552,16 +552,18 @@ $xxl: "screen and (min-width: 1400px)";
     }
     .accommodation-flexbox {
         overflow-y: auto;
-        overflow-x: auto; // hidden
+        overflow-x: hidden; // hidden
         display: flex;
         // overflow-y: auto;
         flex-direction: column;
         // margin: auto;
         width: 100%;
         height: auto;
-        padding: 0 16px ;
-        @media #{$xxl} {
+        padding: 0 20px ;
+        @media #{$md} {
             padding: 0 60px;
+        }
+        @media #{$xxl} {
             max-height: 800px;
         }
     }
