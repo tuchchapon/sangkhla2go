@@ -2788,14 +2788,15 @@ $xxl: "screen and (min-width: 1400px)";
       background-position: center;
       background-repeat: no-repeat;
       background-size: contain;
-      background-image: url("/img/attraction/attraction-frame.png");
       margin-right: 6;
       flex: 0 0 calc((100%)/2);
       width: 150px;
       height: 182px;
       padding: 7px;
       margin-bottom: 16px;
+      background-image: url('/img/home/attraction-sm-frame.png');
       @media #{$md} {
+        background-image: url("/img/attraction/attraction-frame.png");
         flex: 0 0 calc((100%)/3);
         width: 220px;
         height: 264px;
@@ -2803,15 +2804,17 @@ $xxl: "screen and (min-width: 1400px)";
         padding: 14.5px;
       }
       @media #{$xxl} {
-        margin-right: 30px;
-        margin-bottom: 40px;
+        margin: 0 15px 40px;
         flex: 0 0 calc((100% - 90px) / 4);
         width: 270px;
         height: 304px;
         padding: 22px 22px 10px 22px;
       }
       &:hover {
-        background-image: url("/img/attraction/attraction-frame-hover.png");
+        background-image: url('/img/home/attraction-sm-frame-hover.png');
+        @media #{$md} {
+          background-image: url("/img/attraction/attraction-frame-hover.png");          
+        }
       }
       .product-image-box {
         display: flex;
@@ -2922,6 +2925,7 @@ $xxl: "screen and (min-width: 1400px)";
     margin-bottom: 64px;
     width: 320px;
     height: 216px;
+
     @media #{$md} {
       background-image: url('/img/home/md-video-frame.png');
       width: 510px;
@@ -2933,6 +2937,12 @@ $xxl: "screen and (min-width: 1400px)";
       width: 673px;
       height: 416px;
     }
+    .review-slider{
+      @media #{$xxl} {
+        width: 673px;
+        height: 416px;
+      }
+    }
     .video-item {
       position: relative;
       // margin: 0 50px 0 0;
@@ -2943,6 +2953,24 @@ $xxl: "screen and (min-width: 1400px)";
       margin-top: 32px;
       left: 16px;
       border-radius: 8px;
+      @media #{$md} {
+      margin-left: 8px;
+      width: 487px;
+      height: 280px;
+      border-radius: 8px;
+      margin-top: 46px;
+      left: 8px;
+    }
+    @media #{$xxl} {
+      border-radius: 16px;
+      margin-top: 0;
+      border-radius: 16px;
+      width: 577px;
+      height: 382px;
+      left: 40px;
+      margin-top: 60px;
+      // top: 110px;
+    }
       iframe{
         position: absolute;
         top: 0;
@@ -2952,30 +2980,18 @@ $xxl: "screen and (min-width: 1400px)";
         max-width: 288px;
         max-height: 168px;
         @media #{$md} {
-            max-width: 487px;
-            max-height: 280px;
+          max-width: 487px;
+          max-height: 280px;
         }
         @media #{$xxl} {
+          // top: 40px;
+          // width: auto;
+          // height: auto;
             max-width: 577px;
-            max-height: 382px;
+            max-height: 320px;
         }
     }
-      @media #{$md} {
-        width: 487px;
-        height: 280px;
-        border-radius: 8px;
-        margin-top: 46px;
-        left: 8px;
-      }
-      @media #{$xxl} {
-        border-radius: 16px;
-        margin-top: 0;
-        border-radius: 16px;
-        width: 577px;
-        height: 382px;
-        left: 40px;
-        top: 60px;
-      }
+
     }
   }
   .review-title-box {
@@ -3011,7 +3027,7 @@ $xxl: "screen and (min-width: 1400px)";
       margin: 0 auto 24px;
     }
     @media #{$xxl} {
-      margin: 0 auto;
+      margin: 24px auto 0;
       width: 1170px;
       
     }
@@ -3277,12 +3293,24 @@ $xxl: "screen and (min-width: 1400px)";
   }
 }
   .review-dots{
-    position: relative;
-    top: 50px;
-    width: 30px;
-    color: #383838;
-    font-size: 24px;
-    line-height: 32px;
-    font-weight: bold;
-    font-family: 'sukhumvit';
+    .review-dots{
+      top: 16px;
+      color: #383838;
+      font-size: 16px;
+      line-height: 32px;
+      font-weight: bold;
+      font-family: 'sukhumvit';
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    @media #{$xxl} {
+      position: relative;
+      width: 30px;
+      color: #383838;
+      font-size: 24px;
+      line-height: 32px;
+      font-weight: bold;
+      font-family: 'sukhumvit'; 
+    }
   }
