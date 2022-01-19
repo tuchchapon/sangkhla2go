@@ -409,7 +409,7 @@ export default function officer() {
                                     <Slider {...videoSettings}>
 
                                         <div className={styles['video-item']}>
-                                            <iframe width="577" height="315" src="https://www.youtube.com/embed/B7ync4odCJk" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                                            <iframe width="577" height="315" src="https://www.youtube.com/embed/Xs5nuDC7Ox0" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                                         </div>
                                         <div className={styles['video-item']}>
                                             <iframe width="577" height="315" src="https://www.youtube.com/embed/v_ulqJa2Jpw" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
@@ -419,7 +419,7 @@ export default function officer() {
                                 ) : SC_wide > 767 ?
                                     <Slider {...videoSettings}>
                                         <div className={styles['video-item']}>
-                                            <iframe width="478" height="280" src="https://www.youtube.com/embed/B7ync4odCJk" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                                            <iframe width="478" height="280" src="https://www.youtube.com/embed/Xs5nuDC7Ox0" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                                         </div>
                                         <div className={styles['video-item']}>
                                             <iframe width="478" height="280" src="https://www.youtube.com/embed/v_ulqJa2Jpw" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
@@ -428,7 +428,7 @@ export default function officer() {
                                     </Slider> :
                                     <Slider {...videoSettings}>
                                         <div className={styles['video-item']}>
-                                            <iframe width="280" height="168" src="https://www.youtube.com/embed/B7ync4odCJk" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                                            <iframe width="280" height="168" src="https://www.youtube.com/embed/Xs5nuDC7Ox0" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                                         </div>
                                         <div className={styles['video-item']}>
                                             <iframe width="280" height="168" src="https://www.youtube.com/embed/v_ulqJa2Jpw" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>

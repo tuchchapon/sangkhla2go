@@ -790,46 +790,77 @@ $xxl: "screen and (min-width: 1400px)";
     }
 }
 .video-box {
-    background-image: url("/img/product/video-frame.png");
-    align-items: center;
-    justify-content: center;
-    background-repeat: no-repeat;
+    margin: auto;
+    position: relative;
+    background-image: url("/img/home/video-frame.png");
     background-position: center;
     background-size: contain;
-    height: 216px;
-    margin: 40px auto 24px;
+    background-repeat: no-repeat;
+    // margin-bottom: 64px;
     width: 320px;
-    display: flex; 
+    height: 216px;
+    margin: 16px auto;
     @media #{$md} {
-        width: 510px;
-        height: 344px;
+      background-image: url('/img/home/md-video-frame.png');
+      width: 510px;
+      height: 344px;
+      margin: 32px auto;
+    //   margin-bottom: 88px;
     }
     @media #{$xxl} {
-        background-size: cover;
-        width: 770px;
-        height: 480px;
-        margin: 80px auto 80px;
+      background-image: url("/img/home/video-frame.png");
+      width: 770px;
+      height: 480px;
+      margin: 60px auto 40px;
     }
-    iframe {
-        width: 100%;
-        height: 100%;
-        max-width: 288px;
-        max-height: 168px;
-        border-radius: 8px;
-        margin-bottom: -16px;
-        @media #{$md} {
-            max-width: 478px;
-            max-height: 280px;
-            margin-bottom: -24px;
-        }
-        @media #{$xxl} {
-            margin-bottom: -40px;
-            border-radius: 16px;
+    .video-item {
+      position: relative;
+      // margin: 0 50px 0 0;
+      display: flex;
+      width: 288px;
+      height: 168px;
+      // top: 80px;
+      margin-top: 32px;
+      left: 16px;
+      border-radius: 8px;
+      @media #{$md} {
+      margin-left: 8px;
+      width: 487px;
+      height: 280px;
+      border-radius: 8px;
+      margin-top: 46px;
+      left: 8px;
+    }
+    @media #{$xxl} {
+      border-radius: 16px;
+      margin-top: 0;
+      border-radius: 16px;
+      width: 658px;
+      height: 336px;
+      left: 40px;
+      margin-top: 90px;
+      // top: 110px;
+    }
+      iframe{
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          max-width: 288px;
+          max-height: 168px;
+          @media #{$md} {
+              max-width: 487px;
+              max-height: 280px;
+          }
+          @media #{$xxl} {
+              border-radius: 16px;
             max-width: 658px;
             max-height: 336px;
-        }
+          }
+      }
     }
-}
+  }
 .contact-text {
     text-align: center;
     font-family: Tahoma;

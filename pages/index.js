@@ -203,7 +203,7 @@ export default function index() {
         breakpoint: 767,
         settings: {
 
-          slidesToScroll: 1,
+          slidesToScroll: 2,
           slidesToShow: 2,
           dots: false,
           nextArrow: <SMRightArrow />,

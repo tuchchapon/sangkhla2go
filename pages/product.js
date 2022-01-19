@@ -208,9 +208,11 @@ export default function product() {
                                     </div>
 
                                     <div className={styles['video-box']}>
-                                        {sc_width > 700 ? <iframe width="288" height="168" src="https://www.youtube.com/embed/pJ9JTcFuLKk" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe> :
-                                            sc_width > 1400 ? <iframe width="487" height="280" src="https://www.youtube.com/embed/pJ9JTcFuLKk" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe> :
-                                                <iframe width="658" height="336" src="https://www.youtube.com/embed/pJ9JTcFuLKk" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>}
+                                        <div className={styles['video-item']}>
+                                            {sc_width > 700 ? <iframe width="288" height="168" src="https://www.youtube.com/embed/pJ9JTcFuLKk" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe> :
+                                                sc_width > 1400 ? <iframe width="487" height="280" src="https://www.youtube.com/embed/pJ9JTcFuLKk" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe> :
+                                                    <iframe width="658" height="336" src="https://www.youtube.com/embed/pJ9JTcFuLKk" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>}
+                                        </div>
                                     </div>
 
                                     <span className={styles['contact-text']}>
