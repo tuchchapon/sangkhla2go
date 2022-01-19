@@ -5,6 +5,7 @@ import styles from '../styles/officer.module.scss'
 import SubHeader from '../layouts/subHeader';
 import Footer from '../layouts/footer'
 import Slider from 'react-slick';
+import Head from 'next/head';
 function RightArrow(props) {
     const { className, style, onClick } = props;
     return (
@@ -405,35 +406,14 @@ export default function officer() {
                     <div className="col-12">
                         <div className={styles['video-box']}>
                             <div className={styles['review-slider-box']}>
-                                {SC_wide > 1300 ? (
-                                    <Slider {...videoSettings}>
-
-                                        <div className={styles['video-item']}>
-                                            <iframe width="577" height="315" src="https://www.youtube.com/embed/Xs5nuDC7Ox0" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
-                                        </div>
-                                        <div className={styles['video-item']}>
-                                            <iframe width="577" height="315" src="https://www.youtube.com/embed/v_ulqJa2Jpw" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
-                                        </div>
-
-                                    </Slider>
-                                ) : SC_wide > 767 ?
-                                    <Slider {...videoSettings}>
-                                        <div className={styles['video-item']}>
-                                            <iframe width="478" height="280" src="https://www.youtube.com/embed/Xs5nuDC7Ox0" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
-                                        </div>
-                                        <div className={styles['video-item']}>
-                                            <iframe width="478" height="280" src="https://www.youtube.com/embed/v_ulqJa2Jpw" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
-                                        </div>
-
-                                    </Slider> :
-                                    <Slider {...videoSettings}>
-                                        <div className={styles['video-item']}>
-                                            <iframe width="280" height="168" src="https://www.youtube.com/embed/Xs5nuDC7Ox0" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
-                                        </div>
-                                        <div className={styles['video-item']}>
-                                            <iframe width="280" height="168" src="https://www.youtube.com/embed/v_ulqJa2Jpw" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
-                                        </div>
-                                    </Slider>}
+                                <Slider {...videoSettings}>
+                                    <div className={styles['video-item']}>
+                                        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/Xs5nuDC7Ox0" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                                    </div>
+                                    {/* <div className={styles['video-item']}>
+                                        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/v_ulqJa2Jpw" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                                    </div> */}
+                                </Slider>
                             </div>
                         </div>
                     </div>

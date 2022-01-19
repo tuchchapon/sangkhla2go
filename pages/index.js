@@ -1,4 +1,4 @@
-import { React, useState, useEffect } from 'react'
+import { React, useState, useEffect, useCallback } from 'react'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
 import Slider from 'react-slick';
@@ -89,7 +89,7 @@ export default function index() {
   const [openKarenPopup, setOpenKarenPopup] = useState(false)
   const [openMonPopup, setOpenMonPopup] = useState(false)
   const [openProductPopup, setOpenProductPopup] = useState(false)
-
+  const [dragging, setDragging] = useState(false)
   const [activeAcommodation, setActiveAcommodation] = useState({
     id: '', name: '', type: '', information: '', min_price: '', max_price: '',
     fb_page: '', images: [], services: [], tel: ''
@@ -117,11 +117,7 @@ export default function index() {
   const [activeProduct, setActiveProduct] = useState({
     id: '', name: '', fb_page: '', tel: '', link: '', images: [], detail: ''
   })
-  const showAccommodationPopup = (e, accommodation) => {
-    if (e) e.preventDefault()
-    setActiveAcommodation(accommodation)
-    setOpenAccommodationPopup(true)
-  }
+
   const showSagePopup = (e) => {
     if (e) e.preventDefault()
     setOpenSagePopup(true)
@@ -130,21 +126,50 @@ export default function index() {
 
     setOpenLeaderPopup(true)
   }
+  const showAccommodationPopup = useCallback(
+    (e, accommodation) => {
+      if (e) e.preventDefault()
+
+      if (dragging) {
+        e.stopPropagation()
+
+      }
+      else if (!dragging) {
+        setActiveAcommodation(accommodation)
+        setOpenAccommodationPopup(true)
+        console.log('drag is ', dragging)
+      }
+    },
+    [dragging],
+  )
+  const showRestaurantPopup = useCallback(
+    (e, restaurant) => {
+      if (e) e.preventDefault()
+      if (dragging) e.stopPropagation()
+      else if (!dragging) {
+        setActiveRestarant(restaurant)
+        setOpenRestaurantPopup(true)
+      }
+
+    },
+    [dragging],
+  )
   const showAttractionPopup = (e, attraction) => {
     if (e) e.preventDefault()
     setopenAttractionpopup(true)
     setActiveAttraction(attraction)
   }
-  const showRestaurantPopup = (e, restaurant) => {
-    if (e) e.preventDefault()
-    setActiveRestarant(restaurant)
-    setOpenRestaurantPopup(true)
-  }
-  const showBoatPopup = (e, boat) => {
-    if (e) e.preventDefault()
-    setActiveBoat(boat)
-    setOpenBoatPopup(true)
-  }
+  const showBoatPopup = useCallback(
+    (e, boat) => {
+      if (e) e.preventDefault()
+      if (dragging) e.stopPropagation()
+      else if (!dragging) {
+        setActiveBoat(boat)
+        setOpenBoatPopup(true)
+      }
+    },
+    [dragging],
+  )
   const ShowWinPopup = (e, location) => {
     if (e) e.preventDefault()
     setActiveWin(location)
@@ -161,12 +186,33 @@ export default function index() {
     setActiveMon(tradition)
     setOpenMonPopup(true)
   }
-  const showProductPopup = (e, product) => {
-    if (e) e.preventDefault()
-    setActiveProduct(product)
-    setOpenProductPopup(true)
-  }
+  const showProductPopup = useCallback(
+    (e, product) => {
+      if (e) e.preventDefault()
+      if (dragging) e.stopPropagation()
+      else if (!dragging) {
+        setActiveProduct(product)
+        setOpenProductPopup(true)
+      }
+    },
+    [dragging],
+  )
 
+
+  const BFChange = useCallback(
+    () => {
+      setDragging(true)
+      console.log('bf drag is ', dragging)
+    },
+    [setDragging],
+  )
+  const AFChange = useCallback(
+    () => {
+      setDragging(false)
+      console.log('at drag is ', dragging)
+    },
+    [setDragging],
+  )
 
   const settings = {
     infinite: true,
@@ -179,6 +225,12 @@ export default function index() {
     autoplay: false,
     nextArrow: <RightArrow />,
     prevArrow: <LeftArrow />,
+    beforeChange: () => {
+      BFChange()
+    },
+    afterChange: () => {
+      AFChange()
+    },
     responsive: [
       {
         breakpoint: 1400,
@@ -224,6 +276,12 @@ export default function index() {
     autoplay: false,
     nextArrow: <RightArrow />,
     prevArrow: <LeftArrow />,
+    beforeChange: () => {
+      BFChange()
+    },
+    afterChange: () => {
+      AFChange()
+    },
     responsive: [
       {
         breakpoint: 1400,
@@ -285,7 +343,7 @@ export default function index() {
           dots: true,
           arrows: false,
           beforeChange: (prev, next) => {
-            // this.setState({ currentSlide: next });
+
             setNowDots(next)
           },
           customPaging: (i) => (
@@ -461,6 +519,9 @@ export default function index() {
         </div>
       ) : (
         <div>
+          <Head>
+            <title>Sangkhla2go</title>
+          </Head>
           <FixedHeader />
           <Header />
           <div className={styles['intro-section']}>
@@ -573,7 +634,7 @@ export default function index() {
                     <Slider  {...settings}>
                       {hotels.length > 0 ? hotels.map((hotel) => (
                         <div key={hotel.id} className={styles['slider-box']}>
-                          <div onClick={(e) => showAccommodationPopup(e, hotel)} key={hotel.id} className={styles['accommodation-item']} >
+                          <div onClickCapture={(e) => showAccommodationPopup(e, hotel)} key={hotel.id} className={styles['accommodation-item']} >
                             <img src={hotel.images.length > 0 ? `${hotel.images[0]}` : '/accom-placeholder.png'} alt="" />
                             <span className={styles['accommodation-name']} >{hotel.name}<br /></span>
                             <div className={styles['price-box']} >
@@ -589,7 +650,7 @@ export default function index() {
                     <Slider {...BoatSettings}>
                       {boatHouses.length > 0 ? boatHouses.map((boatHouse) => (
                         <div className={styles['boat-house-slider-box']} key={boatHouse.id}>
-                          <div onClick={(e) => showAccommodationPopup(e, boatHouse)} className={styles['boat-house-item']}>
+                          <div onClickCapture={(e) => showAccommodationPopup(e, boatHouse)} className={styles['boat-house-item']}>
                             <div className={styles['boat-image-box']} >
                               <img src={boatHouse.images.length > 0 ? `${boatHouse.images[0]}` : '/accom-placeholder.png'} alt="" />
                             </div>
@@ -683,7 +744,7 @@ export default function index() {
                 <Slider {...settings}>
                   {restaurants.length > 0 ? restaurants.map((restaurant) => (
                     <div key={restaurant.id} className={styles['slider-box']}>
-                      <div onClick={(e) => showRestaurantPopup(e, restaurant)} className={styles['restaurant-item']}>
+                      <div onClickCapture={(e) => showRestaurantPopup(e, restaurant)} className={styles['restaurant-item']}>
                         <img className={styles['restaurant-image']} src={restaurant.images.length > 0 ? `${restaurant.images[0]}` : '/restaurant-placeholder.png'} alt="" />
                         <span>{restaurant.name}</span>
                         <span>{restaurant.type}</span>
@@ -729,7 +790,7 @@ export default function index() {
                     <Slider {...settings}>
                       {boatProviders.length > 0 ? boatProviders.map((boatProvider) => (
                         <div key={boatProvider.id} className={styles['boat-slider-box']}>
-                          <div onClick={(e) => showBoatPopup(e, boatProvider)} className={styles['boat-provider-item']}>
+                          <div onClickCapture={(e) => showBoatPopup(e, boatProvider)} className={styles['boat-provider-item']}>
                             <img className={styles['boat-provider-image']} src={boatProvider.boat_images.length > 0 ? `${boatProvider.boat_images[0]}` : '/boat-placeholder.png'} alt="" />
                             <div className={styles['boat-textbox']} >
                               <p className={styles['boat-club-name']} >{boatProvider.club_name}</p>
@@ -808,7 +869,7 @@ export default function index() {
                     <Slider {...BoatSettings}>
                       {products.length > 0 ? products.map((product) => (
                         <div className={styles['slider-box']} key={product.id}>
-                          <div onClick={(e) => showProductPopup(e, product)} key={product.id} className={styles['product-item']}>
+                          <div onClickCapture={(e) => showProductPopup(e, product)} key={product.id} className={styles['product-item']}>
                             <div className={styles['product-image-box']}>
                               <div style={{ backgroundImage: `url(${product.images.length > 0 ? `${product.images[0]}` : '/no-imge.png'})` }}></div>
                             </div>
