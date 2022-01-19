@@ -88,6 +88,7 @@ $xxl: "screen and (min-width: 1400px)";
     .accommodation-column {
         display: flex;
         flex-direction: column;
+        min-height: 400px;
         // position: relative;
         .type-button {
             
