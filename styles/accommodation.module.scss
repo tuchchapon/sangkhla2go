@@ -88,11 +88,11 @@ $xxl: "screen and (min-width: 1400px)";
     .accommodation-column {
         display: flex;
         flex-direction: column;
-        min-height: 400px;
+        min-height: 650px;
         height: 100%;
         // position: relative;
         @media #{$md} {
-            // min-height: 800px;
+            min-height: 800px;
         }
         .type-button {
             

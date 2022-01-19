@@ -1030,12 +1030,26 @@ $xxl: "screen and (min-width: 1400px)";
     // margin-left: 24px;
     // border-left: 2px solid #383838;
     span {
-        margin-left: 8px;
         font-family: "sukhumvit";
-        font-size: 24px;
-        padding-top: 4px;
-        &:hover {
+        text-decoration: underline;
+        font-size: 16px;
+        line-height: 16px;
+        color: #383838;
+        &:hover{
             font-weight: bold;
+        }
+        @media #{$md} {
+            margin-left: 8px;
+            font-size: 24px;
+            // padding-top: 5px;
+            // height: 32px;
+            line-height: 32px;
+            margin-top: -2px;
+        }
+        @media #{$xxl} {
+            margin-top:-1px;
+            font-size: 24px;
+            padding-top: 2px;
         }
     }
 }

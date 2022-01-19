@@ -44,11 +44,11 @@ $xxl: "screen and (min-width: 1400px)";
         line-height: 24px;
         color: #1f6397;
         margin: 0 auto;
+        br{
+            display: none;
+        }
 
         @media #{$md} {
-            br{
-                display: none;
-            }
             width: 690px;
             font-size: 24px;
             line-height: 32px;
@@ -64,10 +64,10 @@ $xxl: "screen and (min-width: 1400px)";
         font-size: 16px;
         line-height: 24px;
         margin: 16px auto 32px;
+        br{
+            display: none;
+        }
         @media #{$md} {
-            br{
-                display: none;
-            }
             margin-bottom: 40px;
             width: 690px;
             font-size: 24px;
