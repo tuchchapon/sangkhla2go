@@ -410,9 +410,9 @@ export default function officer() {
                                     <div className={styles['video-item']}>
                                         <iframe width="100%" height="100%" src="https://www.youtube.com/embed/Xs5nuDC7Ox0" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                                     </div>
-                                    {/* <div className={styles['video-item']}>
-                                        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/v_ulqJa2Jpw" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
-                                    </div> */}
+                                    <div className={styles['video-item']}>
+                                        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/5Q5IB-hkfRc" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                                    </div>
                                 </Slider>
                             </div>
                         </div>
