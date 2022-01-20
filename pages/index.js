@@ -524,7 +524,7 @@ export default function index() {
             <title>Sangkhla2go</title>
 
             <Script
-              async src="https://www.googletagmanager.com/gtag/js?id=G-XZ8Z3ZJX89"
+              async src="https://www.googletagmanager.com/gtag/js?id=G-SB28B6FL04"
             />
             <Script
               dangerouslySetInnerHTML={{
@@ -532,7 +532,7 @@ export default function index() {
                 window.dataLayer = window.dataLayer || [];
                 function gtag(){dataLayer.push(arguments);}
                 gtag('js', new Date());
-                gtag('config', 'G-XZ8Z3ZJX89');`
+                gtag('config', 'G-SB28B6FL04');`
               }}
             />
           </Head>
