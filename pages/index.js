@@ -20,6 +20,7 @@ import MonPopup from '../components/monTraditionPopup';
 import ProductPopup from '../components/productPopup';
 import Header from '../layouts/header';
 import FixedHeader from '../layouts/fixedHeader';
+import Script from 'next/script';
 function RightArrow(props) {
   const { className, style, onClick } = props;
   return (
@@ -521,6 +522,19 @@ export default function index() {
         <div>
           <Head>
             <title>Sangkhla2go</title>
+
+            <Script
+              async src="https://www.googletagmanager.com/gtag/js?id=G-XZ8Z3ZJX89"
+            />
+            <Script
+              dangerouslySetInnerHTML={{
+                __html: `
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', 'G-XZ8Z3ZJX89');`
+              }}
+            />
           </Head>
           <FixedHeader />
           <Header />
