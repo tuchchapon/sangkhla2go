@@ -2717,8 +2717,10 @@ $xxl: "screen and (min-width: 1400px)";
         }
         @media #{$xxl} {
           border-radius: 82px 82px 80px 83px;
-          width: 160px;
-          height: 160px;
+          top: 2px;
+          left: 1px;
+          width: 156px;
+          height: 156px;
         }
       }
     }

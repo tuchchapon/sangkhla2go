@@ -37,8 +37,6 @@ export default function accommodation() {
         setOpenPopup(true)
     }
 
-
-
     const setNewAccommodation = (update_accommodation) => {
         if (activeTab === "โรงแรม") {
             setShowHotel([...showHotel, ...update_accommodation])
@@ -68,47 +66,6 @@ export default function accommodation() {
             setShowBoatHouse([...showBoatHouse, ...update_accommodation])
             setShowingAccommodation([...showBoatHouse, ...update_accommodation])
         }
-
-    }
-    const updateShowing = () => {
-
-        if (activeTab === "โรงแรม") {
-
-            setShowingAccommodation(showHotel)
-        }
-        if (activeTab === "โฮมสเตย์") {
-
-            setShowingAccommodation(showHomeStay)
-        }
-        if (activeTab === "รีสอร์ท") {
-
-            setShowingAccommodation(showResort)
-        }
-        if (activeTab === "เกสต์เฮ้าส์") {
-
-            setShowingAccommodation(showGestHouse)
-        }
-        if (activeTab === "เรือนรับรอง") {
-
-            setShowingAccommodation(showHouse)
-        }
-        if (activeTab === "โฮสเทล") {
-
-            setShowingAccommodation(showHosttel)
-        }
-        if (activeTab === "แพพัก") {
-
-            setShowingAccommodation(showBoatHouse)
-        }
-    }
-    const setNewResort = () => { }
-    const setNewGesthouse = () => { }
-    const setNewHouse = () => { }
-    const setNewHosttel = () => { }
-    const setNewBoatHouse = (new_show_boathouse) => {
-        setShowBoatHouse([...showBoatHouse, ...new_show_boathouse])
-    }
-    const setNewShowingAccommodation = () => {
 
     }
     const showMoreAccommodation = (e) => {
@@ -462,7 +419,7 @@ export default function accommodation() {
     return (
         <div className={styles['accommodation-page']} >
             <Head>
-                <title>โรงแรม/แพพัก</title>
+                <title>ที่พัก</title>
             </Head>
             <SubHeader first={'ที่พัก'} />
             <div className="container">

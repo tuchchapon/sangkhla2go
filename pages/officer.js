@@ -6,6 +6,7 @@ import SubHeader from '../layouts/subHeader';
 import Footer from '../layouts/footer'
 import Slider from 'react-slick';
 import Head from 'next/head';
+
 function RightArrow(props) {
     const { className, style, onClick } = props;
     return (
@@ -145,6 +146,9 @@ export default function officer() {
     }, [])
     return (
         <div className={styles['officer-page']}>
+            <Head>
+                <title>คณะผู้จัดทำ</title>
+            </Head>
             <SubHeader first={'ผู้จัดทำ'} />
             <div className="container">
                 <div className="col-12">
