@@ -29,6 +29,7 @@ import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import MenuIcon from '@mui/icons-material/Menu';
 import styles from '../../styles/admin/admin.module.scss'
+import MessageIcon from '@mui/icons-material/Message';
 import Swal from 'sweetalert2'
 // import {listMenu} from './list_menu'
 
@@ -231,6 +232,14 @@ export default function header() {
               <RateReviewIcon />
             </ListItemIcon>
             <ListItemText primary="รีวิว" />
+          </ListItem>
+        </Link>
+        <Link href="/admin/manage_comment">
+          <ListItem button >
+            <ListItemIcon>
+              <MessageIcon />
+            </ListItemIcon>
+            <ListItemText primary="คอมเมนต์" />
           </ListItem>
         </Link>
         <Divider />

@@ -54,12 +54,12 @@ export default function manage_drivers() {
         })
     }
     useEffect(() => {
-        const getDrivers = async () => {
-            let response = await axios.get(`${process.env.SERVER_API}/get/driver`)
-            console.log(response);
-            setDrivers(response.data.payload)
+        const getUserComment = async () => {
+            // let response = await axios.get(`${process.env.SERVER_API}/get/driver`)
+            // console.log(response);
+            // setDrivers(response.data.payload)
         }
-        getDrivers()
+        getUserComment()
     }, [])
     return (
         <div className={styles['dis-f']}>
@@ -69,8 +69,8 @@ export default function manage_drivers() {
                     <div className="container">
                         <div className="col-12">
                             <div className={styles['add-button']}>
-                                <p>วินมอเตอร์ไซต์</p>
-                                <Button onClick={(e) => router.push('/admin/driver/create')} color="success" variant="contained"  >เพิ่มวินมอเตอร์ไซค์</Button>
+                                <p>คอมเมนต์จากผู้ใช้งาน</p>
+                                {/* <Button onClick={(e) => router.push('/admin/driver/create')} color="success" variant="contained"  >เพิ่มวินมอเตอร์ไซค์</Button> */}
                             </div>
                             <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }} >
                                 {drivers.length === 0 ? '' : drivers.map((driver) => (
