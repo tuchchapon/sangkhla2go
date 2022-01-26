@@ -539,7 +539,22 @@ export default function index() {
   const getCommnet = async () => {
     const response = await axios.get(`${process.env.SERVER_API}/get/comment`)
     console.log(response.data);
-    setComments(response.data.payload.approve)
+    let comment_data = response.data.payload.approve
+    let max_comments = []
+    console.log('comment data is', comment_data);
+    if (screen.availWidth >= 768) {
+      for (let i = 0; i < 6; i++) {
+        max_comments.push(comment_data[i])
+      }
+      setComments(max_comments)
+
+    }
+    else {
+      for (let i = 0; i < 3; i++) {
+        max_comments.push(comment_data[i])
+      }
+      setComments(max_comments)
+    }
     // setComments(response.data.payload.pending)
   }
   useEffect(() => {
@@ -1098,7 +1113,7 @@ export default function index() {
                     )) : null}
 
                   </div>
-                  {comments.length > 5 ? <span style={{ marginTop: '16px' }} onClick={(e) => router.push('/comment')} className={styles['see-all-button']}>ดูทั้งหมด</span> : null}
+                  <span style={{ marginTop: '16px' }} onClick={(e) => router.push('/comment')} className={styles['see-all-button']}>ดูทั้งหมด</span>
                 </div>
               </div>
             </div>

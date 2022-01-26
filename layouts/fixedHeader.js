@@ -81,7 +81,7 @@ export default function fixedHeader() {
                                             </div>
                                         </div>
                                         <div className={styles['menu-item']}>
-                                            <div onClick={(e) => toReview(e)} className={styles['review-menu']}>
+                                            <div onClick={() => router.push('/comment')} className={styles['review-menu']}>
                                                 <div></div>
                                                 <span>รีวิว</span>
                                             </div>
