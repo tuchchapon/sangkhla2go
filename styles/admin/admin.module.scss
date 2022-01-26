@@ -92,14 +92,17 @@
     border: 1px solid burlywood;
     border-radius: 8px;
     padding: 12px;
-    -webkit-flex-basis: calc((100% - 72px)/3);
+    // -webkit-flex-basis: calc((100% - 72px)/3);
     flex: 0 0 calc((100% - 72px)/3);
-    margin:  0 12px 1rem  ;
+    margin:  0 20px 1rem 0 ;
     // max-width: 370px;
     width: 370px;
     display: flex;
     flex-direction: column;
     box-shadow: 8px 4px 15px -8px rgba(230,186,129,1);
+    // &:nth-child(3n){
+    //     margin: 0 0 1rem 0;
+    // }
     &:hover{
         transition: 0.3s;
         background-color:rgba(230,186,129,1) ;
