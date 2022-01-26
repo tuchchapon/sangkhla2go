@@ -7,7 +7,11 @@ export default function commentPopup({ open, onClose }) {
     const closeAndReload = async (e) => {
         if (e) e.preventDefault()
         await onClose()
-        router.push('/')
+        if (router.pathname !== '/') {
+            router.push('/')
+        } else {
+            router.reload()
+        }
     }
     return <>
         <Popup

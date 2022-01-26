@@ -21,6 +21,8 @@ import ProductPopup from '../components/productPopup';
 import Header from '../layouts/header';
 import FixedHeader from '../layouts/fixedHeader';
 import Script from 'next/script';
+import Swal from 'sweetalert2';
+import CommentPopup from '../components/commentPopup';
 function RightArrow(props) {
   const { className, style, onClick } = props;
   return (
@@ -58,7 +60,13 @@ const SMLeftArrow = (props) => {
   )
 }
 
-
+const validateEmail = (email) => {
+  return String(email)
+    .toLowerCase()
+    .match(
+      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    );
+};
 export default function index() {
 
   const router = useRouter();
@@ -78,7 +86,9 @@ export default function index() {
   const [products, setProducts] = useState([])
   const [showReview, setShowReview] = useState([])
   const [res_reviews, setRes_reviews] = useState([])
-
+  const [newComment, setNewComment] = useState({
+    commentator_name: '', commentator_email: '', comment_text: ''
+  });
   const [openAccommodationPopup, setOpenAccommodationPopup] = useState(false)
   const [openSagePopup, setOpenSagePopup] = useState(false)
   const [openLeaderPopup, setOpenLeaderPopup] = useState(false)
@@ -86,11 +96,12 @@ export default function index() {
   const [openAttractionpopup, setopenAttractionpopup] = useState(false)
   const [openWinpopup, setOpenWinpopup] = useState(false)
   const [openBoatPopup, setOpenBoatPopup] = useState(false)
-
+  const [comments, setComments] = useState([]);
   const [openKarenPopup, setOpenKarenPopup] = useState(false)
   const [openMonPopup, setOpenMonPopup] = useState(false)
   const [openProductPopup, setOpenProductPopup] = useState(false)
   const [dragging, setDragging] = useState(false)
+  const [showCommentPopup, setShowCommentPopup] = useState(false);
   const [activeAcommodation, setActiveAcommodation] = useState({
     id: '', name: '', type: '', information: '', min_price: '', max_price: '',
     fb_page: '', images: [], services: [], tel: ''
@@ -491,6 +502,46 @@ export default function index() {
       setShowReview(set_review)
     }
   }
+  const submitComment = (e) => {
+    if (e) e.preventDefault()
+    if (!newComment.comment_text || !newComment.commentator_email) {
+      Swal.fire({
+        title: 'กรุณากรอกข้อมูลสำคัญให้ครบถ้วน',
+        icon: 'warning',
+        confirmButtonColor: '#D7886F',
+        confirmButtonText: 'ตกลง'
+
+      })
+      return false
+    }
+    if (validateEmail(newComment.commentator_email)) {
+      axios.post(`${process.env.SERVER_API}/create/comment`, newComment).then((res) => {
+        // console.log('response is ', res.data.payload);
+        if (res.data.status === 200) {
+          console.log('res data is', res.data);
+          setShowCommentPopup(true)
+        }
+      })
+    }
+    else if (!validateEmail(newComment.commentator_email)) {
+      Swal.fire({
+        title: 'กรุณากรอกอีเมลล์ให้ถูกต้อง',
+        icon: 'warning',
+        confirmButtonColor: '#D7886F',
+        confirmButtonText: 'ตกลง'
+
+      })
+      return false
+    }
+
+    console.log(newComment);
+  }
+  const getCommnet = async () => {
+    const response = await axios.get(`${process.env.SERVER_API}/get/comment`)
+    console.log(response.data);
+    setComments(response.data.payload.approve)
+    // setComments(response.data.payload.pending)
+  }
   useEffect(() => {
 
     console.log('wide is', screen.availWidth);
@@ -504,6 +555,7 @@ export default function index() {
         karenTraditions.length === 0 || monTraditions.length === 0 ? await getTradition() : null
         products.length === 0 ? await getProduct() : null
         showReview.length === 0 ? await getReview() : null
+        comments.length === 0 ? await getCommnet() : null
         getWinlocation()
         setLoading(false)
       }
@@ -1005,7 +1057,52 @@ export default function index() {
                 </div>
 
               </div>
+
             </div>
+            <div className={styles['comment-section']}>
+              <div className={styles['comment-top-box']}>
+                <div className={styles['comment-form-box']}>
+                  <div className={styles['form-left-box']}>
+                    <div className={styles['comment-input']}>
+                      <label >ข้อความประทับใจ<span>*</span></label>
+                      <textarea onChange={(e) => setNewComment({ ...newComment, comment_text: e.target.value })} name="" id="" cols="30" rows="10"></textarea>
+                    </div>
+                  </div>
+                  <div className={styles['form-right-box']}>
+                    <div className={styles['comment-input']}>
+                      <label>ชื่อ</label>
+                      <input type="text" onChange={(e) => setNewComment({ ...newComment, commentator_name: e.target.value })} />
+                    </div>
+                    <div className={styles['comment-input']}>
+                      <label >E-mail<span>*</span></label>
+                      <input type="text" onChange={(e) => setNewComment({ ...newComment, commentator_email: e.target.value })} />
+                    </div>
+                    <button onClick={(e) => submitComment(e)} className={styles['submit-button']}>
+                      <span>ส่ง</span>
+                    </button>
+                  </div>
+
+                </div>
+              </div>
+              <div className={styles['comment-bottom-box']}>
+                <div className={styles['comment-list-box']}>
+                  <div className={styles['comment-title']}>
+                    <span>รีวิว</span>
+                  </div>
+                  <div className={styles['comment-list']}>
+                    {comments && comments.length > 0 ? comments.map((comment) => (
+                      <div key={comment.id} className={styles['comment-item']}>
+                        <span className={styles['commentator-name']}>{comment.commentator_name ? comment.commentator_name : 'ไม่ระบุชื่อ'}</span>
+                        <span className={styles['comment-text']}>{comment.comment_text}</span>
+                      </div>
+                    )) : null}
+
+                  </div>
+                  {comments.length > 5 ? <span style={{ marginTop: '16px' }} onClick={(e) => router.push('/comment')} className={styles['see-all-button']}>ดูทั้งหมด</span> : null}
+                </div>
+              </div>
+            </div>
+            <CommentPopup open={showCommentPopup} onClose={() => setShowCommentPopup(false)} />
             <AccommodationPopup open={openAccommodationPopup} onClose={() => setOpenAccommodationPopup(false)} activeAcommodation={activeAcommodation} />
             <SagePopup open={openSagePopup} onClose={() => setOpenSagePopup(false)} />
             <LeaderPopup open={openLeaderPopup} onClose={() => setOpenLeaderPopup(false)} />

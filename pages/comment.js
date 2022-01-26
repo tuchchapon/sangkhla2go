@@ -69,16 +69,6 @@ export default function comment() {
             setComments(response.data.payload.approve)
             // setComments(response.data.payload.pending)
         }
-        // const resizing = async () => {
-        //     window.onload = ResizeAllItem()
-        //     window.addEventListener("resize", ResizeAllItem)
-        //     let allItems = document.getElementsByClassName("comment-item")
-        //     console.log('resize', allItems);
-        //     for (let i = 0; i < allItems.length; i++) {
-        //         imagesLoaded(allItems[i], ResizeInstance)
-        //     }
-        //     setLoadding(true)
-        // }
         !checkData ? getCommnet() : null
 
 
