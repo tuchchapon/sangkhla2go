@@ -455,7 +455,7 @@ $xxl: "screen and (min-width: 1400px)";
     max-width: 1170;
     justify-content: flex-start;
     align-items: center;
-    cursor: pointer;
+    
     height: 80px;
     @media #{$xs} {
       height: 48px;
@@ -466,6 +466,7 @@ $xxl: "screen and (min-width: 1400px)";
       height: 80px;
     }
     span {
+      cursor: pointer;
       @media #{$xs} {
         height: 16px;
         &:nth-last-child(1) {

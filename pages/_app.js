@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import GoogleAnalytics from '../components/GoogleAnalytics';
-import ReactGa from 'react-ga'
+<script src="/path/to/masonry.pkgd.min.js"></script>
 function MyApp({ Component, pageProps }) {
   return <>
     <Component {...pageProps} />

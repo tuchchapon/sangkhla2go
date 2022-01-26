@@ -31,6 +31,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import styles from '../../styles/admin/admin.module.scss'
 import MessageIcon from '@mui/icons-material/Message';
 import Swal from 'sweetalert2'
+import GroupsIcon from '@mui/icons-material/Groups';
 // import {listMenu} from './list_menu'
 
 
@@ -191,6 +192,14 @@ export default function header() {
               <TwoWheelerIcon />
             </ListItemIcon>
             <ListItemText primary="วินมอเตอร์ไซต์" />
+          </ListItem>
+        </Link>
+        <Link href="#">
+          <ListItem button >
+            <ListItemIcon>
+              <GroupsIcon />
+            </ListItemIcon>
+            <ListItemText primary="ชมรมเรือนำเที่ยว" />
           </ListItem>
         </Link>
         <Link href="/admin/manage_boats">
