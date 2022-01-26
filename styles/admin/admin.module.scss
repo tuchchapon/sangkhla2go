@@ -92,7 +92,8 @@
     border: 1px solid burlywood;
     border-radius: 8px;
     padding: 12px;
-    flex: 0 0 calc((100% )/3);
+    -webkit-flex-basis: calc((100% - 72px)/3);
+    flex: 0 0 calc((100% - 72px)/3);
     margin:  0 12px 1rem  ;
     // max-width: 370px;
     width: 370px;
