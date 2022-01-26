@@ -267,81 +267,87 @@ export default function manage_comment() {
                             </div>
                             {pending_comments.length > 0 ? <Paper className={styles['comment-paper']} sx={{ p: 3, display: 'flex', flexDirection: 'column' }} >
                                 <p className={styles['comment-head-text']} >คอมเมนต์ที่รอการดำเนินการ</p>
-                                {pending_comments.length > 0 ? pending_comments.map((pending_comment) => (
-                                    <div className={styles['comment-box-item']} key={pending_comment.id}>
-                                        <div className={styles['comment-textbox']}>
-                                            <b>ชื่อ: </b><span>{pending_comment.commentator_name ? pending_comment.commentator_name : 'ไม่ระบุชื่อ'}</span>
+                                <div className={styles['comment-wrap-item']}>
+                                    {pending_comments.length > 0 ? pending_comments.map((pending_comment) => (
+                                        <div className={styles['comment-box-item']} key={pending_comment.id}>
+                                            <div className={styles['comment-textbox']}>
+                                                <b>ชื่อ: </b><span>{pending_comment.commentator_name ? pending_comment.commentator_name : 'ไม่ระบุชื่อ'}</span>
+                                            </div>
+                                            <div className={styles['comment-textbox']}>
+                                                <b>E-mail: </b><span> {pending_comment.commentator_email}</span>
+                                            </div>
+                                            <div className={styles['comment-textbox']}>
+                                                <b>ข้อความ: </b><span>{pending_comment.comment_text}</span>
+                                            </div>
+                                            <div className={styles['comment-button-group']}>
+                                                <Button color="primary" variant='outlined' onClick={((e) => showComment(pending_comment))} >
+                                                    {/* <span>จัดการ</span> */}
+                                                    <FindInPageIcon />
+                                                </Button>
+                                                <Button color="error" variant='outlined' onClick={((e) => deleteComment(pending_comment))} >
+                                                    {/* <span>ลบ</span> */}
+                                                    <DeleteIcon />
+                                                </Button>
+                                            </div>
                                         </div>
-                                        <div className={styles['comment-textbox']}>
-                                            <b>E-mail: </b><span> {pending_comment.commentator_email}</span>
-                                        </div>
-                                        <div className={styles['comment-textbox']}>
-                                            <b>ข้อความ: </b><span>{pending_comment.comment_text}</span>
-                                        </div>
-                                        <div className={styles['comment-button-group']}>
-                                            <Button color="primary" variant='outlined' onClick={((e) => showComment(pending_comment))} >
-                                                {/* <span>จัดการ</span> */}
-                                                <FindInPageIcon />
-                                            </Button>
-                                            <Button color="error" variant='outlined' onClick={((e) => deleteComment(pending_comment))} >
-                                                {/* <span>ลบ</span> */}
-                                                <DeleteIcon />
-                                            </Button>
-                                        </div>
-                                    </div>
-                                )) : ''}
+                                    )) : ''}
+                                </div>
                             </Paper> : null}
                             {approveComments.length > 0 ? <Paper className={styles['comment-paper']} sx={{ p: 3, display: 'flex', flexDirection: 'column', marginTop: '20px', marginBottom: '20px' }} >
                                 <p className={styles['comment-head-text']} >คอมเมนต์ที่ผ่านการอนุมัติ</p>
-                                {approveComments.length > 0 ? approveComments.map((approve_comment) => (
-                                    <div className={styles['comment-box-item']} key={approve_comment.id}>
-                                        <div className={styles['comment-textbox']}>
-                                            <b>ชื่อ: </b><span>{approve_comment.commentator_name ? approve_comment.commentator_name : 'ไม่ระบุชื่อ'}</span>
+                                <div className={styles['comment-wrap-item']}>
+                                    {approveComments.length > 0 ? approveComments.map((approve_comment) => (
+                                        <div className={styles['comment-box-item']} key={approve_comment.id}>
+                                            <div className={styles['comment-textbox']}>
+                                                <b>ชื่อ: </b><span>{approve_comment.commentator_name ? approve_comment.commentator_name : 'ไม่ระบุชื่อ'}</span>
+                                            </div>
+                                            <div className={styles['comment-textbox']}>
+                                                <b>E-mail: </b><span> {approve_comment.commentator_email}</span>
+                                            </div>
+                                            <div className={styles['comment-textbox']}>
+                                                <b>ข้อความ: </b><span>{approve_comment.comment_text}</span>
+                                            </div>
+                                            <div className={styles['comment-button-group']}>
+                                                <Button color="primary" variant='outlined' onClick={((e) => changeStatusFromApprove(approve_comment))} >
+                                                    {/* <span>จัดการ</span> */}
+                                                    <FindInPageIcon />
+                                                </Button>
+                                                <Button color="error" variant='outlined' onClick={((e) => deleteComment(approve_comment))} >
+                                                    {/* <span>ลบ</span> */}
+                                                    <DeleteIcon />
+                                                </Button>
+                                            </div>
                                         </div>
-                                        <div className={styles['comment-textbox']}>
-                                            <b>E-mail: </b><span> {approve_comment.commentator_email}</span>
-                                        </div>
-                                        <div className={styles['comment-textbox']}>
-                                            <b>ข้อความ: </b><span>{approve_comment.comment_text}</span>
-                                        </div>
-                                        <div className={styles['comment-button-group']}>
-                                            <Button color="primary" variant='outlined' onClick={((e) => changeStatusFromApprove(approve_comment))} >
-                                                {/* <span>จัดการ</span> */}
-                                                <FindInPageIcon />
-                                            </Button>
-                                            <Button color="error" variant='outlined' onClick={((e) => deleteComment(approve_comment))} >
-                                                {/* <span>ลบ</span> */}
-                                                <DeleteIcon />
-                                            </Button>
-                                        </div>
-                                    </div>
-                                )) : ''}
+                                    )) : ''}
+                                </div>
                             </Paper> : null}
                             {rejectComments.length > 0 ? <Paper className={styles['comment-paper']} sx={{ p: 3, display: 'flex', flexDirection: 'column', marginTop: '20px' }} >
                                 <p className={styles['comment-head-text']} >คอมเมนต์ที่ไม่ผ่านการอนุมัติ</p>
-                                {rejectComments.length > 0 ? rejectComments.map((reject_comment) => (
-                                    <div className={styles['comment-box-item']} key={reject_comment.id}>
-                                        <div className={styles['comment-textbox']}>
-                                            <b>ชื่อ: </b><span>{reject_comment.commentator_name ? reject_comment.commentator_name : 'ไม่ระบุชื่อ'}</span>
+                                <div className={styles['comment-wrap-item']}>
+                                    {rejectComments.length > 0 ? rejectComments.map((reject_comment) => (
+                                        <div className={styles['comment-box-item']} key={reject_comment.id}>
+                                            <div className={styles['comment-textbox']}>
+                                                <b>ชื่อ: </b><span>{reject_comment.commentator_name ? reject_comment.commentator_name : 'ไม่ระบุชื่อ'}</span>
+                                            </div>
+                                            <div className={styles['comment-textbox']}>
+                                                <b>E-mail: </b><span> {reject_comment.commentator_email}</span>
+                                            </div>
+                                            <div className={styles['comment-textbox']}>
+                                                <b>ข้อความ: </b><span>{reject_comment.comment_text}</span>
+                                            </div>
+                                            <div className={styles['comment-button-group']}>
+                                                <Button color="primary" variant='outlined' onClick={((e) => changeStatusFromReject(reject_comment))} >
+                                                    {/* <span>จัดการ</span> */}
+                                                    <FindInPageIcon />
+                                                </Button>
+                                                <Button color="error" variant='outlined' onClick={((e) => deleteComment(reject_comment))} >
+                                                    {/* <span>ลบ</span> */}
+                                                    <DeleteIcon />
+                                                </Button>
+                                            </div>
                                         </div>
-                                        <div className={styles['comment-textbox']}>
-                                            <b>E-mail: </b><span> {reject_comment.commentator_email}</span>
-                                        </div>
-                                        <div className={styles['comment-textbox']}>
-                                            <b>ข้อความ: </b><span>{reject_comment.comment_text}</span>
-                                        </div>
-                                        <div className={styles['comment-button-group']}>
-                                            <Button color="primary" variant='outlined' onClick={((e) => changeStatusFromReject(reject_comment))} >
-                                                {/* <span>จัดการ</span> */}
-                                                <FindInPageIcon />
-                                            </Button>
-                                            <Button color="error" variant='outlined' onClick={((e) => deleteComment(reject_comment))} >
-                                                {/* <span>ลบ</span> */}
-                                                <DeleteIcon />
-                                            </Button>
-                                        </div>
-                                    </div>
-                                )) : ''}
+                                    )) : ''}
+                                </div>
                             </Paper> : null}
                         </div>
                     </div>
