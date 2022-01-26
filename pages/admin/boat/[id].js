@@ -20,7 +20,7 @@ const toBase64 = file => new Promise((resolve, reject) => {
 export default function boat() {
     const router = useRouter()
     const id = router.query.id || []
-    let boat_club = ["-", "ท่าเรือสะพานฝั่งไม้ไทย", "สะพานไม้ฝั่งไทย", "สะพานไม้ฝั่งไทยและฝั่งมอญ", "ท่าวัด"]
+    const [boatClub, setBoatClub] = useState([]);
     const [galleryImages, setGalleryImages] = useState([])
     const [boatProvider, setBoatProvider] = useState({
         id: '',
@@ -153,6 +153,11 @@ export default function boat() {
         setBoatProvider({ ...boatProvider, boat_images: new_image })
     }
     useEffect(() => {
+        const getBoatClubName = async () => {
+            let clubResponse = await axios.get(`${process.env.SERVER_API}/get/boatClubName`)
+            console.log(clubResponse);
+            setBoatClub(clubResponse.data.payload)
+        }
         const getBoat = async () => {
             const response = await axios.post(`${process.env.SERVER_API}/get/boat/:${id}`, { id: id })
             console.log('response boat is', response.data)
@@ -162,6 +167,7 @@ export default function boat() {
                 setGalleryImages(imageResponse)
             }
         }
+        getBoatClubName()
         if (id !== "create" && router.isReady) {
             getBoat()
         }
@@ -177,9 +183,9 @@ export default function boat() {
                             <div className={styles['first-input']}>
                                 <span>ชื่อชมรม</span>
                                 <select value={boatProvider ? boatProvider.club_name : '-'} onChange={(e) => setBoatProvider({ ...boatProvider, club_name: e.target.value })}>
-                                    {boat_club.map((club) => (
-                                        <option value={club} key={club} >{club}</option>
-                                    ))}
+                                    {boatClub.length > 0 ? boatClub.map((club) => (
+                                        <option value={club.club_name} key={club.id} >{club.club_name}</option>
+                                    )) : null}
                                 </select>
                             </div>
                             <div className={styles['first-input']} >

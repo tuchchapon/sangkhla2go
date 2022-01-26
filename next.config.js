@@ -6,7 +6,7 @@ module.exports = {
     SERVER_API: "https://sangkhla-server-ashen.vercel.app",
     // SERVER_API: "http://localhost:3001",
     // SERVER_API: "http://localhost:8080",
-    SERVER_IMAGE_PATH: 'https://sangkhla-server.vercel.app/uploads/uploadImage',
+    // SERVER_IMAGE_PATH: 'https://sangkhla-server.vercel.app/uploads/uploadImage',
     LOCAL_API: "http://localhost:8080",
     LOCAL_IMAGE_PATH: "http://localhost:8080/uploads/uploadImage",
     FRONT_IMAGE_PATH: "http://localhost:8080/uploads",

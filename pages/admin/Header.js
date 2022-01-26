@@ -194,7 +194,7 @@ export default function header() {
             <ListItemText primary="วินมอเตอร์ไซต์" />
           </ListItem>
         </Link>
-        <Link href="#">
+        <Link href="/admin/manage_boatClub">
           <ListItem button >
             <ListItemIcon>
               <GroupsIcon />

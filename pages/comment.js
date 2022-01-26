@@ -5,16 +5,26 @@ import axios from 'axios';
 import Footer from '../layouts/footer';
 import SubHeader from '../layouts/subHeader';
 import Swal from 'sweetalert2';
-import Popup from 'reactjs-popup';
+import CommentPopup from '../components/commentPopup';
+
+const validateEmail = (email) => {
+    return String(email)
+        .toLowerCase()
+        .match(
+            /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+        );
+};
 export default function comment() {
 
     const [comments, setComments] = useState([]);
     const [showPopup, setShowPopup] = useState(false);
     const [checkData, setCheckData] = useState(false);
+    // let email = ''
     // const [loadding, setLoadding] = useState(false);
     const [newComment, setNewComment] = useState({
         commentator_name: '', commentator_email: '', comment_text: ''
     });
+
     const submitComment = (e) => {
         if (e) e.preventDefault()
         if (!newComment.comment_text || !newComment.commentator_email) {
@@ -27,13 +37,26 @@ export default function comment() {
             })
             return false
         }
-        axios.post(`${process.env.SERVER_API}/create/comment`, newComment).then((res) => {
-            // console.log('response is ', res.data.payload);
-            if (res.data.status === 200) {
-                console.log('res data is', res.data);
-                setShowPopup(true)
-            }
-        })
+        if (validateEmail(newComment.commentator_email)) {
+            axios.post(`${process.env.SERVER_API}/create/comment`, newComment).then((res) => {
+                // console.log('response is ', res.data.payload);
+                if (res.data.status === 200) {
+                    console.log('res data is', res.data);
+                    setShowPopup(true)
+                }
+            })
+        }
+        else if (!validateEmail(newComment.commentator_email)) {
+            Swal.fire({
+                title: 'กรุณากรอกอีเมลล์ให้ถูกต้อง',
+                icon: 'warning',
+                confirmButtonColor: '#D7886F',
+                confirmButtonText: 'ตกลง'
+
+            })
+            return false
+        }
+
         console.log(newComment);
     }
 
@@ -92,7 +115,7 @@ export default function comment() {
         </div>
         <div className={styles['comment-bottom-box']}>
             <div className={styles['comment-list-box']}>
-                <div onClick={(e) => setShowPopup(true)} className={styles['comment-title']}>
+                <div className={styles['comment-title']}>
                     <span>รีวิว</span>
                 </div>
                 <div className={styles['comment-list']}>
@@ -104,26 +127,7 @@ export default function comment() {
                     )) : null}
                 </div>
             </div>
-            <Popup
-                open={showPopup}
-                closeOnDocumentClick={false}
-                closeOnEscape={false}
-                lockScroll
-            >
-                <div className={styles['backdrop']}></div>
-                <div className={styles['popup-fixed-box']}>
-                    <div className={styles['comment-popup']}>
-                        <div className={styles['popup-close-icon']} onClick={(e) => setShowPopup(false)}></div>
-                        <div className={styles['comment-popup-flexbox']}>
-                            <span>ขอบคุณสำหรับการรีวิว</span>
-                            <span>
-                                แอดมินกำลังตรวจสอบข้อความ<br />
-                                ท่านจะได้รับการแจ้งเตือนผ่าน E-mail และเผยแพร่บนเว็บไซต์ภายใน 24 ช.ม.
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </Popup>
+            <CommentPopup open={showPopup} onClose={() => setShowPopup(false)} />
         </div>
         <Footer />
     </div>;

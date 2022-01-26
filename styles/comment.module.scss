@@ -295,15 +295,28 @@ $xxl: "screen and (min-width: 1400px)";
                     box-sizing: border-box;
                     padding: 24px;
                     border: 2px solid #383838;
+                    background-repeat: no-repeat;
+                    &:nth-child(2n+1){
+                        background-image: url('/img/comment/lg-pin.png');
+                        background-size: 34px 36px;
+                        background-position: 98% 8px;
+                    }
+                    &:nth-child(2n +2){
+                        background-image: url('/img/comment/lg-ribbon.png');
+                        background-size: 24px 32px;
+                        background-position: 96% 0;
+                    }
                     @media #{$md} {
                         width: 330px;
                         // box-shadow: -2px -1px 5px 0px rgba(56,56,56,0.75);
                         box-shadow: 2px -4px 0px 0px rgba(56,56,56,0.75);
+
                     }
                     @media #{$xxl} {
                         // border: 1px solid #383838;
                         width: 370px;
                         margin: 0 30px 24px 0;
+                       
                     }
                     &:nth-child(3n){
                         margin-right: 0;
@@ -312,9 +325,18 @@ $xxl: "screen and (min-width: 1400px)";
                     .commentator-name{
                         display: inline-block;
                         width: 100%;
+                        white-space: pre;
                         font-weight: bold;
                         margin-bottom: 24px;
-
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        @media #{$md} {
+                            max-width: 270px;
+                        }
+                        @media #{$xxl} {
+                            max-width: 290px;
+                            
+                        }
                     }
                     .comment-text{
                         display: inline-block;
