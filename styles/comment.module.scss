@@ -476,3 +476,25 @@ $xxl: "screen and (min-width: 1400px)";
             }
         }
 }
+.load-content-text{
+    cursor: pointer;
+    font-weight: bold;
+    align-self: center;
+    text-align: center;
+    text-decoration: underline;
+    margin-bottom: 24px;
+    font-size: 16px;
+    line-height: 24px;
+    @media #{$md} {
+        font-size: 24px;
+        line-height: 32px;
+    }
+    @media #{$xxl} {
+        margin-top: 24px;
+        margin-bottom: 0;
+        font-size: 32px;
+        line-height: 40px;
+        width: 150px;
+        height: 40px;
+    }
+}
