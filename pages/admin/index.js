@@ -64,50 +64,50 @@ export default function Index() {
           <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
             <Grid container spacing={3}>
               <Grid item xs={3}>
-                <Paper onClick={(e) => router.push('/admin/manage_restaurants')} className={styles['admin-card']} sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
+                <Paper onClick={(e) => router.push('/admin/manage_restaurants')} className={styles['admin-card']} sx={{ bgcolor: 'wheat', p: 2, display: 'flex', flexDirection: 'column' }}>
                   <span >ร้านอาหารทั้งหมด</span>
                   <span>{rest}</span>
                 </Paper>
               </Grid>
               <Grid item xs={3}>
-                <Paper onClick={(e) => router.push('/admin/manage_accommodations')} className={styles['admin-card']} sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
+                <Paper onClick={(e) => router.push('/admin/manage_accommodations')} className={styles['admin-card']} sx={{ bgcolor: 'wheat', p: 2, display: 'flex', flexDirection: 'column' }}>
                   <span>ที่พักทั้งหมด</span>
                   <span>{accom}</span>
                 </Paper>
               </Grid>
 
               <Grid item xs={3}>
-                <Paper onClick={(e) => router.push('/admin/manage_attractions')} className={styles['admin-card']} sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
+                <Paper onClick={(e) => router.push('/admin/manage_attractions')} className={styles['admin-card']} sx={{ bgcolor: 'wheat', p: 2, display: 'flex', flexDirection: 'column' }}>
                   <span>สถานที่ท่องเที่ยวทั้งหมด</span>
                   <span>{attraction}</span>
                 </Paper>
               </Grid>
               <Grid item xs={3}>
-                <Paper onClick={(e) => router.push('/admin/manage_products')} className={styles['admin-card']} sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
+                <Paper onClick={(e) => router.push('/admin/manage_products')} className={styles['admin-card']} sx={{ bgcolor: 'wheat', p: 2, display: 'flex', flexDirection: 'column' }}>
                   <span>ผลิตภัณฑ์ทั้งหมด</span>
                   <span>{product}</span>
                 </Paper>
               </Grid>
               <Grid item xs={3}>
-                <Paper onClick={(e) => router.push('/admin/manage_drivers')} className={styles['admin-card']} sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
+                <Paper onClick={(e) => router.push('/admin/manage_drivers')} className={styles['admin-card']} sx={{ bgcolor: 'wheat', p: 2, display: 'flex', flexDirection: 'column' }}>
                   <span>วินมอเตอร์ไซต์ทั้งหมด</span>
                   <span>{driver}</span>
                 </Paper>
               </Grid>
               <Grid item xs={3}>
-                <Paper onClick={(e) => router.push('/admin/manage_boats')} className={styles['admin-card']} sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
+                <Paper onClick={(e) => router.push('/admin/manage_boats')} className={styles['admin-card']} sx={{ bgcolor: 'wheat', p: 2, display: 'flex', flexDirection: 'column' }}>
                   <span>เรือนำเที่ยวทั้งหมด</span>
                   <span>{boat}</span>
                 </Paper>
               </Grid>
               <Grid item xs={3}>
-                <Paper onClick={(e) => router.push('/admin/manage_traditions')} className={styles['admin-card']} sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
+                <Paper onClick={(e) => router.push('/admin/manage_traditions')} className={styles['admin-card']} sx={{ bgcolor: 'wheat', p: 2, display: 'flex', flexDirection: 'column' }}>
                   <span>ประเพณีทั้งหมด</span>
                   <span>{tradition}</span>
                 </Paper>
               </Grid>
               <Grid item xs={3}>
-                <Paper onClick={(e) => router.push('/admin/manage_reviews')} className={styles['admin-card']} sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
+                <Paper onClick={(e) => router.push('/admin/manage_reviews')} className={styles['admin-card']} sx={{ bgcolor: 'wheat', p: 2, display: 'flex', flexDirection: 'column' }}>
                   <span>รีวิวทั้งหมด</span>
                   <span>{review}</span>
                 </Paper>
