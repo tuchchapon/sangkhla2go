@@ -212,7 +212,7 @@ export default function officer() {
                                 <input type="text" value={accommodation ? accommodation.fb_page : ''} onChange={(e) => setAccommodation({ ...accommodation, fb_page: e.target.value })} />
                             </div>
                             <div className={styles['first-input']} >
-                                <span>ลิ๊งเฟสบุ๊ค</span>
+                                <span>ลิงค์เฟสบุ๊ค</span>
                                 <input type="text" value={accommodation ? accommodation.fb_link : ''} onChange={(e) => setAccommodation({ ...accommodation, fb_link: e.target.value })} />
                             </div>
                             <div className={styles['first-input']} >

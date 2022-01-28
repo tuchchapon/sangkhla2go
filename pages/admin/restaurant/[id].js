@@ -317,7 +317,7 @@ export default function Restaurant() {
                                 <input type="text" value={restaurant ? restaurant.fb_page : ''} onChange={(e) => setRestaurant({ ...restaurant, fb_page: e.target.value })} />
                             </div>
                             <div className={styles['first-input']} >
-                                <span>ลิ๊งเฟสบุ๊ค</span>
+                                <span>ลิงค์เฟสบุ๊ค</span>
                                 <input type="text" value={restaurant ? restaurant.fb_link : ''} onChange={(e) => setRestaurant({ ...restaurant, fb_link: e.target.value })} />
                             </div>
                             <div className={styles['first-input']} >

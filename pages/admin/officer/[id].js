@@ -207,7 +207,7 @@ export default function officer() {
                                 <input type="text" value={officer.ig ? officer.ig : ''} onChange={(e) => setOfficer({ ...officer, ig: e.target.value })} />
                             </div>
                             <div className={styles['first-input']} >
-                                <span>ลิ๊ง youtube</span>
+                                <span>ลิงค์ youtube</span>
                                 <input type="text" value={officer.youtube ? officer.youtube : ''} onChange={(e) => setOfficer({ ...officer, youtube: e.target.value })} />
                             </div>
                             <div className={styles['button-group']} >
