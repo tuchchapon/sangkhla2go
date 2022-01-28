@@ -274,7 +274,7 @@ export default function manage_comment() {
                                                 <b>ชื่อ: </b><span>{pending_comment.commentator_name ? pending_comment.commentator_name : 'ไม่ระบุชื่อ'}</span>
                                             </div>
                                             <div className={styles['comment-textbox']}>
-                                                <b>E-mail: </b><span> {pending_comment.commentator_email}</span>
+                                                <b>E-mail: </b><span>{pending_comment.commentator_email.trim()}</span>
                                             </div>
                                             <div className={styles['comment-textbox']}>
                                                 <b>ข้อความ: </b><span>{pending_comment.comment_text}</span>
@@ -302,7 +302,7 @@ export default function manage_comment() {
                                                 <b>ชื่อ: </b><span>{approve_comment.commentator_name ? approve_comment.commentator_name : 'ไม่ระบุชื่อ'}</span>
                                             </div>
                                             <div className={styles['comment-textbox']}>
-                                                <b>E-mail: </b><span> {approve_comment.commentator_email}</span>
+                                                <b>E-mail: </b><span>{approve_comment.commentator_email}</span>
                                             </div>
                                             <div className={styles['comment-textbox']}>
                                                 <b>ข้อความ: </b><span>{approve_comment.comment_text}</span>
@@ -330,7 +330,7 @@ export default function manage_comment() {
                                                 <b>ชื่อ: </b><span>{reject_comment.commentator_name ? reject_comment.commentator_name : 'ไม่ระบุชื่อ'}</span>
                                             </div>
                                             <div className={styles['comment-textbox']}>
-                                                <b>E-mail: </b><span> {reject_comment.commentator_email}</span>
+                                                <b>E-mail: </b><span>{reject_comment.commentator_email}</span>
                                             </div>
                                             <div className={styles['comment-textbox']}>
                                                 <b>ข้อความ: </b><span>{reject_comment.comment_text}</span>
