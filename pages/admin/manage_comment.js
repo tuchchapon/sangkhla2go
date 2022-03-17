@@ -212,7 +212,7 @@ export default function manage_comment() {
         Swal.fire({
             title: `ต้องการลบข้อมูลหรือไม่`,
             icon: 'warning',
-            html: `ต้องการรีวิวจากคุณ ${comment.commentator_name} หรือไม่`,
+            html: `ต้องการลบรีวิวจากคุณ ${comment.commentator_name ? comment.commentator_name : 'ไม่ระบุชื่อ'} หรือไม่`,
             showCancelButton: true,
             confirmButtonColor: '#d33',
         }).then(async (result) => {
@@ -222,7 +222,7 @@ export default function manage_comment() {
                     if (response.data.status === 200) {
                         Swal.fire({
                             title: 'ลบข้อมูลเรียบร้อยแล้ว',
-                            text: `ลบรีวิวจากคุณ ${comment.commentator_name}แล้ว`,
+                            text: `ลบรีวิวจากคุณ ${comment.commentator_name ? comment.commentator_name : 'ไม่ระบุชื่อ'}แล้ว`,
                             icon: 'success'
                         }).then((result) => {
                             if (result.isConfirmed) {
